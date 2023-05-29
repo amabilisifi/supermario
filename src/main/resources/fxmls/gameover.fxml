@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.gameOverController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <ImageView fitHeight="400.0" fitWidth="528.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameover.jpeg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="232.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER!.">
+         <font>
+            <Font name="K2D Regular" size="54.0" />
+         </font>
+      </Text>
+      <Button layoutX="671.0" layoutY="326.0" mnemonicParsing="false" onAction="#goHome" text="Start" />
+   </children>
+</AnchorPane>

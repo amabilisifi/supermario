@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.shopController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/homeWall1.jpeg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d5d8da" height="217.0" layoutX="300.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="164.0" layoutX="312.0" layoutY="48.0" stroke="BLACK" strokeType="INSIDE" width="169.0" />
+      <ImageView fx:id="characterViewer" fitHeight="156.0" fitWidth="133.0" layoutX="330.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cuphead.PNG" />
+         </image>
+      </ImageView>
+      <Text fx:id="characterNameText" layoutX="312.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuphead" wrappingWidth="169.0">
+         <font>
+            <Font name="Menlo Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="characterPriceText" layoutX="327.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20" wrappingWidth="147.87530517578125" />
+      <ImageView fitHeight="17.0" fitWidth="13.0" layoutX="312.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/coin.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="buySelectButton" layoutX="351.0" layoutY="286.0" mnemonicParsing="false" onAction="#buySelectButton" prefHeight="43.0" prefWidth="99.0" text="Buy" />
+      <Text fill="WHITE" layoutX="503.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Info:" wrappingWidth="270.015625">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="503.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0" text="there is no spocial information about this characterType yet." wrappingWidth="270.015625">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button blendMode="RED" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" opacity="0.6" text="HOME" />
+      <Polyline fill="#c6c6c6" layoutX="582.0" layoutY="141.0" onMouseClicked="#next" points="-75.0, 31.5, -75.0, -19.9395751953125, -35.813232421875, 4.5, -75.0, 31.5" strokeType="INSIDE" />
+      <Polyline fill="#9a9999" layoutX="590.0" layoutY="146.0" onMouseClicked="#next" points="-75.0, 13.5, -75.0, -11.868515014648438, -55.87884521484375, -0.5, -75.0, 13.5" strokeType="INSIDE" />
+      <Text fx:id="userCoinText" fill="#fff3f3" layoutX="532.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sag" wrappingWidth="150.9089392426892">
+         <font>
+            <Font name="Apple Braille" size="17.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="20.0" fitWidth="22.0" layoutX="505.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/coin.PNG" />
+         </image>
+      </ImageView>
+      <Text fx:id="redText" fill="#a82f2f" layoutX="301.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="192.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

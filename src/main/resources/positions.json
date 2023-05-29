@@ -1,0 +1,1812 @@
+{
+  "blockPositions": [
+    {
+      "startX": 0.0,
+      "startY": 400.0,
+      "typesOfBlock": "Classic",
+      "x": -2645.0,
+      "y": 400.0
+    },
+    {
+      "startX": 36.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2609.0,
+      "y": 362.0
+    },
+    {
+      "startX": 72.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2573.0,
+      "y": 362.0
+    },
+    {
+      "startX": 0.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2645.0,
+      "y": 324.0
+    },
+    {
+      "startX": 36.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2609.0,
+      "y": 324.0
+    },
+    {
+      "startX": 72.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2573.0,
+      "y": 324.0
+    },
+    {
+      "startX": 108.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2537.0,
+      "y": 362.0
+    },
+    {
+      "startX": 144.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2501.0,
+      "y": 362.0
+    },
+    {
+      "startX": 180.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2465.0,
+      "y": 362.0
+    },
+    {
+      "startX": 216.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2429.0,
+      "y": 362.0
+    },
+    {
+      "startX": 252.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2393.0,
+      "y": 362.0
+    },
+    {
+      "startX": 252.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2393.0,
+      "y": 324.0
+    },
+    {
+      "startX": 288.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2357.0,
+      "y": 362.0
+    },
+    {
+      "startX": 324.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2321.0,
+      "y": 362.0
+    },
+    {
+      "startX": 288.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2357.0,
+      "y": 324.0
+    },
+    {
+      "startX": 324.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2321.0,
+      "y": 324.0
+    },
+    {
+      "startX": 288.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -2357.0,
+      "y": 286.0
+    },
+    {
+      "startX": 324.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -2321.0,
+      "y": 286.0
+    },
+    {
+      "startX": 500.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2145.0,
+      "y": 362.0
+    },
+    {
+      "startX": 536.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2109.0,
+      "y": 362.0
+    },
+    {
+      "startX": 572.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2073.0,
+      "y": 362.0
+    },
+    {
+      "startX": 608.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2037.0,
+      "y": 362.0
+    },
+    {
+      "startX": 644.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -2001.0,
+      "y": 362.0
+    },
+    {
+      "startX": 680.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1965.0,
+      "y": 362.0
+    },
+    {
+      "startX": 716.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1929.0,
+      "y": 362.0
+    },
+    {
+      "startX": 752.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1893.0,
+      "y": 362.0
+    },
+    {
+      "startX": 788.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1857.0,
+      "y": 362.0
+    },
+    {
+      "startX": 824.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1821.0,
+      "y": 362.0
+    },
+    {
+      "startX": 500.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2145.0,
+      "y": 324.0
+    },
+    {
+      "startX": 536.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2109.0,
+      "y": 324.0
+    },
+    {
+      "startX": 572.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2073.0,
+      "y": 324.0
+    },
+    {
+      "startX": 608.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2037.0,
+      "y": 324.0
+    },
+    {
+      "startX": 644.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -2001.0,
+      "y": 324.0
+    },
+    {
+      "startX": 680.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1965.0,
+      "y": 324.0
+    },
+    {
+      "startX": 716.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1929.0,
+      "y": 324.0
+    },
+    {
+      "startX": 752.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1893.0,
+      "y": 324.0
+    },
+    {
+      "startX": 788.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1857.0,
+      "y": 324.0
+    },
+    {
+      "startX": 824.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1821.0,
+      "y": 324.0
+    },
+    {
+      "startX": 860.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1785.0,
+      "y": 362.0
+    },
+    {
+      "startX": 896.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1749.0,
+      "y": 362.0
+    },
+    {
+      "startX": 932.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1713.0,
+      "y": 362.0
+    },
+    {
+      "startX": 968.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1677.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1004.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1641.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1040.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1605.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1076.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1569.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1112.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1533.0,
+      "y": 362.0
+    },
+    {
+      "startX": 860.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1785.0,
+      "y": 324.0
+    },
+    {
+      "startX": 896.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1749.0,
+      "y": 324.0
+    },
+    {
+      "startX": 932.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1713.0,
+      "y": 324.0
+    },
+    {
+      "startX": 968.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1677.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1004.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1641.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1040.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1605.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1076.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1569.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1112.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1533.0,
+      "y": 324.0
+    },
+    {
+      "startX": 860.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1785.0,
+      "y": 286.0
+    },
+    {
+      "startX": 896.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1749.0,
+      "y": 286.0
+    },
+    {
+      "startX": 932.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1713.0,
+      "y": 286.0
+    },
+    {
+      "startX": 968.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1677.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1004.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1641.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1040.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1605.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1076.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1569.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1112.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1533.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1148.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1497.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1184.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1461.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1220.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1425.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1256.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1389.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1148.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1497.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1184.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1461.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1220.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1425.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1256.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1389.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1148.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1497.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1184.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1461.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1220.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1425.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1256.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1389.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1148.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": -1497.0,
+      "y": 248.0
+    },
+    {
+      "startX": 1184.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": -1461.0,
+      "y": 248.0
+    },
+    {
+      "startX": 1220.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": -1425.0,
+      "y": 248.0
+    },
+    {
+      "startX": 1256.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": -1389.0,
+      "y": 248.0
+    },
+    {
+      "startX": 1292.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1353.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1328.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1317.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1292.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1353.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1328.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -1317.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1292.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1353.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1328.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -1317.0,
+      "y": 286.0
+    },
+    {
+      "startX": 1364.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1281.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1400.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1245.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1436.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1209.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1472.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1173.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1508.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1137.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1544.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1101.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1580.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1065.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1616.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -1029.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1652.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -993.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1688.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -957.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1724.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -921.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1760.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -885.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1796.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -849.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1832.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -813.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1868.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -777.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1904.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -741.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1940.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -705.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1976.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -669.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2012.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -633.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2048.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -597.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2084.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -561.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2120.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -525.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2156.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -489.0,
+      "y": 362.0
+    },
+    {
+      "startX": 1724.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -921.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1760.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -885.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1796.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -849.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1832.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -813.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1868.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -777.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1904.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -741.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1940.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -705.0,
+      "y": 324.0
+    },
+    {
+      "startX": 1976.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -669.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2012.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -633.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2048.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -597.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2084.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -561.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2120.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -525.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2156.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -489.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2192.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -453.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2228.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -417.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2264.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -381.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2300.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -345.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2336.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -309.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2192.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -453.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2228.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -417.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2264.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -381.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2300.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -345.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2336.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": -309.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2192.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -453.0,
+      "y": 286.0
+    },
+    {
+      "startX": 2228.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -417.0,
+      "y": 286.0
+    },
+    {
+      "startX": 2264.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -381.0,
+      "y": 286.0
+    },
+    {
+      "startX": 2300.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -345.0,
+      "y": 286.0
+    },
+    {
+      "startX": 2336.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": -309.0,
+      "y": 286.0
+    },
+    {
+      "startX": 2372.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -273.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2408.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -237.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2444.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -201.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2480.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -165.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2516.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -129.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2552.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -93.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2588.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -57.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2624.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": -21.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2660.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 15.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2696.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 51.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2732.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 87.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2768.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 123.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2804.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 159.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2840.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 195.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2876.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 231.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2912.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 267.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2948.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 303.0,
+      "y": 362.0
+    },
+    {
+      "startX": 2732.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 87.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2768.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 123.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2804.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 159.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2840.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 195.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2876.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 231.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2912.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 267.0,
+      "y": 324.0
+    },
+    {
+      "startX": 2948.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 303.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3564.0,
+      "startY": 134.0,
+      "typesOfBlock": "Classic",
+      "x": 919.0,
+      "y": 134.0
+    },
+    {
+      "startX": 3600.0,
+      "startY": 134.0,
+      "typesOfBlock": "Classic",
+      "x": 955.0,
+      "y": 134.0
+    },
+    {
+      "startX": 3636.0,
+      "startY": 134.0,
+      "typesOfBlock": "Classic",
+      "x": 991.0,
+      "y": 134.0
+    },
+    {
+      "startX": 3672.0,
+      "startY": 134.0,
+      "typesOfBlock": "Classic",
+      "x": 1027.0,
+      "y": 134.0
+    },
+    {
+      "startX": 3708.0,
+      "startY": 134.0,
+      "typesOfBlock": "Classic",
+      "x": 1063.0,
+      "y": 134.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 248.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 248.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 210.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 210.0
+    },
+    {
+      "startX": 3492.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 847.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3528.0,
+      "startY": 172.0,
+      "typesOfBlock": "Classic",
+      "x": 883.0,
+      "y": 172.0
+    },
+    {
+      "startX": 3204.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 559.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3240.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 595.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3276.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 631.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3312.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 667.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3348.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 703.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3384.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 739.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3420.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 775.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3456.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 811.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3204.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 559.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3240.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 595.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3276.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 631.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3312.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 667.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3348.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 703.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3384.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 739.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3420.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 775.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3456.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 811.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3204.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 559.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3240.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 595.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3276.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 631.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3312.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 667.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3348.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 703.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3384.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 739.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3420.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 775.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3456.0,
+      "startY": 286.0,
+      "typesOfBlock": "Classic",
+      "x": 811.0,
+      "y": 286.0
+    },
+    {
+      "startX": 3060.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 415.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3096.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 451.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3132.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 487.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3168.0,
+      "startY": 362.0,
+      "typesOfBlock": "Classic",
+      "x": 523.0,
+      "y": 362.0
+    },
+    {
+      "startX": 3060.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 415.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3096.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 451.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3132.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 487.0,
+      "y": 324.0
+    },
+    {
+      "startX": 3168.0,
+      "startY": 324.0,
+      "typesOfBlock": "Classic",
+      "x": 523.0,
+      "y": 324.0
+    },
+    {
+      "startX": 400.0,
+      "startY": 150.0,
+      "typesOfBlock": "InAir",
+      "x": -2245.0,
+      "y": 150.0
+    },
+    {
+      "startX": 472.0,
+      "startY": 150.0,
+      "typesOfBlock": "InAir",
+      "x": -2173.0,
+      "y": 150.0
+    },
+    {
+      "startX": 800.0,
+      "startY": 170.0,
+      "typesOfBlock": "InAir",
+      "x": -1845.0,
+      "y": 170.0
+    },
+    {
+      "startX": 836.0,
+      "startY": 170.0,
+      "typesOfBlock": "InAir",
+      "x": -1809.0,
+      "y": 170.0
+    },
+    {
+      "startX": 872.0,
+      "startY": 170.0,
+      "typesOfBlock": "InAir",
+      "x": -1773.0,
+      "y": 170.0
+    },
+    {
+      "startX": 908.0,
+      "startY": 170.0,
+      "typesOfBlock": "InAir",
+      "x": -1737.0,
+      "y": 170.0
+    },
+    {
+      "startX": 1580.0,
+      "startY": 230.0,
+      "typesOfBlock": "InAir",
+      "x": -1065.0,
+      "y": 230.0
+    },
+    {
+      "startX": 1616.0,
+      "startY": 230.0,
+      "typesOfBlock": "InAir",
+      "x": -1029.0,
+      "y": 230.0
+    },
+    {
+      "startX": 1880.0,
+      "startY": 200.0,
+      "typesOfBlock": "InAir",
+      "x": -765.0,
+      "y": 200.0
+    },
+    {
+      "startX": 1954.0,
+      "startY": 200.0,
+      "typesOfBlock": "InAir",
+      "x": -691.0,
+      "y": 200.0
+    },
+    {
+      "startX": 2028.0,
+      "startY": 200.0,
+      "typesOfBlock": "InAir",
+      "x": -617.0,
+      "y": 200.0
+    },
+    {
+      "startX": 2812.0,
+      "startY": 220.0,
+      "typesOfBlock": "InAir",
+      "x": 167.0,
+      "y": 220.0
+    },
+    {
+      "startX": 2848.0,
+      "startY": 220.0,
+      "typesOfBlock": "InAir",
+      "x": 203.0,
+      "y": 220.0
+    },
+    {
+      "startX": 2884.0,
+      "startY": 220.0,
+      "typesOfBlock": "InAir",
+      "x": 239.0,
+      "y": 220.0
+    },
+    {
+      "startX": 2812.0,
+      "startY": 120.0,
+      "typesOfBlock": "InAir",
+      "x": 167.0,
+      "y": 120.0
+    },
+    {
+      "startX": 2882.0,
+      "startY": 120.0,
+      "typesOfBlock": "InAir",
+      "x": 237.0,
+      "y": 120.0
+    }
+  ],
+  "pipePositions": [],
+  "bonusPositions": [
+    {
+      "startX": 436.0,
+      "startY": 150.0,
+      "x": -2209.0,
+      "y": 150.0
+    },
+    {
+      "startX": 1916.0,
+      "startY": 200.0,
+      "x": -729.0,
+      "y": 200.0
+    },
+    {
+      "startX": 1990.0,
+      "startY": 200.0,
+      "x": -655.0,
+      "y": 200.0
+    },
+    {
+      "startX": 2848.0,
+      "startY": 120.0,
+      "x": 203.0,
+      "y": 120.0
+    }
+  ],
+  "coinPositions": [],
+  "enemyPositions": [],
+  "flagPosition": null
+}

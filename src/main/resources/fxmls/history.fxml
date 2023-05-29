@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.historyController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <ImageView fitHeight="400.0" fitWidth="647.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hardness1.jpeg" />
+         </image>
+      </ImageView>
+      <Button blendMode="RED" layoutX="127.0" layoutY="297.0" mnemonicParsing="false" onAction="#loadI" opacity="0.7" prefHeight="35.0" prefWidth="111.0" text="Load I" />
+      <Button blendMode="RED" layoutX="345.0" layoutY="297.0" mnemonicParsing="false" onAction="#loadII" opacity="0.7" prefHeight="35.0" prefWidth="111.0" text="Load II" />
+      <Button blendMode="RED" layoutX="572.0" layoutY="297.0" mnemonicParsing="false" onAction="#loadIII" opacity="0.7" prefHeight="35.0" prefWidth="111.0" text="Load III" />
+      <Button blendMode="RED" layoutX="14.0" layoutY="22.0" mnemonicParsing="false" onAction="#goHome" opacity="0.57" text="HOME" />
+      <Text fx:id="text" fill="#d7c1c1" layoutX="218.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="there is no game saved in this file" textAlignment="CENTER" wrappingWidth="364.74267578125">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

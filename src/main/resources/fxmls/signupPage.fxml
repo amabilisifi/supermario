@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.signupController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="806.0" layoutX="44.0" pickOnBounds="true" preserveRatio="true" scaleX="1.126">
+         <image>
+            <Image url="@../images/start.jpeg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="usernameField" layoutX="46.0" layoutY="92.0" prefHeight="39.0" prefWidth="221.0" promptText="enter username" />
+      <Button layoutX="130.0" layoutY="293.0" mnemonicParsing="false" onAction="#signupSubmit" text="submit" />
+      <Button fx:id="backButton" blendMode="DARKEN" layoutX="19.0" layoutY="21.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="62.0" text="back">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passwordField" layoutX="47.0" layoutY="181.0" prefHeight="39.0" prefWidth="221.0" promptText="enter password">
+         <font>
+            <Font size="10.0" />
+         </font></PasswordField>
+   </children>
+</AnchorPane>
