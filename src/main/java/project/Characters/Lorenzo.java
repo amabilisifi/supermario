@@ -1,15 +1,14 @@
 package project.Characters;
 
 import javafx.scene.image.Image;
+import project.GameInfo;
 
 public class Lorenzo extends Character{
-    private static int price ;
-    private static double speedo;
     public Lorenzo() {
         this.setCharacterType("Lorenzo");
-        setPrice(price);
-        this.setFitHeight(getHeight());
-        this.setFitWidth(getWidth());
+        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
+        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));
@@ -20,21 +19,5 @@ public class Lorenzo extends Character{
         this.setImageSit(new Image(String.valueOf(getClass().getResource("/images/characters/orange/sit.PNG"))));
 
         this.setImage(getImg());
-    }
-    public int getPrice() {
-        return price;
-    }
-
-    public static void setPrice(int price) {
-        Lorenzo.price = price;
-    }
-
-
-    public static double getSpeedo() {
-        return speedo;
-    }
-
-    public static void setSpeedo(double speedo) {
-        Lorenzo.speedo = speedo;
     }
 }

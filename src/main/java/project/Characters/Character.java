@@ -153,8 +153,6 @@ public abstract class Character extends ImageView {
         this.image4 = image4;
     }
 
-    public abstract int getPrice() ;
-
     public int getIndexOfWalkingFrames() {
         return indexOfWalkingFrames;
     }
@@ -247,6 +245,10 @@ public abstract class Character extends ImageView {
 
     public void setOnBlock(boolean onBlock) {
         isOnBlock = onBlock;
+    }
+
+    public static int getPrice() {
+        return price;
     }
 }
 

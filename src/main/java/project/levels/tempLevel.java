@@ -24,7 +24,6 @@ public class tempLevel extends GameDesigner implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Hey");
         //setPane(gameController.pane);
         //pane is empty thou
         setBlocks();

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.otherStuff.SoundPlayer;
 
 import java.io.IOException;
 
@@ -33,5 +34,8 @@ public class StartPage extends Application {
         }
 
         stage.show();
+
+        SoundPlayer soundPlayer = new SoundPlayer("./src/main/resources/media/Magentium - Among Us Theme.mp3");
+        soundPlayer.play();
     }
 }

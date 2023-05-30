@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
+import project.GameInfo;
 
 public class Alexandro extends Character{
     private static int price ;
@@ -13,8 +14,9 @@ public class Alexandro extends Character{
     public Alexandro() {
         this.setCharacterType("Alexandro");
         setPrice(price);
-        this.setFitHeight(getHeight());
-        this.setFitWidth(getWidth());
+        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
+        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/red/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/red/normal.PNG"))));
@@ -27,9 +29,6 @@ public class Alexandro extends Character{
         this.setImage(getImg());
     }
 
-    public int getPrice() {
-        return price;
-    }
 
     public static void setPrice(int price) {
         Alexandro.price = price;

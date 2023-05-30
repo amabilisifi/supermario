@@ -13,7 +13,6 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -23,8 +22,6 @@ import project.gameObjects.BlockType;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -35,12 +32,10 @@ public class GameController implements Initializable {
     private final User currentUser = UserData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
 
-    private Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
+    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
     private final double startX = 10;
     private final double startY = 100;
-    private double gravity = 1;
-    private ZonedDateTime now = ZonedDateTime.now();
-    private long changedTime;
+    private final double gravity = 1.5;
 
 
     List<Block> blockList = new ArrayList<>();
@@ -64,11 +59,11 @@ public class GameController implements Initializable {
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
-        Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(150),e-> character.setFrame()));
+        Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(150), e -> character.setFrame()));
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
-        addBlockTable(BlockType.Ground,4,3,60);
+        addBlockTable(BlockType.Ground, 4, 3, 60);
 
         pane.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
@@ -76,13 +71,11 @@ public class GameController implements Initializable {
                     character.setScaleX(1);
                     character.setSpeed(Math.abs(8));
                     character.setScaleY(1);
-                    changedTime = now.until(ZonedDateTime.now(), ChronoUnit.MILLIS);
                 }
                 case A -> {
                     character.setScaleX(-1);
                     character.setSpeed(Math.abs(8) * -1);
                     character.setScaleY(1);
-                    changedTime = now.until(ZonedDateTime.now(), ChronoUnit.MILLIS);
                 }
                 case S -> {
                     character.setImage(character.getImageSit());
@@ -91,7 +84,7 @@ public class GameController implements Initializable {
                 case W -> {
                     if (character.isAbleToJumpAgain()) {
                         upPressed = true;
-                        character.setVy(-15);
+                        character.setVy(-20);
                         character.setAbleToJumpAgain(false);
                     }
                 }
@@ -99,11 +92,8 @@ public class GameController implements Initializable {
         });
         pane.setOnKeyReleased(KeyEvent -> {
             switch (KeyEvent.getCode()) {
-                case D -> {
-                    character.setSpeed(Math.abs(0));
-                }
-                case A -> {
-                    character.setSpeed(Math.abs(0) * -1);
+                case D, A -> {
+                    character.setSpeed(0);
                 }
                 case S -> {
                     //character.setImage(character.getImg());
@@ -115,26 +105,20 @@ public class GameController implements Initializable {
                 }
             }
         });
-        character.yProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldVal, Number newVal) {
-                // check jump limit
-                if (character.getVy() >= 0) {
-                    character.setAbleToJumpAgain(true);
-                }
-                // height limit
-                if (newVal.doubleValue() < 0) {
-                    character.setVy(2);
-                }
+        character.yProperty().addListener((observableValue, oldVal, newVal) -> {
+            // check jump limit
+            if (character.getVy() >= 0) {
+                character.setAbleToJumpAgain(true);
+            }
+            // height limit
+            if (newVal.doubleValue() < 0) {
+                character.setVy(2);
             }
         });
-        character.xProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldVal, Number newVal) {
-                // width limit
-                if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > pane.getWidth()) {
-                    character.setSpeed(0);
-                }
+        character.xProperty().addListener((observableValue, oldVal, newVal) -> {
+            // width limit
+            if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > pane.getWidth()) {
+                character.setSpeed(0);
             }
         });
     }
@@ -152,7 +136,7 @@ public class GameController implements Initializable {
 
     public void collisionWithBlocks() {
         Bounds marioBounds = character.getBoundsInParent();
-        for (Block block :blockList) {
+        for (Block block : blockList) {
             Bounds blockBounds = block.getBoundsInParent();
             if (blockBounds.intersects(marioBounds)) {
                 double dy = character.getCurrentY() - block.getCurrentY();
@@ -161,6 +145,7 @@ public class GameController implements Initializable {
                 if (dy < 0) {
 //                    character.setCurrentY(block.getCurrentY() - character.getFitHeight());
                     character.setOnBlock(true);
+                    if(!upPressed)
                     character.setVy(0);
 //                    land();
                 } else if (dy >= 0) {
@@ -168,12 +153,13 @@ public class GameController implements Initializable {
 //                    isJumping = false;
                 } else if (dx < 0) {
 //                    character.setCurrentX(block.getCurrentX() - character.getFitWidth() - 1.2);
+                    character.setSpeed(0);
                 } else if (dx >= 0) {
 //                    character.setCurrentX(block.getCurrentX() + block.getFitWidth() + 1);
                 }
                 break;
             } else {
-               character.setOnBlock(false);
+                character.setOnBlock(false);
             }
         }
     }
@@ -197,7 +183,7 @@ public class GameController implements Initializable {
             for (int j = 0; j < row; j++) {
                 double x = startX + j * Block.getWidth();
                 double y = 400 - i * Block.getHeight();
-                Block b = new Block(type,x, y);
+                Block b = new Block(type, x, y);
                 blockList.add(b);
                 pane.getChildren().add(b);
             }

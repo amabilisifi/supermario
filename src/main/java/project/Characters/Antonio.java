@@ -1,6 +1,7 @@
 package project.Characters;
 
 import javafx.scene.image.Image;
+import project.GameInfo;
 
 public class Antonio extends Character {
     private static int price;
@@ -9,9 +10,9 @@ public class Antonio extends Character {
 
     public Antonio() {
         this.setCharacterType("Antonio");
-        setPrice(price);
-        this.setFitHeight(getHeight());
-        this.setFitWidth(getWidth());
+        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
+        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));
@@ -22,10 +23,6 @@ public class Antonio extends Character {
         this.setImageSit(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/sit.PNG"))));
 
         this.setImage(getImg());
-    }
-
-    public int getPrice() {
-        return price;
     }
 
     public static void setPrice(int price) {

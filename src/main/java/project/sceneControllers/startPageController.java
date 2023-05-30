@@ -11,13 +11,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import project.*;
 import project.Characters.Antonio;
 import project.Characters.Lorenzo;
 import project.Characters.Alexandro;
-import project.ConfigManager;
-import project.JsonManager;
-import project.User;
-import project.UserData;
 import project.gameObjects.*;
 
 import java.io.IOException;
@@ -64,36 +61,7 @@ public class startPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
-            Block.setHeight(manager.getInt("blockHeight"));
-            Block.setWidth(manager.getInt("blockWidth"));
-            Coin.setHeight(manager.getInt("coinHeight"));
-            Coin.setWidth(manager.getInt("coinWidth"));
-            Pipe.setWidth(manager.getInt("pipeWidth"));
-            Pipe.setHeightShort(manager.getInt("shortPipeHeight"));
-            Pipe.setHeightMedium(manager.getInt("mediumPipeHeight"));
-            Pipe.setHeightLong(manager.getInt("longPipeHeight"));
 
-            ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
-            Alexandro.setPrice(configManager.getInt("alexandroPrice"));
-            Antonio.setPrice(configManager.getInt("antonioPrice"));
-            Lorenzo.setPrice(configManager.getInt("patrickPrice"));
-           // KrustyKrab.setPrice(configManager.getInt("krustyKrabPrice"));
-            Alexandro.setWidth(configManager.getInt("characterWidth"));
-            Antonio.setWidth(configManager.getInt("characterWidth"));
-            Lorenzo.setWidth(configManager.getInt("characterWidth"));
-           // KrustyKrab.setWidth(configManager.getInt("characterWidth"));
-            Alexandro.setHeight(Block.getHeight()*2);
-            Antonio.setHeight(Block.getHeight()*2);
-            Lorenzo.setHeight(Block.getHeight()*2);
-           // KrustyKrab.setHeight(Block.getHeight()*2);
-            Alexandro.setSpeedo(configManager.getInt("alexandroSpeedo"));
-            Lorenzo.setSpeedo(configManager.getInt("lorenzoSpeedo"));
-            Antonio.setSpeedo(configManager.getInt("antonioSpeedo"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
     public void goArta(ActionEvent event) throws IOException {
         User u = User.userOf("arta");

@@ -4,6 +4,7 @@ module project {
     requires com.fasterxml.jackson.annotation;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires javafx.media;
     requires java.datatransfer;
     requires java.desktop;
     requires earcut4j;
