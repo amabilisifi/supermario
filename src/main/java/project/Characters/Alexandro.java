@@ -10,7 +10,7 @@ public class Alexandro extends Character{
     public Alexandro() {
         this.setCharacterType("Alexandro");
         setPrice(price);
-        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
+        setPrice((int) GameInfo.getInstance().getAlexandroPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
 
@@ -26,7 +26,7 @@ public class Alexandro extends Character{
     }
 
 
-    public static void setPrice(int price) {
+    public void setPrice(int price) {
         Alexandro.price = price;
     }
 

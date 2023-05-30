@@ -15,11 +15,17 @@ public class GameInfo {
     private double mediumPipeHeight;
     private double longPipeHeight;
 
+    private double characterWidth;
+    private double characterHeight;
+
     private double alexandroPrice;
     private double lorenzoPrice;
     private double antonioPrice;
-    private double characterWidth;
-    private double characterHeight;
+    private double diegoPrice;
+    private double pabloPrice;
+    private double pedroPrice;
+    private double mateoPrice;
+
     private double alexandroSpeedo;
     private double lorenzoSpeedo;
     private double antonioSpeedo;
@@ -39,6 +45,11 @@ public class GameInfo {
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
             setLorenzoPrice(configManager.getInt("lorenzoPrice"));
             setAntonioPrice(configManager.getInt("antonioPrice"));
+            setDiegoPrice(configManager.getInt("diegoPrice"));
+            setPabloPrice(configManager.getInt("pabloPrice"));
+            setPedroPrice(configManager.getInt("pedroPrice"));
+            setMateoPrice(configManager.getInt("mateoPrice"));
+
             setCharacterWidth(configManager.getInt("characterWidth"));
             setCharacterHeight(manager.getInt("blockHeight")*2);
             setAlexandroSpeedo(configManager.getInt("alexandroSpeedo"));
@@ -182,5 +193,37 @@ public class GameInfo {
 
     public void setAntonioSpeedo(double antonioSpeedo) {
         this.antonioSpeedo = antonioSpeedo;
+    }
+
+    public double getDiegoPrice() {
+        return diegoPrice;
+    }
+
+    public void setDiegoPrice(double diegoPrice) {
+        this.diegoPrice = diegoPrice;
+    }
+
+    public double getPabloPrice() {
+        return pabloPrice;
+    }
+
+    public void setPabloPrice(double pabloPrice) {
+        this.pabloPrice = pabloPrice;
+    }
+
+    public double getPedroPrice() {
+        return pedroPrice;
+    }
+
+    public void setPedroPrice(double pedroPrice) {
+        this.pedroPrice = pedroPrice;
+    }
+
+    public double getMateoPrice() {
+        return mateoPrice;
+    }
+
+    public void setMateoPrice(double mateoPrice) {
+        this.mateoPrice = mateoPrice;
     }
 }

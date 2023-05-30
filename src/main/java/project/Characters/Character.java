@@ -27,7 +27,7 @@ public abstract class Character extends ImageView {
     private String characterType;
     private static double width;
     private static double height;
-    private static int price;
+    private  int price;
     private  double speedo;
 
 
@@ -117,8 +117,8 @@ public abstract class Character extends ImageView {
         return image1;
     }
 
-    public static void setPrice(int price) {
-        Character.price = price;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setImageSit(Image imageSit) {
@@ -247,7 +247,7 @@ public abstract class Character extends ImageView {
         isOnBlock = onBlock;
     }
 
-    public static int getPrice() {
+    public int getPrice() {
         return price;
     }
 }

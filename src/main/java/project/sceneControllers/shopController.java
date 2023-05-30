@@ -31,6 +31,10 @@ public class shopController implements Initializable {
     private Character freeChar = UserData.getInstance().getCurrentUser().getFreeChar();
     private Lorenzo lorenzo = new Lorenzo();
     private Antonio antonio = new Antonio();
+    private Diego diego = new Diego();
+    private Mateo mateo = new Mateo();
+    private Pablo pablo = new Pablo();
+    private Pedro pedro = new Pedro();
     @FXML
     ImageView characterViewer;
     @FXML
@@ -49,6 +53,10 @@ public class shopController implements Initializable {
         characterList.add(freeChar);
         characterList.add(lorenzo);
         characterList.add(antonio);
+        characterList.add(mateo);
+        characterList.add(pablo);
+        characterList.add(pedro);
+        characterList.add(mateo);
         Character r = characterList.get(0);
         if (UserData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
             //select

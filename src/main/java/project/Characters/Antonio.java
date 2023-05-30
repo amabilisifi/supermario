@@ -10,7 +10,7 @@ public class Antonio extends Character {
 
     public Antonio() {
         this.setCharacterType("Antonio");
-        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
+        setPrice((int) GameInfo.getInstance().getAntonioPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
 
@@ -25,7 +25,7 @@ public class Antonio extends Character {
         this.setImage(getImg());
     }
 
-    public static void setPrice(int price) {
+    public void setPrice(int price) {
         Antonio.price = price;
     }
 
