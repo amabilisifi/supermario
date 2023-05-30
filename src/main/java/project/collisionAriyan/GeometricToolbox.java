@@ -1,10 +1,8 @@
-package project.collisionManager;
+package project.collisionAriyan;
 
-import javax.sound.sampled.Line;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 
 public class GeometricToolbox {

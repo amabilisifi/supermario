@@ -1,12 +1,12 @@
-package project.collisionManager;
+package project.collisionAriyan;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import static project.collisionManager.GeometricToolbox.pointsToPolygon;
-import static project.collisionManager.ReyDetection.getVertexModel;
-import static project.collisionManager.GeometricToolbox.sortClockwise;
+import static project.collisionAriyan.GeometricToolbox.pointsToPolygon;
+import static project.collisionAriyan.ReyDetection.getVertexModel;
+import static project.collisionAriyan.GeometricToolbox.sortClockwise;
 
 public class GraphicalObjects {
     public static final int PRECISION = 20;

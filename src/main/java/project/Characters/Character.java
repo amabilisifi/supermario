@@ -43,8 +43,8 @@ public abstract class Character extends ImageView {
     private double currentX,currentY;
     private double startX,startY;
     private double speed = speedo;
-    private double Vy;
     private double jumpVelocity;
+    private double Vy = jumpVelocity;
     private boolean ableToJumpAgain = true;
     private boolean isOnBlock;
 
@@ -249,6 +249,14 @@ public abstract class Character extends ImageView {
 
     public int getPrice() {
         return price;
+    }
+
+    public double getSpeedo() {
+        return speedo;
+    }
+
+    public void setSpeedo(double speedo) {
+        this.speedo = speedo;
     }
 }
 

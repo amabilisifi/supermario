@@ -9,6 +9,8 @@ public class Lorenzo extends Character{
         setPrice((int) GameInfo.getInstance().getLorenzoPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameInfo.getInstance().getLorenzoSpeedo());
+        this.setJumpVelocity(GameInfo.getInstance().getLorenzoJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));

@@ -1,4 +1,4 @@
-package project.collisionManager;
+package project.collisionAriyan;
 
 import earcut4j.Earcut;
 

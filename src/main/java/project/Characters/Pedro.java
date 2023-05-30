@@ -9,6 +9,8 @@ public class Pedro extends Character{
         setPrice((int) GameInfo.getInstance().getPedroPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameInfo.getInstance().getPedroSpeedo());
+        this.setJumpVelocity(GameInfo.getInstance().getPedroJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/blue/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/blue/normal.PNG"))));

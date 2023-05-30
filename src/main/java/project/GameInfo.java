@@ -29,6 +29,18 @@ public class GameInfo {
     private double alexandroSpeedo;
     private double lorenzoSpeedo;
     private double antonioSpeedo;
+    private double pabloSpeedo;
+    private double pedroSpeedo;
+    private double diegoSpeedo;
+    private double mateoSpeedo;
+
+    private double alexandroJumpVelocity;
+    private double lorenzoJumpVelocity;
+    private double antonioJumpVelocity;
+    private double pabloJumpVelocity;
+    private double pedroJumpVelocity;
+    private double diegoJumpVelocity;
+    private double mateoJumpVelocity;
     private GameInfo(){
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -52,9 +64,23 @@ public class GameInfo {
 
             setCharacterWidth(configManager.getInt("characterWidth"));
             setCharacterHeight(manager.getInt("blockHeight")*2);
+
             setAlexandroSpeedo(configManager.getInt("alexandroSpeedo"));
             setLorenzoSpeedo(configManager.getInt("lorenzoSpeedo"));
             setAntonioSpeedo(configManager.getInt("antonioSpeedo"));
+            setPabloSpeedo(configManager.getInt("pabloSpeedo"));
+            setPedroSpeedo(configManager.getInt("pedroSpeedo"));
+            setMateoSpeedo(configManager.getInt("mateoSpeedo"));
+            setDiegoSpeedo(configManager.getInt("diegoSpeedo"));
+
+            setAlexandroJumpVelocity(configManager.getInt("alexandroJumpVelocity"));
+            setLorenzoJumpVelocity(configManager.getInt("lorenzoJumpVelocity"));
+            setAntonioJumpVelocity(configManager.getInt("antonioJumpVelocity"));
+            setPabloJumpVelocity(configManager.getInt("pabloJumpVelocity"));
+            setPedroJumpVelocity(configManager.getInt("pedroJumpVelocity"));
+            setMateoJumpVelocity(configManager.getInt("mateoJumpVelocity"));
+            setDiegoJumpVelocity(configManager.getInt("diegoJumpVelocity"));
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -225,5 +251,93 @@ public class GameInfo {
 
     public void setMateoPrice(double mateoPrice) {
         this.mateoPrice = mateoPrice;
+    }
+
+    public double getPabloSpeedo() {
+        return pabloSpeedo;
+    }
+
+    public void setPabloSpeedo(double pabloSpeedo) {
+        this.pabloSpeedo = pabloSpeedo;
+    }
+
+    public double getPedroSpeedo() {
+        return pedroSpeedo;
+    }
+
+    public void setPedroSpeedo(double pedroSpeedo) {
+        this.pedroSpeedo = pedroSpeedo;
+    }
+
+    public double getDiegoSpeedo() {
+        return diegoSpeedo;
+    }
+
+    public void setDiegoSpeedo(double diegoSpeedo) {
+        this.diegoSpeedo = diegoSpeedo;
+    }
+
+    public double getMateoSpeedo() {
+        return mateoSpeedo;
+    }
+
+    public void setMateoSpeedo(double mateoSpeedo) {
+        this.mateoSpeedo = mateoSpeedo;
+    }
+
+    public double getAlexandroJumpVelocity() {
+        return alexandroJumpVelocity;
+    }
+
+    public void setAlexandroJumpVelocity(double alexandroJumpVelocity) {
+        this.alexandroJumpVelocity = alexandroJumpVelocity;
+    }
+
+    public double getLorenzoJumpVelocity() {
+        return lorenzoJumpVelocity;
+    }
+
+    public void setLorenzoJumpVelocity(double lorenzoJumpVelocity) {
+        this.lorenzoJumpVelocity = lorenzoJumpVelocity;
+    }
+
+    public double getAntonioJumpVelocity() {
+        return antonioJumpVelocity;
+    }
+
+    public void setAntonioJumpVelocity(double antonioJumpVelocity) {
+        this.antonioJumpVelocity = antonioJumpVelocity;
+    }
+
+    public double getPabloJumpVelocity() {
+        return pabloJumpVelocity;
+    }
+
+    public void setPabloJumpVelocity(double pabloJumpVelocity) {
+        this.pabloJumpVelocity = pabloJumpVelocity;
+    }
+
+    public double getPedroJumpVelocity() {
+        return pedroJumpVelocity;
+    }
+
+    public void setPedroJumpVelocity(double pedroJumpVelocity) {
+        this.pedroJumpVelocity = pedroJumpVelocity;
+    }
+
+    public double getDiegoJumpVelocity() {
+        return diegoJumpVelocity;
+    }
+
+    public void setDiegoJumpVelocity(double diegoJumpVelocity) {
+        this.diegoJumpVelocity = diegoJumpVelocity;
+    }
+
+    public double getMateoJumpVelocity() {
+        return mateoJumpVelocity;
+    }
+
+    public void setMateoJumpVelocity(double mateoJumpVelocity) {
+        this.mateoJumpVelocity = mateoJumpVelocity;
     }
 }

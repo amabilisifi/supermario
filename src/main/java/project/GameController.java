@@ -3,8 +3,6 @@ package project;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,13 +37,6 @@ public class GameController implements Initializable {
 
 
     List<Block> blockList = new ArrayList<>();
-//    List<Pipe> pipeList = new ArrayList<>();
-//    List<BlockInAir> blocksInAirList = new ArrayList<>();
-//    List<SmallBlock> smallBlockList = new ArrayList<>();
-//    List<Enemy> enemyList = new ArrayList<>();
-//    List<ToxicPlant> toxicPlantsList = new ArrayList<>();
-//    List<Coin> coinsList = new ArrayList<>();
-//    List<Bonus> bonusList = new ArrayList<>();
 
     boolean upPressed = false;
 
@@ -69,12 +60,12 @@ public class GameController implements Initializable {
             switch (KeyEvent.getCode()) {
                 case D -> {
                     character.setScaleX(1);
-                    character.setSpeed(Math.abs(8));
+                    character.setSpeed(Math.abs(character.getSpeedo()));
                     character.setScaleY(1);
                 }
                 case A -> {
                     character.setScaleX(-1);
-                    character.setSpeed(Math.abs(8) * -1);
+                    character.setSpeed(Math.abs(character.getSpeedo()) * -1);
                     character.setScaleY(1);
                 }
                 case S -> {
@@ -84,7 +75,7 @@ public class GameController implements Initializable {
                 case W -> {
                     if (character.isAbleToJumpAgain()) {
                         upPressed = true;
-                        character.setVy(-20);
+                        character.setVy(character.getJumpVelocity());
                         character.setAbleToJumpAgain(false);
                     }
                 }
@@ -94,11 +85,13 @@ public class GameController implements Initializable {
             switch (KeyEvent.getCode()) {
                 case D, A -> {
                     character.setSpeed(0);
+                    character.setImage(character.getImg());
                 }
                 case S -> {
                     //character.setImage(character.getImg());
                     character.setFrame();
                     character.setScaleY(1);
+                    character.setImage(character.getImg());
                 }
                 case W -> {
                     upPressed = false;
@@ -133,7 +126,6 @@ public class GameController implements Initializable {
         // collision blocks
         collisionWithBlocks();
     }
-
     public void collisionWithBlocks() {
         Bounds marioBounds = character.getBoundsInParent();
         for (Block block : blockList) {
@@ -146,7 +138,7 @@ public class GameController implements Initializable {
 //                    character.setCurrentY(block.getCurrentY() - character.getFitHeight());
                     character.setOnBlock(true);
                     if(!upPressed)
-                    character.setVy(0);
+                        character.setVy(0);
 //                    land();
                 } else if (dy >= 0) {
                     character.setCurrentY(block.getCurrentY() + block.getFitHeight());
@@ -164,6 +156,17 @@ public class GameController implements Initializable {
         }
     }
 
+    public void addBlockTable(BlockType type, int row, int column, double startX) {
+        for (int i = 1; i <= column; i++) {
+            for (int j = 0; j < row; j++) {
+                double x = startX + j * GameInfo.getInstance().getBlockWidth();
+                double y = 400 - i * GameInfo.getInstance().getBlockHeight();
+                Block b = new Block(type, x, y);
+                blockList.add(b);
+                pane.getChildren().add(b);
+            }
+        }
+    }
     public void goHome(ActionEvent event) throws IOException {
         timeline.stop();
         String path = "src/main/resources/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";
@@ -176,17 +179,5 @@ public class GameController implements Initializable {
         stage.setScene(scene);
 
         stage.show();
-    }
-
-    public void addBlockTable(BlockType type, int row, int column, double startX) {
-        for (int i = 1; i <= column; i++) {
-            for (int j = 0; j < row; j++) {
-                double x = startX + j * Block.getWidth();
-                double y = 400 - i * Block.getHeight();
-                Block b = new Block(type, x, y);
-                blockList.add(b);
-                pane.getChildren().add(b);
-            }
-        }
     }
 }

@@ -1,12 +1,10 @@
-package project.collisionManager;
-
-import javafx.scene.image.Image;
+package project.collisionAriyan;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-import static project.collisionManager.GeometricToolbox.isInBound;
+import static project.collisionAriyan.GeometricToolbox.isInBound;
 
 public class ReyDetection {
     public static ArrayList<Point> getVertexModel(BufferedImage image, int n, Point pivot) {

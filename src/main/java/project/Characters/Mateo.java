@@ -9,6 +9,8 @@ public class Mateo extends Character{
         setPrice((int) GameInfo.getInstance().getMateoPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameInfo.getInstance().getMateoSpeedo());
+        this.setJumpVelocity(GameInfo.getInstance().getMateoJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/skyBlue/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/skyBlue/normal.PNG"))));

@@ -13,6 +13,8 @@ public class Antonio extends Character {
         setPrice((int) GameInfo.getInstance().getAntonioPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameInfo.getInstance().getAntonioSpeedo());
+        this.setJumpVelocity(GameInfo.getInstance().getAntonioJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));
@@ -29,13 +31,5 @@ public class Antonio extends Character {
         Antonio.price = price;
     }
 
-
-    public static double getSpeedo() {
-        return speedo;
-    }
-
-    public static void setSpeedo(double speedo) {
-        Antonio.speedo = speedo;
-    }
 
 }

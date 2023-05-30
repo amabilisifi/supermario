@@ -13,6 +13,8 @@ public class Alexandro extends Character{
         setPrice((int) GameInfo.getInstance().getAlexandroPrice());
         this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
         this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameInfo.getInstance().getAlexandroSpeedo());
+        this.setJumpVelocity(GameInfo.getInstance().getAlexandroJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/red/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/red/normal.PNG"))));
@@ -28,14 +30,5 @@ public class Alexandro extends Character{
 
     public void setPrice(int price) {
         Alexandro.price = price;
-    }
-
-
-    public static double getSpeedo() {
-        return speedo;
-    }
-
-    public static void setSpeedo(double speedo) {
-        Alexandro.speedo = speedo;
     }
 }
