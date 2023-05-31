@@ -52,14 +52,18 @@ public class GameController implements Initializable {
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
-        Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(150), e -> character.setFrame()));
+        Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
         addBlockTable(BlockType.Ground, 4, 3, 60);
-        Block block = new Block(BlockType.ContainManyCoins,100,170);
+        addBlockTable(BlockType.Ground,5,4,204);
+        Block block = new Block(BlockType.Bonus,100,170);
         pane.getChildren().add(block);
         blockList.add(block);
+
+        GameInfo.getInstance().setBlockList(blockList);
+        GameInfo.getInstance().setItemList(itemList);
 
         pane.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
@@ -129,13 +133,13 @@ public class GameController implements Initializable {
         character.setCurrentY(character.getCurrentY() + character.getVy() * dt);
         // collision blocks
         collisionWithBlocks();
+        collisionWithItems();
     }
     public void collisionWithBlocks() {
         Bounds marioBounds = character.getBoundsInParent();
         for (Block block : blockList) {
             Bounds blockBounds = block.getBoundsInParent();
-            if (blockBounds.intersects(marioBounds)) {
-                double dy = character.getCurrentY() - block.getCurrentY();
+            if (blockBounds.intersects(marioBounds)) {double dy = character.getCurrentY() - block.getCurrentY();
                 double dx = character.getCurrentX() - block.getCurrentX();
 
                 if (dy < 0) {
@@ -146,23 +150,28 @@ public class GameController implements Initializable {
                     if(block.getBlockType()==BlockType.Slime){
                         character.setVy(character.getJumpVelocity()*1.5);
                     }
-                } else if (dy >= 0) {
+                }
+                else if (dy >= 0) {
                     character.setVy(0);
                     if(block.getBlockType()==BlockType.Simple){
                         pane.getChildren().remove(block);
                         blockList.remove(block);
-                    }if(block.getBlockType()==BlockType.Bonus && block.getItemLeft()>=0){
+                    }if(block.getBlockType()==BlockType.Bonus && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
+                        block.setAbleToGiveAnotherItem(false);
                         Item item = new Item(block);
                         itemList.add(item);
                         pane.getChildren().add(item);
+                        //block.setItemLeft(block.getItemLeft()-1);
                     }
-                    if((block.getBlockType()== BlockType.ContainCoin || block.getBlockType()==BlockType.ContainManyCoins) && block.getItemLeft()>=0){
+                    if((block.getBlockType()== BlockType.ContainCoin || block.getBlockType()==BlockType.ContainManyCoins) && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
+                        block.setAbleToGiveAnotherItem(false);
                         Item item = new Item(ItemType.Coin,block);
                         itemList.add(item);
                         block.setItemLeft(block.getItemLeft()-1);
                         pane.getChildren().add(item);
                     }
-                } else if (dx < 0) {
+                }
+                else if (dx < 0) {
 //                    character.setCurrentX(block.getCurrentX() - character.getFitWidth() - 1.2);
                     character.setSpeed(0);
                 } else if (dx >= 0) {
@@ -174,6 +183,19 @@ public class GameController implements Initializable {
                 character.setOnBlock(false);
             }
         }
+    }
+    public void collisionWithItems(){
+        Item collisionItem = null;
+        for (Item item:itemList){
+            if(character.intersects(item.getBoundsInParent())){
+                item.setObtained(true);
+                collisionItem = item;
+                item.getBlock().setAbleToGiveAnotherItem(true);
+                pane.getChildren().remove(item);
+            }
+
+        }
+        itemList.remove(collisionItem);
     }
     public void addBlockTable(BlockType type, int row, int column, double startX) {
         for (int i = 1; i <= column; i++) {

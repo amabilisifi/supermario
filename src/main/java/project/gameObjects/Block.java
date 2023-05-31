@@ -26,6 +26,7 @@ public class Block extends ImageView {
     private double currentX = startX;
     private double currentY = startY;
     private  int itemLeft;
+    private boolean ableToGiveAnotherItem ;
 
 
     public Block(BlockType blockType,double xStart, double yStart) {
@@ -44,14 +45,17 @@ public class Block extends ImageView {
             case ContainCoin -> {
                 img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
                 itemLeft = 1;
+                ableToGiveAnotherItem = true;
             }
             case ContainManyCoins -> {
                 img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
                 itemLeft = (int) (2 + 3 * Math.random());
+                ableToGiveAnotherItem = true;
             }
             case Bonus -> {
                 img = new Image(String.valueOf(getClass().getResource("/images/Blocks/bonus.PNG")));
                 itemLeft = 1;
+                ableToGiveAnotherItem = true;
             }
             case Slime -> {
                 img = new Image(String.valueOf(getClass().getResource("/images/Blocks/slime.jpg")));
@@ -144,6 +148,14 @@ public class Block extends ImageView {
 
     public void setItemLeft(int itemLeft) {
         this.itemLeft = itemLeft;
+    }
+
+    public boolean isAbleToGiveAnotherItem() {
+        return ableToGiveAnotherItem;
+    }
+
+    public void setAbleToGiveAnotherItem(boolean ableToGiveAnotherItem) {
+        this.ableToGiveAnotherItem = ableToGiveAnotherItem;
     }
 }
 

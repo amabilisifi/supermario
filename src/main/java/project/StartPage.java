@@ -36,6 +36,6 @@ public class StartPage extends Application {
         stage.show();
 
         SoundPlayer soundPlayer = new SoundPlayer("./src/main/resources/media/Magentium - Among Us Theme.mp3");
-        soundPlayer.play();
+        //soundPlayer.play();
     }
 }
