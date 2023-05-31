@@ -3,7 +3,10 @@ package project.gameObjects;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -18,18 +21,16 @@ import java.io.IOException;
 @JsonDeserialize(using = BlockDeserializer.class)
 public class Block extends ImageView {
     private BlockType blockType;
-    private Image img ;
-    private static double width;
-    private static double height;
+    private Image img;
     private double startX;
     private double startY;
     private double currentX = startX;
     private double currentY = startY;
-    private  int itemLeft;
-    private boolean ableToGiveAnotherItem ;
+    private int itemLeft;
+    private boolean ableToGiveAnotherItem;
 
 
-    public Block(BlockType blockType,double xStart, double yStart) {
+    public Block(BlockType blockType, double xStart, double yStart) {
         this.blockType = blockType;
         switch (blockType) {
             case Ground -> {
@@ -71,12 +72,16 @@ public class Block extends ImageView {
         this.setFitWidth(GameInfo.getInstance().getBlockWidth());
         this.setFitHeight(GameInfo.getInstance().getBlockHeight());
     }
-    public Block(BlockType blockType){
+
+    public Block(BlockType blockType) {
     }
+
     public Block() {
     }
 
-    /** getter setter **/
+    /**
+     * getter setter
+     **/
 
     public Image getImg() {
         return img;
@@ -84,22 +89,6 @@ public class Block extends ImageView {
 
     public void setImg(Image img) {
         this.img = img;
-    }
-
-    public static double getWidth() {
-        return width;
-    }
-
-    public static void setWidth(double width) {
-        Block.width = width;
-    }
-
-    public static double getHeight() {
-        return height;
-    }
-
-    public static void setHeight(double height) {
-        Block.height = height;
     }
 
     public double getStartX() {
@@ -168,8 +157,6 @@ class BlockSerializer extends JsonSerializer<Block> {
         jsonGenerator.writeNumberField("yStart", block.getStartY());
         jsonGenerator.writeNumberField("xCurrent", block.getCurrentX());
         jsonGenerator.writeNumberField("yCurrent", block.getCurrentY());
-        jsonGenerator.writeNumberField("width", block.getWidth());
-        jsonGenerator.writeNumberField("height", block.getHeight());
         jsonGenerator.writeEndObject();
     }
 }
@@ -178,6 +165,7 @@ class BlockDeserializer extends StdDeserializer<Block> {
     public BlockDeserializer(Class<?> vc) {
         super(vc);
     }
+
     public BlockDeserializer() {
         super(Block.class);
     }
@@ -201,16 +189,10 @@ class BlockDeserializer extends StdDeserializer<Block> {
             b.setCurrentX(currentX.asDouble());
             b.setCurrentY(currentY.asDouble());
         }
-        if (width != null && height != null) {
-            b.setHeight(height.asDouble());
-            b.setWidth(width.asDouble());
-        }
 
         Image block = new Image(String.valueOf(getClass().getResource("images/block.PNG")));
         b.setImage(block);
 
-        b.setFitWidth(Block.getWidth());
-        b.setFitHeight(Block.getHeight());
         //LoadData.getInstance().getBlockList().add(b);
 
         return b;

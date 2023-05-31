@@ -9,12 +9,13 @@ import static project.collisionAriyan.GeometricToolbox.isInBound;
 public class ReyDetection {
     public static ArrayList<Point> getVertexModel(BufferedImage image, int n, Point pivot) {
         Polygon bound = new Polygon();
-        bound.addPoint(1,1);
-        bound.addPoint(image.getWidth()-1,1);
-        bound.addPoint(image.getWidth()-1,image.getHeight()-1);
-        bound.addPoint(image.getHeight()-1,1);
-        return getVertexModel(image,n,pivot,bound);
+        bound.addPoint(1, 1);
+        bound.addPoint(image.getWidth() - 1, 1);
+        bound.addPoint(image.getWidth() - 1, image.getHeight() - 1);
+        bound.addPoint(image.getHeight() - 1, 1);
+        return getVertexModel(image, n, pivot, bound);
     }
+
     public static ArrayList<Point> getVertexModel(BufferedImage image, int n, Point pivot, Polygon bound) {
         ArrayList<Double> angles = new ArrayList<>();
         double dTheta = 180.0 / n;
@@ -70,7 +71,7 @@ public class ReyDetection {
                 int deltaY = (int) Math.floor(m * deltaX);
 
                 Point target = new Point(x, pivot.y - deltaY);
-                if (isInBound(target, bound) && !isTransparent(image, target) && !isSurrounded(image, target,bound)) {
+                if (isInBound(target, bound) && !isTransparent(image, target) && !isSurrounded(image, target, bound)) {
                     maxPoint = target;
                     if (minPoint == null) {
                         minPoint = target;
@@ -80,7 +81,7 @@ public class ReyDetection {
         } else {
             for (int y = (int) bound.getBounds().getMinY(); y < bound.getBounds().getMaxY(); y++) {
                 Point target = new Point(pivot.x, y);
-                if (isInBound(target, bound) && !isTransparent(image, target) && !isSurrounded(image, target,bound)) {
+                if (isInBound(target, bound) && !isTransparent(image, target) && !isSurrounded(image, target, bound)) {
                     maxPoint = target;
                     if (minPoint == null) {
                         minPoint = target;
@@ -99,12 +100,12 @@ public class ReyDetection {
     }
 
 
-    public static boolean isSurrounded(BufferedImage image, Point point,Polygon bound) {
+    public static boolean isSurrounded(BufferedImage image, Point point, Polygon bound) {
         Point left = new Point(point.x - 1, point.y);
         Point up = new Point(point.x, point.y + 1);
         Point right = new Point(point.x + 1, point.y);
         Point down = new Point(point.x, point.y - 1);
-        boolean isValid = isInBound(left,bound) &&  isInBound(up,bound) && isInBound(right,bound) && isInBound(down,bound) ;
+        boolean isValid = isInBound(left, bound) && isInBound(up, bound) && isInBound(right, bound) && isInBound(down, bound);
         if (!isValid) {
             return false;
         }

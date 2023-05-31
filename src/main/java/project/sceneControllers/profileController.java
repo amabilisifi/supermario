@@ -22,6 +22,7 @@ public class profileController implements Initializable {
     Text highestScoreText;
     @FXML
     Text coinText;
+
     public void goHome(ActionEvent event) throws IOException {
         FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
         Parent root = homeLoader.load();

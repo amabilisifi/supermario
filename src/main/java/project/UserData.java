@@ -18,6 +18,10 @@ public class UserData {
         return instance;
     }
 
+    public static void setInstance(UserData instance) {
+        UserData.instance = instance;
+    }
+
     public List<User> getUsers() {
         return users;
     }
@@ -32,10 +36,6 @@ public class UserData {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
-    }
-
-    public static void setInstance(UserData instance) {
-        UserData.instance = instance;
     }
 
     public int getThisGameScore() {

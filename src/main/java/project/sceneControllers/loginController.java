@@ -50,7 +50,7 @@ public class loginController {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
 
-                String path = "src/main/resources/GameData/"+u.getName()+"/Inventory/purchasedCharacters.json";
+                String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
                 JsonManager manager = new JsonManager(path);
                 u.setPurchasedCharacters(manager.readArray(JsonManager.characterTypeReference));
                 u.getPurchasedCharacters().add(u.getFreeChar());

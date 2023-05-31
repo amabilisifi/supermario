@@ -19,11 +19,11 @@ import java.util.ResourceBundle;
 
 public class historyController implements Initializable {
     @FXML
-            Pane pane;
-    JsonManager managerI ;
+    Pane pane;
+    JsonManager managerI;
     JsonManager managerII;
     JsonManager managerIII;
-    String filePath = "src/main/resources/com/example/fx_guii/GameData/"+ UserData.getInstance().getCurrentUser().getName()+"/LoadData/load";
+    String filePath = "src/main/resources/com/example/fx_guii/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/LoadData/load";
     // +num.jason
     int loadCount = UserData.getInstance().getCurrentUser().getSavedLoadCount() - 1;
     @FXML
@@ -42,22 +42,23 @@ public class historyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         text.setText("");
-        if(loadCount>=3){
-            managerIII = new JsonManager(filePath+loadCount+".json");
-            managerII = new JsonManager(filePath+ (loadCount - 1) +".json");
-            managerI = new JsonManager(filePath+ (loadCount - 2) +".json");
-        }else if(loadCount == 2){
-            managerII = new JsonManager(filePath+ (loadCount) +".json");
-            managerI = new JsonManager(filePath+ (loadCount - 1) +".json");
-        }else if(loadCount == 1){
-            managerI = new JsonManager(filePath+ (loadCount) +".json");
+        if (loadCount >= 3) {
+            managerIII = new JsonManager(filePath + loadCount + ".json");
+            managerII = new JsonManager(filePath + (loadCount - 1) + ".json");
+            managerI = new JsonManager(filePath + (loadCount - 2) + ".json");
+        } else if (loadCount == 2) {
+            managerII = new JsonManager(filePath + (loadCount) + ".json");
+            managerI = new JsonManager(filePath + (loadCount - 1) + ".json");
+        } else if (loadCount == 1) {
+            managerI = new JsonManager(filePath + (loadCount) + ".json");
         }
     }
+
     public void loadI(ActionEvent event) throws IOException {
         text.setText("");
-        if(managerI == null){
+        if (managerI == null) {
             text.setText("there is no game saved in this file.");
-        }else {
+        } else {
             //GameData gameI = managerI.readObject(GameData.class);
             //UserData.getInstance().setCurrentGameData(gameI);
 //            level1part1 game = new level1part1();
@@ -73,20 +74,22 @@ public class historyController implements Initializable {
 //            stage.show();
         }
     }
+
     public void loadII() throws IOException {
         text.setText("");
-        if(managerII == null){
+        if (managerII == null) {
             text.setText("there is no game saved in this file.");
-        }else {
+        } else {
             //GameData gameII = managerII.readObject(GameData.class);
             //UserData.getInstance().setCurrentGameData(gameII);
         }
     }
+
     public void loadIII() throws IOException {
         text.setText("");
-        if(managerIII == null){
+        if (managerIII == null) {
             text.setText("there is no game saved in this file.");
-        }else {
+        } else {
             //GameData gameIII = managerIII.readObject(GameData.class);
             //UserData.getInstance().setCurrentGameData(gameIII);
         }

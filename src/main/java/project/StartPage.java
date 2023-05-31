@@ -14,7 +14,7 @@ public class StartPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setOnCloseRequest(e->{
+        stage.setOnCloseRequest(e -> {
             try {
                 manager.writeArray(UserData.getInstance().getUsers());
             } catch (IOException ex) {
@@ -24,7 +24,7 @@ public class StartPage extends Application {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/startPage.fxml"));
         Parent root = loader.load();
-        Scene scene = new Scene(root,800,400);
+        Scene scene = new Scene(root, 800, 400);
         stage.setScene(scene);
 
         try {

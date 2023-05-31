@@ -1,14 +1,13 @@
 package project;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import project.Characters.Alexandro;
+import project.Characters.Character;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import project.Characters.Character;
-import project.Characters.Alexandro;
 
 public class User {
     private String name;
@@ -69,6 +68,10 @@ public class User {
         return purchasedCharacters;
     }
 
+    public void setPurchasedCharacters(List<Character> purchasedCharacters) {
+        this.purchasedCharacters = purchasedCharacters;
+    }
+
     public Character getFreeChar() {
         return freeChar;
     }
@@ -85,13 +88,9 @@ public class User {
         this.selectedCharacter = selectedCharacter;
     }
 
-    public void setPurchasedCharacters(List<Character> purchasedCharacters) {
-        this.purchasedCharacters = purchasedCharacters;
-    }
-
     public boolean isPurchased(String r) {
         for (int i = 0; i < purchasedCharacters.size(); i++) {
-            if ( purchasedCharacters.get(i) != null && purchasedCharacters.get(i).getCharacterType() .equalsIgnoreCase (r)) {
+            if (purchasedCharacters.get(i) != null && purchasedCharacters.get(i).getCharacterType().equalsIgnoreCase(r)) {
                 return true;
             }
         }
@@ -102,12 +101,12 @@ public class User {
         return name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {

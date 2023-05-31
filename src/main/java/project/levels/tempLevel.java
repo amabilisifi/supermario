@@ -14,7 +14,7 @@ public class tempLevel extends GameDesigner implements Initializable {
 
     @Override
     public void setBlocks() {
-        addBlockTable(BlockType.Ground,4,2,0);
+        addBlockTable(BlockType.Ground, 4, 2, 0);
     }
 
     @Override

@@ -7,23 +7,29 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.hardnessController">
-   <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
-      <ImageView fitHeight="418.0" fitWidth="634.0" layoutX="83.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" scaleX="1.125">
-         <image>
-            <Image url="@../images/bg/hardness1.jpeg" />
-         </image>
-      </ImageView>
-      <Button blendMode="RED" layoutX="134.0" layoutY="304.0" mnemonicParsing="false" onAction="#easyGame" opacity="0.7" prefHeight="49.0" prefWidth="113.0" text="EASY" />
-      <Button blendMode="RED" layoutX="347.0" layoutY="304.0" mnemonicParsing="false" onAction="#normalGame" opacity="0.85" prefHeight="49.0" prefWidth="113.0" text="NORMAL" />
-      <Button blendMode="RED" layoutX="562.0" layoutY="304.0" mnemonicParsing="false" onAction="#hardGame" prefHeight="49.0" prefWidth="113.0" text="HARD" />
-      <Text fill="#e3b89a" layoutX="277.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose game hardness">
-         <font>
-            <Font size="26.0" />
-         </font>
-      </Text>
-      <Button fx:id="home" blendMode="RED" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome" opacity="0.72" prefHeight="31.0" prefWidth="57.0" text="Home" />
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" prefHeight="400.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/19" fx:controller="project.sceneControllers.hardnessController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="412.0" stroke="BLACK" strokeType="INSIDE" width="800.0"/>
+        <ImageView fitHeight="418.0" fitWidth="634.0" layoutX="83.0" layoutY="8.0" pickOnBounds="true"
+                   preserveRatio="true" scaleX="1.125">
+            <image>
+                <Image url="@../images/bg/hardness1.jpeg"/>
+            </image>
+        </ImageView>
+        <Button blendMode="RED" layoutX="134.0" layoutY="304.0" mnemonicParsing="false" onAction="#easyGame"
+                opacity="0.7" prefHeight="49.0" prefWidth="113.0" text="EASY"/>
+        <Button blendMode="RED" layoutX="347.0" layoutY="304.0" mnemonicParsing="false" onAction="#normalGame"
+                opacity="0.85" prefHeight="49.0" prefWidth="113.0" text="NORMAL"/>
+        <Button blendMode="RED" layoutX="562.0" layoutY="304.0" mnemonicParsing="false" onAction="#hardGame"
+                prefHeight="49.0" prefWidth="113.0" text="HARD"/>
+        <Text fill="#e3b89a" layoutX="277.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0"
+              text="choose game hardness">
+            <font>
+                <Font size="26.0"/>
+            </font>
+        </Text>
+        <Button fx:id="home" blendMode="RED" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goHome"
+                opacity="0.72" prefHeight="31.0" prefWidth="57.0" text="Home"/>
+    </children>
 </AnchorPane>

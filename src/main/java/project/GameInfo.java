@@ -55,7 +55,7 @@ public class GameInfo {
     private List<Block> blockList = new ArrayList<>();
     private List<Item> itemList = new ArrayList<>();
 
-    private GameInfo(){
+    private GameInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
             setBlockHeight(manager.getInt("blockHeight"));
@@ -68,10 +68,10 @@ public class GameInfo {
             setMagicalMushroomHeight(manager.getInt("magicalMushroomHeight"));
             setMagicalStarWidth(manager.getInt("magicalStarWidth"));
             setMagicalStarHeight(manager.getInt("magicalStarHeight"));
-//            setPipeWidth(manager.getInt("pipeWidth"));
-//            setShortPipeHeight(manager.getInt("shortPipeHeight"));
-//            setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
-//            setLongPipeHeight(manager.getInt("longPipeHeight"));
+            setPipeWidth(manager.getInt("pipeWidth"));
+            setShortPipeHeight(manager.getInt("shortPipeHeight"));
+            setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
+            setLongPipeHeight(manager.getInt("longPipeHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -83,7 +83,7 @@ public class GameInfo {
             setMateoPrice(configManager.getInt("mateoPrice"));
 
             setCharacterWidth(configManager.getInt("characterWidth"));
-            setCharacterHeight(manager.getInt("blockHeight")*2);
+            setCharacterHeight(manager.getInt("blockHeight") * 2);
 
             setAlexandroSpeedo(configManager.getInt("alexandroSpeedo"));
             setLorenzoSpeedo(configManager.getInt("lorenzoSpeedo"));
@@ -107,7 +107,7 @@ public class GameInfo {
     }
 
     public static GameInfo getInstance() {
-        if(instance==null){
+        if (instance == null) {
             instance = new GameInfo();
         }
         return instance;

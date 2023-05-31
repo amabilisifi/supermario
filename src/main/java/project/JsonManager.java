@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.util.List;
 
 public class JsonManager {
-    public static TypeReference<List<User>> userTypeReference = new TypeReference<>() {};
-    public static TypeReference<List<Character>> characterTypeReference = new TypeReference<>() {};
+    public static TypeReference<List<User>> userTypeReference = new TypeReference<>() {
+    };
+    public static TypeReference<List<Character>> characterTypeReference = new TypeReference<>() {
+    };
     private ObjectMapper objectMapper;
     private String path;
     private File file;
@@ -21,7 +23,7 @@ public class JsonManager {
         objectMapper = new ObjectMapper();
     }
 
-    public <T> void writeArray( List<T> arr) throws IOException {
+    public <T> void writeArray(List<T> arr) throws IOException {
         objectMapper.writeValue(file, arr);
     }
 
@@ -32,6 +34,7 @@ public class JsonManager {
     public void writeObject(Object obj) throws IOException {
         objectMapper.writeValue(file, obj);
     }
+
     public <T> T readObject(Class<T> object) throws IOException {
         return objectMapper.readValue(file, object);
     }

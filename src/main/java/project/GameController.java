@@ -11,14 +11,12 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.Characters.Character;
-import project.gameObjects.Block;
-import project.gameObjects.BlockType;
-import project.gameObjects.Item;
-import project.gameObjects.ItemType;
+import project.gameObjects.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,21 +25,19 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
-    @FXML
-    AnchorPane pane;
     private final User currentUser = UserData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-
-    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
     private final double startX = 10;
     private final double startY = 100;
     private final double gravity = 1.5;
-
+    @FXML
+    AnchorPane pane;
     private List<Block> blockList = new ArrayList<>();
-
     private boolean upPressed = false;
-
-    private List<Item> itemList  = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
+    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
+    private List<Coin> coinList = new ArrayList<>();
+    private List<Pipe> pipeList = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -56,11 +52,22 @@ public class GameController implements Initializable {
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
-        addBlockTable(BlockType.Ground, 4, 3, 60);
-        addBlockTable(BlockType.Ground,5,4,204);
-        Block block = new Block(BlockType.Bonus,100,170);
+        addBlockTable(BlockType.Ground, 6, 3, 0);
+        addBlockTable(BlockType.Ground, 10, 4, 216);
+        Block block = new Block(BlockType.ContainManyCoins, 100, 160);
         pane.getChildren().add(block);
         blockList.add(block);
+
+        Coin coin = new Coin(95, 270);
+        Coin coin1 = new Coin(135, 270);
+        coinList.add(coin1);
+        coinList.add(coin);
+        pane.getChildren().add(coin);
+        pane.getChildren().add(coin1);
+
+        Pipe pipe = new Pipe(PipeType.Medium,400,178);
+        pipeList.add(pipe);
+        pane.getChildren().add(pipe);
 
         GameInfo.getInstance().setBlockList(blockList);
         GameInfo.getInstance().setItemList(itemList);
@@ -124,6 +131,7 @@ public class GameController implements Initializable {
             }
         });
     }
+
     public void move() {
         //fall
         double dt = 20 / 1000.0;
@@ -134,7 +142,10 @@ public class GameController implements Initializable {
         // collision blocks
         collisionWithBlocks();
         collisionWithItems();
+        collisionWithCoin();
+        collisionWithPipe();
     }
+
     public void collisionWithBlocks() {
         Bounds marioBounds = character.getBoundsInParent();
         for (Block block : blockList) {
@@ -146,29 +157,29 @@ public class GameController implements Initializable {
                 if (dy < 0) {
 //                    character.setCurrentY(block.getCurrentY() - character.getFitHeight());
                     character.setOnBlock(true);
-                    if(!upPressed)
+                    if (!upPressed)
                         character.setVy(0);
-                    if(block.getBlockType()==BlockType.Slime){
-                        character.setVy(character.getJumpVelocity()*1.5);
+                    if (block.getBlockType() == BlockType.Slime) {
+                        character.setVy(character.getJumpVelocity() * 1.5);
                     }
-                }
-                else if (dy >= 0) {
+                } else if (dy >= 0) {
                     character.setVy(0);
-                    if(block.getBlockType()==BlockType.Simple){
+                    if (block.getBlockType() == BlockType.Simple) {
                         pane.getChildren().remove(block);
                         blockList.remove(block);
-                    }if(block.getBlockType()==BlockType.Bonus && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
+                    }
+                    if (block.getBlockType() == BlockType.Bonus && block.getItemLeft() >= 0 && block.isAbleToGiveAnotherItem()) {
                         block.setAbleToGiveAnotherItem(false);
                         Item item = new Item(block);
                         itemList.add(item);
                         pane.getChildren().add(item);
                         //block.setItemLeft(block.getItemLeft()-1);
                     }
-                    if((block.getBlockType()== BlockType.ContainCoin || block.getBlockType()==BlockType.ContainManyCoins) && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
+                    if ((block.getBlockType() == BlockType.ContainCoin || block.getBlockType() == BlockType.ContainManyCoins) && block.getItemLeft() > 0 && block.isAbleToGiveAnotherItem()) {
                         block.setAbleToGiveAnotherItem(false);
-                        Item item = new Item(ItemType.Coin,block);
+                        Item item = new Item(ItemType.Coin, block);
                         itemList.add(item);
-                        block.setItemLeft(block.getItemLeft()-1);
+                        block.setItemLeft(block.getItemLeft() - 1);
                         pane.getChildren().add(item);
                     }
                 }
@@ -185,22 +196,22 @@ public class GameController implements Initializable {
                 character.setOnBlock(false);
             }
         }
-        double dt = 20.0/1000;
-        double deltaX = character.getSpeed()*dt;
+        double dt = 20.0 / 1000;
+        double deltaX = character.getSpeed() * dt;
         double yRunner = character.getY();
-        double deltaY = character.getVy()*dt;
+        double deltaY = character.getVy() * dt;
         for (int i = 0; i < blockList.size(); i++) {
             Block block = blockList.get(i);
             //right of mario
             double rightRunner = character.getX() + character.getFitWidth() + deltaX;
             if (rightRunner > block.getX() && rightRunner < block.getX() + block.getFitWidth() &&
-                    yRunner <= block.getY() && yRunner+character.getFitHeight() >= block.getY() + block.getFitHeight()) {
-                 character.setSpeed(0);
+                    yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
+                character.setSpeed(0);
             }
             //left Of mario
             double leftRunner = character.getX() + deltaX;
             if (leftRunner > block.getX() && leftRunner < block.getX() + block.getFitWidth() &&
-                    yRunner <= block.getY() && yRunner+character.getFitHeight() >= block.getY() + block.getFitHeight()) {
+                    yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
                 character.setSpeed(0);
             }
 //            //down Of mario
@@ -239,18 +250,80 @@ public class GameController implements Initializable {
 //            }
         }
     }
-    public void collisionWithItems(){
+
+    public void collisionWithItems() {
         Item collisionItem = null;
-        for (Item item:itemList){
-            if(character.intersects(item.getBoundsInParent())){
+        for (Item item : itemList) {
+            if (character.intersects(item.getBoundsInParent())) {
                 item.setObtained(true);
                 collisionItem = item;
                 item.getBlock().setAbleToGiveAnotherItem(true);
+                switch (item.getItemType()) {
+                    case Coin -> {
+                        currentUser.setCoin(currentUser.getCoin() + 1);
+                        System.out.println(currentUser.getCoin());
+                    }
+                }
+                if (item.getBlock().getBlockType() == BlockType.ContainCoin) {
+                    item.getBlock().setBlockType(BlockType.Simple);
+                }
+                if (item.getBlock().getBlockType() == BlockType.ContainManyCoins && item.getBlock().getItemLeft() <= 0) {
+                    item.getBlock().setBlockType(BlockType.Empty);
+                    item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
+                }
                 pane.getChildren().remove(item);
             }
-
         }
         itemList.remove(collisionItem);
+    }
+
+    public void collisionWithCoin() {
+        Coin collisionCoin = null;
+        for (Coin coin : coinList) {
+            if (character.intersects(coin.getBoundsInParent())) {
+                collisionCoin = coin;
+                currentUser.setCoin(currentUser.getCoin() + 1);
+                System.out.println(currentUser.getCoin());
+            }
+        }
+        coinList.remove(collisionCoin);
+        pane.getChildren().remove(collisionCoin);
+    }
+
+    public void collisionWithPipe(){
+        Bounds marioBounds = character.getBoundsInParent();
+        for (Pipe pipe : pipeList) {
+            Bounds blockBounds = pipe.getBoundsInParent();
+            if (blockBounds.intersects(marioBounds)) {
+                double dy = character.getCurrentY() - pipe.getCurrentY();
+
+                if (dy < 0) {
+                    character.setOnBlock(true);
+                    if (!upPressed)
+                        character.setVy(0);
+                }
+                break;
+            } else {
+                character.setOnBlock(false);
+            }
+        }
+        double dt = 20.0 / 1000;
+        double deltaX = character.getSpeed() * dt;
+        double yRunner = character.getY();
+        for (Pipe pipe:pipeList) {
+            //right of mario
+            double rightRunner = character.getX() + character.getFitWidth() + deltaX;
+            if (rightRunner > pipe.getX() && rightRunner < pipe.getX() + pipe.getFitWidth() &&
+                    yRunner+character.getFitHeight() <= pipe.getY()+pipe.getFitHeight() && yRunner+character.getFitHeight()>pipe.getY()+5) {
+                character.setSpeed(0);
+            }
+            //left Of mario
+            double leftRunner = character.getX() + deltaX;
+            if (leftRunner > pipe.getX() && leftRunner < pipe.getX() + pipe.getFitWidth() &&
+                    yRunner+character.getFitHeight() <= pipe.getY()+pipe.getFitHeight() && yRunner+character.getFitHeight()>pipe.getY()+5) {
+                character.setSpeed(0);
+            }
+        }
     }
     public void addBlockTable(BlockType type, int row, int column, double startX) {
         for (int i = 1; i <= column; i++) {
@@ -263,6 +336,7 @@ public class GameController implements Initializable {
             }
         }
     }
+
     public void goHome(ActionEvent event) throws IOException {
         timeline.stop();
         String path = "src/main/resources/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";

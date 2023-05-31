@@ -7,26 +7,31 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.loginController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" prefHeight="400.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/19" fx:controller="project.sceneControllers.loginController">
 
     <children>
-        <ImageView fitHeight="400.0" fitWidth="806.0" layoutX="44.0" pickOnBounds="true" preserveRatio="true" scaleX="1.126">
+        <ImageView fitHeight="400.0" fitWidth="806.0" layoutX="44.0" pickOnBounds="true" preserveRatio="true"
+                   scaleX="1.126">
             <image>
-                <Image url="@../images/bg/start.jpeg" />
+                <Image url="@../images/bg/start.jpeg"/>
             </image>
         </ImageView>
-        <TextField fx:id="usernameField" layoutX="46.0" layoutY="92.0" prefHeight="39.0" prefWidth="221.0" promptText="enter username" />
-        <Button layoutX="130.0" layoutY="293.0" mnemonicParsing="false" onAction="#loginSubmit" text="submit" />
-        <Button fx:id="ackButton" blendMode="DARKEN" layoutX="19.0" layoutY="21.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="62.0" text="back">
+        <TextField fx:id="usernameField" layoutX="46.0" layoutY="92.0" prefHeight="39.0" prefWidth="221.0"
+                   promptText="enter username"/>
+        <Button layoutX="130.0" layoutY="293.0" mnemonicParsing="false" onAction="#loginSubmit" text="submit"/>
+        <Button fx:id="ackButton" blendMode="DARKEN" layoutX="19.0" layoutY="21.0" mnemonicParsing="false"
+                onAction="#back" prefHeight="26.0" prefWidth="62.0" text="back">
             <font>
-                <Font size="14.0" />
+                <Font size="14.0"/>
             </font>
         </Button>
-      <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="187.0" prefHeight="39.0" prefWidth="221.0" promptText="enter password">
-         <font>
-            <Font size="10.0" />
-         </font></PasswordField>
+        <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="187.0" prefHeight="39.0" prefWidth="221.0"
+                       promptText="enter password">
+            <font>
+                <Font size="10.0"/>
+            </font>
+        </PasswordField>
     </children>
 
 </AnchorPane>

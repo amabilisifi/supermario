@@ -3,7 +3,7 @@ package project.Characters;
 import javafx.scene.image.Image;
 import project.GameInfo;
 
-public class Pablo extends Character{
+public class Pablo extends Character {
     public Pablo() {
         this.setCharacterType("Pablo");
         setPrice((int) GameInfo.getInstance().getPabloPrice());

@@ -11,11 +11,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.*;
-import project.Characters.Antonio;
-import project.Characters.Lorenzo;
-import project.Characters.Alexandro;
-import project.gameObjects.*;
+import project.JsonManager;
+import project.User;
+import project.UserData;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +24,7 @@ public class startPageController implements Initializable {
     Pane pane;
 
     JsonManager manager = new JsonManager("src/main/resources/usera.json");
+
     public void goToLoginPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/loginPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -40,6 +39,7 @@ public class startPageController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
+
     public void goToSignupPage(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/signupPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -54,7 +54,8 @@ public class startPageController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
-    public void exit() throws IOException{
+
+    public void exit() throws IOException {
         manager.writeArray(UserData.getInstance().getUsers());
         System.exit(0);
     }
@@ -63,6 +64,7 @@ public class startPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
     public void goArta(ActionEvent event) throws IOException {
         User u = User.userOf("arta");
         UserData.getInstance().setCurrentUser(u);
@@ -72,7 +74,7 @@ public class startPageController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
 
-        String path = "src/main/resources/GameData/"+u.getName()+"/Inventory/purchasedCharacters.json";
+        String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
         JsonManager manager = new JsonManager(path);
         u.setPurchasedCharacters(manager.readArray(JsonManager.characterTypeReference));
         u.getPurchasedCharacters().add(u.getFreeChar());

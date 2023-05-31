@@ -10,12 +10,8 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -23,25 +19,25 @@ import java.io.IOException;
 @JsonDeserialize(using = CharacterDeserializer.class)
 
 public abstract class Character extends ImageView {
-    private  Image profilePhoto;
-    private String characterType;
     private static double width;
     private static double height;
-    private  int price;
-    private  double speedo;
+    private Image profilePhoto;
+    private String characterType;
+    private int price;
+    private double speedo;
 
 
     private Image img;
-    private Image image1 ;
+    private Image image1;
     private Image image2;
-    private Image image3 ;
-    private Image image4 ;
+    private Image image3;
+    private Image image4;
     private Image imageSit;
     private int indexOfWalkingFrames = 0;
 
 
-    private double currentX,currentY;
-    private double startX,startY;
+    private double currentX, currentY;
+    private double startX, startY;
     private double speed = speedo;
     private double jumpVelocity;
     private double Vy = jumpVelocity;
@@ -50,9 +46,28 @@ public abstract class Character extends ImageView {
 
     public Character() {
     }
-    /** useful methods **/
-    public void setFrame(){
-        if(speed!=0) {
+
+    public static double getWidth() {
+        return width;
+    }
+
+    public static void setWidth(double width) {
+        Character.width = width;
+    }
+
+    public static double getHeight() {
+        return height;
+    }
+
+    public static void setHeight(double height) {
+        Character.height = height;
+    }
+
+    /**
+     * useful methods
+     **/
+    public void setFrame() {
+        if (speed != 0) {
             switch (indexOfWalkingFrames) {
                 case 1:
                     setImage(image1);
@@ -78,16 +93,17 @@ public abstract class Character extends ImageView {
         }
     }
 
-    /** getter setter **/
-
-    public void setProfilePhoto(Image profilePhoto) {
-        this.profilePhoto = profilePhoto;
-    }
-
     public Image getProfilePhoto() {
         return profilePhoto;
     }
 
+    /**
+     * getter setter
+     **/
+
+    public void setProfilePhoto(Image profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
 
     public String getCharacterType() {
         return characterType;
@@ -97,32 +113,8 @@ public abstract class Character extends ImageView {
         this.characterType = characterType;
     }
 
-    public static double getWidth() {
-        return width;
-    }
-
-    public static void setWidth(double width) {
-        Character.width = width;
-    }
-
-    public static double getHeight() {
-        return height;
-    }
-
-    public static void setHeight(double height) {
-        Character.height = height;
-    }
-
     public Image getImage1() {
         return image1;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setImageSit(Image imageSit) {
-        this.imageSit = imageSit;
     }
 
     public void setImage1(Image image1) {
@@ -182,12 +174,16 @@ public abstract class Character extends ImageView {
         return speed;
     }
 
-    public  void setSpeed(double speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 
     public Image getImageSit() {
         return imageSit;
+    }
+
+    public void setImageSit(Image imageSit) {
+        this.imageSit = imageSit;
     }
 
     public double getCurrentY() {
@@ -249,6 +245,10 @@ public abstract class Character extends ImageView {
 
     public int getPrice() {
         return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public double getSpeedo() {

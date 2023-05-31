@@ -3,7 +3,7 @@ package project.Characters;
 import javafx.scene.image.Image;
 import project.GameInfo;
 
-public class Mateo extends Character{
+public class Mateo extends Character {
     public Mateo() {
         this.setCharacterType("Mateo");
         setPrice((int) GameInfo.getInstance().getMateoPrice());

@@ -3,10 +3,11 @@ package project.Characters;
 import javafx.scene.image.Image;
 import project.GameInfo;
 
-public class Alexandro extends Character{
-    private static int price ;
+public class Alexandro extends Character {
+    private static int price;
 
     private static double speedo;
+
     public Alexandro() {
         this.setCharacterType("Alexandro");
         setPrice(price);

@@ -1,6 +1,5 @@
 package project.sceneControllers;
 
-import project.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,10 +12,13 @@ import java.io.IOException;
 public class hardnessController {
     public void easyGame(ActionEvent event) throws IOException {
     }
+
     public void normalGame(ActionEvent event) throws IOException {
     }
+
     public void hardGame(ActionEvent event) throws IOException {
     }
+
     public void goHome(ActionEvent event) throws IOException {
         FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
         Parent root = homeLoader.load();

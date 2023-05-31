@@ -15,19 +15,18 @@ import javafx.scene.image.ImageView;
 import project.GameInfo;
 
 import java.io.IOException;
+
 @JsonSerialize(using = CoinSerializer.class)
 @JsonDeserialize(using = CoinDeserializer.class)
 public class Coin extends ImageView {
-    private Image img = new Image(String.valueOf(getClass().getResource("images/coin.png")));
-    private static double width;
-    private static double height;
+    private Image img = new Image(String.valueOf(getClass().getResource("/images/coin.png")));
     private double startX;
     private double startY;
     private double currentX = startX;
     private double currentY = startY;
     private boolean token;
+
     public Coin(double X, double Y) {
-        Image img  = new Image(String.valueOf(getClass().getResource("/images/items/coin.PNG")));
         this.setImage(img);
         this.setX(X);
         this.setY(Y);
@@ -38,7 +37,9 @@ public class Coin extends ImageView {
     public Coin() {
     }
 
-    /** getter setter **/
+    /**
+     * getter setter
+     **/
 
     public Image getImg() {
         return img;
@@ -54,22 +55,6 @@ public class Coin extends ImageView {
 
     public void setToken(boolean token) {
         this.token = token;
-    }
-
-    public static double getWidth() {
-        return width;
-    }
-
-    public static void setWidth(double width) {
-        Coin.width = width;
-    }
-
-    public static double getHeight() {
-        return height;
-    }
-
-    public static void setHeight(double height) {
-        Coin.height = height;
     }
 
     public double getStartX() {
@@ -104,6 +89,7 @@ public class Coin extends ImageView {
         this.currentY = currentY;
     }
 }
+
 class CoinSerializer extends JsonSerializer<Coin> {
 
     @Override
@@ -123,6 +109,7 @@ class CoinDeserializer extends StdDeserializer<Coin> {
     protected CoinDeserializer(Class<?> vc) {
         super(vc);
     }
+
     public CoinDeserializer() {
         super(Coin.class);
     }
@@ -148,8 +135,6 @@ class CoinDeserializer extends StdDeserializer<Coin> {
         Image coin = new Image(String.valueOf(getClass().getResource("images/coin.png")));
         c.setImage(coin);
 
-        c.setFitWidth(Coin.getWidth());
-        c.setFitHeight(Coin.getHeight());
 //        LoadData.getInstance().getCoinList().add(c);
 
         return c;

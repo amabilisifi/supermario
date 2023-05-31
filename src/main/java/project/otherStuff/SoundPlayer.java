@@ -14,7 +14,7 @@ public class SoundPlayer {
         mediaPlayer = new MediaPlayer(media);
     }
 
-    public void playOnRepeat(){
+    public void playOnRepeat() {
         mediaPlayer.play();
         mediaPlayer.setOnEndOfMedia(() -> {
             mediaPlayer.seek(Duration.ZERO);

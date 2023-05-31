@@ -11,8 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.Characters.*;
 import project.Characters.Character;
+import project.Characters.*;
 import project.JsonManager;
 import project.UserData;
 
@@ -23,18 +23,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class shopController implements Initializable {
-    private List<Character> characterList = new ArrayList<>();
-    private int index = 1;
-    private int money = UserData.getInstance().getCurrentUser().getCoin();
-    private Character r = new Alexandro();
-
-    private Character freeChar = UserData.getInstance().getCurrentUser().getFreeChar();
-    private Lorenzo lorenzo = new Lorenzo();
-    private Antonio antonio = new Antonio();
-    private Diego diego = new Diego();
-    private Mateo mateo = new Mateo();
-    private Pablo pablo = new Pablo();
-    private Pedro pedro = new Pedro();
     @FXML
     ImageView characterViewer;
     @FXML
@@ -47,6 +35,17 @@ public class shopController implements Initializable {
     Button buySelectButton;
     @FXML
     Text redText;
+    private List<Character> characterList = new ArrayList<>();
+    private int index = 1;
+    private int money = UserData.getInstance().getCurrentUser().getCoin();
+    private Character r = new Alexandro();
+    private Character freeChar = UserData.getInstance().getCurrentUser().getFreeChar();
+    private Lorenzo lorenzo = new Lorenzo();
+    private Antonio antonio = new Antonio();
+    private Diego diego = new Diego();
+    private Mateo mateo = new Mateo();
+    private Pablo pablo = new Pablo();
+    private Pedro pedro = new Pedro();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -61,7 +60,7 @@ public class shopController implements Initializable {
         if (UserData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
             //select
             buySelectButton.setText("select");
-            if(UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())){
+            if (UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
                 buySelectButton.setText("selected");
             }
         } else {
@@ -86,7 +85,7 @@ public class shopController implements Initializable {
         if (UserData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
             //select
             buySelectButton.setText("select");
-            if(UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())){
+            if (UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
                 buySelectButton.setText("selected");
             }
         } else {

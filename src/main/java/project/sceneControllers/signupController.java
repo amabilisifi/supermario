@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.Characters.Alexandro;
 import project.JsonManager;
 import project.User;
 import project.UserData;
@@ -51,7 +50,7 @@ public class signupController {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
 
-                String path = "src/main/resources/GameData/"+u.getName()+"/Inventory/purchasedCharacters.json";
+                String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
                 JsonManager manager = new JsonManager(path);
                 u.getPurchasedCharacters().add(u.getFreeChar());
 
