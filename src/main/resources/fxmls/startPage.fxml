@@ -10,7 +10,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="800.0" layoutX="44.0" pickOnBounds="true" preserveRatio="true" scaleX="1.126">
          <image>
-            <Image url="@../images/start.jpeg" />
+            <Image url="@../images/bg/start.jpeg" />
          </image>
       </ImageView>
       <Button layoutX="124.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToLoginPage" prefHeight="50.0" prefWidth="130.0" style="-fx-background-color: #e37f2d;" text="Login">
@@ -25,6 +25,6 @@
          <font>
             <Font size="19.0" />
          </font></Button>
-      <Button layoutX="269.0" layoutY="30.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="102.0" text="Arta" onAction="#goArta" />
+      <Button layoutX="269.0" layoutY="30.0" mnemonicParsing="false" onAction="#goArta" prefHeight="50.0" prefWidth="102.0" text="Arta" />
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="400.0" fitWidth="317.0" layoutX="250.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/homeWall1.jpeg" />
+            <Image url="@../images/bg/homeWall1.jpeg" />
          </image>
       </ImageView>
       <Button blendMode="RED" layoutX="138.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToHardnessScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="New Game">
@@ -26,7 +26,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button blendMode="RED" layoutX="549.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToShop" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Store">
+      <Button blendMode="RED" layoutX="549.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToShop" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Shop">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

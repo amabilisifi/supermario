@@ -5,7 +5,8 @@ public enum BlockType {
     Simple,
     ContainCoin,
     ContainManyCoins,
-    Plus,
+    Bonus,
     Small,
     Ground,
+    Slime,
 }

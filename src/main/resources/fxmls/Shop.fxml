@@ -14,7 +14,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/homeWall1.jpeg" />
+            <Image url="@../images/bg/homeWall1.jpeg" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d5d8da" height="217.0" layoutX="300.0" layoutY="38.0" stroke="BLACK" strokeType="INSIDE" width="192.0" />

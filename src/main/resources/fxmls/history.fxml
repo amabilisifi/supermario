@@ -13,7 +13,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="400.0" fitWidth="647.0" layoutX="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/hardness1.jpeg" />
+            <Image url="@../images/bg/hardness1.jpeg" />
          </image>
       </ImageView>
       <Button blendMode="RED" layoutX="127.0" layoutY="297.0" mnemonicParsing="false" onAction="#loadI" opacity="0.7" prefHeight="35.0" prefWidth="111.0" text="Load I" />

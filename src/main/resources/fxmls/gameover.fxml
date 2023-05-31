@@ -13,7 +13,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <ImageView fitHeight="400.0" fitWidth="528.0" layoutX="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/gameover.jpeg" />
+            <Image url="@../images/bg/gameover.jpeg" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="232.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GAME OVER!.">

@@ -41,6 +41,14 @@ public class GameInfo {
     private double pedroJumpVelocity;
     private double diegoJumpVelocity;
     private double mateoJumpVelocity;
+
+    private double magicalFlowerWidth;
+    private double magicalFlowerHeight;
+    private double magicalMushroomWidth;
+    private double magicalMushroomHeight;
+    private double magicalStarWidth;
+    private double magicalStarHeight;
+
     private GameInfo(){
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -48,10 +56,16 @@ public class GameInfo {
             setBlockWidth(manager.getInt("blockWidth"));
             setCoinHeight(manager.getInt("coinHeight"));
             setCoinWidth(manager.getInt("coinWidth"));
-            setPipeWidth(manager.getInt("pipeWidth"));
-            setShortPipeHeight(manager.getInt("shortPipeHeight"));
-            setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
-            setLongPipeHeight(manager.getInt("longPipeHeight"));
+            setMagicalFlowerWidth(manager.getInt("magicalFlowerWidth"));
+            setMagicalFlowerHeight(manager.getInt("magicalFlowerHeight"));
+            setMagicalMushroomWidth(manager.getInt("magicalMushroomWidth"));
+            setMagicalMushroomHeight(manager.getInt("magicalMushroomHeight"));
+            setMagicalStarWidth(manager.getInt("magicalStarWidth"));
+            setMagicalStarHeight(manager.getInt("magicalStarHeight"));
+//            setPipeWidth(manager.getInt("pipeWidth"));
+//            setShortPipeHeight(manager.getInt("shortPipeHeight"));
+//            setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
+//            setLongPipeHeight(manager.getInt("longPipeHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -339,5 +353,53 @@ public class GameInfo {
 
     public void setMateoJumpVelocity(double mateoJumpVelocity) {
         this.mateoJumpVelocity = mateoJumpVelocity;
+    }
+
+    public double getMagicalFlowerWidth() {
+        return magicalFlowerWidth;
+    }
+
+    public void setMagicalFlowerWidth(double magicalFlowerWidth) {
+        this.magicalFlowerWidth = magicalFlowerWidth;
+    }
+
+    public double getMagicalFlowerHeight() {
+        return magicalFlowerHeight;
+    }
+
+    public void setMagicalFlowerHeight(double magicalFlowerHeight) {
+        this.magicalFlowerHeight = magicalFlowerHeight;
+    }
+
+    public double getMagicalStarWidth() {
+        return magicalStarWidth;
+    }
+
+    public void setMagicalStarWidth(double magicalStarWidth) {
+        this.magicalStarWidth = magicalStarWidth;
+    }
+
+    public double getMagicalStarHeight() {
+        return magicalStarHeight;
+    }
+
+    public void setMagicalStarHeight(double magicalStarHeight) {
+        this.magicalStarHeight = magicalStarHeight;
+    }
+
+    public double getMagicalMushroomWidth() {
+        return magicalMushroomWidth;
+    }
+
+    public void setMagicalMushroomWidth(double magicalMushroomWidth) {
+        this.magicalMushroomWidth = magicalMushroomWidth;
+    }
+
+    public double getMagicalMushroomHeight() {
+        return magicalMushroomHeight;
+    }
+
+    public void setMagicalMushroomHeight(double magicalMushroomHeight) {
+        this.magicalMushroomHeight = magicalMushroomHeight;
     }
 }

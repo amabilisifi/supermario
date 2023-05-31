@@ -19,4 +19,6 @@ module project {
     opens project to javafx.fxml, javafx.graphics;
     exports project.levels;
     opens project.levels to javafx.fxml, javafx.graphics;
+    exports tempTrash;
+    opens tempTrash to com.fasterxml.jackson.databind;
 }

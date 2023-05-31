@@ -25,13 +25,36 @@ public class Block extends ImageView {
     private double startY;
     private double currentX = startX;
     private double currentY = startY;
+    private  int itemLeft;
 
 
     public Block(BlockType blockType,double xStart, double yStart) {
         this.blockType = blockType;
-        switch (blockType){
+        switch (blockType) {
             case Ground -> {
-                img  = new Image(String.valueOf(getClass().getResource("/images/block.PNG")));
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/ground.PNG")));
+            }
+            case Empty -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG")));
+            }
+            case Simple -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = 0;
+            }
+            case ContainCoin -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = 1;
+            }
+            case ContainManyCoins -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = (int) (2 + 3 * Math.random());
+            }
+            case Bonus -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/bonus.PNG")));
+                itemLeft = 1;
+            }
+            case Slime -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/slime.jpg")));
             }
         }
         this.setImage(img);
@@ -105,6 +128,22 @@ public class Block extends ImageView {
 
     public void setCurrentY(double currentY) {
         this.currentY = currentY;
+    }
+
+    public BlockType getBlockType() {
+        return blockType;
+    }
+
+    public void setBlockType(BlockType blockType) {
+        this.blockType = blockType;
+    }
+
+    public int getItemLeft() {
+        return itemLeft;
+    }
+
+    public void setItemLeft(int itemLeft) {
+        this.itemLeft = itemLeft;
     }
 }
 
