@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import project.JsonManager;
 import project.User;
 import project.UserData;
+import project.otherStuff.SoundPlayer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -62,7 +63,9 @@ public class startPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
+        soundPlayer.play();
+        soundPlayer.playOnRepeat();
     }
 
     public void goArta(ActionEvent event) throws IOException {

@@ -1,5 +1,6 @@
 package project;
 
+import javafx.scene.Scene;
 import project.gameObjects.Block;
 import project.gameObjects.Item;
 
@@ -51,6 +52,8 @@ public class GameInfo {
     private double magicalMushroomHeight;
     private double magicalStarWidth;
     private double magicalStarHeight;
+
+    private Scene currentScene;
 
     private List<Block> blockList = new ArrayList<>();
     private List<Item> itemList = new ArrayList<>();
@@ -407,6 +410,14 @@ public class GameInfo {
 
     public void setMagicalMushroomHeight(double magicalMushroomHeight) {
         this.magicalMushroomHeight = magicalMushroomHeight;
+    }
+
+    public Scene getCurrentScene() {
+        return currentScene;
+    }
+
+    public void setCurrentScene(Scene currentScene) {
+        this.currentScene = currentScene;
     }
 
     public List<Block> getBlockList() {
