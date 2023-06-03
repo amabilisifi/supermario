@@ -8,6 +8,7 @@ import java.io.File;
 
 public class SoundPlayer {
     private final MediaPlayer mediaPlayer;
+    private static SoundPlayer mainSoundPlayer;
 
     public SoundPlayer(String path) {
         Media media = new Media(new File(path).toURI().toString());
@@ -42,4 +43,11 @@ public class SoundPlayer {
         mediaPlayer.setVolume(0);
     }
 
+    public static void setMainSoundPlayer(SoundPlayer mainSoundPlayer) {
+        SoundPlayer.mainSoundPlayer = mainSoundPlayer;
+    }
+
+    public static SoundPlayer getMainSoundPlayer() {
+        return mainSoundPlayer;
+    }
 }

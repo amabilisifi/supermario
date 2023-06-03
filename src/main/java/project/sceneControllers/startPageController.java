@@ -64,6 +64,7 @@ public class startPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
+        SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();
     }

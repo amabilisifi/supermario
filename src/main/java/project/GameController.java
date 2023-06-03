@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.Characters.Character;
@@ -31,8 +30,10 @@ public class GameController {
     private boolean upPressed = false;
     private List<Item> itemList = new ArrayList<>();
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
+    private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
     private List<Coin> coinList = new ArrayList<>();
     private List<Pipe> pipeList = new ArrayList<>();
+    private boolean isSoundMenuClosed = true;
 
     public GameController(Scene scene, Group rt) {
         this.scene = scene;
@@ -43,7 +44,7 @@ public class GameController {
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
-        Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
+
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
@@ -93,14 +94,20 @@ public class GameController {
                 }
                 case ESCAPE -> {
                     try {
+                        isSoundMenuClosed = false;
                         timeline.pause();
                         timelinePrime.pause();
                         Stage stage = new Stage();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/soundMenu.fxml"));
                         Parent root = loader.load();
-                        Scene sc = new Scene(root, 440, 352);
+                        Scene sc = new Scene(root, 396, 292);
                         stage.setScene(sc);
                         stage.setResizable(false);
+                        stage.setOnCloseRequest(e -> {
+                            isSoundMenuClosed = true;
+                            timeline.play();
+                            timelinePrime.play();
+                        });
                         stage.show();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -141,9 +148,6 @@ public class GameController {
                 character.setSpeed(0);
             }
         });
-    }
-    public void hbh(){
-        System.out.println("vgjvjgv jgu");
     }
 
     public void move() {
