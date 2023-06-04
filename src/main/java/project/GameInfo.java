@@ -53,10 +53,10 @@ public class GameInfo {
     private double magicalStarWidth;
     private double magicalStarHeight;
 
-    private Scene currentScene;
-
     private List<Block> blockList = new ArrayList<>();
     private List<Item> itemList = new ArrayList<>();
+
+    private double swordHeight;
 
     private GameInfo() {
         try {
@@ -75,6 +75,7 @@ public class GameInfo {
             setShortPipeHeight(manager.getInt("shortPipeHeight"));
             setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
             setLongPipeHeight(manager.getInt("longPipeHeight"));
+            setSwordHeight(manager.getInt("swordHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -412,14 +413,6 @@ public class GameInfo {
         this.magicalMushroomHeight = magicalMushroomHeight;
     }
 
-    public Scene getCurrentScene() {
-        return currentScene;
-    }
-
-    public void setCurrentScene(Scene currentScene) {
-        this.currentScene = currentScene;
-    }
-
     public List<Block> getBlockList() {
         return blockList;
     }
@@ -434,5 +427,13 @@ public class GameInfo {
 
     public void setItemList(List<Item> itemList) {
         this.itemList = itemList;
+    }
+
+    public double getSwordHeight() {
+        return swordHeight;
+    }
+
+    public void setSwordHeight(double swordHeight) {
+        this.swordHeight = swordHeight;
     }
 }

@@ -44,6 +44,8 @@ public abstract class Character extends ImageView {
     private boolean ableToJumpAgain = true;
     private boolean isOnBlock;
 
+    private boolean isSwordCooledDown = true;
+
     public Character() {
     }
 
@@ -257,6 +259,14 @@ public abstract class Character extends ImageView {
 
     public void setSpeedo(double speedo) {
         this.speedo = speedo;
+    }
+
+    public boolean isSwordCooledDown() {
+        return isSwordCooledDown;
+    }
+
+    public void setSwordCooledDown(boolean swordCooledDown) {
+        isSwordCooledDown = swordCooledDown;
     }
 }
 

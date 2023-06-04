@@ -34,6 +34,7 @@ public class GameController {
     private List<Coin> coinList = new ArrayList<>();
     private List<Pipe> pipeList = new ArrayList<>();
     private boolean isSoundMenuClosed = true;
+    private Sword sword = null;
 
     public GameController(Scene scene, Group rt) {
         this.scene = scene;
@@ -41,6 +42,7 @@ public class GameController {
         character.setCurrentX(startX);
         character.setCurrentY(startY);
         root.getChildren().add(character);
+
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
@@ -113,6 +115,22 @@ public class GameController {
                         throw new RuntimeException(e);
                     }
                 }
+                case L ->{
+                    if(character.isSwordCooledDown() && currentUser.getCoin()>3) {
+                        currentUser.setCoin(currentUser.getCoin()-3);
+                        System.out.println(currentUser.getCoin());
+                        Sword sword = new Sword(character.getCurrentX(), character.getCurrentY(), character.getFitHeight());
+                        this.sword = sword;
+                        root.getChildren().add(sword);
+                        character.setSwordCooledDown(false);
+                        Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+                        timelineSwordMove.setCycleCount(Animation.INDEFINITE);
+                        timelineSwordMove.playFromStart();
+                        Timeline timer  = new Timeline(new KeyFrame(Duration.seconds(1),e-> System.out.println("+")));
+                        timer.setCycleCount(4);
+                        timer.playFromStart();
+                    }
+                }
             }
         });
         this.scene.setOnKeyReleased(KeyEvent -> {
@@ -162,6 +180,27 @@ public class GameController {
         collisionWithItems();
         collisionWithCoin();
         collisionWithPipe();
+    }
+    public void swordMove() {
+        // speed is 2 block per second so its 0.2 block per 100 millis
+        double blockWidth = GameInfo.getInstance().getBlockWidth();
+        // moving
+        if(sword !=null) {
+            if (sword.getX() >= sword.getStartX()) {
+                if (sword.getX() - sword.getStartX() >= blockWidth * 4) {
+                    sword.setTurnBack(true);
+                }
+                if (!sword.isTurnBack()) sword.setX(sword.getX() + 0.2 * blockWidth);
+                if (sword.isTurnBack()) sword.setX(sword.getX() - 0.2 * blockWidth);
+            } else {
+                root.getChildren().remove(sword);
+                sword = null;
+                Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> character.setSwordCooledDown(true)));
+                chill.setCycleCount(1);
+                chill.playFromStart();
+            }
+            // collision
+        }
     }
 
     public void collisionWithBlocks() {
