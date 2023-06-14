@@ -11,10 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.Characters.Character;
-import project.Characters.*;
-import project.JsonManager;
-import project.UserData;
+import project.characters.Character;
+import project.characters.*;
+import project.managers.JsonManager;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,9 +39,9 @@ public class shopController implements Initializable {
     Text redText;
     private List<Character> characterList = new ArrayList<>();
     private int index = 1;
-    private int money = UserData.getInstance().getCurrentUser().getCoin();
+    private int money = UsersData.getInstance().getCurrentUser().getCoin();
     private Character r = new Alexandro();
-    private Character freeChar = UserData.getInstance().getCurrentUser().getFreeChar();
+    private Character freeChar = UsersData.getInstance().getCurrentUser().getFreeChar();
     private Lorenzo lorenzo = new Lorenzo();
     private Antonio antonio = new Antonio();
     private Diego diego = new Diego();
@@ -57,21 +59,21 @@ public class shopController implements Initializable {
         characterList.add(pedro);
         characterList.add(mateo);
         Character r = characterList.get(0);
-        if (UserData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
+        if (UsersData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
             //select
             buySelectButton.setText("select");
-            if (UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
+            if (UsersData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
                 buySelectButton.setText("selected");
             }
         } else {
             //Buy
             buySelectButton.setText("buy");
-            UserData.getInstance().getCurrentUser().getPurchasedCharacters().add(r);
+            UsersData.getInstance().getCurrentUser().getPurchasedCharacters().add(r);
         }
         characterViewer.setImage(r.getProfilePhoto());
         characterNameText.setText(r.getCharacterType());
         characterPriceText.setText("" + r.getPrice());
-        userCoinText.setText(String.valueOf(UserData.getInstance().getCurrentUser().getCoin()));
+        userCoinText.setText(String.valueOf(UsersData.getInstance().getCurrentUser().getCoin()));
     }
 
     public void next() {
@@ -82,10 +84,10 @@ public class shopController implements Initializable {
             index++;
             r = characterList.get(index);
         }
-        if (UserData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
+        if (UsersData.getInstance().getCurrentUser().isPurchased(r.getCharacterType())) {
             //select
             buySelectButton.setText("select");
-            if (UserData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
+            if (UsersData.getInstance().getCurrentUser().getSelectedCharacter().getCharacterType().equals(r.getCharacterType())) {
                 buySelectButton.setText("selected");
             }
         } else {
@@ -100,33 +102,27 @@ public class shopController implements Initializable {
     }
 
     public void goHome(ActionEvent event) throws IOException {
-        String path = "src/main/resources/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";
+        String path = "src/main/resources/GameData/" + UsersData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";
         JsonManager manager = new JsonManager(path);
-        manager.writeArray(UserData.getInstance().getCurrentUser().getPurchasedCharacters());
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
+        manager.writeArray(UsersData.getInstance().getCurrentUser().getPurchasedCharacters());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.HomePage);
     }
 
     public void buySelectButton() {
         Character r = characterList.get(index);
         if (buySelectButton.getText().toLowerCase() == "select") {
             //select
-            UserData.getInstance().getCurrentUser().setSelectedCharacter(r);
+            UsersData.getInstance().getCurrentUser().setSelectedCharacter(r);
             buySelectButton.setText("Selected");
         } else {
             //Buy
             if (money >= r.getPrice()) {
                 money -= r.getPrice();
                 r.setCharacterType(characterNameText.getText());
-                UserData.getInstance().getCurrentUser().setCoin(money);
+                UsersData.getInstance().getCurrentUser().setCoin(money);
                 userCoinText.setText(String.valueOf(money));
-                UserData.getInstance().getCurrentUser().getPurchasedCharacters().add(r);
+                UsersData.getInstance().getCurrentUser().getPurchasedCharacters().add(r);
                 buySelectButton.setText("select");
             } else {
                 redText.setText("you Don't have enough money");

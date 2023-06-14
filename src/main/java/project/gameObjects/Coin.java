@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 import java.io.IOException;
 
@@ -30,8 +30,8 @@ public class Coin extends ImageView {
         this.setImage(img);
         this.setX(X);
         this.setY(Y);
-        this.setFitWidth(GameInfo.getInstance().getCoinWidth());
-        this.setFitHeight(GameInfo.getInstance().getCoinHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCoinWidth());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCoinHeight());
     }
 
     public Coin() {

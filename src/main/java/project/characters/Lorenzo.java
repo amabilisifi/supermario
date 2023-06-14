@@ -1,16 +1,16 @@
-package project.Characters;
+package project.characters;
 
 import javafx.scene.image.Image;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Lorenzo extends Character {
     public Lorenzo() {
         this.setCharacterType("Lorenzo");
-        setPrice((int) GameInfo.getInstance().getLorenzoPrice());
-        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
-        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
-        this.setSpeedo(GameInfo.getInstance().getLorenzoSpeedo());
-        this.setJumpVelocity(GameInfo.getInstance().getLorenzoJumpVelocity());
+        setPrice((int) GameObjectsInfo.getInstance().getLorenzoPrice());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameObjectsInfo.getInstance().getLorenzoSpeedo());
+        this.setJumpVelocity(GameObjectsInfo.getInstance().getLorenzoJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/orange/normal.PNG"))));

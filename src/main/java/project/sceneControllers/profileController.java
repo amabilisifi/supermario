@@ -9,7 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.UserData;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,19 +26,14 @@ public class profileController implements Initializable {
     Text coinText;
 
     public void goHome(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.HomePage);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        usernameText.setText(UserData.getInstance().getCurrentUser().getName());
-        highestScoreText.setText(String.valueOf(UserData.getInstance().getCurrentUser().getHighScore()));
-        coinText.setText(String.valueOf(UserData.getInstance().getCurrentUser().getCoin()));
+        usernameText.setText(UsersData.getInstance().getCurrentUser().getName());
+        highestScoreText.setText(String.valueOf(UsersData.getInstance().getCurrentUser().getHighScore()));
+        coinText.setText(String.valueOf(UsersData.getInstance().getCurrentUser().getCoin()));
     }
 }

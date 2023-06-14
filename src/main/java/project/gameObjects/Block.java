@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 import java.io.IOException;
 
@@ -69,8 +69,8 @@ public class Block extends ImageView {
         this.currentY = startY;
         this.setX(xStart);
         this.setY(yStart);
-        this.setFitWidth(GameInfo.getInstance().getBlockWidth());
-        this.setFitHeight(GameInfo.getInstance().getBlockHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getBlockWidth());
+        this.setFitHeight(GameObjectsInfo.getInstance().getBlockHeight());
     }
 
     public Block(BlockType blockType) {

@@ -14,9 +14,11 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.JsonManager;
-import project.UserData;
-import project.otherStuff.SoundPlayer;
+import project.managers.JsonManager;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
+import project.managers.SoundPlayer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,17 +32,12 @@ public class soundMenuController implements Initializable {
     CheckBox muteCheckBox;
     private Timeline timeline  ;
     public void home(ActionEvent event){
-        String path = "src/main/resources/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";
+        String path = "src/main/resources/GameData/" + UsersData.getInstance().getCurrentUser().getName() + "/Inventory/purchasedCharacters.json";
         JsonManager manager = new JsonManager(path);
         try {
-            manager.writeArray(UserData.getInstance().getCurrentUser().getPurchasedCharacters());
-            FXMLLoader homeLoader = new FXMLLoader(soundMenuController.class.getResource("/fxmls/homePage.fxml"));
-            Parent root = homeLoader.load();
-            Scene scene = new Scene(root, 800, 400);
+            manager.writeArray(UsersData.getInstance().getCurrentUser().getPurchasedCharacters());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-
-            stage.show();
+            SceneManager.getInstance().goToScene(stage,PageType.HomePage);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

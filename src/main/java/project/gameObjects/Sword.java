@@ -2,7 +2,7 @@ package project.gameObjects;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Sword extends ImageView {
     private double width;
@@ -12,13 +12,13 @@ public class Sword extends ImageView {
 
 
     public Sword(double characterX, double characterY,double characterHeight) {
-        this.width = 2* GameInfo.getInstance().getBlockWidth();
-        this.height = GameInfo.getInstance().getSwordHeight();
+        this.width = 2* GameObjectsInfo.getInstance().getBlockWidth();
+        this.height = GameObjectsInfo.getInstance().getSwordHeight();
         Image img = new Image(String.valueOf(getClass().getResource("/images/sword.PNG")));
         this.setFitHeight(height);
-        this.setX(characterX+GameInfo.getInstance().getCharacterWidth());
-        this.startX = characterX+GameInfo.getInstance().getCharacterWidth();
-        this.setY(characterY+characterHeight-GameInfo.getInstance().getBlockHeight());
+        this.setX(characterX+ GameObjectsInfo.getInstance().getCharacterWidth());
+        this.startX = characterX+ GameObjectsInfo.getInstance().getCharacterWidth();
+        this.setY(characterY+characterHeight- GameObjectsInfo.getInstance().getBlockHeight());
         this.setFitWidth(width);
         this.setImage(img);
     }

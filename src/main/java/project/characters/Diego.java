@@ -1,16 +1,16 @@
-package project.Characters;
+package project.characters;
 
 import javafx.scene.image.Image;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Diego extends Character {
     public Diego() {
         this.setCharacterType("Diego");
-        setPrice((int) GameInfo.getInstance().getDiegoPrice());
-        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
-        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
-        this.setSpeedo(GameInfo.getInstance().getDiegoSpeedo());
-        this.setJumpVelocity(GameInfo.getInstance().getDiegoJumpVelocity());
+        setPrice((int) GameObjectsInfo.getInstance().getDiegoPrice());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameObjectsInfo.getInstance().getDiegoSpeedo());
+        this.setJumpVelocity(GameObjectsInfo.getInstance().getDiegoJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/yellow/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/yellow/normal.PNG"))));

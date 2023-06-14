@@ -1,8 +1,9 @@
-package project;
+package project.managers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import project.Characters.Character;
+import project.characters.Character;
+import project.User;
 
 import java.io.File;
 import java.io.IOException;
@@ -45,6 +46,9 @@ public class JsonManager {
 
     public void writeEnum(Enum<?> value) throws IOException {
         objectMapper.writeValue(file, value);
+    }
+
+    public static class CollisionManager {
     }
 }
 

@@ -1,4 +1,4 @@
-package project.otherStuff;
+package project.managers;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

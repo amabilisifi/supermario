@@ -9,58 +9,35 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.GameController;
-import project.GameInfo;
 import project.User;
-import project.UserData;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 
 public class homeController {
-    User currentUser = UserData.getInstance().getCurrentUser();
+    User currentUser = UsersData.getInstance().getCurrentUser();
 
-    public void goToHardnessScene(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/chooseHardness.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
+    public void goToHardnessScene(ActionEvent event)  {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.HardnessPage);
     }
 
-    public void goToProfileScene(MouseEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/profile.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
+    public void goToProfileScene(MouseEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.ProfilePage);
     }
 
     public void goToStart(ActionEvent event) throws IOException {
-        UserData.getInstance().setCurrentUser(null);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/startPage.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 800, 400);
+        UsersData.getInstance().setCurrentUser(null);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.StartPage);
     }
 
-    public void goToShop(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/Shop.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
+    public void goToShop(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.ShopPage);
     }
 
     public void dingDong(MouseEvent event) throws IOException {
@@ -74,14 +51,8 @@ public class homeController {
         stage.show();
     }
 
-    public void goToHistoryScene(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("history.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
+    public void goToHistoryScene(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.setResizable(false);
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.HistoryPage);
     }
 }

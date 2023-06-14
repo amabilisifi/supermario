@@ -1,16 +1,16 @@
-package project.Characters;
+package project.characters;
 
 import javafx.scene.image.Image;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Pablo extends Character {
     public Pablo() {
         this.setCharacterType("Pablo");
-        setPrice((int) GameInfo.getInstance().getPabloPrice());
-        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
-        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
-        this.setSpeedo(GameInfo.getInstance().getPabloSpeedo());
-        this.setJumpVelocity(GameInfo.getInstance().getPabloJumpVelocity());
+        setPrice((int) GameObjectsInfo.getInstance().getPabloPrice());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameObjectsInfo.getInstance().getPabloSpeedo());
+        this.setJumpVelocity(GameObjectsInfo.getInstance().getPabloJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/purple/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/purple/normal.PNG"))));

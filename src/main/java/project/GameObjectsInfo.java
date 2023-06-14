@@ -1,6 +1,6 @@
 package project;
 
-import javafx.scene.Scene;
+import project.managers.ConfigManager;
 import project.gameObjects.Block;
 import project.gameObjects.Item;
 
@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameInfo {
-    private static GameInfo instance;
+public class GameObjectsInfo {
+    private static GameObjectsInfo instance;
     private double blockHeight;
     private double blockWidth;
     private double coinHeight;
@@ -58,7 +58,7 @@ public class GameInfo {
 
     private double swordHeight;
 
-    private GameInfo() {
+    private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
             setBlockHeight(manager.getInt("blockHeight"));
@@ -110,9 +110,9 @@ public class GameInfo {
         }
     }
 
-    public static GameInfo getInstance() {
+    public static GameObjectsInfo getInstance() {
         if (instance == null) {
-            instance = new GameInfo();
+            instance = new GameObjectsInfo();
         }
         return instance;
     }

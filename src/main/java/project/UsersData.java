@@ -3,23 +3,23 @@ package project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserData {
-    private static UserData instance;
+public class UsersData {
+    private static UsersData instance;
     private List<User> users = new ArrayList<>();
     private User currentUser;
     private int thisGameScore;
 
-    private UserData() {
+    private UsersData() {
     }
 
-    public static UserData getInstance() {
+    public static UsersData getInstance() {
         if (instance == null)
-            instance = new UserData();
+            instance = new UsersData();
         return instance;
     }
 
-    public static void setInstance(UserData instance) {
-        UserData.instance = instance;
+    public static void setInstance(UsersData instance) {
+        UsersData.instance = instance;
     }
 
     public List<User> getUsers() {

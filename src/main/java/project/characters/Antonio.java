@@ -1,7 +1,7 @@
-package project.Characters;
+package project.characters;
 
 import javafx.scene.image.Image;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Antonio extends Character {
     private static int price;
@@ -10,11 +10,11 @@ public class Antonio extends Character {
 
     public Antonio() {
         this.setCharacterType("Antonio");
-        setPrice((int) GameInfo.getInstance().getAntonioPrice());
-        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
-        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
-        this.setSpeedo(GameInfo.getInstance().getAntonioSpeedo());
-        this.setJumpVelocity(GameInfo.getInstance().getAntonioJumpVelocity());
+        setPrice((int) GameObjectsInfo.getInstance().getAntonioPrice());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameObjectsInfo.getInstance().getAntonioSpeedo());
+        this.setJumpVelocity(GameObjectsInfo.getInstance().getAntonioJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/darkGreen/normal.PNG"))));

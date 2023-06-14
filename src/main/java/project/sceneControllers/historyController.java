@@ -10,8 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.JsonManager;
-import project.UserData;
+import project.managers.JsonManager;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,20 +25,15 @@ public class historyController implements Initializable {
     JsonManager managerI;
     JsonManager managerII;
     JsonManager managerIII;
-    String filePath = "src/main/resources/com/example/fx_guii/GameData/" + UserData.getInstance().getCurrentUser().getName() + "/LoadData/load";
+    String filePath = "src/main/resources/com/example/fx_guii/GameData/" + UsersData.getInstance().getCurrentUser().getName() + "/LoadData/load";
     // +num.jason
-    int loadCount = UserData.getInstance().getCurrentUser().getSavedLoadCount() - 1;
+    int loadCount = UsersData.getInstance().getCurrentUser().getSavedLoadCount() - 1;
     @FXML
     Text text;
 
     public void goHome(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.HomePage);
     }
 
     @Override

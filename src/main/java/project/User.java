@@ -1,8 +1,8 @@
 package project;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import project.Characters.Alexandro;
-import project.Characters.Character;
+import project.characters.Alexandro;
+import project.characters.Character;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,12 +37,12 @@ public class User {
         folderInventory.mkdir();
         File inventory = new File(folderName + "/Inventory/purchasedCharacters.json");
         inventory.createNewFile();
-        UserData.getInstance().getUsers().add(this);
+        UsersData.getInstance().getUsers().add(this);
         this.purchasedCharacters.add(freeChar);
     }
 
     public static User userOf(String username) {
-        for (User u : UserData.getInstance().getUsers()) {
+        for (User u : UsersData.getInstance().getUsers()) {
             if (username.equals(u.getName())) {
                 return u;
             }
@@ -51,7 +51,7 @@ public class User {
     }
 
     public static boolean userExist(String username) {
-        for (User u : UserData.getInstance().getUsers()) {
+        for (User u : UsersData.getInstance().getUsers()) {
             if (u.getName().equals(username)) {
                 return true;
             }

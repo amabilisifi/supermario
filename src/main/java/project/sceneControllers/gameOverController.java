@@ -6,17 +6,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 
 public class gameOverController {
     public void goHome(ActionEvent event) throws IOException {
-        FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/startPage.fxml"));
-        Parent root = homeLoader.load();
-        Scene scene = new Scene(root, 800, 400);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-
-        stage.show();
+        SceneManager.getInstance().goToScene(stage, PageType.StartPage);
     }
 }

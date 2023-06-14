@@ -10,9 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import project.JsonManager;
+import project.managers.JsonManager;
 import project.User;
-import project.UserData;
+import project.UsersData;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 
@@ -43,19 +45,13 @@ public class signupController {
                 passwordField.clear();
             } else {
                 User u = new User(enteredUsername, enteredPassword);
-                UserData.getInstance().setCurrentUser(u);
-                FXMLLoader homeLoader = new FXMLLoader(getClass().getResource("/fxmls/homePage.fxml"));
-                Parent root = homeLoader.load();
-                Scene scene = new Scene(root, 800, 400);
+                UsersData.getInstance().setCurrentUser(u);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
+                SceneManager.getInstance().goToScene(stage,PageType.HomePage);
 
                 String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
                 JsonManager manager = new JsonManager(path);
                 u.getPurchasedCharacters().add(u.getFreeChar());
-
-                stage.setResizable(false);
-                stage.show();
             }
         }
     }

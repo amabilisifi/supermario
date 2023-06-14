@@ -1,21 +1,33 @@
 package project;
 
-import project.gameObjects.Block;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class GameData {
-    private List<Block> blockList = new ArrayList<>();
-
+    private static GameData instance;
+    private Level currentLevel;
+    private Section currentSection;
+    private int hearts;
+    private int score;
     public GameData() {
     }
-
-    public List<Block> getBlockList() {
-        return blockList;
+    public static GameData getInstance() {
+        if (instance == null) {
+            instance = new GameData();
+        }
+        return instance;
     }
 
-    public void setBlockList(List<Block> blockList) {
-        this.blockList = blockList;
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(Level currentLevel) {
+        this.currentLevel = currentLevel;
+    }
+
+    public Section getCurrentSection() {
+        return currentSection;
+    }
+
+    public void setCurrentSection(Section currentSection) {
+        this.currentSection = currentSection;
     }
 }

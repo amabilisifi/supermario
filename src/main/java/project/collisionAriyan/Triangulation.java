@@ -21,7 +21,7 @@ public class Triangulation {
             coordinates[2 * i + 1] = polygon.ypoints[i];
         }
         ArrayList<Integer> triangleIndices = (ArrayList<Integer>) Earcut.earcut(coordinates);
-        for (int i = 0; i < triangleIndices.size(); i++) {
+        for (int i = 0; i < triangleIndices.size()/3; i++) {
             BoundarySensitivePolygon triangle = new BoundarySensitivePolygon(polygon);
             triangle.addPoint(polygon.xpoints[triangleIndices.get(3 * i)], polygon.ypoints[triangleIndices.get(3 * i)]);
             triangle.addPoint(polygon.xpoints[triangleIndices.get(3 * i + 1)], polygon.ypoints[triangleIndices.get(3 * i + 1)]);

@@ -5,7 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import project.otherStuff.SoundPlayer;
+import project.managers.JsonManager;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 
@@ -14,25 +16,21 @@ public class StartPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        GraphicalSpace.getInstance().setStage(stage);
         stage.setOnCloseRequest(e -> {
             try {
-                manager.writeArray(UserData.getInstance().getUsers());
+                manager.writeArray(UsersData.getInstance().getUsers());
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/startPage.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root, 800, 400);
-        stage.setScene(scene);
+        SceneManager.getInstance().goToScene(stage, PageType.StartPage);
 
         try {
-            UserData.getInstance().setUsers(manager.readArray(JsonManager.userTypeReference));
+            UsersData.getInstance().setUsers(manager.readArray(JsonManager.userTypeReference));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-        stage.show();
     }
 }

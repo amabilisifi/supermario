@@ -23,4 +23,8 @@ public class GraphicalObjects {
         triangulation = new Triangulation(boundingPolygon);
         triangulation.triangulate();
     }
+
+    public Polygon getBoundingPolygon() {
+        return boundingPolygon;
+    }
 }

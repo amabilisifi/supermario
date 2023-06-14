@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.Characters.Character;
+import project.characters.Character;
 import project.gameObjects.*;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ import java.util.List;
 public class GameController {
     private Scene scene;
     private Group root;
-    private final User currentUser = UserData.getInstance().getCurrentUser();
+    private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
     private final double startX = 10;
     private final double startY = 100;
@@ -35,6 +35,8 @@ public class GameController {
     private List<Pipe> pipeList = new ArrayList<>();
     private boolean isSoundMenuClosed = true;
     private Sword sword = null;
+    private Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+
 
     public GameController(Scene scene, Group rt) {
         this.scene = scene;
@@ -52,7 +54,7 @@ public class GameController {
 
         addBlockTable(BlockType.Ground, 6, 3, 0);
         addBlockTable(BlockType.Ground, 10, 4, 216);
-        Block block = new Block(BlockType.Bonus, 100, 160);
+        Block block = new Block(BlockType.Slime, 100, 160);
         root.getChildren().add(block);
         blockList.add(block);
 
@@ -67,8 +69,8 @@ public class GameController {
         pipeList.add(pipe);
         root.getChildren().add(pipe);
 
-        GameInfo.getInstance().setBlockList(blockList);
-        GameInfo.getInstance().setItemList(itemList);
+        GameObjectsInfo.getInstance().setBlockList(blockList);
+        GameObjectsInfo.getInstance().setItemList(itemList);
         System.out.println(this.scene);
 
         this.scene.setOnKeyPressed(KeyEvent -> {
@@ -118,17 +120,12 @@ public class GameController {
                 case L ->{
                     if(character.isSwordCooledDown() && currentUser.getCoin()>3) {
                         currentUser.setCoin(currentUser.getCoin()-3);
-                        System.out.println(currentUser.getCoin());
                         Sword sword = new Sword(character.getCurrentX(), character.getCurrentY(), character.getFitHeight());
                         this.sword = sword;
                         root.getChildren().add(sword);
                         character.setSwordCooledDown(false);
-                        Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
                         timelineSwordMove.setCycleCount(Animation.INDEFINITE);
                         timelineSwordMove.playFromStart();
-                        Timeline timer  = new Timeline(new KeyFrame(Duration.seconds(1),e-> System.out.println("+")));
-                        timer.setCycleCount(4);
-                        timer.playFromStart();
                     }
                 }
             }
@@ -183,7 +180,7 @@ public class GameController {
     }
     public void swordMove() {
         // speed is 2 block per second so its 0.2 block per 100 millis
-        double blockWidth = GameInfo.getInstance().getBlockWidth();
+        double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
         // moving
         if(sword !=null) {
             if (sword.getX() >= sword.getStartX()) {
@@ -194,6 +191,7 @@ public class GameController {
                 if (sword.isTurnBack()) sword.setX(sword.getX() - 0.2 * blockWidth);
             } else {
                 root.getChildren().remove(sword);
+                timelineSwordMove.stop();
                 sword = null;
                 Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> character.setSwordCooledDown(true)));
                 chill.setCycleCount(1);
@@ -203,6 +201,80 @@ public class GameController {
         }
     }
 
+    public void collisionWithItems() {
+        Item collisionItem = null;
+        for (Item item : itemList) {
+            if (character.intersects(item.getBoundsInParent())) {
+                item.setObtained(true);
+                collisionItem = item;
+                item.getBlock().setAbleToGiveAnotherItem(true);
+                switch (item.getItemType()) {
+                    case Coin -> {
+                        currentUser.setCoin(currentUser.getCoin() + 1);
+                        System.out.println(currentUser.getCoin());
+                    }
+                }
+                if (item.getBlock().getBlockType() == BlockType.ContainCoin) {
+                    item.getBlock().setBlockType(BlockType.Simple);
+                }
+                if (item.getBlock().getBlockType() == BlockType.ContainManyCoins && item.getBlock().getItemLeft() <= 0) {
+                    item.getBlock().setBlockType(BlockType.Empty);
+                    item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
+                }
+                root.getChildren().remove(item);
+            }
+        }
+        itemList.remove(collisionItem);
+    }
+
+    public void collisionWithCoin() {
+        Coin collisionCoin = null;
+        for (Coin coin : coinList) {
+            if (character.intersects(coin.getBoundsInParent())) {
+                collisionCoin = coin;
+                currentUser.setCoin(currentUser.getCoin() + 1);
+                System.out.println(currentUser.getCoin());
+            }
+        }
+        coinList.remove(collisionCoin);
+        root.getChildren().remove(collisionCoin);
+    }
+
+    public void collisionWithPipe() {
+        Bounds marioBounds = character.getBoundsInParent();
+        for (Pipe pipe : pipeList) {
+            Bounds blockBounds = pipe.getBoundsInParent();
+            if (blockBounds.intersects(marioBounds)) {
+                double dy = character.getCurrentY() - pipe.getCurrentY();
+
+                if (dy < 0) {
+                    character.setOnBlock(true);
+                    if (!upPressed)
+                        character.setVy(0);
+                }
+                break;
+            } else {
+                character.setOnBlock(false);
+            }
+        }
+        double dt = 20.0 / 1000;
+        double deltaX = character.getSpeed() * dt;
+        double yRunner = character.getY();
+        for (Pipe pipe : pipeList) {
+            //right of mario
+            double rightRunner = character.getX() + character.getFitWidth() + deltaX;
+            if (rightRunner > pipe.getX() && rightRunner < pipe.getX() + pipe.getFitWidth() &&
+                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
+                character.setSpeed(0);
+            }
+            //left Of mario
+            double leftRunner = character.getX() + deltaX;
+            if (leftRunner > pipe.getX() && leftRunner < pipe.getX() + pipe.getFitWidth() &&
+                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
+                character.setSpeed(0);
+            }
+        }
+    }
     public void collisionWithBlocks() {
         Bounds marioBounds = character.getBoundsInParent();
         for (Block block : blockList) {
@@ -308,86 +380,12 @@ public class GameController {
         }
     }
 
-    public void collisionWithItems() {
-        Item collisionItem = null;
-        for (Item item : itemList) {
-            if (character.intersects(item.getBoundsInParent())) {
-                item.setObtained(true);
-                collisionItem = item;
-                item.getBlock().setAbleToGiveAnotherItem(true);
-                switch (item.getItemType()) {
-                    case Coin -> {
-                        currentUser.setCoin(currentUser.getCoin() + 1);
-                        System.out.println(currentUser.getCoin());
-                    }
-                }
-                if (item.getBlock().getBlockType() == BlockType.ContainCoin) {
-                    item.getBlock().setBlockType(BlockType.Simple);
-                }
-                if (item.getBlock().getBlockType() == BlockType.ContainManyCoins && item.getBlock().getItemLeft() <= 0) {
-                    item.getBlock().setBlockType(BlockType.Empty);
-                    item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
-                }
-                root.getChildren().remove(item);
-            }
-        }
-        itemList.remove(collisionItem);
-    }
-
-    public void collisionWithCoin() {
-        Coin collisionCoin = null;
-        for (Coin coin : coinList) {
-            if (character.intersects(coin.getBoundsInParent())) {
-                collisionCoin = coin;
-                currentUser.setCoin(currentUser.getCoin() + 1);
-                System.out.println(currentUser.getCoin());
-            }
-        }
-        coinList.remove(collisionCoin);
-        root.getChildren().remove(collisionCoin);
-    }
-
-    public void collisionWithPipe() {
-        Bounds marioBounds = character.getBoundsInParent();
-        for (Pipe pipe : pipeList) {
-            Bounds blockBounds = pipe.getBoundsInParent();
-            if (blockBounds.intersects(marioBounds)) {
-                double dy = character.getCurrentY() - pipe.getCurrentY();
-
-                if (dy < 0) {
-                    character.setOnBlock(true);
-                    if (!upPressed)
-                        character.setVy(0);
-                }
-                break;
-            } else {
-                character.setOnBlock(false);
-            }
-        }
-        double dt = 20.0 / 1000;
-        double deltaX = character.getSpeed() * dt;
-        double yRunner = character.getY();
-        for (Pipe pipe : pipeList) {
-            //right of mario
-            double rightRunner = character.getX() + character.getFitWidth() + deltaX;
-            if (rightRunner > pipe.getX() && rightRunner < pipe.getX() + pipe.getFitWidth() &&
-                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
-            }
-            //left Of mario
-            double leftRunner = character.getX() + deltaX;
-            if (leftRunner > pipe.getX() && leftRunner < pipe.getX() + pipe.getFitWidth() &&
-                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
-            }
-        }
-    }
 
     public void addBlockTable(BlockType type, int row, int column, double startX) {
         for (int i = 1; i <= column; i++) {
             for (int j = 0; j < row; j++) {
-                double x = startX + j * GameInfo.getInstance().getBlockWidth();
-                double y = 400 - i * GameInfo.getInstance().getBlockHeight();
+                double x = startX + j * GameObjectsInfo.getInstance().getBlockWidth();
+                double y = 400 - i * GameObjectsInfo.getInstance().getBlockHeight();
                 Block b = new Block(type, x, y);
                 blockList.add(b);
                 root.getChildren().add(b);

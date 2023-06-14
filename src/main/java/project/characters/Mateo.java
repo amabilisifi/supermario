@@ -1,16 +1,16 @@
-package project.Characters;
+package project.characters;
 
 import javafx.scene.image.Image;
-import project.GameInfo;
+import project.GameObjectsInfo;
 
 public class Mateo extends Character {
     public Mateo() {
         this.setCharacterType("Mateo");
-        setPrice((int) GameInfo.getInstance().getMateoPrice());
-        this.setFitHeight(GameInfo.getInstance().getCharacterHeight());
-        this.setFitWidth(GameInfo.getInstance().getCharacterWidth());
-        this.setSpeedo(GameInfo.getInstance().getMateoSpeedo());
-        this.setJumpVelocity(GameInfo.getInstance().getMateoJumpVelocity());
+        setPrice((int) GameObjectsInfo.getInstance().getMateoPrice());
+        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
+        this.setSpeedo(GameObjectsInfo.getInstance().getMateoSpeedo());
+        this.setJumpVelocity(GameObjectsInfo.getInstance().getMateoJumpVelocity());
 
         this.setProfilePhoto(new Image(String.valueOf(getClass().getResource("/images/characters/skyBlue/normal.PNG"))));
         this.setImg(new Image(String.valueOf(getClass().getResource("/images/characters/skyBlue/normal.PNG"))));
