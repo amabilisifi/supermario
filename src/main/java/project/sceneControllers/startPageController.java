@@ -61,8 +61,8 @@ public class startPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
         SoundPlayer.setMainSoundPlayer(soundPlayer);
-        soundPlayer.play();
-        soundPlayer.playOnRepeat();
+//        soundPlayer.play();
+//        soundPlayer.playOnRepeat();
     }
 
     public void goArta(ActionEvent event) throws IOException {

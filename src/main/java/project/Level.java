@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Level {
     private int levelNum;
-    private ArrayList<Section> sections;
+    private ArrayList<Section> sections = new ArrayList<>();
 
     public Level() {
         LevelManager.getInstance().addLevel(this);

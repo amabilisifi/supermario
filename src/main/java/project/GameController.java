@@ -19,20 +19,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
-    private Scene scene;
-    private Group root;
+    private final Scene scene;
+    private final Group root;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
     private final double startX = 10;
     private final double startY = 100;
-    private final double gravity = 1.5;
-    private List<Block> blockList = new ArrayList<>();
+    private final double gravity = GameData.getInstance().getCurrentSection().getGravity();
+    private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private boolean upPressed = false;
-    private List<Item> itemList = new ArrayList<>();
+    private final List<Item> itemList = new ArrayList<>();
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
-    private List<Coin> coinList = new ArrayList<>();
-    private List<Pipe> pipeList = new ArrayList<>();
+    private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
+    private final List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
     private boolean isSoundMenuClosed = true;
     private Sword sword = null;
     private Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
@@ -51,27 +51,6 @@ public class GameController {
 
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
-
-        addBlockTable(BlockType.Ground, 6, 3, 0);
-        addBlockTable(BlockType.Ground, 10, 4, 216);
-        Block block = new Block(BlockType.Slime, 100, 160);
-        root.getChildren().add(block);
-        blockList.add(block);
-
-        Coin coin = new Coin(95, 270);
-        Coin coin1 = new Coin(135, 270);
-        coinList.add(coin1);
-        coinList.add(coin);
-        root.getChildren().add(coin);
-        root.getChildren().add(coin1);
-
-        Pipe pipe = new Pipe(PipeType.Medium, 400, 178);
-        pipeList.add(pipe);
-        root.getChildren().add(pipe);
-
-        GameObjectsInfo.getInstance().setBlockList(blockList);
-        GameObjectsInfo.getInstance().setItemList(itemList);
-        System.out.println(this.scene);
 
         this.scene.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
@@ -142,9 +121,7 @@ public class GameController {
                     character.setScaleY(1);
                     character.setImage(character.getImg());
                 }
-                case W -> {
-                    upPressed = false;
-                }
+                case W -> upPressed = false;
             }
         });
         character.yProperty().addListener((observableValue, oldVal, newVal) -> {
@@ -208,11 +185,9 @@ public class GameController {
                 item.setObtained(true);
                 collisionItem = item;
                 item.getBlock().setAbleToGiveAnotherItem(true);
-                switch (item.getItemType()) {
-                    case Coin -> {
-                        currentUser.setCoin(currentUser.getCoin() + 1);
-                        System.out.println(currentUser.getCoin());
-                    }
+                if (item.getItemType() == ItemType.Coin) {
+                    currentUser.setCoin(currentUser.getCoin() + 1);
+                    System.out.println(currentUser.getCoin());
                 }
                 if (item.getBlock().getBlockType() == BlockType.ContainCoin) {
                     item.getBlock().setBlockType(BlockType.Simple);
@@ -329,8 +304,7 @@ public class GameController {
         double deltaX = character.getSpeed() * dt;
         double yRunner = character.getY();
         double deltaY = character.getVy() * dt;
-        for (int i = 0; i < blockList.size(); i++) {
-            Block block = blockList.get(i);
+        for (Block block : blockList) {
             //right of mario
             double rightRunner = character.getX() + character.getFitWidth() + deltaX;
             if (rightRunner > block.getX() && rightRunner < block.getX() + block.getFitWidth() &&
@@ -381,15 +355,8 @@ public class GameController {
     }
 
 
-    public void addBlockTable(BlockType type, int row, int column, double startX) {
-        for (int i = 1; i <= column; i++) {
-            for (int j = 0; j < row; j++) {
-                double x = startX + j * GameObjectsInfo.getInstance().getBlockWidth();
-                double y = 400 - i * GameObjectsInfo.getInstance().getBlockHeight();
-                Block b = new Block(type, x, y);
-                blockList.add(b);
-                root.getChildren().add(b);
-            }
-        }
+    public boolean isSoundMenuClosed() {
+        return isSoundMenuClosed;
     }
+
 }

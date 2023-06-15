@@ -8,9 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import project.GameController;
-import project.User;
-import project.UsersData;
+import project.*;
+import project.levels.temp;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
 
@@ -45,7 +44,17 @@ public class homeController {
         Scene scene = new Scene(root, 800, 400);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+
+        Level temp = new temp();
+        Section t =  temp.getSections().get(0);
+        SectionDesigner sectionDesigner = new SectionDesigner(root,t);
+        GameData.getInstance().setCurrentLevel(temp);
+        GameData.getInstance().setCurrentSection(t);
+
         GameController controller = new GameController(scene,root);
+
+
+        sectionDesigner.paint();
 
         stage.setResizable(false);
         stage.show();

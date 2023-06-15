@@ -16,7 +16,6 @@ public class StartPage extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        GraphicalSpace.getInstance().setStage(stage);
         stage.setOnCloseRequest(e -> {
             try {
                 manager.writeArray(UsersData.getInstance().getUsers());

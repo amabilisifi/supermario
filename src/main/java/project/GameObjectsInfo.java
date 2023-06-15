@@ -1,12 +1,8 @@
 package project;
 
 import project.managers.ConfigManager;
-import project.gameObjects.Block;
-import project.gameObjects.Item;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameObjectsInfo {
     private static GameObjectsInfo instance;
@@ -53,8 +49,6 @@ public class GameObjectsInfo {
     private double magicalStarWidth;
     private double magicalStarHeight;
 
-    private List<Block> blockList = new ArrayList<>();
-    private List<Item> itemList = new ArrayList<>();
 
     private double swordHeight;
 
@@ -413,21 +407,6 @@ public class GameObjectsInfo {
         this.magicalMushroomHeight = magicalMushroomHeight;
     }
 
-    public List<Block> getBlockList() {
-        return blockList;
-    }
-
-    public void setBlockList(List<Block> blockList) {
-        this.blockList = blockList;
-    }
-
-    public List<Item> getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(List<Item> itemList) {
-        this.itemList = itemList;
-    }
 
     public double getSwordHeight() {
         return swordHeight;

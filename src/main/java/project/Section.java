@@ -2,13 +2,14 @@ package project;
 
 import project.gameObjects.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Section {
-    private List<Block> blockList;
-    private List<Pipe> pipeList;
-    private List<Item> itemList;
-    private List<Coin> coinList;
+public class Section {
+    private List<Block> blockList = new ArrayList<>();
+    private List<Pipe> pipeList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
+    private List<Coin> coinList = new ArrayList<>();
     private double gravity;
 
     public Section() {
@@ -26,13 +27,9 @@ public abstract class Section {
         return blockList;
     }
 
-    public abstract void setBlockList();
-
     public List<Pipe> getPipeList() {
         return pipeList;
     }
-
-    public abstract void setPipeList();
 
     public List<Item> getItemList() {
         return itemList;
@@ -45,8 +42,6 @@ public abstract class Section {
     public List<Coin> getCoinList() {
         return coinList;
     }
-
-    public abstract void setCoinList();
 
     public double getGravity() {
         return gravity;
@@ -67,5 +62,12 @@ public abstract class Section {
     }
     public void addBlock(Block block){
         blockList.add(block);
+    }
+
+    public void addCoin(Coin coin){
+        coinList.add(coin);
+    }
+    public void addPip(Pipe pipe){
+        pipeList.add(pipe);
     }
 }
