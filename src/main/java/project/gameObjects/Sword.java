@@ -3,17 +3,16 @@ package project.gameObjects;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
+import project.managers.MovingEntity;
 
-public class Sword extends ImageView {
-    private double width;
-    private double height;
+public class Sword extends MovingEntity {
     private double startX;
     private boolean turnBack = false;
 
 
     public Sword(double characterX, double characterY,double characterHeight) {
-        this.width = 2* GameObjectsInfo.getInstance().getBlockWidth();
-        this.height = GameObjectsInfo.getInstance().getSwordHeight();
+        double width = 2* GameObjectsInfo.getInstance().getBlockWidth();
+        double height = GameObjectsInfo.getInstance().getSwordHeight();
         Image img = new Image(String.valueOf(getClass().getResource("/images/sword.PNG")));
         this.setFitHeight(height);
         this.setX(characterX+ GameObjectsInfo.getInstance().getCharacterWidth());
@@ -21,15 +20,6 @@ public class Sword extends ImageView {
         this.setY(characterY+characterHeight- GameObjectsInfo.getInstance().getBlockHeight());
         this.setFitWidth(width);
         this.setImage(img);
-    }
-
-
-    public double getHeight() {
-        return height;
-    }
-
-    public void setHeight(double height) {
-        this.height = height;
     }
 
     public double getStartX() {
@@ -42,5 +32,10 @@ public class Sword extends ImageView {
 
     public void setTurnBack(boolean turnBack) {
         this.turnBack = turnBack;
+    }
+
+    @Override
+    public void fall() {
+
     }
 }

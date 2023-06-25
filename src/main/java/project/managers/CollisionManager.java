@@ -210,6 +210,75 @@ public class CollisionManager {
         }
         itemList.remove(collisionItem);
     }
+    public void collisionItemWithObjects(){
+        for (Item i : itemList) {
+            collisionItemWithBlock(i);
+//            collisionItemWithPipe(i);
+        }
+    }
+    public void collisionItemWithBlock(Item i){
+        boolean flag = false;
+        for (Block b : blockList) {
+            if (i.intersects(b.getBoundsInParent())) {
+                double dy = i.getY() - b.getCurrentY();
+                if (dy < 0) {
+                    i.setOnBlock(true);
+                    flag = true;
+                }
+                double dt = 20.0 / 1000;
+                double deltaX = i.getSpeed() * dt;
+                double yRunner = i.getY();
+                double deltaY = i.getVy() * dt;
+                //right of item
+                double rightRunner = i.getX() + i.getFitWidth();
+                if (rightRunner >= b.getX() && rightRunner < b.getX() + b.getFitWidth() && yRunner >= b.getY() && yRunner + i.getFitHeight() <= b.getY() + b.getFitHeight()) {
+//                rightBlock = true;
+//                this.setSpeed(this.getSpeed() * -1);
+                }
+//            b.setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
+                //left Of item
+                double leftRunner = i.getX();
+                if (leftRunner > b.getX() && leftRunner < b.getX() + b.getFitWidth() &&
+                        yRunner <= b.getY() && yRunner + i.getFitHeight() >= b.getY() + b.getFitHeight()) {
+//                this.setSpeed(this.getSpeed() * -1);
+                }
+                break;
+            }
+        }
+        if(!flag)
+            i.setOnBlock(false);
+    }
+    public void collisionItemWithPipe(Item i){
+        for (Pipe p : pipeList) {
+            if (i.intersects(p.getBoundsInParent())) {
+//                if (this.intersects(this.sceneToLocal(p.localToScene(p.getBoundsInLocal())))) {
+                double dy = i.getY() - p.getCurrentY();
+                if (dy < 0) {
+                    i.setOnBlock(true);
+                }
+                double dt = 20.0 / 1000;
+                double deltaX = i.getSpeed() * dt;
+                double yRunner = i.getY();
+                double deltaY = i.getVy() * dt;
+                //right of item
+                double rightRunner = i.getX() + i.getFitWidth();
+                if (rightRunner >= p.getX() && rightRunner < p.getX() + p.getFitWidth() && yRunner >= p.getY() && yRunner + i.getFitHeight() <= p.getY() + p.getFitHeight()) {
+//                rightBlock = true;
+//                this.setSpeed(this.getSpeed() * -1);
+                    System.out.println("IIIIIIIIIIIIIIIIIIII");
+                }
+//            p.setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
+                //left Of item
+                double leftRunner = i.getX();
+                if (leftRunner > p.getX() && leftRunner < p.getX() + p.getFitWidth() &&
+                        yRunner <= p.getY() && yRunner + i.getFitHeight() >= p.getY() + p.getFitHeight()) {
+//                this.setSpeed(this.getSpeed() * -1);
+                    System.out.println("IIIIIIIIIIIIIIIIIIII");
+                }
+                break;
+            }
+        }
+    }
 
     public static CollisionManager getInstance() {
         if (instance == null)
