@@ -52,6 +52,8 @@ public class GameObjectsInfo {
 
     private double swordHeight;
 
+    private double mushroomWidth;
+
     private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -70,6 +72,7 @@ public class GameObjectsInfo {
             setMediumPipeHeight(manager.getInt("mediumPipeHeight"));
             setLongPipeHeight(manager.getInt("longPipeHeight"));
             setSwordHeight(manager.getInt("swordHeight"));
+            setMushroomWidth(manager.getInt("mushroomWidth"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -414,5 +417,13 @@ public class GameObjectsInfo {
 
     public void setSwordHeight(double swordHeight) {
         this.swordHeight = swordHeight;
+    }
+
+    public double getMushroomWidth() {
+        return mushroomWidth;
+    }
+
+    public void setMushroomWidth(double mushroomWidth) {
+        this.mushroomWidth = mushroomWidth;
     }
 }

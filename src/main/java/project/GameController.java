@@ -54,7 +54,7 @@ public class GameController implements Runnable {
 
     @Override
     public void run() {
-        // it used to be in constructor before implementing runnable
+        // it used to be in constructor before implementing runnable in last project
         double startX = 10;
         double startY = 100;
         character.setX(startX);

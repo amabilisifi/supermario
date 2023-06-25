@@ -2,6 +2,7 @@ package project.gameStuff;
 
 import project.GameObjectsInfo;
 import project.gameObjects.*;
+import project.gameObjects.enemies.Enemy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,18 @@ public class Section {
     private List<Item> itemList = new ArrayList<>();
     private List<Coin> coinList = new ArrayList<>();
     private double gravity;
+    private List<Enemy> enemyList = new ArrayList<>();
 
     public Section() {
     }
 
-    public Section(List<Block> blockList, List<Pipe> pipeList, List<Item> itemList, List<Coin> coinList, double gravity) {
+    public Section(List<Block> blockList, List<Pipe> pipeList, List<Item> itemList, List<Coin> coinList,List<Enemy> enemyList, double gravity) {
         this.blockList = blockList;
         this.pipeList = pipeList;
         this.itemList = itemList;
         this.coinList = coinList;
         this.gravity = gravity;
+        this.enemyList = enemyList;
     }
 
     public List<Block> getBlockList() {
@@ -51,6 +54,11 @@ public class Section {
     public void setGravity(double gravity){
         this.gravity = gravity;
     }
+
+    public List<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
     public void addBlockTable(BlockType type, int row, int column, double startX) {
         for (int i = 1; i <= column; i++) {
             for (int j = 0; j < row; j++) {
@@ -73,5 +81,8 @@ public class Section {
     }
     public void addItem(Item item){
         itemList.add(item);
+    }
+    public void addEnemy(Enemy enemy){
+        enemyList.add(enemy);
     }
 }

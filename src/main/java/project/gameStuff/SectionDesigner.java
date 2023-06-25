@@ -4,6 +4,10 @@ import javafx.scene.Group;
 import project.gameObjects.Block;
 import project.gameObjects.Coin;
 import project.gameObjects.Pipe;
+import project.gameObjects.enemies.Enemy;
+import project.gameObjects.enemies.Mushroom;
+
+import java.awt.*;
 
 
 public class SectionDesigner {
@@ -15,6 +19,7 @@ public class SectionDesigner {
         this.section = section;
     }
     public void paint(){
+        Mushroom mushroom = new Mushroom(250,220);
         for(Block block:section.getBlockList()){
             root.getChildren().add(block);
         }
@@ -23,6 +28,9 @@ public class SectionDesigner {
         }
         for(Coin coin:section.getCoinList()){
             root.getChildren().add(coin);
+        }
+        for (Enemy enemy:section.getEnemyList()){
+            root.getChildren().add(enemy);
         }
     }
 }
