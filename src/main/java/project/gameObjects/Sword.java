@@ -1,7 +1,6 @@
 package project.gameObjects;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
 import project.managers.MovingEntity;
 
@@ -20,6 +19,7 @@ public class Sword extends MovingEntity {
         this.setY(characterY+characterHeight- GameObjectsInfo.getInstance().getBlockHeight());
         this.setFitWidth(width);
         this.setImage(img);
+        this.move();
     }
 
     public double getStartX() {

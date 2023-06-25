@@ -36,7 +36,7 @@ public class GameController implements Runnable {
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
-    private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+    private final  Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
 
     private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
@@ -122,8 +122,6 @@ public class GameController implements Runnable {
                         this.sword = sword;
                         root.getChildren().add(sword);
                         character.setSwordCooledDown(false);
-                        timelineSwordMove.setCycleCount(Animation.INDEFINITE);
-                        timelineSwordMove.playFromStart();
                     }
                 }
             }
@@ -178,7 +176,6 @@ public class GameController implements Runnable {
             }
         });
     }
-
     public void swordMove() {
         // speed is 2 block per second so its 0.2 block per 100 millis
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
