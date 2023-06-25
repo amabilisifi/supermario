@@ -1,5 +1,6 @@
-package project;
+package project.gameStuff;
 
+import project.GameObjectsInfo;
 import project.gameObjects.*;
 
 import java.util.ArrayList;
@@ -67,7 +68,10 @@ public class Section {
     public void addCoin(Coin coin){
         coinList.add(coin);
     }
-    public void addPip(Pipe pipe){
+    public void addPipe(Pipe pipe){
         pipeList.add(pipe);
+    }
+    public void addItem(Item item){
+        itemList.add(item);
     }
 }

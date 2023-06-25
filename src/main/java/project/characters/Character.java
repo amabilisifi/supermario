@@ -1,6 +1,5 @@
 package project.characters;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -11,14 +10,16 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import project.gameStuff.GameData;
+import project.managers.CollisionManager;
+import project.managers.MovingEntity;
 
 import java.io.IOException;
 
 @JsonSerialize(using = CharacterSerializer.class)
 @JsonDeserialize(using = CharacterDeserializer.class)
 
-public abstract class Character extends ImageView {
+public abstract class Character extends MovingEntity {
     private static double width;
     private static double height;
     private Image profilePhoto;
@@ -36,17 +37,38 @@ public abstract class Character extends ImageView {
     private int indexOfWalkingFrames = 0;
 
 
-    private double currentX, currentY;
     private double startX, startY;
     private double speed = speedo;
     private double jumpVelocity;
     private double Vy = jumpVelocity;
     private boolean ableToJumpAgain = true;
-    private boolean isOnBlock;
+    private boolean onBlock;
+    private boolean ableToMove = true;
+    private boolean jumping = false;
+    private boolean moving = false;
 
     private boolean isSwordCooledDown = true;
 
     public Character() {
+    }
+    @Override
+    public void move() {
+        double dt = 20 / 1000.0;
+        // moving
+        if (this.isAbleToMove())
+            this.setX(this.getX() + this.getSpeed() * dt);
+        // collision blocks
+        CollisionManager.getInstance().collisionCharacter();
+        fall();
+    }
+
+    @Override
+    public void fall() {
+        //fall
+        double dt = 20 / 1000.0;
+        if (!this.isOnBlock())
+            Vy += GameData.getInstance().getCurrentSection().getGravity() * dt;
+        this.setY(this.getY() + this.getVy() * dt);
     }
 
     public static double getWidth() {
@@ -71,26 +93,27 @@ public abstract class Character extends ImageView {
     public void setFrame() {
         if (speed != 0) {
             switch (indexOfWalkingFrames) {
-                case 1:
+                case 1 -> {
                     setImage(image1);
                     indexOfWalkingFrames++;
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     setImage(image2);
                     indexOfWalkingFrames++;
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     setImage(image3);
                     indexOfWalkingFrames++;
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     setImage(image4);
                     indexOfWalkingFrames++;
-                    break;
-                default:
+                }
+                default -> {
                     indexOfWalkingFrames = 1;
                     setImage(image1);
                     indexOfWalkingFrames++;
+                }
             }
         }
     }
@@ -99,6 +122,14 @@ public abstract class Character extends ImageView {
      * getter setter
      **/
 
+
+    public boolean isAbleToMove() {
+        return ableToMove;
+    }
+
+    public void setAbleToMove(boolean ableToMove) {
+        this.ableToMove = ableToMove;
+    }
     public Image getProfilePhoto() {
         return profilePhoto;
     }
@@ -115,53 +146,22 @@ public abstract class Character extends ImageView {
         this.characterType = characterType;
     }
 
-    public Image getImage1() {
-        return image1;
-    }
-
     public void setImage1(Image image1) {
         this.image1 = image1;
-    }
-
-    public Image getImage2() {
-        return image2;
     }
 
     public void setImage2(Image image2) {
         this.image2 = image2;
     }
 
-    public Image getImage3() {
-        return image3;
-    }
 
     public void setImage3(Image image3) {
         this.image3 = image3;
     }
 
-    public Image getImage4() {
-        return image4;
-    }
 
     public void setImage4(Image image4) {
         this.image4 = image4;
-    }
-
-    public int getIndexOfWalkingFrames() {
-        return indexOfWalkingFrames;
-    }
-
-    public void setIndexOfWalkingFrames(int indexOfWalkingFrames) {
-        this.indexOfWalkingFrames = indexOfWalkingFrames;
-    }
-
-    public double getCurrentX() {
-        return currentX;
-    }
-
-    public void setCurrentX(double currentX) {
-        this.currentX = currentX;
-        this.setX(currentX);
     }
 
     public double getStartX() {
@@ -188,15 +188,6 @@ public abstract class Character extends ImageView {
         this.imageSit = imageSit;
     }
 
-    public double getCurrentY() {
-        return currentY;
-    }
-
-    public void setCurrentY(double currentY) {
-        this.currentY = currentY;
-        this.setY(currentY);
-    }
-
     public double getStartY() {
         return startY;
     }
@@ -211,6 +202,14 @@ public abstract class Character extends ImageView {
 
     public void setVy(double vy) {
         Vy = vy;
+    }
+
+    public boolean isMoving() {
+        return moving;
+    }
+
+    public void setMoving(boolean moving) {
+        this.moving = moving;
     }
 
     public double getJumpVelocity() {
@@ -238,11 +237,11 @@ public abstract class Character extends ImageView {
     }
 
     public boolean isOnBlock() {
-        return isOnBlock;
+        return onBlock;
     }
 
     public void setOnBlock(boolean onBlock) {
-        isOnBlock = onBlock;
+        this.onBlock = onBlock;
     }
 
     public int getPrice() {
@@ -267,6 +266,14 @@ public abstract class Character extends ImageView {
 
     public void setSwordCooledDown(boolean swordCooledDown) {
         isSwordCooledDown = swordCooledDown;
+    }
+
+    public boolean isJumping() {
+        return jumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        this.jumping = jumping;
     }
 }
 
@@ -299,7 +306,7 @@ class CharacterDeserializer extends StdDeserializer<Character> {
     }
 
     @Override
-    public Character deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public Character deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         JsonNode character = node.get("character");
         Character r = null;
@@ -345,4 +352,5 @@ class CharacterDeserializer extends StdDeserializer<Character> {
 
         return r;
     }
+
 }

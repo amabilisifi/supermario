@@ -1,13 +1,11 @@
 package project.levels;
 
 import javafx.fxml.Initializable;
-import project.Level;
-import project.Section;
+import project.gameStuff.Level;
+import project.gameStuff.Section;
 import project.gameObjects.*;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class temp extends Level implements Initializable {
@@ -17,8 +15,9 @@ public class temp extends Level implements Initializable {
         {
             section1.addBlockTable(BlockType.Ground, 6, 3, 0);
             section1.addBlockTable(BlockType.Ground, 10, 4, 216);
-            Block block = new Block(BlockType.Slime, 100, 160);
+            Block block = new Block(BlockType.Bonus, 100, 160);
             section1.addBlock(block);
+            section1.addBlockTable(BlockType.Ground,20,5,576);
 
             Coin coin = new Coin(95, 270);
             Coin coin1 = new Coin(135, 270);
@@ -26,7 +25,7 @@ public class temp extends Level implements Initializable {
             section1.addCoin(coin);
 
             Pipe pipe = new Pipe(PipeType.Medium, 400, 178);
-            section1.addPip(pipe);
+            section1.addPipe(pipe);
 
             section1.setGravity(1.3);
         }

@@ -1,48 +1,64 @@
 package project;
 
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.*;
+import project.gameStuff.GameData;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameController {
-    private final Scene scene;
+public class GameController implements Runnable {
+    private static GameController instance;
     private final Group root;
+    private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-    private final double startX = 10;
-    private final double startY = 100;
     private final double gravity = GameData.getInstance().getCurrentSection().getGravity();
-    private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private boolean upPressed = false;
-    private final List<Item> itemList = new ArrayList<>();
-    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
+    private boolean startScrolling = false;
+    private boolean onBlock = true;
+
+    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+        character.move();
+        if (startScrolling && character.isMoving()) {
+            moveMap(character.getSpeed() * 20 / 1000.0);
+        }
+    }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
+    private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+
+    private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
     private final List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
-    private boolean isSoundMenuClosed = true;
-    private Sword sword = null;
-    private Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+    private final List<Item> itemList = new ArrayList<>();
 
+    private Sword sword = null;
+    private boolean isSoundMenuClosed = true;
 
     public GameController(Scene scene, Group rt) {
-        this.scene = scene;
         this.root = rt;
-        character.setCurrentX(startX);
-        character.setCurrentY(startY);
+        this.scene = scene;
+        run();
+    }
+
+    @Override
+    public void run() {
+        // it used to be in constructor before implementing runnable
+        double startX = 10;
+        double startY = 100;
+        character.setX(startX);
+        character.setY(startY);
         root.getChildren().add(character);
 
 
@@ -52,17 +68,19 @@ public class GameController {
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
-        this.scene.setOnKeyPressed(KeyEvent -> {
+        scene.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
                 case D -> {
                     character.setScaleX(1);
                     character.setSpeed(Math.abs(character.getSpeedo()));
                     character.setScaleY(1);
+                    character.setMoving(true);
                 }
                 case A -> {
                     character.setScaleX(-1);
                     character.setSpeed(Math.abs(character.getSpeedo()) * -1);
                     character.setScaleY(1);
+                    character.setAbleToMove(true);
                 }
                 case S -> {
                     character.setImage(character.getImageSit());
@@ -71,6 +89,7 @@ public class GameController {
                 case W -> {
                     if (character.isAbleToJumpAgain()) {
                         upPressed = true;
+                        character.setJumping(true);
                         character.setVy(character.getJumpVelocity());
                         character.setAbleToJumpAgain(false);
                     }
@@ -96,10 +115,10 @@ public class GameController {
                         throw new RuntimeException(e);
                     }
                 }
-                case L ->{
-                    if(character.isSwordCooledDown() && currentUser.getCoin()>3) {
-                        currentUser.setCoin(currentUser.getCoin()-3);
-                        Sword sword = new Sword(character.getCurrentX(), character.getCurrentY(), character.getFitHeight());
+                case L -> {
+                    if (character.isSwordCooledDown() && currentUser.getCoin() > 3) {
+                        currentUser.setCoin(currentUser.getCoin() - 3);
+                        Sword sword = new Sword(character.getX(), character.getY(), character.getFitHeight());
                         this.sword = sword;
                         root.getChildren().add(sword);
                         character.setSwordCooledDown(false);
@@ -109,9 +128,10 @@ public class GameController {
                 }
             }
         });
-        this.scene.setOnKeyReleased(KeyEvent -> {
+        scene.setOnKeyReleased(KeyEvent -> {
             switch (KeyEvent.getCode()) {
                 case D, A -> {
+                    character.setMoving(false);
                     character.setSpeed(0);
                     character.setImage(character.getImg());
                 }
@@ -121,45 +141,49 @@ public class GameController {
                     character.setScaleY(1);
                     character.setImage(character.getImg());
                 }
-                case W -> upPressed = false;
+                case W -> {
+                    upPressed = false;
+                    character.setJumping(false);
+                }
             }
         });
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                if (startScrolling && character.isMoving()) {
+                    moveMap(character.getSpeed() * 20 / 1000.0);
+                }
+            }
+        };
+        animationTimer.start();
         character.yProperty().addListener((observableValue, oldVal, newVal) -> {
             // check jump limit
-            if (character.getVy() >= 0) {
+            if (character.getVy() <= 0) {
                 character.setAbleToJumpAgain(true);
             }
-            // height limit
+            /* height limit
             if (newVal.doubleValue() < 0) {
                 character.setVy(2);
-            }
+            }*/
         });
         character.xProperty().addListener((observableValue, oldVal, newVal) -> {
             // width limit
             if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > scene.getWidth()) {
                 character.setSpeed(0);
             }
+            //scrolling
+            if (newVal.doubleValue() >= 450) {
+                startScrolling = true;
+                character.setAbleToMove(false);
+            }
         });
     }
 
-    public void move() {
-        //fall
-        double dt = 20 / 1000.0;
-        character.setVy(character.getVy() + (gravity * dt));
-        // moving
-        character.setCurrentX(character.getCurrentX() + character.getSpeed() * dt);
-        character.setCurrentY(character.getCurrentY() + character.getVy() * dt);
-        // collision blocks
-        collisionWithBlocks();
-        collisionWithItems();
-        collisionWithCoin();
-        collisionWithPipe();
-    }
     public void swordMove() {
         // speed is 2 block per second so its 0.2 block per 100 millis
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
         // moving
-        if(sword !=null) {
+        if (sword != null) {
             if (sword.getX() >= sword.getStartX()) {
                 if (sword.getX() - sword.getStartX() >= blockWidth * 4) {
                     sword.setTurnBack(true);
@@ -178,185 +202,39 @@ public class GameController {
         }
     }
 
-    public void collisionWithItems() {
-        Item collisionItem = null;
-        for (Item item : itemList) {
-            if (character.intersects(item.getBoundsInParent())) {
-                item.setObtained(true);
-                collisionItem = item;
-                item.getBlock().setAbleToGiveAnotherItem(true);
-                if (item.getItemType() == ItemType.Coin) {
-                    currentUser.setCoin(currentUser.getCoin() + 1);
-                    System.out.println(currentUser.getCoin());
-                }
-                if (item.getBlock().getBlockType() == BlockType.ContainCoin) {
-                    item.getBlock().setBlockType(BlockType.Simple);
-                }
-                if (item.getBlock().getBlockType() == BlockType.ContainManyCoins && item.getBlock().getItemLeft() <= 0) {
-                    item.getBlock().setBlockType(BlockType.Empty);
-                    item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
-                }
-                root.getChildren().remove(item);
-            }
-        }
-        itemList.remove(collisionItem);
-    }
 
-    public void collisionWithCoin() {
-        Coin collisionCoin = null;
+    public void moveMap(Double dx) {
+        for (Pipe pipe : pipeList) {
+            double x = pipe.getX();
+            x -= dx;
+            pipe.setX(x);
+        }
+        for (Block block : blockList) {
+            double x = block.getX();
+            x -= dx;
+            block.setX(x);
+        }
+
         for (Coin coin : coinList) {
-            if (character.intersects(coin.getBoundsInParent())) {
-                collisionCoin = coin;
-                currentUser.setCoin(currentUser.getCoin() + 1);
-                System.out.println(currentUser.getCoin());
-            }
-        }
-        coinList.remove(collisionCoin);
-        root.getChildren().remove(collisionCoin);
-    }
-
-    public void collisionWithPipe() {
-        Bounds marioBounds = character.getBoundsInParent();
-        for (Pipe pipe : pipeList) {
-            Bounds blockBounds = pipe.getBoundsInParent();
-            if (blockBounds.intersects(marioBounds)) {
-                double dy = character.getCurrentY() - pipe.getCurrentY();
-
-                if (dy < 0) {
-                    character.setOnBlock(true);
-                    if (!upPressed)
-                        character.setVy(0);
-                }
-                break;
-            } else {
-                character.setOnBlock(false);
-            }
-        }
-        double dt = 20.0 / 1000;
-        double deltaX = character.getSpeed() * dt;
-        double yRunner = character.getY();
-        for (Pipe pipe : pipeList) {
-            //right of mario
-            double rightRunner = character.getX() + character.getFitWidth() + deltaX;
-            if (rightRunner > pipe.getX() && rightRunner < pipe.getX() + pipe.getFitWidth() &&
-                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
-            }
-            //left Of mario
-            double leftRunner = character.getX() + deltaX;
-            if (leftRunner > pipe.getX() && leftRunner < pipe.getX() + pipe.getFitWidth() &&
-                    yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
-            }
-        }
-    }
-    public void collisionWithBlocks() {
-        Bounds marioBounds = character.getBoundsInParent();
-        for (Block block : blockList) {
-            Bounds blockBounds = block.getBoundsInParent();
-            if (blockBounds.intersects(marioBounds)) {
-                double dy = character.getCurrentY() - block.getCurrentY();
-//                double dx = character.getCurrentX() - block.getCurrentX();
-
-                if (dy < 0) {
-//                    character.setCurrentY(block.getCurrentY() - character.getFitHeight());
-                    character.setOnBlock(true);
-                    if (!upPressed)
-                        character.setVy(0);
-                    if (block.getBlockType() == BlockType.Slime) {
-                        character.setVy(character.getJumpVelocity() * 1.5);
-                    }
-                } else if (dy >= 0) {
-                    character.setVy(0);
-                    if (block.getBlockType() == BlockType.Simple) {
-                        root.getChildren().remove(block);
-                        blockList.remove(block);
-                    }
-                    if (block.getBlockType() == BlockType.Bonus && block.getItemLeft() >= 0 && block.isAbleToGiveAnotherItem()) {
-                        block.setAbleToGiveAnotherItem(false);
-                        Item item = new Item(block);
-                        itemList.add(item);
-                        root.getChildren().add(item);
-                        //block.setItemLeft(block.getItemLeft()-1);
-                    }
-                    if ((block.getBlockType() == BlockType.ContainCoin || block.getBlockType() == BlockType.ContainManyCoins) && block.getItemLeft() > 0 && block.isAbleToGiveAnotherItem()) {
-                        block.setAbleToGiveAnotherItem(false);
-                        Item item = new Item(ItemType.Coin, block);
-                        itemList.add(item);
-                        block.setItemLeft(block.getItemLeft() - 1);
-                        root.getChildren().add(item);
-                    }
-                }
-
-//                 else if (dx < 0) {
-////                    character.setCurrentX(block.getCurrentX() - character.getFitWidth() - 1.2);
-//                    character.setSpeed(0);
-//                } else if (dx >= 0) {
-////                    character.setCurrentX(block.getCurrentX() + block.getFitWidth() + 1);
-//                    character.setSpeed(0);
-//                }
-                break;
-            } else {
-                character.setOnBlock(false);
-            }
-        }
-        double dt = 20.0 / 1000;
-        double deltaX = character.getSpeed() * dt;
-        double yRunner = character.getY();
-        double deltaY = character.getVy() * dt;
-        for (Block block : blockList) {
-            //right of mario
-            double rightRunner = character.getX() + character.getFitWidth() + deltaX;
-            if (rightRunner > block.getX() && rightRunner < block.getX() + block.getFitWidth() &&
-                    yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
-                character.setSpeed(0);
-            }
-            //left Of mario
-            double leftRunner = character.getX() + deltaX;
-            if (leftRunner > block.getX() && leftRunner < block.getX() + block.getFitWidth() &&
-                    yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
-                character.setSpeed(0);
-            }
-//            //down Of mario
-//            double downRunner = character.getY() + character.getFitHeight();
-//            if (character.getX() + character.getFitWidth() >= block.getX() && character.getX() < block.getX() + block.getFitWidth() && downRunner >= block.getY() && downRunner <= block.getY() + block.getFitHeight()) {
-//                character.setOnBlock(true);
-//                if(!upPressed)
-//                    character.setVy(0);
-//                if(block.getBlockType()==BlockType.Slime){
-//                    character.setVy(character.getJumpVelocity()*1.5);
-//                }
-//            }else {
-//                character.setOnBlock(false);
-//            }
-//            //top of mario
-//            double topRunner = character.getY() + deltaY;
-//            if (character.getX() + character.getFitWidth() > block.getX() && character.getX() + character.getFitWidth() < block.getX() + block.getFitWidth() && topRunner > block.getY() && topRunner < block.getY() + block.getFitHeight()) {
-//                character.setVy(0);
-//                    if(block.getBlockType()==BlockType.Simple){
-//                        pane.getChildren().remove(block);
-//                        blockList.remove(block);
-//                    }if(block.getBlockType()==BlockType.Bonus && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
-//                        block.setAbleToGiveAnotherItem(false);
-//                        Item item = new Item(block);
-//                        itemList.add(item);
-//                        pane.getChildren().add(item);
-//                        //block.setItemLeft(block.getItemLeft()-1);
-//                    }
-//                    if((block.getBlockType()== BlockType.ContainCoin || block.getBlockType()==BlockType.ContainManyCoins) && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
-//                        block.setAbleToGiveAnotherItem(false);
-//                        Item item = new Item(ItemType.Coin,block);
-//                        itemList.add(item);
-//                        block.setItemLeft(block.getItemLeft()-1);
-//                        pane.getChildren().add(item);
-//                    }
-//            }
+            double x = coin.getX();
+            x -= dx;
+            coin.setX(x);
         }
     }
 
-
-    public boolean isSoundMenuClosed() {
-        return isSoundMenuClosed;
+    public boolean isUpPressed() {
+        return upPressed;
     }
 
+    public void setUpPressed(boolean upPressed) {
+        this.upPressed = upPressed;
+    }
+
+    public boolean isOnBlock() {
+        return onBlock;
+    }
+
+    public void setOnBlock(boolean onBlock) {
+        this.onBlock = onBlock;
+    }
 }

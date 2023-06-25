@@ -1,9 +1,8 @@
-package project;
+package project.gameStuff;
 
 import project.managers.LevelManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Level {
     private int levelNum;

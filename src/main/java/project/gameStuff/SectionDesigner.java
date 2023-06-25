@@ -1,4 +1,4 @@
-package project;
+package project.gameStuff;
 
 import javafx.scene.Group;
 import project.gameObjects.Block;

@@ -1,9 +1,15 @@
-package project;
+package project.gameStuff;
+
+import javafx.scene.Group;
+import project.GameController;
 
 public class GameData {
     private static GameData instance;
+    private Group root;
     private Level currentLevel;
     private Section currentSection;
+    private GameController gameController;
+
     private int hearts;
     private int score;
     public GameData() {
@@ -29,5 +35,21 @@ public class GameData {
 
     public void setCurrentSection(Section currentSection) {
         this.currentSection = currentSection;
+    }
+
+    public Group getRoot() {
+        return root;
+    }
+
+    public void setRoot(Group root) {
+        this.root = root;
+    }
+
+    public GameController getGameController() {
+        return gameController;
+    }
+
+    public void setGameController(GameController gameController) {
+        this.gameController = gameController;
     }
 }

@@ -8,6 +8,7 @@ import static project.collisionAriyan.GeometricToolbox.isInBound;
 
 public class ReyDetection {
     public static ArrayList<Point> getVertexModel(BufferedImage image, int n, Point pivot) {
+        System.out.println("1");
         Polygon bound = new Polygon();
         bound.addPoint(1, 1);
         bound.addPoint(image.getWidth() - 1, 1);
@@ -17,6 +18,7 @@ public class ReyDetection {
     }
 
     public static ArrayList<Point> getVertexModel(BufferedImage image, int n, Point pivot, Polygon bound) {
+        System.out.println(2);
         ArrayList<Double> angles = new ArrayList<>();
         double dTheta = 180.0 / n;
         double currentAngle = 0;
@@ -65,11 +67,9 @@ public class ReyDetection {
 
         if (angle != 90) {
             double m = Math.tan(Math.toRadians(angle));
-            //kjsgddh
-            for (int x = (int) bound.getBounds().getMinX(); x < bound.getBounds().getMaxX(); x++) {
+            for (int x = (int) bound.getBounds().getMinX(); x < bound.getBounds().getMaxX()-200; x++) {
                 int deltaX = x - pivot.x;
                 int deltaY = (int) Math.floor(m * deltaX);
-
                 Point target = new Point(x, pivot.y - deltaY);
                 if (isInBound(target, bound) && !isTransparent(image, target) && !isSurrounded(image, target, bound)) {
                     maxPoint = target;
@@ -77,6 +77,7 @@ public class ReyDetection {
                         minPoint = target;
                     }
                 }
+                System.out.println(x);
             }
         } else {
             for (int y = (int) bound.getBounds().getMinY(); y < bound.getBounds().getMaxY(); y++) {

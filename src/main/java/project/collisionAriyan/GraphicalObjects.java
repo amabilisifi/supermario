@@ -18,10 +18,17 @@ public class GraphicalObjects {
     public GraphicalObjects(BufferedImage image) {
         this.image = image;
         center = new Point(image.getWidth() / 2, image.getHeight() / 2);
+        System.out.println("maybe here");
+        getVertexModel(image, PRECISION, center);
+        System.out.println("ooo lala");
         ArrayList<Point> points = sortClockwise(getVertexModel(image, PRECISION, center), center);
+        System.out.println("here");
         boundingPolygon = pointsToPolygon(points);
+        System.out.println("there");
         triangulation = new Triangulation(boundingPolygon);
+        System.out.println("and there");
         triangulation.triangulate();
+        System.out.println("and at last here");
     }
 
     public Polygon getBoundingPolygon() {

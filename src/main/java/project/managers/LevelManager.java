@@ -1,9 +1,9 @@
 package project.managers;
 
 import javafx.fxml.Initializable;
-import project.GameData;
-import project.Level;
-import project.Section;
+import project.gameStuff.GameData;
+import project.gameStuff.Level;
+import project.gameStuff.Section;
 
 import java.net.URL;
 import java.util.ArrayList;

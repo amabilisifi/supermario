@@ -1,14 +1,13 @@
 package project.sceneControllers;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.*;
+import project.gameStuff.*;
 import project.levels.temp;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
@@ -48,10 +47,12 @@ public class homeController {
         Level temp = new temp();
         Section t =  temp.getSections().get(0);
         SectionDesigner sectionDesigner = new SectionDesigner(root,t);
+        GameData.getInstance().setRoot(root);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);
 
         GameController controller = new GameController(scene,root);
+        GameData.getInstance().setGameController(controller);
 
 
         sectionDesigner.paint();
