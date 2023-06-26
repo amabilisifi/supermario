@@ -20,7 +20,7 @@ public class temp extends Level implements Initializable {
             section1.addBlock(block);
             section1.addBlockTable(BlockType.Ground,20,5,576);
 
-            Mushroom mushroom = new Mushroom(250,220);
+            Mushroom mushroom = new Mushroom(600,220);
             section1.addEnemy(mushroom);
 
             Coin coin = new Coin(95, 270);
@@ -29,7 +29,9 @@ public class temp extends Level implements Initializable {
             section1.addCoin(coin);
 
             Pipe pipe = new Pipe(PipeType.Medium, 400, 178);
+//            Pipe pipe1 = new Pipe(PipeType.Medium,150,178);
             section1.addPipe(pipe);
+//            section1.addPipe(pipe1);
 
             section1.setGravity(1.3);
         }
@@ -40,6 +42,5 @@ public class temp extends Level implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("jiji");
     }
 }

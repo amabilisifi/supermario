@@ -8,6 +8,8 @@ import project.User;
 import project.UsersData;
 import project.characters.Character;
 import project.gameObjects.*;
+import project.gameObjects.enemies.Direction;
+import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
 import project.gameStuff.Section;
 
@@ -25,12 +27,14 @@ public class CollisionManager {
     private final Group root = GameData.getInstance().getRoot();
     private final GameController gameController = GameData.getInstance().getGameController();
     private boolean upPressed = gameController.isUpPressed();
-    public void collisionCharacter(){
+
+    public void collisionCharacter() {
         collisionWithBlocksChar();
         collisionWithItemsChar();
         collisionWithCoinChar();
         collisionWithPipeChar();
     }
+
     public void collisionWithBlocksChar() {
         Bounds marioBounds = character.getBoundsInParent();
         boolean flag = false;
@@ -210,13 +214,16 @@ public class CollisionManager {
         }
         itemList.remove(collisionItem);
     }
-    public void collisionItemWithObjects(){
+
+
+    public void collisionItemWithObjects() {
         for (Item i : itemList) {
             collisionItemWithBlock(i);
-//            collisionItemWithPipe(i);
+            collisionItemWithPipe(i);
         }
     }
-    public void collisionItemWithBlock(Item i){
+
+    public void collisionItemWithBlock(Item i) {
         boolean flag = false;
         for (Block b : blockList) {
             if (i.intersects(b.getBoundsInParent())) {
@@ -231,24 +238,26 @@ public class CollisionManager {
                 double deltaY = i.getVy() * dt;
                 //right of item
                 double rightRunner = i.getX() + i.getFitWidth();
-                if (rightRunner >= b.getX() && rightRunner < b.getX() + b.getFitWidth() && yRunner >= b.getY() && yRunner + i.getFitHeight() <= b.getY() + b.getFitHeight()) {
+                if (rightRunner >= b.getX() && i.getY() + i.getFitHeight() > b.getY() + 5) {
 //                rightBlock = true;
-//                this.setSpeed(this.getSpeed() * -1);
+                    i.setSpeed(i.getSpeed() * -1);
+                    System.out.println("ri");
                 }
-//            b.setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
                 //left Of item
                 double leftRunner = i.getX();
                 if (leftRunner > b.getX() && leftRunner < b.getX() + b.getFitWidth() &&
                         yRunner <= b.getY() && yRunner + i.getFitHeight() >= b.getY() + b.getFitHeight()) {
 //                this.setSpeed(this.getSpeed() * -1);
+                    System.out.println("lef");
                 }
                 break;
             }
         }
-        if(!flag)
+        if (!flag)
             i.setOnBlock(false);
     }
-    public void collisionItemWithPipe(Item i){
+
+    public void collisionItemWithPipe(Item i) {
         for (Pipe p : pipeList) {
             if (i.intersects(p.getBoundsInParent())) {
 //                if (this.intersects(this.sceneToLocal(p.localToScene(p.getBoundsInLocal())))) {
@@ -262,7 +271,10 @@ public class CollisionManager {
                 double deltaY = i.getVy() * dt;
                 //right of item
                 double rightRunner = i.getX() + i.getFitWidth();
-                if (rightRunner >= p.getX() && rightRunner < p.getX() + p.getFitWidth() && yRunner >= p.getY() && yRunner + i.getFitHeight() <= p.getY() + p.getFitHeight()) {
+                if (rightRunner >= p.getX() &&
+                        rightRunner < p.getX() + p.getFitWidth()
+                        && yRunner >= p.getY() &&
+                        yRunner <= p.getY() + p.getFitHeight()) {
 //                rightBlock = true;
 //                this.setSpeed(this.getSpeed() * -1);
                     System.out.println("IIIIIIIIIIIIIIIIIIII");
@@ -277,6 +289,41 @@ public class CollisionManager {
                 }
                 break;
             }
+        }
+    }
+
+    public void collisionWithObjectsInGame(Enemy enemy) {
+        for (Pipe pipe : pipeList) {
+            if (enemy.intersects(pipe.getLayoutBounds())) {
+                if (enemy.getY() >= pipe.getY()) {
+                    if (enemy.getX() + enemy.getFitWidth() >= pipe.getX()) {
+                        enemy.setDirection(Direction.Left);
+                    }
+                    if (enemy.getX() >= pipe.getX() + pipe.getFitWidth()) {
+                        enemy.setDirection(Direction.Right);
+                    }
+                }
+            }
+        }
+        boolean flag = false;
+        for (Block block : blockList) {
+            if (enemy.intersects(block.getLayoutBounds())) {
+                if (enemy.getY() >= block.getY()) {
+                    if (enemy.getX() + enemy.getFitWidth() >= block.getX()) {
+                        enemy.setDirection(Direction.Left);
+                    }
+                    if (enemy.getX() >= block.getX() + block.getFitWidth()) {
+                        enemy.setDirection(Direction.Right);
+                    }
+                }else {
+                    enemy.setOnBlock(true);
+                    enemy.setVy(0);
+                    flag = true;
+                }
+            }
+        }
+        if(!flag) {
+            enemy.setOnBlock(false);
         }
     }
 
