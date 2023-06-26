@@ -218,112 +218,42 @@ public class CollisionManager {
 
     public void collisionItemWithObjects() {
         for (Item i : itemList) {
-            collisionItemWithBlock(i);
-            collisionItemWithPipe(i);
+            collisionWithObjectsInGame(i);
         }
     }
 
-    public void collisionItemWithBlock(Item i) {
-        boolean flag = false;
-        for (Block b : blockList) {
-            if (i.intersects(b.getBoundsInParent())) {
-                double dy = i.getY() - b.getCurrentY();
-                if (dy < 0) {
-                    i.setOnBlock(true);
-                    flag = true;
-                }
-                double dt = 20.0 / 1000;
-                double deltaX = i.getSpeed() * dt;
-                double yRunner = i.getY();
-                double deltaY = i.getVy() * dt;
-                //right of item
-                double rightRunner = i.getX() + i.getFitWidth();
-                if (rightRunner >= b.getX() && i.getY() + i.getFitHeight() > b.getY() + 5) {
-//                rightBlock = true;
-                    i.setSpeed(i.getSpeed() * -1);
-                    System.out.println("ri");
-                }
-                //left Of item
-                double leftRunner = i.getX();
-                if (leftRunner > b.getX() && leftRunner < b.getX() + b.getFitWidth() &&
-                        yRunner <= b.getY() && yRunner + i.getFitHeight() >= b.getY() + b.getFitHeight()) {
-//                this.setSpeed(this.getSpeed() * -1);
-                    System.out.println("lef");
-                }
-                break;
-            }
-        }
-        if (!flag)
-            i.setOnBlock(false);
-    }
-
-    public void collisionItemWithPipe(Item i) {
-        for (Pipe p : pipeList) {
-            if (i.intersects(p.getBoundsInParent())) {
-//                if (this.intersects(this.sceneToLocal(p.localToScene(p.getBoundsInLocal())))) {
-                double dy = i.getY() - p.getCurrentY();
-                if (dy < 0) {
-                    i.setOnBlock(true);
-                }
-                double dt = 20.0 / 1000;
-                double deltaX = i.getSpeed() * dt;
-                double yRunner = i.getY();
-                double deltaY = i.getVy() * dt;
-                //right of item
-                double rightRunner = i.getX() + i.getFitWidth();
-                if (rightRunner >= p.getX() &&
-                        rightRunner < p.getX() + p.getFitWidth()
-                        && yRunner >= p.getY() &&
-                        yRunner <= p.getY() + p.getFitHeight()) {
-//                rightBlock = true;
-//                this.setSpeed(this.getSpeed() * -1);
-                    System.out.println("IIIIIIIIIIIIIIIIIIII");
-                }
-//            p.setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
-                //left Of item
-                double leftRunner = i.getX();
-                if (leftRunner > p.getX() && leftRunner < p.getX() + p.getFitWidth() &&
-                        yRunner <= p.getY() && yRunner + i.getFitHeight() >= p.getY() + p.getFitHeight()) {
-//                this.setSpeed(this.getSpeed() * -1);
-                    System.out.println("IIIIIIIIIIIIIIIIIIII");
-                }
-                break;
-            }
-        }
-    }
-
-    public void collisionWithObjectsInGame(Enemy enemy) {
+    public void collisionWithObjectsInGame(MovingEntity entity) {
         for (Pipe pipe : pipeList) {
-            if (enemy.intersects(pipe.getLayoutBounds())) {
-                if (enemy.getY() >= pipe.getY()) {
-                    if (enemy.getX() + enemy.getFitWidth() >= pipe.getX()) {
-                        enemy.setDirection(Direction.Left);
+            if (entity.intersects(pipe.getLayoutBounds())) {
+                if (entity.getY() >= pipe.getY()) {
+                    if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
+                        entity.setDirection(Direction.Left);
                     }
-                    if (enemy.getX() >= pipe.getX() + pipe.getFitWidth()) {
-                        enemy.setDirection(Direction.Right);
+                    if (entity.getX() >= pipe.getX() + pipe.getFitWidth()) {
+                        entity.setDirection(Direction.Right);
                     }
                 }
             }
         }
         boolean flag = false;
         for (Block block : blockList) {
-            if (enemy.intersects(block.getLayoutBounds())) {
-                if (enemy.getY() >= block.getY()) {
-                    if (enemy.getX() + enemy.getFitWidth() >= block.getX()) {
-                        enemy.setDirection(Direction.Left);
+            if (entity.intersects(block.getLayoutBounds())) {
+                if (entity.getY() >= block.getY()) {
+                    if (entity.getX() + entity.getFitWidth() >= block.getX()) {
+                        entity.setDirection(Direction.Left);
                     }
-                    if (enemy.getX() >= block.getX() + block.getFitWidth()) {
-                        enemy.setDirection(Direction.Right);
+                    if (entity.getX() >= block.getX() + block.getFitWidth()) {
+                        entity.setDirection(Direction.Right);
                     }
                 }else {
-                    enemy.setOnBlock(true);
-                    enemy.setVy(0);
+                    entity.setOnBlock(true);
+                    entity.setVy(0);
                     flag = true;
                 }
             }
         }
         if(!flag) {
-            enemy.setOnBlock(false);
+            entity.setOnBlock(false);
         }
     }
 

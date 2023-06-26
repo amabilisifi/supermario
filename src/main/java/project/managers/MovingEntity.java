@@ -1,6 +1,7 @@
 package project.managers;
 
 import javafx.scene.image.ImageView;
+import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 
 public abstract class MovingEntity extends ImageView {
@@ -8,6 +9,7 @@ public abstract class MovingEntity extends ImageView {
     private double Vy;
     private double aX;
     private boolean onBlock;
+    private Direction direction;
 
     public void fall() {
         double dt = 200 / 1000.0;
@@ -53,5 +55,13 @@ public abstract class MovingEntity extends ImageView {
 
     public void setOnBlock(boolean onBlock) {
         this.onBlock = onBlock;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 }
