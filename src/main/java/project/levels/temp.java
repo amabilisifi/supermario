@@ -4,6 +4,8 @@ import javafx.fxml.Initializable;
 import project.gameObjects.BlockType;
 import project.gameObjects.Pipe;
 import project.gameObjects.PipeType;
+import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
@@ -22,7 +24,9 @@ public class temp extends Level implements Initializable {
 //            section1.addBlock(block);
 //            section1.addBlockTable(BlockType.Ground,20,5,576);
 //
-            Turtle mushroom = new Turtle(600,220);
+            Mushroom mushroom = new Mushroom(500,220);
+//            Turtle turtle = new Turtle(350,250);
+//            section1.addEnemy(turtle);
             section1.addEnemy(mushroom);
 
 //            Coin coin = new Coin(95, 270);
@@ -30,11 +34,12 @@ public class temp extends Level implements Initializable {
 //            section1.addCoin(coin1);
 //            section1.addCoin(coin);
 
-            Pipe pipe = new Pipe(PipeType.Medium, 0, 178);
-            Pipe pipe1 = new Pipe(PipeType.Medium,700,178);
+            Pipe pipe = new Pipe(PipeType.Medium, 0, 220);
+//            Pipe pipe1 = new Pipe(PipeType.Medium,700,178);
             section1.addPipe(pipe);
-            section1.addPipe(pipe1);
-            section1.addBlockTable(BlockType.Ground,25,4,0);
+//            section1.addPipe(pipe1);
+            section1.addBlockTable(BlockType.Ground,10,3,0);
+            section1.addBlockTable(BlockType.Ground,15,4,360);
 
             section1.setGravity(1.3);
         }

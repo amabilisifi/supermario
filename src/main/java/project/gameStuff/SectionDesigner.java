@@ -19,7 +19,6 @@ public class SectionDesigner {
         this.section = section;
     }
     public void paint(){
-        Mushroom mushroom = new Mushroom(250,220);
         for(Block block:section.getBlockList()){
             root.getChildren().add(block);
         }

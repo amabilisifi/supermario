@@ -38,7 +38,7 @@ public abstract class Enemy extends MovingEntity {
         timelineMove.playFromStart();
 
         timeLineFall = new Timeline(new KeyFrame(Duration.millis(30), e -> {
-            move();
+            fall();
         }));
         direction = Direction.Left;
         timeLineFall.setCycleCount(Animation.INDEFINITE);
@@ -47,8 +47,6 @@ public abstract class Enemy extends MovingEntity {
 
     @Override
     public void move() {
-        // it should turn if it collides sth or when it'll turn around
-        //speed is 0.5 block per seconds
         double dt = 20 / 100.0;
         if (direction == Direction.Right) {
             setVx(getVx() - Math.abs(getaX() * dt / 3));
