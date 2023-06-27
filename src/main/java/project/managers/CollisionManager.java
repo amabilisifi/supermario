@@ -4,12 +4,15 @@ import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import project.GameController;
+import project.Main;
 import project.User;
 import project.UsersData;
 import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Direction;
 import project.gameObjects.enemies.Enemy;
+import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.enemies.Turtle;
 import project.gameStuff.GameData;
 import project.gameStuff.Section;
 
@@ -27,12 +30,14 @@ public class CollisionManager {
     private final Group root = GameData.getInstance().getRoot();
     private final GameController gameController = GameData.getInstance().getGameController();
     private boolean upPressed = gameController.isUpPressed();
+    private List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
 
     public void collisionCharacter() {
         collisionWithBlocksChar();
         collisionWithItemsChar();
         collisionWithCoinChar();
         collisionWithPipeChar();
+        collisionWithEnemyChar();
     }
 
     public void collisionWithBlocksChar() {
@@ -215,6 +220,36 @@ public class CollisionManager {
         itemList.remove(collisionItem);
     }
 
+    public void collisionWithEnemyChar() {
+        Enemy e = null;
+        for (Enemy enemy : enemyList) {
+            if (character.intersects(enemy.getBoundsInParent())) {
+                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight()) {
+                    if(enemy instanceof Mushroom) {
+                        e = enemy;
+                        root.getChildren().remove(e);
+                        // score ++
+                    }
+                    if(enemy instanceof Turtle){
+                        if(((Turtle) enemy).isAbleToBeThrown()) {
+//                            ((Turtle) enemy).throwTurtle();
+                            ((Turtle) enemy).setAbleToBeThrown(false);
+                            int random = (int) (2 * Math.random());
+                            if (random == 0) enemy.setDirection(Direction.Right);
+                            else enemy.setDirection(Direction.Left);
+                            enemy.setaX(-1);
+                            enemy.setVx(12);
+                        }
+                    }
+                } else {
+                    System.out.println("die");
+                }
+            }
+        }
+        if (e != null )
+            enemyList.remove(e);
+    }
+
 
     public void collisionItemWithObjects() {
         for (Item i : itemList) {
@@ -225,6 +260,7 @@ public class CollisionManager {
     public void collisionWithObjectsInGame(MovingEntity entity) {
         for (Pipe pipe : pipeList) {
             if (entity.intersects(pipe.getLayoutBounds())) {
+                System.out.println("ljdsnjks");
                 if (entity.getY() >= pipe.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
                         entity.setDirection(Direction.Left);
@@ -245,14 +281,14 @@ public class CollisionManager {
                     if (entity.getX() >= block.getX() + block.getFitWidth()) {
                         entity.setDirection(Direction.Right);
                     }
-                }else {
+                } else {
                     entity.setOnBlock(true);
                     entity.setVy(0);
                     flag = true;
                 }
             }
         }
-        if(!flag) {
+        if (!flag) {
             entity.setOnBlock(false);
         }
     }

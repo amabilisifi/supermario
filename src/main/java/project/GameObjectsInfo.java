@@ -53,6 +53,7 @@ public class GameObjectsInfo {
     private double swordHeight;
 
     private double mushroomWidth;
+    private double turtleWidth;
 
     private GameObjectsInfo() {
         try {
@@ -73,6 +74,7 @@ public class GameObjectsInfo {
             setLongPipeHeight(manager.getInt("longPipeHeight"));
             setSwordHeight(manager.getInt("swordHeight"));
             setMushroomWidth(manager.getInt("mushroomWidth"));
+            setTurtleWidth(manager.getInt("turtleWidth"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -425,5 +427,13 @@ public class GameObjectsInfo {
 
     public void setMushroomWidth(double mushroomWidth) {
         this.mushroomWidth = mushroomWidth;
+    }
+
+    public double getTurtleWidth() {
+        return turtleWidth;
+    }
+
+    public void setTurtleWidth(double turtleWidth) {
+        this.turtleWidth = turtleWidth;
     }
 }

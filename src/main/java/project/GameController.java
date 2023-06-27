@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.*;
+import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
 
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class GameController implements Runnable {
     private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
     private final List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
-    private final List<Item> itemList = new ArrayList<>();
+    private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
 
     private Sword sword = null;
     private boolean isSoundMenuClosed = true;
@@ -216,6 +217,11 @@ public class GameController implements Runnable {
             double x = coin.getX();
             x -= dx;
             coin.setX(x);
+        }
+        for(Enemy enemy:enemyList){
+            double x = enemy.getX();
+            x -= dx;
+            enemy.setX(x);
         }
     }
 

@@ -7,6 +7,9 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class Mushroom extends Enemy {
     public Mushroom(double startX, double startY) {
         super(startX, startY);
