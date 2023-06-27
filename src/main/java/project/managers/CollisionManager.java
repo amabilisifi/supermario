@@ -4,7 +4,6 @@ import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import project.GameController;
-import project.Main;
 import project.User;
 import project.UsersData;
 import project.characters.Character;
@@ -30,7 +29,7 @@ public class CollisionManager {
     private final Group root = GameData.getInstance().getRoot();
     private final GameController gameController = GameData.getInstance().getGameController();
     private boolean upPressed = gameController.isUpPressed();
-    private List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
 
     public void collisionCharacter() {
         collisionWithBlocksChar();
@@ -229,16 +228,22 @@ public class CollisionManager {
                         e = enemy;
                         root.getChildren().remove(e);
                         // score ++
+                        currentUser.setCoin(currentUser.getCoin()+3);
                     }
                     if(enemy instanceof Turtle){
                         if(((Turtle) enemy).isAbleToBeThrown()) {
-//                            ((Turtle) enemy).throwTurtle();
                             ((Turtle) enemy).setAbleToBeThrown(false);
                             int random = (int) (2 * Math.random());
                             if (random == 0) enemy.setDirection(Direction.Right);
                             else enemy.setDirection(Direction.Left);
                             enemy.setaX(-1);
-                            enemy.setVx(12);
+                            enemy.setVx(13);
+                        }
+                        if(((Turtle) enemy).isBeenCrazy()){
+                            e = enemy;
+                            root.getChildren().remove(e);
+                            // score + 2
+                            currentUser.setCoin(currentUser.getCoin()+3);
                         }
                     }
                 } else {
@@ -260,12 +265,11 @@ public class CollisionManager {
     public void collisionWithObjectsInGame(MovingEntity entity) {
         for (Pipe pipe : pipeList) {
             if (entity.intersects(pipe.getLayoutBounds())) {
-                System.out.println("ljdsnjks");
                 if (entity.getY() >= pipe.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
                         entity.setDirection(Direction.Left);
                     }
-                    if (entity.getX() >= pipe.getX() + pipe.getFitWidth()) {
+                    if (entity.getX() >= pipe.getX()) {
                         entity.setDirection(Direction.Right);
                     }
                 }

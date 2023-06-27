@@ -47,32 +47,6 @@ public class Turtle extends Enemy {
         CollisionManager.getInstance().collisionWithObjectsInGame(this);
     }
 
-//    public void throwTurtle() {
-//        System.out.println("throw");
-//        setaX(-0.5);
-//        setVx(10);
-//        getTimelineMove().stop();
-//        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30), e -> {
-//            kineticThrow();
-//        }));
-//        timeline.setCycleCount(Animation.INDEFINITE);
-//        timeline.playFromStart();
-//    }
-//
-//    public void kineticThrow() {
-//        double dt = 20 / 100.0;
-//        setVx(getVx() + getaX() * dt);
-//        if (getDirection() == Direction.Right) {
-//            setX(getX() + getVx() * dt);
-//            setScaleX(-1);
-//        }
-//        if (getDirection() == Direction.Left) {
-//            setX(getX() - getVx() * dt);
-//            setScaleX(1);
-//        }
-//        CollisionManager.getInstance().collisionWithObjectsInGame(this);
-//    }
-
     public boolean isAbleToBeThrown() {
         return isAbleToBeThrown;
     }
@@ -87,10 +61,6 @@ public class Turtle extends Enemy {
 
     public void setBeenCrazy(boolean beenCrazy) {
         this.beenCrazy = beenCrazy;
-    }
-
-    public boolean isAbleToMove() {
-        return isAbleToMove;
     }
 
     public void setAbleToMove(boolean ableToMove) {

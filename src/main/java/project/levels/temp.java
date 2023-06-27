@@ -1,11 +1,12 @@
 package project.levels;
 
 import javafx.fxml.Initializable;
-import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.BlockType;
+import project.gameObjects.Pipe;
+import project.gameObjects.PipeType;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
-import project.gameObjects.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,7 @@ public class temp extends Level implements Initializable {
 //            section1.addBlock(block);
 //            section1.addBlockTable(BlockType.Ground,20,5,576);
 //
-            Mushroom mushroom = new Mushroom(600,220);
+            Turtle mushroom = new Turtle(600,220);
             section1.addEnemy(mushroom);
 
 //            Coin coin = new Coin(95, 270);
