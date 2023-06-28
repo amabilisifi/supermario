@@ -30,7 +30,7 @@ public class CollisionManager {
     private final List<Item> itemList = section.getItemList();
     private final Group root = GameData.getInstance().getRoot();
     private final GameController gameController = GameData.getInstance().getGameController();
-    private boolean upPressed = gameController.isUpPressed();
+    private final boolean upPressed = gameController.isUpPressed();
     private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
 
     public void collisionCharacter() {
@@ -80,14 +80,6 @@ public class CollisionManager {
                         root.getChildren().add(item);
                     }
                 }
-
-                 /* else if (dx < 0) {
-                    character.setSpeed(0);
-//                    character.setCurrentX(block.getCurrentX() - character.getFitWidth() - 1.2);
-                } else if (dx >= 0) {
-//                    character.setCurrentX(block.getCurrentX() + block.getFitWidth() + 1);
-                    character.setSpeed(0);
-                }*/
                 break;
             }
         }
@@ -228,7 +220,7 @@ public class CollisionManager {
                     character.upgradeMode();
                     // antiKnock
                     character.setAntiKnock(true);
-                    Circle electricShield = new Circle(character.getX() + character.getFitWidth()/2.0, character.getY() + character.getFitHeight() / 2.0, character.getFitHeight() / 2.0);
+                    Circle electricShield = new Circle(character.getX() + character.getFitWidth()/2.0, character.getY() + character.getFitHeight() / 2.0, character.getFitHeight() / 1.8);
                     character.setElectricShield(electricShield);
                     root.getChildren().add(electricShield);
                     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(15), e -> {
@@ -248,38 +240,50 @@ public class CollisionManager {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
             if (character.intersects(enemy.getBoundsInParent())) {
-                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0) {
-                    if (enemy instanceof Mushroom) {
-                        e = enemy;
-                        root.getChildren().remove(e);
-                        // score ++
-                        currentUser.setCoin(currentUser.getCoin() + 3);
-                    }
-                    if (enemy instanceof Turtle) {
-                        if (((Turtle) enemy).isAbleToBeThrown()) {
-                            ((Turtle) enemy).setAbleToBeThrown(false);
-                            int random = (int) (2 * Math.random());
-                            if (random == 0) enemy.setDirection(Direction.Right);
-                            else enemy.setDirection(Direction.Left);
-                            enemy.setaX(-1);
-                            enemy.setVx(13);
-                        }
-                        if (((Turtle) enemy).isBeenCrazy()) {
+                if (character.isAntiKnock()) {
+                    e = enemy;
+                    root.getChildren().remove(enemy);
+                    enemyList.remove(enemy);
+                    character.setAntiKnock(false);
+                    root.getChildren().remove(character.getElectricShield());
+                    character.setElectricShield(null);
+                    break;
+                }
+                else {
+                    if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0) {
+                        if (enemy instanceof Mushroom) {
                             e = enemy;
                             root.getChildren().remove(e);
-                            // score + 2
+                            // score ++
                             currentUser.setCoin(currentUser.getCoin() + 3);
                         }
+                        if (enemy instanceof Turtle) {
+                            if (((Turtle) enemy).isAbleToBeThrown()) {
+                                ((Turtle) enemy).setAbleToBeThrown(false);
+                                int random = (int) (2 * Math.random());
+                                if (random == 0) enemy.setDirection(Direction.Right);
+                                else enemy.setDirection(Direction.Left);
+                                enemy.setaX(-1);
+                                enemy.setVx(13);
+                            }
+                            if (((Turtle) enemy).isBeenCrazy()) {
+                                e = enemy;
+                                root.getChildren().remove(e);
+                                // score + 2
+                                currentUser.setCoin(currentUser.getCoin() + 3);
+                            }
+                        }
                     }
-                } else {
-                    character.damaged();
-                    System.out.println("die");
-                    System.out.println(character.getHearts());
-                }
-                if (enemy instanceof Spiny || enemy instanceof ToxicPlant) {
-                    System.out.println("die");
-                    character.damaged();
-                    System.out.println(character.getHearts());
+                    else {
+                        character.damaged();
+                        System.out.println("die");
+                        System.out.println(character.getHearts());
+                    }
+                    if (enemy instanceof Spiny || enemy instanceof ToxicPlant) {
+                        System.out.println("die");
+                        character.damaged();
+                        System.out.println(character.getHearts());
+                    }
                 }
             }
         }
