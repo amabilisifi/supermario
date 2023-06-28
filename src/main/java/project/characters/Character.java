@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Circle;
 import project.GameObjectsInfo;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
@@ -53,6 +54,7 @@ public abstract class Character extends MovingEntity {
     private CharacterModes mode;
     private int hearts = 3;
     private boolean isAntiKnock;
+    private Circle electricShield;
 
     public Character() {
         setMode(CharacterModes.Mega);
@@ -67,6 +69,11 @@ public abstract class Character extends MovingEntity {
         // collision blocks
         CollisionManager.getInstance().collisionCharacter();
         fall();
+        if(electricShield != null){
+            electricShield.setOpacity(0.5);
+            electricShield.setCenterX(this.getX() + this.getFitWidth()/2.0);
+            electricShield.setCenterY(this.getY() + this.getFitHeight() / 2.0);
+        }
     }
 
     @Override
@@ -129,6 +136,8 @@ public abstract class Character extends MovingEntity {
             }
         }
     }
+
+
 
     /**
      * getter setter
@@ -321,6 +330,14 @@ public abstract class Character extends MovingEntity {
 
     public void setAntiKnock(boolean antiKnock) {
         isAntiKnock = antiKnock;
+    }
+
+    public Circle getElectricShield() {
+        return electricShield;
+    }
+
+    public void setElectricShield(Circle electricShield) {
+        this.electricShield = electricShield;
     }
 }
 

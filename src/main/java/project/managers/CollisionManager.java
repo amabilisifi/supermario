@@ -1,8 +1,12 @@
 package project.managers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 import project.GameController;
 import project.User;
 import project.UsersData;
@@ -57,7 +61,7 @@ public class CollisionManager {
                     }
                 } else if (dy >= 0) {
                     character.setVy(0);
-                    if (block.getBlockType() == BlockType.Simple && character.getMode()!= CharacterModes.Mini) {
+                    if (block.getBlockType() == BlockType.Simple && character.getMode() != CharacterModes.Mini) {
                         root.getChildren().remove(block);
                         blockList.remove(block);
                     }
@@ -211,18 +215,28 @@ public class CollisionManager {
                     item.getBlock().setBlockType(BlockType.Empty);
                     item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
                 }
-                if(item.getItemType() == ItemType.MagicalFlower){
+                if (item.getItemType() == ItemType.MagicalFlower) {
                     // +20 score
                     character.upgradeMode();
                 }
-                if(item.getItemType() == ItemType.MagicalMushroom){
+                if (item.getItemType() == ItemType.MagicalMushroom) {
                     // +30 score
                     character.upgradeMode();
                 }
-                if(item.getItemType() == ItemType.MagicalStar){
+                if (item.getItemType() == ItemType.MagicalStar) {
                     // +40 score
                     character.upgradeMode();
                     // antiKnock
+                    character.setAntiKnock(true);
+                    Circle electricShield = new Circle(character.getX() + character.getFitWidth()/2.0, character.getY() + character.getFitHeight() / 2.0, character.getFitHeight() / 2.0);
+                    character.setElectricShield(electricShield);
+                    root.getChildren().add(electricShield);
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(15), e -> {
+                        character.setAntiKnock(false);
+                        character.setElectricShield(null);
+                        root.getChildren().remove(electricShield);
+                    }));
+                    timeline.playFromStart();
                 }
                 root.getChildren().remove(item);
             }
@@ -234,7 +248,7 @@ public class CollisionManager {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
             if (character.intersects(enemy.getBoundsInParent())) {
-                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight()/2.0) {
+                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0) {
                     if (enemy instanceof Mushroom) {
                         e = enemy;
                         root.getChildren().remove(e);
@@ -314,30 +328,32 @@ public class CollisionManager {
                 }
             }
         }
-        if(entity instanceof Enemy)
-        hasBlockUnder(entity);
+        if (entity instanceof Enemy)
+            hasBlockUnder(entity);
         if (!flag) {
             entity.setOnBlock(false);
         }
     }
 
-    public void hasBlockUnder(MovingEntity entity){
-        if(entity.getDirection() == Direction.Left && getBlockOf(entity.getX() - 10,entity.getY()+entity.getFitHeight()) == null) {
+    public void hasBlockUnder(MovingEntity entity) {
+        if (entity.getDirection() == Direction.Left && getBlockOf(entity.getX() - 10, entity.getY() + entity.getFitHeight()) == null) {
             entity.setDirection(Direction.Right);
         }
-        if(entity.getDirection() == Direction.Right && getBlockOf(entity.getX() +entity.getFitWidth() + 10,entity.getY()+entity.getFitHeight()) == null) {
+        if (entity.getDirection() == Direction.Right && getBlockOf(entity.getX() + entity.getFitWidth() + 10, entity.getY() + entity.getFitHeight()) == null) {
             entity.setDirection(Direction.Left);
         }
     }
-    public Block getBlockOf(double x,double y){
-        for (Block block: blockList){
-            if(block.getX()<= x && block.getX()+block.getFitWidth()>= x &&
-            block.getY()<= y && block.getY()+block.getFitHeight()>= y){
+
+    public Block getBlockOf(double x, double y) {
+        for (Block block : blockList) {
+            if (block.getX() <= x && block.getX() + block.getFitWidth() >= x &&
+                    block.getY() <= y && block.getY() + block.getFitHeight() >= y) {
                 return block;
             }
         }
         return null;
     }
+
     public static CollisionManager getInstance() {
         if (instance == null)
             instance = new CollisionManager();

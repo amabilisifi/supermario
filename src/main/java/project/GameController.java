@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
@@ -200,7 +201,6 @@ public class GameController implements Runnable {
             // collision
         }
     }
-
 
     public void moveMap(Double dx) {
         for (Pipe pipe : pipeList) {
