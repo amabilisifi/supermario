@@ -55,6 +55,8 @@ public class GameObjectsInfo {
     private double mushroomWidth;
     private double turtleWidth;
     private double spinyWidth;
+    private double toxicPlantWidth;
+    private double toxicPlantHeight;
 
     private GameObjectsInfo() {
         try {
@@ -77,6 +79,8 @@ public class GameObjectsInfo {
             setMushroomWidth(manager.getInt("mushroomWidth"));
             setTurtleWidth(manager.getInt("turtleWidth"));
             setSpinyWidth(manager.getInt("spinyWidth"));
+            setToxicPlantWidth(manager.getInt("toxicPlantWidth"));
+            setToxicPlantHeight(manager.getInt("toxicPlantHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -445,5 +449,21 @@ public class GameObjectsInfo {
 
     public void setSpinyWidth(double spinyWidth) {
         this.spinyWidth = spinyWidth;
+    }
+
+    public double getToxicPlantWidth() {
+        return toxicPlantWidth;
+    }
+
+    public void setToxicPlantWidth(double toxicPlantWidth) {
+        this.toxicPlantWidth = toxicPlantWidth;
+    }
+
+    public double getToxicPlantHeight() {
+        return toxicPlantHeight;
+    }
+
+    public void setToxicPlantHeight(double toxicPlantHeight) {
+        this.toxicPlantHeight = toxicPlantHeight;
     }
 }

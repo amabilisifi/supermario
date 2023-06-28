@@ -5,9 +5,6 @@ import project.gameObjects.Block;
 import project.gameObjects.Coin;
 import project.gameObjects.Pipe;
 import project.gameObjects.enemies.Enemy;
-import project.gameObjects.enemies.Mushroom;
-
-import java.awt.*;
 
 
 public class SectionDesigner {
@@ -22,14 +19,14 @@ public class SectionDesigner {
         for(Block block:section.getBlockList()){
             root.getChildren().add(block);
         }
+        for (Enemy enemy:section.getEnemyList()){
+            root.getChildren().add(enemy);
+        }
         for(Pipe pipe:section.getPipeList()){
             root.getChildren().add(pipe);
         }
         for(Coin coin:section.getCoinList()){
             root.getChildren().add(coin);
-        }
-        for (Enemy enemy:section.getEnemyList()){
-            root.getChildren().add(enemy);
         }
     }
 }

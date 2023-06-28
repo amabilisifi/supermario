@@ -7,6 +7,7 @@ import project.GameController;
 import project.User;
 import project.UsersData;
 import project.characters.Character;
+import project.characters.CharacterModes;
 import project.gameObjects.*;
 import project.gameObjects.enemies.*;
 import project.gameStuff.GameData;
@@ -56,7 +57,7 @@ public class CollisionManager {
                     }
                 } else if (dy >= 0) {
                     character.setVy(0);
-                    if (block.getBlockType() == BlockType.Simple) {
+                    if (block.getBlockType() == BlockType.Simple && character.getMode()!= CharacterModes.Mini) {
                         root.getChildren().remove(block);
                         blockList.remove(block);
                     }
@@ -210,6 +211,19 @@ public class CollisionManager {
                     item.getBlock().setBlockType(BlockType.Empty);
                     item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
                 }
+                if(item.getItemType() == ItemType.MagicalFlower){
+                    // +20 score
+                    character.upgradeMode();
+                }
+                if(item.getItemType() == ItemType.MagicalMushroom){
+                    // +30 score
+                    character.upgradeMode();
+                }
+                if(item.getItemType() == ItemType.MagicalStar){
+                    // +40 score
+                    character.upgradeMode();
+                    // antiKnock
+                }
                 root.getChildren().remove(item);
             }
         }
@@ -220,7 +234,7 @@ public class CollisionManager {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
             if (character.intersects(enemy.getBoundsInParent())) {
-                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight()) {
+                if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight()/2.0) {
                     if (enemy instanceof Mushroom) {
                         e = enemy;
                         root.getChildren().remove(e);
@@ -244,10 +258,14 @@ public class CollisionManager {
                         }
                     }
                 } else {
+                    character.damaged();
                     System.out.println("die");
+                    System.out.println(character.getHearts());
                 }
-                if (enemy instanceof Spiny) {
+                if (enemy instanceof Spiny || enemy instanceof ToxicPlant) {
                     System.out.println("die");
+                    character.damaged();
+                    System.out.println(character.getHearts());
                 }
             }
         }
@@ -296,14 +314,7 @@ public class CollisionManager {
                 }
             }
         }
-//        if (!hasBlockUnder(entity)) {
-//            if (entity.getDirection() == Direction.Right) {
-//                entity.setDirection(Direction.Left);
-//            }
-//            if (entity.getDirection() == Direction.Right){
-//                entity.setDirection(Direction.Right);
-//            }
-//        }
+        if(entity instanceof Enemy)
         hasBlockUnder(entity);
         if (!flag) {
             entity.setOnBlock(false);
@@ -311,28 +322,21 @@ public class CollisionManager {
     }
 
     public void hasBlockUnder(MovingEntity entity){
-        double xMin = entity.getX();
-        double xMax = entity.getX() + entity.getFitWidth();
-        double yFeet = entity.getY() + entity.getFitHeight();
-
-        Block underBlock = null ;
-
-        for (Block b:blockList){
-            if(entity.intersects(b.getBoundsInParent())){
-                underBlock = b;
+        if(entity.getDirection() == Direction.Left && getBlockOf(entity.getX() - 10,entity.getY()+entity.getFitHeight()) == null) {
+            entity.setDirection(Direction.Right);
+        }
+        if(entity.getDirection() == Direction.Right && getBlockOf(entity.getX() +entity.getFitWidth() + 10,entity.getY()+entity.getFitHeight()) == null) {
+            entity.setDirection(Direction.Left);
+        }
+    }
+    public Block getBlockOf(double x,double y){
+        for (Block block: blockList){
+            if(block.getX()<= x && block.getX()+block.getFitWidth()>= x &&
+            block.getY()<= y && block.getY()+block.getFitHeight()>= y){
+                return block;
             }
         }
-        if(underBlock != null) {
-            if (underBlock.getX() < xMin && entity.getDirection() == Direction.Left) {
-                System.out.println("HAs No under");
-            }
-            underBlock.setImage(new Image(String.valueOf(getClass().getResource("/images/Turtle.png"))));
-            if(!root.getChildren().contains(entity)) {
-                root.getChildren().add(entity);
-                System.out.println(entity.getX()+ "  "+ entity.getY());
-            }
-            System.out.println(entity.getX()+ "  "+ entity.getY()+" lkl");
-        }
+        return null;
     }
     public static CollisionManager getInstance() {
         if (instance == null)

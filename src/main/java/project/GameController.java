@@ -43,6 +43,7 @@ public class GameController implements Runnable {
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
     private final List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
     private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    private final List<Item> itemList = GameData.getInstance().getCurrentSection().getItemList();
 
     private Sword sword = null;
     private boolean isSoundMenuClosed = true;
@@ -217,6 +218,11 @@ public class GameController implements Runnable {
             double x = coin.getX();
             x -= dx;
             coin.setX(x);
+        }
+        for (Item item : itemList) {
+            double x = item.getX();
+            x -= dx;
+            item.setX(x);
         }
         for(Enemy enemy:enemyList){
             double x = enemy.getX();

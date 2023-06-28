@@ -7,7 +7,7 @@ public class Mateo extends Character {
     public Mateo() {
         this.setCharacterType("Mateo");
         setPrice((int) GameObjectsInfo.getInstance().getMateoPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getMateoSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getMateoJumpVelocity());

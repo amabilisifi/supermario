@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
+import project.GameObjectsInfo;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
 import project.managers.MovingEntity;
@@ -49,8 +50,14 @@ public abstract class Character extends MovingEntity {
 
     private boolean isSwordCooledDown = true;
 
+    private CharacterModes mode;
+    private int hearts = 3;
+    private boolean isAntiKnock;
+
     public Character() {
+        setMode(CharacterModes.Mega);
     }
+
     @Override
     public void move() {
         double dt = 20 / 1000.0;
@@ -71,25 +78,30 @@ public abstract class Character extends MovingEntity {
         this.setY(this.getY() + this.getVy() * dt);
     }
 
-    public static double getWidth() {
-        return width;
+    public void damaged() {
+        if(mode == CharacterModes.Mini){
+            hearts--;
+            if(hearts <= 0){
+                System.out.println("lose");
+                // gameOver mechanism
+            }
+        }
+        if(mode == CharacterModes.Mega){
+            setMode(CharacterModes.Mini);
+        }
+        if(mode == CharacterModes.Fiery){
+            setMode(CharacterModes.Mega);
+        }
+    }
+    public void upgradeMode(){
+        if(mode == CharacterModes.Mini){
+            setMode(CharacterModes.Mega);
+        }
+        if(mode == CharacterModes.Mega){
+            setMode(CharacterModes.Fiery);
+        }
     }
 
-    public static void setWidth(double width) {
-        Character.width = width;
-    }
-
-    public static double getHeight() {
-        return height;
-    }
-
-    public static void setHeight(double height) {
-        Character.height = height;
-    }
-
-    /**
-     * useful methods
-     **/
     public void setFrame() {
         if (speed != 0) {
             switch (indexOfWalkingFrames) {
@@ -130,6 +142,7 @@ public abstract class Character extends MovingEntity {
     public void setAbleToMove(boolean ableToMove) {
         this.ableToMove = ableToMove;
     }
+
     public Image getProfilePhoto() {
         return profilePhoto;
     }
@@ -274,6 +287,40 @@ public abstract class Character extends MovingEntity {
 
     public void setJumping(boolean jumping) {
         this.jumping = jumping;
+    }
+
+    public CharacterModes getMode() {
+        return mode;
+    }
+
+    public void setMode(CharacterModes mode) {
+        this.mode = mode;
+        double characterSize = GameObjectsInfo.getInstance().getCharacterWidth();
+        double blockSize = GameObjectsInfo.getInstance().getBlockHeight();
+        if (mode == CharacterModes.Mini) {
+            this.setFitHeight(blockSize);
+            this.setFitWidth(0.75 * characterSize);
+        }
+        if (mode == CharacterModes.Mega || mode == CharacterModes.Fiery) {
+            this.setFitHeight(blockSize * 2);
+            this.setFitWidth(characterSize);
+        }
+    }
+
+    public int getHearts() {
+        return hearts;
+    }
+
+    public void setHearts(int hearts) {
+        this.hearts = hearts;
+    }
+
+    public boolean isAntiKnock() {
+        return isAntiKnock;
+    }
+
+    public void setAntiKnock(boolean antiKnock) {
+        isAntiKnock = antiKnock;
     }
 }
 

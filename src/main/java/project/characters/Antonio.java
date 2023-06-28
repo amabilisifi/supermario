@@ -4,14 +4,11 @@ import javafx.scene.image.Image;
 import project.GameObjectsInfo;
 
 public class Antonio extends Character {
-    private static int price;
-
-    private static double speedo;
 
     public Antonio() {
         this.setCharacterType("Antonio");
         setPrice((int) GameObjectsInfo.getInstance().getAntonioPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getAntonioSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getAntonioJumpVelocity());
@@ -26,10 +23,5 @@ public class Antonio extends Character {
 
         this.setImage(getImg());
     }
-
-    public void setPrice(int price) {
-        Antonio.price = price;
-    }
-
 
 }

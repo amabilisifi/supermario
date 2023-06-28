@@ -7,7 +7,7 @@ public class Pedro extends Character {
     public Pedro() {
         this.setCharacterType("Pedro");
         setPrice((int) GameObjectsInfo.getInstance().getPedroPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getPedroSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getPedroJumpVelocity());

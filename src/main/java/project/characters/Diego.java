@@ -7,7 +7,7 @@ public class Diego extends Character {
     public Diego() {
         this.setCharacterType("Diego");
         setPrice((int) GameObjectsInfo.getInstance().getDiegoPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getDiegoSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getDiegoJumpVelocity());

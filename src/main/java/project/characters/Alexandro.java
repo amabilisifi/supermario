@@ -4,15 +4,10 @@ import javafx.scene.image.Image;
 import project.GameObjectsInfo;
 
 public class Alexandro extends Character {
-    private static int price;
-
-    private static double speedo;
-
     public Alexandro() {
         this.setCharacterType("Alexandro");
-        setPrice(price);
         setPrice((int) GameObjectsInfo.getInstance().getAlexandroPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getAlexandroSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getAlexandroJumpVelocity());
@@ -26,10 +21,5 @@ public class Alexandro extends Character {
         this.setImageSit(new Image(String.valueOf(getClass().getResource("/images/characters/red/sit.PNG"))));
 
         this.setImage(getImg());
-    }
-
-
-    public void setPrice(int price) {
-        Alexandro.price = price;
     }
 }

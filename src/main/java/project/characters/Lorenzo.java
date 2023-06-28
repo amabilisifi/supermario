@@ -7,7 +7,7 @@ public class Lorenzo extends Character {
     public Lorenzo() {
         this.setCharacterType("Lorenzo");
         setPrice((int) GameObjectsInfo.getInstance().getLorenzoPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getLorenzoSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getLorenzoJumpVelocity());

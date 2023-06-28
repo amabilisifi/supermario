@@ -7,7 +7,7 @@ public class Pablo extends Character {
     public Pablo() {
         this.setCharacterType("Pablo");
         setPrice((int) GameObjectsInfo.getInstance().getPabloPrice());
-        this.setFitHeight(GameObjectsInfo.getInstance().getCharacterHeight());
+        this.setMode(CharacterModes.Mega);
         this.setFitWidth(GameObjectsInfo.getInstance().getCharacterWidth());
         this.setSpeedo(GameObjectsInfo.getInstance().getPabloSpeedo());
         this.setJumpVelocity(GameObjectsInfo.getInstance().getPabloJumpVelocity());

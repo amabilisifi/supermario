@@ -45,6 +45,15 @@ public abstract class Enemy extends MovingEntity {
         timeLineFall.playFromStart();
     }
 
+    public Enemy() {
+        timelineMove = new Timeline(new KeyFrame(Duration.millis(30), e -> {
+            move();
+        }));
+        direction = Direction.Left;
+        timelineMove.setCycleCount(Animation.INDEFINITE);
+        timelineMove.playFromStart();
+    }
+
     @Override
     public void move() {
         double dt = 20 / 100.0;
