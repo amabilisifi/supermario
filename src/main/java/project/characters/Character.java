@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import project.GameObjectsInfo;
+import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
 import project.managers.MovingEntity;
@@ -22,8 +23,6 @@ import java.io.IOException;
 @JsonDeserialize(using = CharacterDeserializer.class)
 
 public abstract class Character extends MovingEntity {
-    private static double width;
-    private static double height;
     private Image profilePhoto;
     private String characterType;
     private int price;
@@ -40,7 +39,6 @@ public abstract class Character extends MovingEntity {
 
 
     private double startX, startY;
-    private double speed = speedo;
     private double jumpVelocity;
     private double Vy = jumpVelocity;
     private boolean ableToJumpAgain = true;
@@ -58,6 +56,7 @@ public abstract class Character extends MovingEntity {
 
     public Character() {
         setMode(CharacterModes.Mega);
+        setDirection(Direction.Right);
     }
 
     @Override
@@ -65,7 +64,7 @@ public abstract class Character extends MovingEntity {
         double dt = 20 / 1000.0;
         // moving
         if (this.isAbleToMove())
-            this.setX(this.getX() + this.getSpeed() * dt);
+            this.setX(this.getX() + this.getVx() * dt);
         // collision blocks
         CollisionManager.getInstance().collisionCharacter();
         fall();
@@ -110,7 +109,7 @@ public abstract class Character extends MovingEntity {
     }
 
     public void setFrame() {
-        if (speed != 0) {
+        if (getVx() != 0) {
             switch (indexOfWalkingFrames) {
                 case 1 -> {
                     setImage(image1);
@@ -192,14 +191,6 @@ public abstract class Character extends MovingEntity {
 
     public void setStartX(double startX) {
         this.startX = startX;
-    }
-
-    public double getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(double speed) {
-        this.speed = speed;
     }
 
     public Image getImageSit() {

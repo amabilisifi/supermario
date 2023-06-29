@@ -10,6 +10,7 @@ import project.UsersData;
 import project.characters.Character;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
+import project.managers.CollisionManager;
 import project.managers.MovingEntity;
 
 public class Laser extends MovingEntity {
@@ -19,8 +20,6 @@ public class Laser extends MovingEntity {
 
 
     public Laser() {
-        this.setX(character.getX() + character.getFitWidth());
-        startX = character.getX() + character.getFitWidth();
         double blockSize = GameObjectsInfo.getInstance().getBlockHeight();
         if (character.getFitHeight() == blockSize) {
             this.setY(character.getY() + character.getFitHeight() - blockSize / 2.0);
@@ -32,7 +31,18 @@ public class Laser extends MovingEntity {
         this.setFitWidth(GameObjectsInfo.getInstance().getLaserWidth());
         this.setFitHeight(GameObjectsInfo.getInstance().getLaserHeight());
 
-        setDirection(Direction.Right);
+
+        if (character.getDirection() == Direction.Right) {
+            this.setX(character.getX() + character.getFitWidth());
+            startX = character.getX() + character.getFitWidth();
+            setDirection(Direction.Right);
+        }
+        if (character.getDirection() == Direction.Left) {
+            this.setX(character.getX() - this.getFitWidth());
+            startX = character.getX()- this.getFitWidth();
+            setDirection(Direction.Left);
+        }
+
         timelineMove = new Timeline(new KeyFrame(Duration.millis(20), e -> {
             move();
         }));
@@ -50,11 +60,12 @@ public class Laser extends MovingEntity {
                 setX(getX() + Math.abs(character.getSpeedo()) * dt);
             }
             if (getDirection() == Direction.Left) {
-                setX(getX() -Math.abs(character.getSpeedo()) * dt);
+                setX(getX() - Math.abs(character.getSpeedo()) * dt);
             }
-        }else {
-           GameData.getInstance().getRoot().getChildren().remove(this);
+        } else {
+            GameData.getInstance().getRoot().getChildren().remove(this);
         }
+        CollisionManager.getInstance().collisionWeapon(this);
     }
 
 

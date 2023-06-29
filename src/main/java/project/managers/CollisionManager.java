@@ -87,7 +87,7 @@ public class CollisionManager {
             character.setOnBlock(false);
         }
         double dt = 20.0 / 1000;
-        double deltaX = character.getSpeed() * dt;
+        double deltaX = character.getVx() * dt;
         double yRunner = character.getY();
         //double deltaY = character.getVy() * dt;
         for (Block block : blockList) {
@@ -95,13 +95,13 @@ public class CollisionManager {
             double rightRunner = character.getX() + character.getFitWidth() + deltaX;
             if (rightRunner > block.getX() && rightRunner < block.getX() + block.getFitWidth() &&
                     yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
-                character.setSpeed(0);
+                character.setVx(0);
             }
             //left Of mario
             double leftRunner = character.getX() + deltaX;
             if (leftRunner > block.getX() && leftRunner < block.getX() + block.getFitWidth() &&
                     yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
-                character.setSpeed(0);
+                character.setVx(0);
             }
             /*down Of mario
             double downRunner = character.getY() + character.getFitHeight();
@@ -171,20 +171,20 @@ public class CollisionManager {
             }
         }
         double dt = 20.0 / 1000;
-        double deltaX = character.getSpeed() * dt;
+        double deltaX = character.getVx() * dt;
         double yRunner = character.getY();
         for (Pipe pipe : pipeList) {
             //right of mario
             double rightRunner = character.getX() + character.getFitWidth() + deltaX;
             if (rightRunner > pipe.getX() && rightRunner < pipe.getX() + pipe.getFitWidth() &&
                     yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
+                character.setVx(0);
             }
             //left Of mario
             double leftRunner = character.getX() + deltaX;
             if (leftRunner > pipe.getX() && leftRunner < pipe.getX() + pipe.getFitWidth() &&
                     yRunner + character.getFitHeight() <= pipe.getY() + pipe.getFitHeight() && yRunner + character.getFitHeight() > pipe.getY() + 5) {
-                character.setSpeed(0);
+                character.setVx(0);
             }
         }
     }
@@ -291,11 +291,11 @@ public class CollisionManager {
             enemyList.remove(e);
     }
 
-    public void collisionSword(Sword sword){
+    public void collisionWeapon(MovingEntity weapon){
         // enemy
         Enemy e = null;
         for (Enemy enemy: enemyList){
-            if(sword.intersects(enemy.getBoundsInParent())){
+            if(weapon.intersects(enemy.getBoundsInParent())){
                 e = enemy;
                 root.getChildren().remove(enemy);
                 enemyList.remove(enemy);
@@ -308,17 +308,19 @@ public class CollisionManager {
         if (e != null)
             enemyList.remove(e);
         // gameObjects
-        collisionSwordWithGameObjects(sword);
+        collisionWeaponsWithGameObjects(weapon);
     }
-    public void collisionSwordWithGameObjects(Sword entity) {
+    public void collisionWeaponsWithGameObjects(MovingEntity entity) {
         for (Pipe pipe : pipeList) {
             if (entity.intersects(pipe.getLayoutBounds())) {
                 if (entity.getY() >= pipe.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
-                        entity.setGoingLeft(true);
+                        if(entity instanceof Sword)
+                           ((Sword) entity).setTurning(true);
                     }
                     if (entity.getX() >= pipe.getX()) {
-                        entity.setGoingLeft(false);
+                        if(entity instanceof Sword)
+                            ((Sword) entity).setTurning(false);
                     }
                 }
             }
@@ -327,10 +329,12 @@ public class CollisionManager {
             if (entity.intersects(block.getLayoutBounds())) {
                 if (entity.getY() >= block.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= block.getX()) {
-                        entity.setGoingLeft(true);
+                        if(entity instanceof Sword)
+                            ((Sword) entity).setTurning(true);
                     }
                     if (entity.getX() >= block.getX() + block.getFitWidth()) {
-                        entity.setGoingLeft(false);
+                        if(entity instanceof Sword)
+                            ((Sword) entity).setTurning(false);
                     }
                 }
             }

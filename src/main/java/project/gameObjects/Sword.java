@@ -7,17 +7,25 @@ import project.managers.MovingEntity;
 
 public class Sword extends MovingEntity {
     private double startX;
-    private boolean isGoingLeft = false;
+    private boolean isTurning = false;
 
 
-    public Sword(double characterX, double characterY,double characterHeight) {
-        double width = 2* GameObjectsInfo.getInstance().getBlockWidth();
+    public Sword(double characterX, double characterY, double characterHeight,Direction direction) {
+        double width = 2 * GameObjectsInfo.getInstance().getBlockWidth();
         double height = GameObjectsInfo.getInstance().getSwordHeight();
         Image img = new Image(String.valueOf(getClass().getResource("/images/sword.PNG")));
         this.setFitHeight(height);
-        this.setX(characterX+ GameObjectsInfo.getInstance().getCharacterWidth());
-        this.startX = characterX+ GameObjectsInfo.getInstance().getCharacterWidth();
-        this.setY(characterY+characterHeight- GameObjectsInfo.getInstance().getBlockHeight());
+        if(direction == Direction.Right) {
+            this.setX(characterX + GameObjectsInfo.getInstance().getCharacterWidth());
+            this.startX = characterX + GameObjectsInfo.getInstance().getCharacterWidth();
+            setScaleX(1);
+        }
+        if (direction == Direction.Left) {
+            this.setX(characterX - this.getFitWidth());
+            this.startX = characterX- this.getFitWidth();
+            setScaleX(-1);
+        }
+        this.setY(characterY + characterHeight - GameObjectsInfo.getInstance().getBlockHeight());
         this.setFitWidth(width);
         this.setImage(img);
         setDirection(Direction.Right);
@@ -27,11 +35,11 @@ public class Sword extends MovingEntity {
         return startX;
     }
 
-    public boolean isGoingLeft() {
-        return isGoingLeft;
+    public boolean isTurning() {
+        return isTurning;
     }
 
-    public void setGoingLeft(boolean goingLeft) {
-        this.isGoingLeft = goingLeft;
+    public void setTurning(boolean turning) {
+        this.isTurning = turning;
     }
 }

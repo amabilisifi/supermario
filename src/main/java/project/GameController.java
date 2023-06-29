@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.*;
+import project.gameObjects.enemies.Direction;
 import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
@@ -32,7 +33,7 @@ public class GameController implements Runnable {
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         character.move();
         if (startScrolling && character.isMoving()) {
-            moveMap(character.getSpeed() * 20 / 1000.0);
+            moveMap(character.getVx() * 20 / 1000.0);
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
@@ -73,13 +74,15 @@ public class GameController implements Runnable {
             switch (KeyEvent.getCode()) {
                 case D -> {
                     character.setScaleX(1);
-                    character.setSpeed(Math.abs(character.getSpeedo()));
+                    character.setDirection(Direction.Right);
+                    character.setVx(Math.abs(character.getSpeedo()));
                     character.setScaleY(1);
                     character.setMoving(true);
                 }
                 case A -> {
                     character.setScaleX(-1);
-                    character.setSpeed(Math.abs(character.getSpeedo()) * -1);
+                    character.setDirection(Direction.Left);
+                    character.setVx(Math.abs(character.getSpeedo()) * -1);
                     character.setScaleY(1);
                     character.setAbleToMove(true);
                 }
@@ -119,7 +122,7 @@ public class GameController implements Runnable {
                 case L -> {
                     if (character.isSwordCooledDown() && currentUser.getCoin() > 3) {
                         currentUser.setCoin(currentUser.getCoin() - 3);
-                        Sword sword = new Sword(character.getX(), character.getY(), character.getFitHeight());
+                        Sword sword = new Sword(character.getX(), character.getY(), character.getFitHeight(), character.getDirection());
                         this.sword = sword;
                         root.getChildren().add(sword);
                         character.setSwordCooledDown(false);
@@ -128,10 +131,9 @@ public class GameController implements Runnable {
                     }
                 }
                 case SPACE -> {
-                    if(character.isOnBlock()) {
+                   // if (character.isOnBlock()) {
                         Laser laser = new Laser();
                         root.getChildren().add(laser);
-                    }
                 }
             }
         });
@@ -139,7 +141,7 @@ public class GameController implements Runnable {
             switch (KeyEvent.getCode()) {
                 case D, A -> {
                     character.setMoving(false);
-                    character.setSpeed(0);
+                    character.setVx(0);
                     character.setImage(character.getImg());
                 }
                 case S -> {
@@ -158,7 +160,7 @@ public class GameController implements Runnable {
             @Override
             public void handle(long l) {
                 if (startScrolling && character.isMoving()) {
-                    moveMap(character.getSpeed() * 20 / 1000.0);
+                    moveMap(character.getVx() * 20 / 1000.0);
                 }
             }
         };
@@ -176,7 +178,7 @@ public class GameController implements Runnable {
         character.xProperty().addListener((observableValue, oldVal, newVal) -> {
             // width limit
             if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > scene.getWidth()) {
-                character.setSpeed(0);
+                character.setVx(0);
             }
             //scrolling
             if (newVal.doubleValue() >= 450) {
@@ -191,12 +193,19 @@ public class GameController implements Runnable {
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
         // moving
         if (sword != null) {
-            if (sword.getX() >= sword.getStartX()) {
-                if (sword.getX() - sword.getStartX() >= blockWidth * 4) {
-                    sword.setGoingLeft(true);
+            if ((sword.getX() >= sword.getStartX() && sword.getScaleX()==1) ||
+                    (sword.getX() <= character.getX() &&  sword.getScaleX() == -1)) {
+                if (Math.abs(sword.getX() - sword.getStartX()) >= blockWidth * 4) {
+                    sword.setTurning(true);
                 }
-                if (!sword.isGoingLeft()) sword.setX(sword.getX() + 0.02 * blockWidth);
-                if (sword.isGoingLeft()) sword.setX(sword.getX() - 0.02 * blockWidth);
+                if (sword.getScaleX() == 1) {
+                    if (!sword.isTurning()) sword.setX(sword.getX() + 0.02 * blockWidth);
+                    if (sword.isTurning()) sword.setX(sword.getX() - 0.02 * blockWidth);
+                }
+                if (sword.getScaleX() == -1) {
+                    if (!sword.isTurning()) sword.setX(sword.getX() - 0.02 * blockWidth);
+                    if (sword.isTurning()) sword.setX(sword.getX() + 0.02 * blockWidth);
+                }
             } else {
                 root.getChildren().remove(sword);
                 timelineSwordMove.stop();
@@ -207,7 +216,7 @@ public class GameController implements Runnable {
             }
             // collision
             if (sword != null)
-                CollisionManager.getInstance().collisionSword(sword);
+                CollisionManager.getInstance().collisionWeapon(sword);
         }
     }
 

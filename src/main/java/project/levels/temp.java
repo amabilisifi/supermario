@@ -30,7 +30,7 @@ public class temp extends Level implements Initializable {
             section1.addBlock(block2);
 //            section1.addBlockTable(BlockType.Ground,20,5,576);
 //
-            Mushroom mushroom = new Mushroom(400,220);
+            Spiny mushroom = new Spiny(600,220);
 //            Turtle t = new Turtle(350,250);
 //            section1.addEnemy(t);
             section1.addEnemy(mushroom);
