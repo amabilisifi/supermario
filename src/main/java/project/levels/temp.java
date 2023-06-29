@@ -31,8 +31,8 @@ public class temp extends Level implements Initializable {
 //            section1.addBlockTable(BlockType.Ground,20,5,576);
 //
             Mushroom mushroom = new Mushroom(400,220);
-//            Turtle turtle = new Turtle(350,250);
-//            section1.addEnemy(turtle);
+//            Turtle t = new Turtle(350,250);
+//            section1.addEnemy(t);
             section1.addEnemy(mushroom);
 
 //            Coin coin = new Coin(95, 270);
@@ -41,11 +41,11 @@ public class temp extends Level implements Initializable {
 //            section1.addCoin(coin);
 
 //            Pipe pipe = new Pipe(PipeType.Medium, 0, 220);
-//            Pipe pipe1 = new Pipe(PipeType.Medium,700,178);
+            Pipe pipe1 = new Pipe(PipeType.Medium,400,178);
 ////            section1.addPipe(pipe);
-//            section1.addPipe(pipe1);
-//            ToxicPlant toxicPlant = new ToxicPlant(pipe1);
-//            section1.addEnemy(toxicPlant);
+            section1.addPipe(pipe1);
+            ToxicPlant toxicPlant = new ToxicPlant(pipe1);
+            section1.addEnemy(toxicPlant);
             section1.addBlockTable(BlockType.Ground,10,3,0);
             section1.addBlockTable(BlockType.Ground,15,4,360);
 

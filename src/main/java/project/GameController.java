@@ -28,7 +28,6 @@ public class GameController implements Runnable {
     private final double gravity = GameData.getInstance().getCurrentSection().getGravity();
     private boolean upPressed = false;
     private boolean startScrolling = false;
-    private boolean onBlock = true;
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         character.move();
@@ -37,7 +36,7 @@ public class GameController implements Runnable {
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
-    private final  Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
+    private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
 
     private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
@@ -128,6 +127,12 @@ public class GameController implements Runnable {
                         timelineSwordMove.playFromStart();
                     }
                 }
+                case SPACE -> {
+                    if(character.isOnBlock()) {
+                        Laser laser = new Laser();
+                        root.getChildren().add(laser);
+                    }
+                }
             }
         });
         scene.setOnKeyReleased(KeyEvent -> {
@@ -180,6 +185,7 @@ public class GameController implements Runnable {
             }
         });
     }
+
     public void swordMove() {
         // speed is 2 block per second so its 0.02 block per 10 millis
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
@@ -200,8 +206,8 @@ public class GameController implements Runnable {
                 chill.playFromStart();
             }
             // collision
-            if(sword != null)
-            CollisionManager.getInstance().collisionSword(sword);
+            if (sword != null)
+                CollisionManager.getInstance().collisionSword(sword);
         }
     }
 
@@ -227,7 +233,7 @@ public class GameController implements Runnable {
             x -= dx;
             item.setX(x);
         }
-        for(Enemy enemy:enemyList){
+        for (Enemy enemy : enemyList) {
             double x = enemy.getX();
             x -= dx;
             enemy.setX(x);
@@ -236,17 +242,5 @@ public class GameController implements Runnable {
 
     public boolean isUpPressed() {
         return upPressed;
-    }
-
-    public void setUpPressed(boolean upPressed) {
-        this.upPressed = upPressed;
-    }
-
-    public boolean isOnBlock() {
-        return onBlock;
-    }
-
-    public void setOnBlock(boolean onBlock) {
-        this.onBlock = onBlock;
     }
 }

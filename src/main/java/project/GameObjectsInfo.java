@@ -58,6 +58,9 @@ public class GameObjectsInfo {
     private double toxicPlantWidth;
     private double toxicPlantHeight;
 
+    private double laserWidth;
+    private double laserHeight;
+
     private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -81,6 +84,8 @@ public class GameObjectsInfo {
             setSpinyWidth(manager.getInt("spinyWidth"));
             setToxicPlantWidth(manager.getInt("toxicPlantWidth"));
             setToxicPlantHeight(manager.getInt("toxicPlantHeight"));
+            setLaserWidth(manager.getInt("laserWidth"));
+            setLaserHeight(manager.getInt("laserHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -216,10 +221,6 @@ public class GameObjectsInfo {
 
     public void setCharacterWidth(double characterWidth) {
         this.characterWidth = characterWidth;
-    }
-
-    public double getCharacterHeight() {
-        return characterHeight;
     }
 
     public void setCharacterHeight(double characterHeight) {
@@ -465,5 +466,21 @@ public class GameObjectsInfo {
 
     public void setToxicPlantHeight(double toxicPlantHeight) {
         this.toxicPlantHeight = toxicPlantHeight;
+    }
+
+    public double getLaserWidth() {
+        return laserWidth;
+    }
+
+    public void setLaserWidth(double laserWidth) {
+        this.laserWidth = laserWidth;
+    }
+
+    public double getLaserHeight() {
+        return laserHeight;
+    }
+
+    public void setLaserHeight(double laserHeight) {
+        this.laserHeight = laserHeight;
     }
 }

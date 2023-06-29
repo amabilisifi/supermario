@@ -40,7 +40,6 @@ public abstract class Enemy extends MovingEntity {
         timeLineFall = new Timeline(new KeyFrame(Duration.millis(30), e -> {
             fall();
         }));
-        direction = Direction.Left;
         timeLineFall.setCycleCount(Animation.INDEFINITE);
         timeLineFall.playFromStart();
     }
