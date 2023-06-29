@@ -8,16 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
+import project.managers.CollisionManager;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GameController implements Runnable {
@@ -38,7 +37,7 @@ public class GameController implements Runnable {
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
-    private final  Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(100), e -> swordMove()));
+    private final  Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
 
     private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
     private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
@@ -125,6 +124,8 @@ public class GameController implements Runnable {
                         this.sword = sword;
                         root.getChildren().add(sword);
                         character.setSwordCooledDown(false);
+                        timelineSwordMove.setCycleCount(Animation.INDEFINITE);
+                        timelineSwordMove.playFromStart();
                     }
                 }
             }
@@ -180,16 +181,16 @@ public class GameController implements Runnable {
         });
     }
     public void swordMove() {
-        // speed is 2 block per second so its 0.2 block per 100 millis
+        // speed is 2 block per second so its 0.02 block per 10 millis
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
         // moving
         if (sword != null) {
             if (sword.getX() >= sword.getStartX()) {
                 if (sword.getX() - sword.getStartX() >= blockWidth * 4) {
-                    sword.setTurnBack(true);
+                    sword.setGoingLeft(true);
                 }
-                if (!sword.isTurnBack()) sword.setX(sword.getX() + 0.2 * blockWidth);
-                if (sword.isTurnBack()) sword.setX(sword.getX() - 0.2 * blockWidth);
+                if (!sword.isGoingLeft()) sword.setX(sword.getX() + 0.02 * blockWidth);
+                if (sword.isGoingLeft()) sword.setX(sword.getX() - 0.02 * blockWidth);
             } else {
                 root.getChildren().remove(sword);
                 timelineSwordMove.stop();
@@ -199,6 +200,8 @@ public class GameController implements Runnable {
                 chill.playFromStart();
             }
             // collision
+            if(sword != null)
+            CollisionManager.getInstance().collisionSword(sword);
         }
     }
 

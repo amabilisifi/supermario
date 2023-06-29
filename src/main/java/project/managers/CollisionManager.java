@@ -291,6 +291,51 @@ public class CollisionManager {
             enemyList.remove(e);
     }
 
+    public void collisionSword(Sword sword){
+        // enemy
+        Enemy e = null;
+        for (Enemy enemy: enemyList){
+            if(sword.intersects(enemy.getBoundsInParent())){
+                e = enemy;
+                root.getChildren().remove(enemy);
+                enemyList.remove(enemy);
+                character.setAntiKnock(false);
+                root.getChildren().remove(character.getElectricShield());
+                character.setElectricShield(null);
+                break;
+            }
+        }
+        if (e != null)
+            enemyList.remove(e);
+        // gameObjects
+        collisionSwordWithGameObjects(sword);
+    }
+    public void collisionSwordWithGameObjects(Sword entity) {
+        for (Pipe pipe : pipeList) {
+            if (entity.intersects(pipe.getLayoutBounds())) {
+                if (entity.getY() >= pipe.getY()) {
+                    if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
+                        entity.setGoingLeft(true);
+                    }
+                    if (entity.getX() >= pipe.getX()) {
+                        entity.setGoingLeft(false);
+                    }
+                }
+            }
+        }
+        for (Block block : blockList) {
+            if (entity.intersects(block.getLayoutBounds())) {
+                if (entity.getY() >= block.getY()) {
+                    if (entity.getX() + entity.getFitWidth() >= block.getX()) {
+                        entity.setGoingLeft(true);
+                    }
+                    if (entity.getX() >= block.getX() + block.getFitWidth()) {
+                        entity.setGoingLeft(false);
+                    }
+                }
+            }
+        }
+    }
 
     public void collisionItemWithObjects() {
         for (Item i : itemList) {

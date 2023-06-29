@@ -1,12 +1,13 @@
 package project.gameObjects;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
+import project.gameObjects.enemies.Direction;
+import project.managers.MovingEntity;
 
-public class Sword extends ImageView {
+public class Sword extends MovingEntity {
     private double startX;
-    private boolean turnBack = false;
+    private boolean isGoingLeft = false;
 
 
     public Sword(double characterX, double characterY,double characterHeight) {
@@ -19,17 +20,18 @@ public class Sword extends ImageView {
         this.setY(characterY+characterHeight- GameObjectsInfo.getInstance().getBlockHeight());
         this.setFitWidth(width);
         this.setImage(img);
+        setDirection(Direction.Right);
     }
 
     public double getStartX() {
         return startX;
     }
 
-    public boolean isTurnBack() {
-        return turnBack;
+    public boolean isGoingLeft() {
+        return isGoingLeft;
     }
 
-    public void setTurnBack(boolean turnBack) {
-        this.turnBack = turnBack;
+    public void setGoingLeft(boolean goingLeft) {
+        this.isGoingLeft = goingLeft;
     }
 }
