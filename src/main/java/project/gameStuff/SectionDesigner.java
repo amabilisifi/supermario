@@ -8,6 +8,7 @@ import project.gameObjects.enemies.Enemy;
 
 
 public class SectionDesigner {
+    private static SectionDesigner instance;
     private Group root;
     private Section section;
 
@@ -15,7 +16,8 @@ public class SectionDesigner {
         this.root = root;
         this.section = section;
     }
-    public void paint(){
+    public void paint(Section section){
+        GameData.getInstance().setCurrentSection(section);
         for(Block block:section.getBlockList()){
             root.getChildren().add(block);
         }
@@ -28,5 +30,28 @@ public class SectionDesigner {
         for(Coin coin:section.getCoinList()){
             root.getChildren().add(coin);
         }
+        root.getChildren().add(section.getEndPoint());
+    }
+    public  void clearSection(){
+        System.out.println(section.getSectionNum()+"    section num");
+        for(Block block:section.getBlockList()){
+            root.getChildren().remove(block);
+        }
+        for (Enemy enemy:section.getEnemyList()){
+            root.getChildren().remove(enemy);
+        }
+        for(Pipe pipe:section.getPipeList()){
+            root.getChildren().remove(pipe);
+        }
+        for(Coin coin:section.getCoinList()){
+            root.getChildren().remove(coin);
+        }
+        root.getChildren().remove(section.getEndPoint());
+        System.out.println("done");
+    }
+    public static SectionDesigner getInstance(){
+        if(instance == null)
+            instance = new SectionDesigner(GameData.getInstance().getRoot(), GameData.getInstance().getCurrentSection());
+        return instance;
     }
 }

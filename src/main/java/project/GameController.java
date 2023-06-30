@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
@@ -26,27 +27,27 @@ public class GameController implements Runnable {
     private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-    private final double gravity = GameData.getInstance().getCurrentSection().getGravity();
     private boolean upPressed = false;
     private boolean startScrolling = false;
+    private boolean scrollLimit = false;
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         character.move();
-        if (startScrolling && character.isMoving()) {
-            moveMap(character.getVx() * 20 / 1000.0);
+        if (startScrolling && character.isMoving() && !scrollLimit) {
+            moveMap(character.getVx() * 15 / 1000.0);
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
     private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
 
-    private final List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
-    private final List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
-    private final List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
-    private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
-    private final List<Item> itemList = GameData.getInstance().getCurrentSection().getItemList();
+    private List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
+    private List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
+    private List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
+    private List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    private List<Item> itemList = GameData.getInstance().getCurrentSection().getItemList();
+    private ImageView endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
 
     private Sword sword = null;
-    private boolean isSoundMenuClosed = true;
 
     public GameController(Scene scene, Group rt) {
         this.root = rt;
@@ -72,6 +73,13 @@ public class GameController implements Runnable {
 
         scene.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
+                case F -> {
+                    character.setScaleX(1);
+                    character.setDirection(Direction.Right);
+                    character.setVx(Math.abs(2 * character.getSpeedo()));
+                    character.setScaleY(1);
+                    character.setMoving(true);
+                }
                 case D -> {
                     character.setScaleX(1);
                     character.setDirection(Direction.Right);
@@ -100,7 +108,6 @@ public class GameController implements Runnable {
                 }
                 case ESCAPE -> {
                     try {
-                        isSoundMenuClosed = false;
                         timeline.pause();
                         timelinePrime.pause();
                         Stage stage = new Stage();
@@ -110,7 +117,6 @@ public class GameController implements Runnable {
                         stage.setScene(sc);
                         stage.setResizable(false);
                         stage.setOnCloseRequest(e -> {
-                            isSoundMenuClosed = true;
                             timeline.play();
                             timelinePrime.play();
                         });
@@ -131,15 +137,15 @@ public class GameController implements Runnable {
                     }
                 }
                 case SPACE -> {
-                   // if (character.isOnBlock()) {
-                        Laser laser = new Laser();
-                        root.getChildren().add(laser);
+                    // if (character.isOnBlock()) {
+                    Laser laser = new Laser();
+                    root.getChildren().add(laser);
                 }
             }
         });
         scene.setOnKeyReleased(KeyEvent -> {
             switch (KeyEvent.getCode()) {
-                case D, A -> {
+                case D, A, F -> {
                     character.setMoving(false);
                     character.setVx(0);
                     character.setImage(character.getImg());
@@ -159,8 +165,11 @@ public class GameController implements Runnable {
         AnimationTimer animationTimer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                if (startScrolling && character.isMoving()) {
-                    moveMap(character.getVx() * 20 / 1000.0);
+//                System.out.println(endPoint.getX() - character.getX());
+                if (endPoint.getX() - character.getX() <= 333) {
+                    scrollLimit = true;
+                    startScrolling = false;
+                    character.setAbleToMove(true);
                 }
             }
         };
@@ -181,9 +190,12 @@ public class GameController implements Runnable {
                 character.setVx(0);
             }
             //scrolling
-            if (newVal.doubleValue() >= 450) {
+            if (newVal.doubleValue() >= 450 && !scrollLimit) {
                 startScrolling = true;
                 character.setAbleToMove(false);
+            } else {
+                startScrolling = false;
+                character.setAbleToMove(true);
             }
         });
     }
@@ -193,8 +205,8 @@ public class GameController implements Runnable {
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();
         // moving
         if (sword != null) {
-            if ((sword.getX() >= sword.getStartX() && sword.getScaleX()==1) ||
-                    (sword.getX() <= character.getX() &&  sword.getScaleX() == -1)) {
+            if ((sword.getX() >= sword.getStartX() && sword.getScaleX() == 1) ||
+                    (sword.getX() <= character.getX() && sword.getScaleX() == -1)) {
                 if (Math.abs(sword.getX() - sword.getStartX()) >= blockWidth * 4) {
                     sword.setTurning(true);
                 }
@@ -247,9 +259,27 @@ public class GameController implements Runnable {
             x -= dx;
             enemy.setX(x);
         }
+        double x = endPoint.getX();
+        x -= dx;
+        endPoint.setX(x);
     }
 
     public boolean isUpPressed() {
         return upPressed;
+    }
+
+    public static GameController getInstance(){
+        if(instance == null)
+            instance = new GameController(GameData.getInstance().getRoot().getScene(), GameData.getInstance().getRoot());
+        return instance;
+    }
+
+    public void updateController() {
+        blockList = GameData.getInstance().getCurrentSection().getBlockList();
+        coinList = GameData.getInstance().getCurrentSection().getCoinList();
+        pipeList = GameData.getInstance().getCurrentSection().getPipeList();
+        enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+        itemList = GameData.getInstance().getCurrentSection().getItemList();
+        endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
     }
 }

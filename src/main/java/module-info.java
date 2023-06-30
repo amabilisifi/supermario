@@ -18,14 +18,10 @@ module project {
     exports project.characters;
     opens project.characters to com.fasterxml.jackson.databind;
     opens project to javafx.fxml, javafx.graphics;
-    exports tempTrash;
-    opens tempTrash to com.fasterxml.jackson.databind;
     exports project.managers;
     opens project.managers to javafx.fxml, javafx.graphics;
     exports project.managers.Page;
     opens project.managers.Page to javafx.fxml, javafx.graphics;
-    exports tempFuture;
-    opens tempFuture to javafx.fxml, javafx.graphics;
     exports project.gameStuff;
     opens project.gameStuff to javafx.fxml, javafx.graphics;
 }

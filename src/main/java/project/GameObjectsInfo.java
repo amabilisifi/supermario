@@ -61,6 +61,11 @@ public class GameObjectsInfo {
     private double laserWidth;
     private double laserHeight;
 
+    private double flagWidth;
+    private double flagHeight;
+    private double pussyCatWidth;
+    private double pussyCatHeight;
+
     private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -86,6 +91,10 @@ public class GameObjectsInfo {
             setToxicPlantHeight(manager.getInt("toxicPlantHeight"));
             setLaserWidth(manager.getInt("laserWidth"));
             setLaserHeight(manager.getInt("laserHeight"));
+            setFlagWidth(manager.getInt("flagWidth"));
+            setFlagHeight(manager.getInt("flagHeight"));
+            setPussyCatWidth(manager.getInt("catWidth"));
+            setPussyCatHeight(manager.getInt("catHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -482,5 +491,37 @@ public class GameObjectsInfo {
 
     public void setLaserHeight(double laserHeight) {
         this.laserHeight = laserHeight;
+    }
+
+    public double getFlagWidth() {
+        return flagWidth;
+    }
+
+    public void setFlagWidth(double flagWidth) {
+        this.flagWidth = flagWidth;
+    }
+
+    public double getFlagHeight() {
+        return flagHeight;
+    }
+
+    public void setFlagHeight(double flagHeight) {
+        this.flagHeight = flagHeight;
+    }
+
+    public double getPussyCatWidth() {
+        return pussyCatWidth;
+    }
+
+    public void setPussyCatWidth(double pussyCatWidth) {
+        this.pussyCatWidth = pussyCatWidth;
+    }
+
+    public double getPussyCatHeight() {
+        return pussyCatHeight;
+    }
+
+    public void setPussyCatHeight(double pussyCatHeight) {
+        this.pussyCatHeight = pussyCatHeight;
     }
 }

@@ -5,17 +5,15 @@ import project.gameObjects.Block;
 import project.gameObjects.BlockType;
 import project.gameObjects.Pipe;
 import project.gameObjects.PipeType;
-import project.gameObjects.enemies.Mushroom;
 import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
-import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class temp extends Level implements Initializable {
+public class temp extends Level {
     public temp() {
         Section section1 = new Section();
         //section one elements
@@ -54,9 +52,5 @@ public class temp extends Level implements Initializable {
 
         setLevelNum(0);
         addSection(section1);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 }

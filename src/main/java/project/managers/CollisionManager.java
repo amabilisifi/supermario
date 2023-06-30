@@ -32,6 +32,7 @@ public class CollisionManager {
     private final GameController gameController = GameData.getInstance().getGameController();
     private final boolean upPressed = gameController.isUpPressed();
     private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    private boolean collisionWithEnd = false;
 
     public void collisionCharacter() {
         collisionWithBlocksChar();
@@ -39,6 +40,7 @@ public class CollisionManager {
         collisionWithCoinChar();
         collisionWithPipeChar();
         collisionWithEnemyChar();
+        collisionWithEndPointChar();
     }
 
     public void collisionWithBlocksChar() {
@@ -160,7 +162,7 @@ public class CollisionManager {
             if (blockBounds.intersects(marioBounds)) {
                 double dy = character.getY() - pipe.getCurrentY();
 
-                if (dy < 0) {
+                if (dy < character.getFitWidth()/2.0 && character.getX() + character.getFitWidth() > pipe.getX()) {
                     character.setOnBlock(true);
                     if (!upPressed)
                         character.setVy(0);
@@ -209,18 +211,21 @@ public class CollisionManager {
                 }
                 if (item.getItemType() == ItemType.MagicalFlower) {
                     // +20 score
+                    GameData.getInstance().increaseScore(20);
                     character.upgradeMode();
                 }
                 if (item.getItemType() == ItemType.MagicalMushroom) {
                     // +30 score
+                    GameData.getInstance().increaseScore(30);
                     character.upgradeMode();
                 }
                 if (item.getItemType() == ItemType.MagicalStar) {
                     // +40 score
+                    GameData.getInstance().increaseScore(40);
                     character.upgradeMode();
                     // antiKnock
                     character.setAntiKnock(true);
-                    Circle electricShield = new Circle(character.getX() + character.getFitWidth()/2.0, character.getY() + character.getFitHeight() / 2.0, character.getFitHeight() / 1.8);
+                    Circle electricShield = new Circle(character.getX() + character.getFitWidth() / 2.0, character.getY() + character.getFitHeight() / 2.0, character.getFitHeight() / 1.8);
                     character.setElectricShield(electricShield);
                     root.getChildren().add(electricShield);
                     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(15), e -> {
@@ -248,13 +253,13 @@ public class CollisionManager {
                     root.getChildren().remove(character.getElectricShield());
                     character.setElectricShield(null);
                     break;
-                }
-                else {
+                } else {
                     if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0) {
                         if (enemy instanceof Mushroom) {
                             e = enemy;
                             root.getChildren().remove(e);
                             // score ++
+                            GameData.getInstance().increaseScore(1);
                             currentUser.setCoin(currentUser.getCoin() + 3);
                         }
                         if (enemy instanceof Turtle) {
@@ -270,11 +275,11 @@ public class CollisionManager {
                                 e = enemy;
                                 root.getChildren().remove(e);
                                 // score + 2
+                                GameData.getInstance().increaseScore(2);
                                 currentUser.setCoin(currentUser.getCoin() + 3);
                             }
                         }
-                    }
-                    else {
+                    } else {
                         character.damaged();
                         System.out.println("die");
                         System.out.println(character.getHearts());
@@ -290,12 +295,18 @@ public class CollisionManager {
         if (e != null)
             enemyList.remove(e);
     }
+    public void collisionWithEndPointChar(){
+        if(character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd){
+            collisionWithEnd = true;
+            LevelManager.getInstance().goToNextSection();
+        }
+    }
 
-    public void collisionWeapon(MovingEntity weapon){
+    public void collisionWeapon(MovingEntity weapon) {
         // enemy
         Enemy e = null;
-        for (Enemy enemy: enemyList){
-            if(weapon.intersects(enemy.getBoundsInParent())){
+        for (Enemy enemy : enemyList) {
+            if (weapon.intersects(enemy.getBoundsInParent())) {
                 e = enemy;
                 root.getChildren().remove(enemy);
                 enemyList.remove(enemy);
@@ -305,21 +316,28 @@ public class CollisionManager {
                 break;
             }
         }
-        if (e != null)
+        if (e != null) {
             enemyList.remove(e);
+            if (e instanceof Spiny) GameData.getInstance().increaseScore(3);
+            if (e instanceof ToxicPlant) GameData.getInstance().increaseScore(1);
+            if (e instanceof Turtle) GameData.getInstance().increaseScore(2);
+            if (e instanceof Mushroom) GameData.getInstance().increaseScore(1);
+
+        }
         // gameObjects
         collisionWeaponsWithGameObjects(weapon);
     }
+
     public void collisionWeaponsWithGameObjects(MovingEntity entity) {
         for (Pipe pipe : pipeList) {
             if (entity.intersects(pipe.getLayoutBounds())) {
                 if (entity.getY() >= pipe.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= pipe.getX()) {
-                        if(entity instanceof Sword)
-                           ((Sword) entity).setTurning(true);
+                        if (entity instanceof Sword)
+                            ((Sword) entity).setTurning(true);
                     }
                     if (entity.getX() >= pipe.getX()) {
-                        if(entity instanceof Sword)
+                        if (entity instanceof Sword)
                             ((Sword) entity).setTurning(false);
                     }
                 }
@@ -329,11 +347,11 @@ public class CollisionManager {
             if (entity.intersects(block.getLayoutBounds())) {
                 if (entity.getY() >= block.getY()) {
                     if (entity.getX() + entity.getFitWidth() >= block.getX()) {
-                        if(entity instanceof Sword)
+                        if (entity instanceof Sword)
                             ((Sword) entity).setTurning(true);
                     }
                     if (entity.getX() >= block.getX() + block.getFitWidth()) {
-                        if(entity instanceof Sword)
+                        if (entity instanceof Sword)
                             ((Sword) entity).setTurning(false);
                     }
                 }

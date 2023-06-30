@@ -10,7 +10,6 @@ public class GameData {
     private Section currentSection;
     private GameController gameController;
 
-    private int hearts;
     private int score;
     public GameData() {
     }
@@ -21,6 +20,13 @@ public class GameData {
         return instance;
     }
 
+    public void increaseScore(int score){
+        this.score += score;
+    }
+
+    public void decreaseScore(int score){
+        this.score -= score;
+    }
     public Level getCurrentLevel() {
         return currentLevel;
     }
@@ -51,5 +57,13 @@ public class GameData {
 
     public void setGameController(GameController gameController) {
         this.gameController = gameController;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
