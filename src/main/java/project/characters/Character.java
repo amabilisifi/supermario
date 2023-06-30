@@ -46,6 +46,7 @@ public abstract class Character extends MovingEntity {
     private boolean ableToMove = true;
     private boolean jumping = false;
     private boolean moving = false;
+    private boolean isUpPressed ;
 
     private boolean isSwordCooledDown = true;
 
@@ -329,6 +330,14 @@ public abstract class Character extends MovingEntity {
 
     public void setElectricShield(Circle electricShield) {
         this.electricShield = electricShield;
+    }
+
+    public boolean isUpPressed() {
+        return isUpPressed;
+    }
+
+    public void setUpPressed(boolean upPressed) {
+        isUpPressed = upPressed;
     }
 }
 

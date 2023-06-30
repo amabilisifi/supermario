@@ -45,14 +45,12 @@ public class homeController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         GameData.getInstance().setRoot(root);
+        GameData.getInstance().setScene(scene);
 
         Level temp = new level1();
         Section t =  temp.getSections().get(0);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);
-
-        GameController controller = new GameController(scene,root);
-        GameData.getInstance().setGameController(controller);
 
 
         SectionDesigner.getInstance().paint(t);

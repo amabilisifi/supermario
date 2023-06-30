@@ -55,7 +55,6 @@ public class LevelManager implements Initializable {
     public void goToNextSection() {
         currentSection = GameData.getInstance().getCurrentSection();
         currentLevel = GameData.getInstance().getCurrentLevel();
-        System.out.println("we were in level  " + currentLevelNum + " - section " + currentSection.getSectionNum() + "\n and because we have " + currentLevel.getSections().size() + " sections ");
         SectionDesigner.getInstance().clearSection();
         Section next = null;
         if (currentSection.getSectionNum() + 1 < currentLevel.getSections().size()) {
@@ -65,9 +64,7 @@ public class LevelManager implements Initializable {
             System.out.println("next level");
         }
         // next level
-        System.out.println(next.getSectionNum() + " this is our next section ");
         GameData.getInstance().setCurrentSection(next);
-        GameController.getInstance().updateController();
         SectionDesigner.getInstance().paint(next);
     }
 }

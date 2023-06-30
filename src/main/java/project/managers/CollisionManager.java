@@ -23,16 +23,24 @@ public class CollisionManager {
     private static CollisionManager instance;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-    private final Section section = GameData.getInstance().getCurrentSection();
-    private final List<Block> blockList = section.getBlockList();
-    private final List<Pipe> pipeList = section.getPipeList();
-    private final List<Coin> coinList = section.getCoinList();
-    private final List<Item> itemList = section.getItemList();
+    private Section section = GameData.getInstance().getCurrentSection();
+    private List<Block> blockList = section.getBlockList();
+    private List<Pipe> pipeList = section.getPipeList();
+    private List<Coin> coinList = section.getCoinList();
+    private List<Item> itemList = section.getItemList();
     private final Group root = GameData.getInstance().getRoot();
     private final GameController gameController = GameData.getInstance().getGameController();
-    private final boolean upPressed = gameController.isUpPressed();
-    private final List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    private final boolean upPressed = character.isUpPressed();
+    private List<Enemy> enemyList = section.getEnemyList();
     private boolean collisionWithEnd = false;
+
+    public void UpdateCollisionManagerList(Section section) {
+        blockList = section.getBlockList();
+        pipeList = section.getPipeList();
+        coinList = section.getCoinList();
+        itemList = section.getItemList();
+        enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
+    }
 
     public void collisionCharacter() {
         collisionWithBlocksChar();
@@ -162,7 +170,7 @@ public class CollisionManager {
             if (blockBounds.intersects(marioBounds)) {
                 double dy = character.getY() - pipe.getCurrentY();
 
-                if (dy < character.getFitWidth()/2.0 && character.getX() + character.getFitWidth() > pipe.getX()) {
+                if (dy < character.getFitWidth() / 2.0 && character.getX() + character.getFitWidth() > pipe.getX()) {
                     character.setOnBlock(true);
                     if (!upPressed)
                         character.setVy(0);
@@ -295,8 +303,9 @@ public class CollisionManager {
         if (e != null)
             enemyList.remove(e);
     }
-    public void collisionWithEndPointChar(){
-        if(character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd){
+
+    public void collisionWithEndPointChar() {
+        if (character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd) {
             collisionWithEnd = true;
             LevelManager.getInstance().goToNextSection();
         }

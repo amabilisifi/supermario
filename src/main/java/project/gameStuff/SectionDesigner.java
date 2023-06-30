@@ -3,6 +3,7 @@ package project.gameStuff;
 import javafx.scene.Group;
 import project.gameObjects.Block;
 import project.gameObjects.Coin;
+import project.gameObjects.Item;
 import project.gameObjects.Pipe;
 import project.gameObjects.enemies.Enemy;
 
@@ -33,7 +34,6 @@ public class SectionDesigner {
         root.getChildren().add(section.getEndPoint());
     }
     public  void clearSection(){
-        System.out.println(section.getSectionNum()+"    section num");
         for(Block block:section.getBlockList()){
             root.getChildren().remove(block);
         }
@@ -53,5 +53,36 @@ public class SectionDesigner {
         if(instance == null)
             instance = new SectionDesigner(GameData.getInstance().getRoot(), GameData.getInstance().getCurrentSection());
         return instance;
+    }
+    public void moveMap(Double dx,Section section) {
+        for (Pipe pipe : section.getPipeList()) {
+            double x = pipe.getX();
+            x -= dx;
+            pipe.setX(x);
+        }
+        for (Block block : section.getBlockList()) {
+            double x = block.getX();
+            x -= dx;
+            block.setX(x);
+        }
+
+        for (Coin coin : section.getCoinList()) {
+            double x = coin.getX();
+            x -= dx;
+            coin.setX(x);
+        }
+        for (Item item : section.getItemList()) {
+            double x = item.getX();
+            x -= dx;
+            item.setX(x);
+        }
+        for (Enemy enemy : section.getEnemyList()) {
+            double x = enemy.getX();
+            x -= dx;
+            enemy.setX(x);
+        }
+        double x = section.getEndPoint().getX();
+        x -= dx;
+        section.getEndPoint().setX(x);
     }
 }

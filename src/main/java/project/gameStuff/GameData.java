@@ -1,10 +1,13 @@
 package project.gameStuff;
 
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import project.GameController;
+import project.managers.CollisionManager;
 
 public class GameData {
     private static GameData instance;
+    private Scene scene;
     private Group root;
     private Level currentLevel;
     private Section currentSection;
@@ -41,6 +44,8 @@ public class GameData {
 
     public void setCurrentSection(Section currentSection) {
         this.currentSection = currentSection;
+        GameData.getInstance().getGameController().setEndPoint(currentSection.getEndPoint());
+        CollisionManager.getInstance().UpdateCollisionManagerList(currentSection);
     }
 
     public Group getRoot() {
@@ -52,6 +57,8 @@ public class GameData {
     }
 
     public GameController getGameController() {
+        if(gameController == null)
+            gameController = new GameController(scene,root);
         return gameController;
     }
 
@@ -65,5 +72,13 @@ public class GameData {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 }

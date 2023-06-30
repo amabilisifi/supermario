@@ -16,35 +16,29 @@ import project.gameObjects.*;
 import project.gameObjects.enemies.Direction;
 import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
+import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
 
 import java.io.IOException;
 import java.util.List;
 
 public class GameController implements Runnable {
-    private static GameController instance;
     private final Group root;
     private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-    private boolean upPressed = false;
+    private boolean upPressed = character.isUpPressed();
     private boolean startScrolling = false;
     private boolean scrollLimit = false;
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         character.move();
         if (startScrolling && character.isMoving() && !scrollLimit) {
-            moveMap(character.getVx() * 15 / 1000.0);
+            SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0 , GameData.getInstance().getCurrentSection());
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
     private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
-
-    private List<Block> blockList = GameData.getInstance().getCurrentSection().getBlockList();
-    private List<Coin> coinList = GameData.getInstance().getCurrentSection().getCoinList();
-    private List<Pipe> pipeList = GameData.getInstance().getCurrentSection().getPipeList();
-    private List<Enemy> enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
-    private List<Item> itemList = GameData.getInstance().getCurrentSection().getItemList();
     private ImageView endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
 
     private Sword sword = null;
@@ -100,7 +94,7 @@ public class GameController implements Runnable {
                 }
                 case W -> {
                     if (character.isAbleToJumpAgain()) {
-                        upPressed = true;
+                        character.setUpPressed(true);
                         character.setJumping(true);
                         character.setVy(character.getJumpVelocity());
                         character.setAbleToJumpAgain(false);
@@ -157,7 +151,7 @@ public class GameController implements Runnable {
                     character.setImage(character.getImg());
                 }
                 case W -> {
-                    upPressed = false;
+                    character.setUpPressed(false);
                     character.setJumping(false);
                 }
             }
@@ -232,54 +226,15 @@ public class GameController implements Runnable {
         }
     }
 
-    public void moveMap(Double dx) {
-        for (Pipe pipe : pipeList) {
-            double x = pipe.getX();
-            x -= dx;
-            pipe.setX(x);
-        }
-        for (Block block : blockList) {
-            double x = block.getX();
-            x -= dx;
-            block.setX(x);
-        }
-
-        for (Coin coin : coinList) {
-            double x = coin.getX();
-            x -= dx;
-            coin.setX(x);
-        }
-        for (Item item : itemList) {
-            double x = item.getX();
-            x -= dx;
-            item.setX(x);
-        }
-        for (Enemy enemy : enemyList) {
-            double x = enemy.getX();
-            x -= dx;
-            enemy.setX(x);
-        }
-        double x = endPoint.getX();
-        x -= dx;
-        endPoint.setX(x);
-    }
-
     public boolean isUpPressed() {
         return upPressed;
     }
 
-    public static GameController getInstance(){
-        if(instance == null)
-            instance = new GameController(GameData.getInstance().getRoot().getScene(), GameData.getInstance().getRoot());
-        return instance;
+    public ImageView getEndPoint() {
+        return endPoint;
     }
 
-    public void updateController() {
-        blockList = GameData.getInstance().getCurrentSection().getBlockList();
-        coinList = GameData.getInstance().getCurrentSection().getCoinList();
-        pipeList = GameData.getInstance().getCurrentSection().getPipeList();
-        enemyList = GameData.getInstance().getCurrentSection().getEnemyList();
-        itemList = GameData.getInstance().getCurrentSection().getItemList();
-        endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
+    public void setEndPoint(ImageView endPoint) {
+        this.endPoint = endPoint;
     }
 }
