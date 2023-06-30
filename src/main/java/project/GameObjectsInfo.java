@@ -66,6 +66,8 @@ public class GameObjectsInfo {
     private double pussyCatWidth;
     private double pussyCatHeight;
 
+    private double kingKoopaWidth;
+
     private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -95,6 +97,7 @@ public class GameObjectsInfo {
             setFlagHeight(manager.getInt("flagHeight"));
             setPussyCatWidth(manager.getInt("catWidth"));
             setPussyCatHeight(manager.getInt("catHeight"));
+            setKingKoopaWidth(manager.getInt("kingKoopaWidth"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -523,5 +526,13 @@ public class GameObjectsInfo {
 
     public void setPussyCatHeight(double pussyCatHeight) {
         this.pussyCatHeight = pussyCatHeight;
+    }
+
+    public double getKingKoopaWidth() {
+        return kingKoopaWidth;
+    }
+
+    public void setKingKoopaWidth(double kingKoopaWidth) {
+        this.kingKoopaWidth = kingKoopaWidth;
     }
 }

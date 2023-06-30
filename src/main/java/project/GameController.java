@@ -12,15 +12,14 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
-import project.gameObjects.*;
+import project.gameObjects.Laser;
+import project.gameObjects.Sword;
 import project.gameObjects.enemies.Direction;
-import project.gameObjects.enemies.Enemy;
 import project.gameStuff.GameData;
 import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
 
 import java.io.IOException;
-import java.util.List;
 
 public class GameController implements Runnable {
     private final Group root;
@@ -33,8 +32,8 @@ public class GameController implements Runnable {
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         character.move();
-        if (startScrolling && character.isMoving() && !scrollLimit) {
-            SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0 , GameData.getInstance().getCurrentSection());
+        if (startScrolling && character.isMoving() && !scrollLimit && !character.isNearBossEnemy()) {
+            SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0, GameData.getInstance().getCurrentSection());
         }
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
@@ -184,7 +183,7 @@ public class GameController implements Runnable {
                 character.setVx(0);
             }
             //scrolling
-            if (newVal.doubleValue() >= 450 && !scrollLimit) {
+            if (newVal.doubleValue() >= 450 && !scrollLimit && !character.isNearBossEnemy()) {
                 startScrolling = true;
                 character.setAbleToMove(false);
             } else {

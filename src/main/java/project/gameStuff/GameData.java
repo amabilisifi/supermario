@@ -3,6 +3,7 @@ package project.gameStuff;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import project.GameController;
+import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
 
 public class GameData {
@@ -12,6 +13,7 @@ public class GameData {
     private Level currentLevel;
     private Section currentSection;
     private GameController gameController;
+    private BossEnemy bossEnemy;
 
     private int score;
     public GameData() {
@@ -80,5 +82,13 @@ public class GameData {
 
     public void setScene(Scene scene) {
         this.scene = scene;
+    }
+
+    public BossEnemy getBossEnemy() {
+        return bossEnemy;
+    }
+
+    public void setBossEnemy(BossEnemy bossEnemy) {
+        this.bossEnemy = bossEnemy;
     }
 }

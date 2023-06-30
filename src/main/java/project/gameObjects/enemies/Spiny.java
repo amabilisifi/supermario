@@ -13,7 +13,7 @@ public class Spiny extends Enemy {
     public Spiny(double startX, double startY) {
         super(startX, startY);
         this.setFitWidth(GameObjectsInfo.getInstance().getSpinyWidth());
-        this.setImage(new Image(String.valueOf(getClass().getResource("/images/Spiny.png"))));
+        this.setImage(new Image(String.valueOf(getClass().getResource("/images/enemies/Spiny.png"))));
     }
 
     @Override

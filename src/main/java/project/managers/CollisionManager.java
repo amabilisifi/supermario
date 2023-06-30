@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import project.GameController;
@@ -13,9 +14,12 @@ import project.UsersData;
 import project.characters.Character;
 import project.characters.CharacterModes;
 import project.gameObjects.*;
+import project.gameObjects.bossFight.BossEnemy;
+import project.gameObjects.bossFight.FireBall;
 import project.gameObjects.enemies.*;
 import project.gameStuff.GameData;
 import project.gameStuff.Section;
+import project.gameStuff.SectionDesigner;
 
 import java.util.List;
 
@@ -315,7 +319,7 @@ public class CollisionManager {
         // enemy
         Enemy e = null;
         for (Enemy enemy : enemyList) {
-            if (weapon.intersects(enemy.getBoundsInParent())) {
+            if (weapon.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
                 e = enemy;
                 root.getChildren().remove(enemy);
                 enemyList.remove(enemy);
@@ -438,5 +442,24 @@ public class CollisionManager {
         if (instance == null)
             instance = new CollisionManager();
         return instance;
+    }
+
+
+    public void collisionFireBall(FireBall fireBall){
+        collisionFireBallWithObjects(fireBall);
+    }
+    public void collisionFireBallWithObjects(FireBall fireBall){
+        for (Pipe pipe : pipeList) {
+            if (fireBall.intersects(pipe.getLayoutBounds())) {
+                SectionDesigner.getInstance().removeFromRoot(fireBall);
+                fireBall.getTimelineMove().stop();
+            }
+        }
+        for (Block block : blockList) {
+            if (fireBall.intersects(block.getLayoutBounds())) {
+                SectionDesigner.getInstance().removeFromRoot(fireBall);
+                fireBall.getTimelineMove().stop();
+            }
+        }
     }
 }

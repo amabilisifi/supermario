@@ -85,7 +85,8 @@ public class Section {
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(400);
         imageView.setFitWidth(800);
-        GameData.getInstance().getRoot().getChildren().add(imageView);
+//        GameData.getInstance().getRoot().getChildren().add(imageView);
+        SectionDesigner.getInstance().addToRoot(imageView);
     }
 
     public ImageView getEndPoint() {

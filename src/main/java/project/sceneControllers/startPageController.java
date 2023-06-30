@@ -27,6 +27,8 @@ public class startPageController implements Initializable {
     Pane pane;
 
     JsonManager manager = new JsonManager("src/main/resources/usera.json");
+    private SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
+
 
     public void goToLoginPage(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -35,6 +37,7 @@ public class startPageController implements Initializable {
         Text text = new Text(50, 270, "");
         text.setFont(new Font(20));
         pane.getChildren().add(text);
+        soundPlayer.stop();
 
         stage.setResizable(false);
         stage.show();
@@ -47,6 +50,7 @@ public class startPageController implements Initializable {
         Text text = new Text(50, 270, "");
         text.setFont(new Font(20));
         pane.getChildren().add(text);
+        soundPlayer.stop();
 
         stage.setResizable(false);
         stage.show();
@@ -59,7 +63,6 @@ public class startPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();
@@ -68,6 +71,7 @@ public class startPageController implements Initializable {
     public void goArta(ActionEvent event) throws IOException {
         User u = User.userOf("arta");
         UsersData.getInstance().setCurrentUser(u);
+        soundPlayer.stop();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneManager.getInstance().goToScene(stage, PageType.HomePage);

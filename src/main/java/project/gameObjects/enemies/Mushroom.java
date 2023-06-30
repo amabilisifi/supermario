@@ -14,6 +14,6 @@ public class Mushroom extends Enemy {
     public Mushroom(double startX, double startY) {
         super(startX, startY);
         this.setFitWidth(GameObjectsInfo.getInstance().getMushroomWidth());
-        this.setImage(new Image(String.valueOf(getClass().getResource("/images/Goompa.png"))));
+        this.setImage(new Image(String.valueOf(getClass().getResource("/images/enemies/Goompa.png"))));
     }
 }

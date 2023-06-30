@@ -55,6 +55,8 @@ public abstract class Character extends MovingEntity {
     private boolean isAntiKnock;
     private Circle electricShield;
 
+    private boolean isNearBossEnemy = false;
+
     public Character() {
         setMode(CharacterModes.Mega);
         setDirection(Direction.Right);
@@ -338,6 +340,14 @@ public abstract class Character extends MovingEntity {
 
     public void setUpPressed(boolean upPressed) {
         isUpPressed = upPressed;
+    }
+
+    public boolean isNearBossEnemy() {
+        return isNearBossEnemy;
+    }
+
+    public void setNearBossEnemy(boolean nearBossEnemy) {
+        isNearBossEnemy = nearBossEnemy;
     }
 }
 

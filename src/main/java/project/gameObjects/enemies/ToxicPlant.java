@@ -19,7 +19,7 @@ public class ToxicPlant extends Enemy {
         this.setFitHeight(GameObjectsInfo.getInstance().getToxicPlantHeight());
         this.setX(pipe.getX()+(GameObjectsInfo.getInstance().getPipeWidth()-GameObjectsInfo.getInstance().getToxicPlantWidth())/2.0);
         this.setY(pipe.getY());
-        this.setImage(new Image(String.valueOf(getClass().getResource("/images/plant.PNG"))));
+        this.setImage(new Image(String.valueOf(getClass().getResource("/images/enemies/plant.PNG"))));
     }
     @Override
     public void move() {

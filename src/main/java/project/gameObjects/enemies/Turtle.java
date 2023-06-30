@@ -15,7 +15,7 @@ public class Turtle extends Enemy {
     public Turtle(double startX, double startY) {
         super(startX, startY);
         this.setFitWidth(GameObjectsInfo.getInstance().getTurtleWidth());
-        this.setImage(new Image(String.valueOf(getClass().getResource("/images/Turtle.png"))));
+        this.setImage(new Image(String.valueOf(getClass().getResource("/images/enemies/Turtle.png"))));
     }
 
     public void move() {
