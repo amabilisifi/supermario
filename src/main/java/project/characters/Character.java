@@ -15,7 +15,7 @@ import project.GameObjectsInfo;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
-import project.managers.MovingEntity;
+import project.MovingEntity;
 
 import java.io.IOException;
 

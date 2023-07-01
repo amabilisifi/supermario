@@ -5,10 +5,10 @@ import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import project.GameController;
+import project.MovingEntity;
 import project.User;
 import project.UsersData;
 import project.characters.Character;
@@ -117,40 +117,6 @@ public class CollisionManager {
                     yRunner <= block.getY() && yRunner + character.getFitHeight() >= block.getY() + block.getFitHeight()) {
                 character.setVx(0);
             }
-            /*down Of mario
-            double downRunner = character.getY() + character.getFitHeight();
-            if (character.getX() + character.getFitWidth() >= block.getX() && character.getX() < block.getX() + block.getFitWidth() && downRunner >= block.getY() && downRunner <= block.getY() + block.getFitHeight()) {
-                character.setOnBlock(true);
-                if(!upPressed)
-                    character.setVy(0);
-                if(block.getBlockType()==BlockType.Slime){
-                    character.setVy(character.getJumpVelocity()*1.5);
-                }
-            }else {
-                character.setOnBlock(false);
-            }
-            //top of mario
-            double topRunner = character.getY() + deltaY;
-            if (character.getX() + character.getFitWidth() > block.getX() && character.getX() + character.getFitWidth() < block.getX() + block.getFitWidth() && topRunner > block.getY() && topRunner < block.getY() + block.getFitHeight()) {
-                character.setVy(0);
-                    if(block.getBlockType()==BlockType.Simple){
-                        pane.getChildren().remove(block);
-                        blockList.remove(block);
-                    }if(block.getBlockType()==BlockType.Bonus && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
-                        block.setAbleToGiveAnotherItem(false);
-                        Item item = new Item(block);
-                        itemList.add(item);
-                        pane.getChildren().add(item);
-                        //block.setItemLeft(block.getItemLeft()-1);
-                    }
-                    if((block.getBlockType()== BlockType.ContainCoin || block.getBlockType()==BlockType.ContainManyCoins) && block.getItemLeft()>=0 && block.isAbleToGiveAnotherItem()){
-                        block.setAbleToGiveAnotherItem(false);
-                        Item item = new Item(ItemType.Coin,block);
-                        itemList.add(item);
-                        block.setItemLeft(block.getItemLeft()-1);
-                        pane.getChildren().add(item);
-                    }
-            }*/
         }
     }
 
@@ -391,6 +357,8 @@ public class CollisionManager {
                     }
                 } else {
                     entity.setOnBlock(true);
+                    if(entity instanceof BossEnemy)
+                        entity.setY(pipe.getCurrentY() - entity.getFitHeight());
                     entity.setVy(0);
                     flag = true;
                 }
@@ -407,6 +375,10 @@ public class CollisionManager {
                     }
                 } else {
                     entity.setOnBlock(true);
+                    if(entity instanceof BossEnemy) {
+                        entity.setY(block.getCurrentY() - entity.getFitHeight());
+                        ((BossEnemy) entity).setAbleToMove(true);
+                    }
                     entity.setVy(0);
                     flag = true;
                 }

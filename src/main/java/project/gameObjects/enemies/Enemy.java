@@ -3,20 +3,10 @@ package project.gameObjects.enemies;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
-import project.gameStuff.GameData;
 import project.managers.CollisionManager;
-import project.managers.MovingEntity;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
+import project.MovingEntity;
 
 public abstract class Enemy extends MovingEntity {
     private double startX;

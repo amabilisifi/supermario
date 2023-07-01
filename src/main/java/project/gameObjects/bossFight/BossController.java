@@ -24,20 +24,24 @@ public class BossController {
     }
 
     public void walk() {
-        double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
-        double dt = 10 / 1000.0;
-        distance = Math.abs(character.getX() - bossEnemy.getX());
-        if (distance >= 8 * blockSize) {
-            bossEnemy.setVx(0.18 * blockSize);
-            if (bossEnemy.getDirection() == Direction.Left) {
-                bossEnemy.setX(bossEnemy.getX() - Math.abs(bossEnemy.getVx() * dt));
+        if (bossEnemy.isAbleToMove()) {
+            double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
+            double dt = 10 / 1000.0;
+            distance = Math.abs(character.getX() - bossEnemy.getX());
+            if (distance >= 8 * blockSize) {
+                bossEnemy.setVx(0.18 * blockSize);
+                if (bossEnemy.getDirection() == Direction.Left) {
+                    bossEnemy.setX(bossEnemy.getX() - Math.abs(bossEnemy.getVx() * dt));
+                }
+                if (bossEnemy.getDirection() == Direction.Right) {
+                    bossEnemy.setX(bossEnemy.getX() + Math.abs(bossEnemy.getVx() * dt));
+                }
             }
-            if (bossEnemy.getDirection() == Direction.Right) {
-                bossEnemy.setX(bossEnemy.getX() + Math.abs(bossEnemy.getVx() * dt));
+            Direction direction = bossEnemy.getDirection();
+            if ( (direction == Direction.Left && distance <= 3 * blockSize + character.getFitWidth()) ||
+                    (direction == Direction.Right  && distance <= 3.5 * blockSize + bossEnemy.getFitWidth())) {
+                bossEnemy.setVx(0);
             }
-        }
-        if (distance <= 3 * blockSize + character.getFitWidth()) {
-            bossEnemy.setVx(0);
         }
     }
 }

@@ -25,9 +25,7 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
-        Timeline timelineP = new Timeline(new KeyFrame(Duration.seconds(3), e -> throwFireBall()));
-        timelineP.setCycleCount(Animation.INDEFINITE);
-        timelineP.playFromStart();
+        jumpAttack();
     }
 
     public void checkTrigger() {
@@ -55,4 +53,11 @@ public class KingKoopa extends BossEnemy {
 //        change.playFromStart();
         }
     }
+
+    @Override
+    public void jumpAttack(){
+        jump(true);
+    }
+
+
 }

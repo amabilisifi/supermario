@@ -3,7 +3,7 @@ package project.gameObjects;
 import javafx.scene.image.Image;
 import project.GameObjectsInfo;
 import project.gameObjects.enemies.Direction;
-import project.managers.MovingEntity;
+import project.MovingEntity;
 
 public class Sword extends MovingEntity {
     private double startX;

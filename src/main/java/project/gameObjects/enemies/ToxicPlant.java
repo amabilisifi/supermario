@@ -6,7 +6,6 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.gameObjects.Pipe;
-import project.managers.MovingEntity;
 
 public class ToxicPlant extends Enemy {
     private Pipe pipe;

@@ -134,6 +134,9 @@ public class GameController implements Runnable {
                     Laser laser = new Laser();
                     root.getChildren().add(laser);
                 }
+                case P -> {
+                    GameData.getInstance().getBossEnemy().jump(false);
+                }
             }
         });
         scene.setOnKeyReleased(KeyEvent -> {

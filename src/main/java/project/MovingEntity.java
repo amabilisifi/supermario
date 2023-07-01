@@ -1,4 +1,4 @@
-package project.managers;
+package project;
 
 import javafx.scene.image.ImageView;
 import project.gameObjects.enemies.Direction;

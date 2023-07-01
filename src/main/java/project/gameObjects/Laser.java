@@ -11,7 +11,7 @@ import project.characters.Character;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
-import project.managers.MovingEntity;
+import project.MovingEntity;
 
 public class Laser extends MovingEntity {
     private double startX;

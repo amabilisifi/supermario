@@ -8,9 +8,8 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.gameObjects.enemies.Direction;
-import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
-import project.managers.MovingEntity;
+import project.MovingEntity;
 
 public class FireBall extends MovingEntity {
     private BossEnemy bossEnemy;
