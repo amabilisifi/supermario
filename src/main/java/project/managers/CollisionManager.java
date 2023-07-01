@@ -141,6 +141,9 @@ public class CollisionManager {
                 double dy = character.getY() - pipe.getCurrentY();
 
                 if (dy < character.getFitWidth() / 2.0 && character.getX() + character.getFitWidth() > pipe.getX()) {
+                    if(pipe.isSecretPipe()){
+                        LevelManager.getInstance().goToSecretSection(pipe);
+                    }
                     character.setOnBlock(true);
                     if (!upPressed)
                         character.setVy(0);

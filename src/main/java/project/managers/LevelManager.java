@@ -3,6 +3,7 @@ package project.managers;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import project.GameController;
+import project.gameObjects.Pipe;
 import project.gameStuff.GameData;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
@@ -19,6 +20,7 @@ public class LevelManager implements Initializable {
     private Level currentLevel;
     private int currentLevelNum;
     private Section currentSection = GameData.getInstance().getCurrentSection();
+    private int currentSectionNum;
 
     public static LevelManager getInstance() {
         if (instance == null) {
@@ -61,6 +63,7 @@ public class LevelManager implements Initializable {
         System.out.println(currentSection.getSectionNum());
         if (currentSection.getSectionNum() + 1 < currentLevel.getSections().size()) {
             currentSection.setSectionNum(currentSection.getSectionNum() + 1);
+            currentSectionNum ++;
             next = currentLevel.getSections().get(currentSection.getSectionNum());
             System.out.println(next.getSectionNum()+"   .");
         } else {
@@ -69,5 +72,23 @@ public class LevelManager implements Initializable {
         // next level
         GameData.getInstance().setCurrentSection(next);
         SectionDesigner.getInstance().paint(next);
+    }
+
+    public void goToSecretSection(Pipe pipe){
+        Section targetSection = pipe.getSection();
+        currentSection = GameData.getInstance().getCurrentSection();
+        SectionDesigner.getInstance().clearSection(currentSection);
+
+        GameData.getInstance().setCurrentSection(targetSection);
+        SectionDesigner.getInstance().paint(targetSection);
+    }
+    public void turningBackFromSecretLevel(){
+        Section targetSection = currentLevel.getSections().get(currentSectionNum);
+
+        currentSection = GameData.getInstance().getCurrentSection();
+        SectionDesigner.getInstance().clearSection(currentSection);
+
+        GameData.getInstance().setCurrentSection(targetSection);
+        SectionDesigner.getInstance().paint(targetSection);
     }
 }

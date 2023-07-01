@@ -17,7 +17,7 @@ public class KingKoopa extends BossEnemy {
     private Timeline timelineThrow;
     private boolean stopThrowing = false;
     private boolean leftAndRight = false;
-    private Timeline  checkLeftRight;
+    private Timeline checkLeftRight;
 
     public KingKoopa(double startX, double startY) {
         this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
@@ -87,13 +87,17 @@ public class KingKoopa extends BossEnemy {
             character.setDirection(Direction.Left);
         }
         setTimelineGrab(new Timeline(new KeyFrame(Duration.seconds(5), e -> {
-            if (!stopThrowing) releaseCharacter();
+            if (!stopThrowing) {
+                releaseCharacter();
+                character.damaged();
+            }
         })));
         getTimelineGrab().playFromStart();
-         checkLeftRight = new Timeline(new KeyFrame(Duration.millis(200), e -> {
-            if(GameData.getInstance().getGameController().check10LeftRight() && !leftAndRight) {releaseCharacter();
-            leftAndRight = true;
-            GameData.getInstance().getGameController().resetLeftRight();
+        checkLeftRight = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            if (GameData.getInstance().getGameController().check10LeftRight() && !leftAndRight) {
+                releaseCharacter();
+                leftAndRight = true;
+                GameData.getInstance().getGameController().resetLeftRight();
             }
         }));
         checkLeftRight.setCycleCount(Animation.INDEFINITE);
