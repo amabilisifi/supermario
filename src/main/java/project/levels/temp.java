@@ -55,9 +55,6 @@ public class temp extends Level {
             section1.addEnemy(kingKoopa);
             SectionDesigner.getInstance().addToRoot(new FireBall(kingKoopa));
 
-            NukeButton button = new NukeButton(kingKoopa);
-            SectionDesigner.getInstance().addToRoot(button);
-
             section1.setGravity(1.3);
         }
 

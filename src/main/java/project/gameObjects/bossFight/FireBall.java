@@ -6,14 +6,16 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
+import project.MovingEntity;
 import project.UsersData;
 import project.gameObjects.enemies.Direction;
 import project.managers.CollisionManager;
-import project.MovingEntity;
 
 public class FireBall extends MovingEntity {
     private BossEnemy bossEnemy;
-    private Timeline timelineMove = new Timeline(new KeyFrame(Duration.millis(1), e -> move()));
+    private Timeline timelineMove = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+        move();
+    }));
 
     public FireBall(BossEnemy bossEnemy) {
         this.bossEnemy = bossEnemy;
@@ -59,7 +61,7 @@ public class FireBall extends MovingEntity {
 //            timelineMove.stop();
 //            SectionDesigner.getInstance().removeFromRoot(this);
 //        }
-            CollisionManager.getInstance().collisionFireBall(this);
+        CollisionManager.getInstance().collisionFireBall(this);
     }
 
     public Timeline getTimelineMove() {

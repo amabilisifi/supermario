@@ -43,6 +43,9 @@ public class GameController implements Runnable {
 
     private Sword sword = null;
 
+    private int leftPressed;
+    private int rightPressed;
+
     public GameController(Scene scene, Group rt) {
         this.root = rt;
         this.scene = scene;
@@ -75,29 +78,67 @@ public class GameController implements Runnable {
                     character.setMoving(true);
                 }
                 case D -> {
-                    character.setScaleX(1);
-                    character.setDirection(Direction.Right);
-                    character.setVx(Math.abs(character.getSpeedo()));
-                    character.setScaleY(1);
-                    character.setMoving(true);
+                    if (character.isDizzy()) {
+                        // A stuff
+                        character.setScaleX(-1);
+                        character.setDirection(Direction.Left);
+                        character.setVx(Math.abs(character.getSpeedo()) * -1);
+                        character.setScaleY(1);
+                        character.setAbleToMove(true);
+                        leftPressed++;
+                    }else {
+                        character.setScaleX(1);
+                        character.setDirection(Direction.Right);
+                        character.setVx(Math.abs(character.getSpeedo()));
+                        character.setScaleY(1);
+                        character.setMoving(true);
+                        rightPressed++;
+                    }
                 }
                 case A -> {
-                    character.setScaleX(-1);
-                    character.setDirection(Direction.Left);
-                    character.setVx(Math.abs(character.getSpeedo()) * -1);
-                    character.setScaleY(1);
-                    character.setAbleToMove(true);
+                    if (character.isDizzy()) {
+                        // D stuff
+                        character.setScaleX(1);
+                        character.setDirection(Direction.Right);
+                        character.setVx(Math.abs(character.getSpeedo()));
+                        character.setScaleY(1);
+                        character.setMoving(true);
+                        rightPressed++;
+                    }else {
+                        character.setScaleX(-1);
+                        character.setDirection(Direction.Left);
+                        character.setVx(Math.abs(character.getSpeedo()) * -1);
+                        character.setScaleY(1);
+                        character.setAbleToMove(true);
+                        leftPressed++;
+                    }
                 }
                 case S -> {
-                    character.setImage(character.getImageSit());
-                    character.setScaleY(0.8);
+                    if (character.isDizzy()) {
+                        // W stuff
+                        if (character.isAbleToJumpAgain()) {
+                            character.setUpPressed(true);
+                            character.setJumping(true);
+                            character.setVy(character.getJumpVelocity());
+                            character.setAbleToJumpAgain(false);
+                        }
+                    }else {
+                        character.setImage(character.getImageSit());
+                        character.setScaleY(0.8);
+                    }
                 }
                 case W -> {
-                    if (character.isAbleToJumpAgain()) {
-                        character.setUpPressed(true);
-                        character.setJumping(true);
-                        character.setVy(character.getJumpVelocity());
-                        character.setAbleToJumpAgain(false);
+                    if (character.isDizzy()) {
+                        // S stuff
+                        character.setImage(character.getImageSit());
+                        character.setScaleY(0.8);
+                    }else {
+                        if (character.isAbleToJumpAgain()) {
+                            character.setUpPressed(true);
+                            character.setJumping(true);
+                            character.setVy(character.getJumpVelocity());
+                            character.setAbleToJumpAgain(false);
+                        }
                     }
                 }
                 case ESCAPE -> {
@@ -141,6 +182,9 @@ public class GameController implements Runnable {
                 case O -> {
                     GameData.getInstance().getBossEnemy().releaseCharacter();
                 }
+                case K -> {
+                    GameData.getInstance().getBossEnemy().jumpAttack();
+                }
             }
         });
         scene.setOnKeyReleased(KeyEvent -> {
@@ -151,14 +195,26 @@ public class GameController implements Runnable {
                     character.setImage(character.getImg());
                 }
                 case S -> {
-                    //character.setImage(character.getImg());
-                    character.setFrame();
-                    character.setScaleY(1);
-                    character.setImage(character.getImg());
+                    if(character.isDizzy()){
+                        // W stuff
+                        character.setUpPressed(false);
+                        character.setJumping(false);
+                    }else {
+                        character.setFrame();
+                        character.setScaleY(1);
+                        character.setImage(character.getImg());
+                    }
                 }
                 case W -> {
-                    character.setUpPressed(false);
-                    character.setJumping(false);
+                    if(character.isDizzy()){
+                        // S stuff
+                        character.setFrame();
+                        character.setScaleY(1);
+                        character.setImage(character.getImg());
+                    }else {
+                        character.setUpPressed(false);
+                        character.setJumping(false);
+                    }
                 }
             }
         });
@@ -231,6 +287,21 @@ public class GameController implements Runnable {
                 CollisionManager.getInstance().collisionWeapon(sword);
         }
     }
+
+    public boolean check10LeftRight(){
+        if(leftPressed>5 && rightPressed>5){
+            System.out.println("freeee");
+//            character.setGrabbed(false);
+            return true;
+        }
+        return false;
+    }
+    public void resetLeftRight(){
+        leftPressed = 0;
+        rightPressed = 0;
+    }
+
+    // getter setter
 
     public boolean isUpPressed() {
         return upPressed;

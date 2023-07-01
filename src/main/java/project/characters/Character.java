@@ -57,6 +57,7 @@ public abstract class Character extends MovingEntity {
 
     private boolean isNearBossEnemy = false;
     private boolean isGrabbed = false;
+    private boolean isDizzy = false;
 
     public Character() {
         setMode(CharacterModes.Mega);
@@ -143,7 +144,8 @@ public abstract class Character extends MovingEntity {
         }
     }
 
-
+    public void dizzied(){
+    }
     /**
      * getter setter
      **/
@@ -359,6 +361,14 @@ public abstract class Character extends MovingEntity {
 
     public void setGrabbed(boolean grabbed) {
         isGrabbed = grabbed;
+    }
+
+    public boolean isDizzy() {
+        return isDizzy;
+    }
+
+    public void setDizzy(boolean dizzy) {
+        isDizzy = dizzy;
     }
 }
 

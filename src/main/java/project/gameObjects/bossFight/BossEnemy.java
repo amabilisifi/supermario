@@ -9,6 +9,7 @@ import project.UsersData;
 import project.characters.Character;
 import project.gameObjects.enemies.Direction;
 import project.gameObjects.enemies.Enemy;
+import project.managers.CollisionManager;
 
 public abstract class BossEnemy extends Enemy {
     private int HP;
@@ -41,6 +42,7 @@ public abstract class BossEnemy extends Enemy {
             setDirection(Direction.Right);
             setScaleX(-1);
         }
+        CollisionManager.getInstance().collisionBossEnemy(this);
     }
 
     public abstract void throwFireBall();

@@ -283,6 +283,7 @@ public class CollisionManager {
         }
     }
 
+
     public void collisionWeapon(MovingEntity weapon) {
         // enemy
         Enemy e = null;
@@ -340,6 +341,7 @@ public class CollisionManager {
         }
     }
 
+
     public void collisionItemWithObjects() {
         for (Item i : itemList) {
             collisionWithObjectsInGame(i);
@@ -359,7 +361,7 @@ public class CollisionManager {
                     }
                 } else {
                     entity.setOnBlock(true);
-                    if(entity instanceof BossEnemy)
+                    if (entity instanceof BossEnemy)
                         entity.setY(pipe.getCurrentY() - entity.getFitHeight());
                     entity.setVy(0);
                     flag = true;
@@ -377,7 +379,7 @@ public class CollisionManager {
                     }
                 } else {
                     entity.setOnBlock(true);
-                    if(entity instanceof BossEnemy) {
+                    if (entity instanceof BossEnemy) {
                         entity.setY(block.getCurrentY() - entity.getFitHeight());
                         ((BossEnemy) entity).setAbleToMove(true);
                     }
@@ -422,11 +424,12 @@ public class CollisionManager {
         return instance;
     }
 
-
-    public void collisionFireBall(FireBall fireBall){
+    public void collisionFireBall(FireBall fireBall) {
         collisionFireBallWithObjects(fireBall);
+        collisionFireBallWithCharacter(fireBall);
     }
-    public void collisionFireBallWithObjects(FireBall fireBall){
+
+    public void collisionFireBallWithObjects(FireBall fireBall) {
         for (Pipe pipe : pipeList) {
             if (fireBall.intersects(pipe.getLayoutBounds())) {
                 SectionDesigner.getInstance().removeFromRoot(fireBall);
@@ -437,6 +440,31 @@ public class CollisionManager {
             if (fireBall.intersects(block.getLayoutBounds())) {
                 SectionDesigner.getInstance().removeFromRoot(fireBall);
                 fireBall.getTimelineMove().stop();
+            }
+        }
+    }
+
+    public void collisionFireBallWithCharacter(FireBall fireBall) {
+        if (fireBall.intersects(character.getBoundsInParent())) {
+            character.damaged();
+            SectionDesigner.getInstance().removeFromRoot(fireBall);
+        }
+    }
+
+    public void collisionBossEnemy(BossEnemy bossEnemy) {
+        collisionBossEnemyWithCharacter(bossEnemy);
+    }
+
+    public void collisionBossEnemyWithCharacter(BossEnemy bossEnemy) {
+        if (character.intersects(bossEnemy.getBoundsInParent()) && character.getY()+character.getFitHeight()/2.0 <= bossEnemy.getY() + bossEnemy.getFitHeight()) {
+            if (bossEnemy.isJumping()) {
+                // character dizziness
+                character.setDizzy(true);
+                System.out.println("dizzy");
+                Timeline dizziness = new Timeline(new KeyFrame(Duration.seconds(5), e -> {
+                    character.setDizzy(false);
+                }));
+                dizziness.playFromStart();
             }
         }
     }

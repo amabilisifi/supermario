@@ -9,12 +9,15 @@ import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;
 import project.gameObjects.enemies.Direction;
+import project.gameStuff.GameData;
 import project.gameStuff.SectionDesigner;
 
 public class KingKoopa extends BossEnemy {
     private boolean triggered;
-    public Timeline timelineThrow;
-    public boolean stopThrowing = false;
+    private Timeline timelineThrow;
+    private boolean stopThrowing = false;
+    private boolean leftAndRight = false;
+    private Timeline  checkLeftRight;
 
     public KingKoopa(double startX, double startY) {
         this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
@@ -87,11 +90,20 @@ public class KingKoopa extends BossEnemy {
             if (!stopThrowing) releaseCharacter();
         })));
         getTimelineGrab().playFromStart();
+         checkLeftRight = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+            if(GameData.getInstance().getGameController().check10LeftRight() && !leftAndRight) {releaseCharacter();
+            leftAndRight = true;
+            GameData.getInstance().getGameController().resetLeftRight();
+            }
+        }));
+        checkLeftRight.setCycleCount(Animation.INDEFINITE);
+        checkLeftRight.playFromStart();
     }
 
     @Override
     public void releaseCharacter() {
         throwCharacterAway(getDirection());
+        checkLeftRight.stop();
     }
 
     public void throwCharacterAway(Direction direction) {
@@ -104,7 +116,6 @@ public class KingKoopa extends BossEnemy {
             stopThrowing = false;
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
-                System.out.println("ooooooooooooooooooooooooooo");
                 checkThrowingTimeLine();
                 character.setVx(character.getVx() - 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
@@ -123,7 +134,6 @@ public class KingKoopa extends BossEnemy {
             stopThrowing = false;
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
-                System.out.println("ooooooooooooooooooooooooooo");
                 checkThrowingTimeLine();
                 character.setVx(character.getVx() + 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
