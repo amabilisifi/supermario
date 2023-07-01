@@ -135,7 +135,7 @@ public class GameController implements Runnable {
                     root.getChildren().add(laser);
                 }
                 case P -> {
-                    GameData.getInstance().getBossEnemy().jump(false);
+                    GameData.getInstance().getBossEnemy().jumpAttack();
                 }
             }
         });

@@ -25,6 +25,10 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
+        Timeline t = new Timeline(new KeyFrame(Duration.seconds(10), e -> throwFireBall()));
+        t.setCycleCount(Animation.INDEFINITE);
+        t.playFromStart();
+
         jumpAttack();
     }
 
@@ -39,23 +43,28 @@ public class KingKoopa extends BossEnemy {
 
     @Override
     public void throwFireBall() {
-        if (isFireBallCooledDown()) {
-            SectionDesigner.getInstance().addToRoot(new FireBall(this));
+        if (isFireBallCooledDown() && !isJumping()) {
+            setThrowingFireBall(true);
             setFireBallCooledDown(false);
+            SectionDesigner.getInstance().addToRoot(new FireBall(this));
+
             Timeline chill = new Timeline(new KeyFrame(Duration.seconds(2), e -> setFireBallCooledDown(true)));
             chill.playFromStart();
-//        setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossThrowing.PNG"))));
-//        if (getDirection() == Direction.Left)  setScaleX(-1);
-//        if (getDirection() == Direction.Right) setScaleX(1);
-//        if (getDirection() == Direction.Left) System.out.println("le");
-//        if (getDirection() == Direction.Right) System.out.println("ri");
-//        Timeline change = new Timeline(new KeyFrame(Duration.seconds(1), e -> setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))))));
-//        change.playFromStart();
+
+            setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossThrowing.jpeg"))));
+            if (getDirection() == Direction.Left) setScaleX(-1);
+
+            Timeline change = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
+                setThrowingFireBall(false);
+            }));
+            change.playFromStart();
         }
+        setThrowingFireBall(false);
     }
 
     @Override
-    public void jumpAttack(){
+    public void jumpAttack() {
         jump(true);
     }
 

@@ -13,7 +13,13 @@ import project.gameObjects.enemies.Enemy;
 public abstract class BossEnemy extends Enemy {
     private int HP;
     private boolean isAbleToMove = true;
+
+    private boolean isThrowingFireBall = false;
     private boolean isFireBallCooledDown = true;
+
+    private Timeline timelineJump;
+    private boolean isJumping = false;
+    private boolean isJumpAttackCooledDown = true;
 
     public BossEnemy() {
         Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> {
@@ -25,11 +31,11 @@ public abstract class BossEnemy extends Enemy {
 
     public void checkDirection() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (character.getX() <= this.getX()) {
+        if (character.getX() <= this.getX() && !isThrowingFireBall) {
             setDirection(Direction.Left);
             setScaleX(1);
         }
-        if (character.getX() > this.getX()) {
+        if (character.getX() > this.getX() && isThrowingFireBall) {
             setDirection(Direction.Right);
             setScaleX(-1);
         }
@@ -40,13 +46,17 @@ public abstract class BossEnemy extends Enemy {
     public abstract void jumpAttack();
 
     public void jump(boolean attack) {
+        setJumping(true);
         if (!attack)
             setVy(-40);
-        if (attack)
+        if (attack && isJumpAttackCooledDown) {
             setVy(-60);
+            setJumpAttackCooledDown(false);
+        }
         setY(getY() - 4);
         double dt = 25 / 1000.0;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+        timelineJump = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+            checkTimeLineOfJump();
             setVy(getVy() + 10 * dt);
             this.setY(getY() + getVy() * dt);
             setAbleToMove(false);
@@ -60,16 +70,28 @@ public abstract class BossEnemy extends Enemy {
                 setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossJumping 2.PNG"))));
             }
             if (isOnBlock()) {
-                Timeline wait = new Timeline(new KeyFrame(Duration.millis(150), t -> {
-                    setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
-                    setScaleY(1);
-                    checkDirection();
-                }));
-                wait.playFromStart();
+                if (attack) {
+                    Timeline wait = new Timeline(new KeyFrame(Duration.millis(150), t -> {
+                        setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
+                        setScaleY(1);
+                        checkDirection();
+                    }));
+                    wait.playFromStart();
+                }
             }
         }));
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.playFromStart();
+        timelineJump.setCycleCount(Animation.INDEFINITE);
+        timelineJump.playFromStart();
+    }
+
+    public void checkTimeLineOfJump() {
+        if (isOnBlock() && getVy() >= 0) {
+            timelineJump.stop();
+            setJumping(false);
+
+            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> setJumpAttackCooledDown(true)));
+            chill.playFromStart();
+        }
     }
 
     public int getHP() {
@@ -94,5 +116,29 @@ public abstract class BossEnemy extends Enemy {
 
     public void setAbleToMove(boolean ableToMove) {
         isAbleToMove = ableToMove;
+    }
+
+    public boolean isThrowingFireBall() {
+        return isThrowingFireBall;
+    }
+
+    public void setThrowingFireBall(boolean throwingFireBall) {
+        isThrowingFireBall = throwingFireBall;
+    }
+
+    public boolean isJumping() {
+        return isJumping;
+    }
+
+    public void setJumping(boolean jumping) {
+        isJumping = jumping;
+    }
+
+    public boolean isJumpAttackCooledDown() {
+        return isJumpAttackCooledDown;
+    }
+
+    public void setJumpAttackCooledDown(boolean jumpAttackCooledDown) {
+        isJumpAttackCooledDown = jumpAttackCooledDown;
     }
 }
