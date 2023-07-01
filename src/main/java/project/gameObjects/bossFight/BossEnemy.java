@@ -21,6 +21,8 @@ public abstract class BossEnemy extends Enemy {
     private boolean isJumping = false;
     private boolean isJumpAttackCooledDown = true;
 
+    private Timeline  timelineGrab ;
+
     public BossEnemy() {
         Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             checkDirection();
@@ -31,11 +33,11 @@ public abstract class BossEnemy extends Enemy {
 
     public void checkDirection() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (character.getX() <= this.getX() && !isThrowingFireBall) {
+        if (character.getX() <= this.getX() && isJumping) {
             setDirection(Direction.Left);
             setScaleX(1);
         }
-        if (character.getX() > this.getX() && isThrowingFireBall) {
+        if (character.getX() > this.getX() && !isJumping) {
             setDirection(Direction.Right);
             setScaleX(-1);
         }
@@ -44,6 +46,8 @@ public abstract class BossEnemy extends Enemy {
     public abstract void throwFireBall();
 
     public abstract void jumpAttack();
+    public abstract void grabAttack();
+    public abstract void releaseCharacter();
 
     public void jump(boolean attack) {
         setJumping(true);
@@ -140,5 +144,21 @@ public abstract class BossEnemy extends Enemy {
 
     public void setJumpAttackCooledDown(boolean jumpAttackCooledDown) {
         isJumpAttackCooledDown = jumpAttackCooledDown;
+    }
+
+    public Timeline getTimelineJump() {
+        return timelineJump;
+    }
+
+    public void setTimelineJump(Timeline timelineJump) {
+        this.timelineJump = timelineJump;
+    }
+
+    public Timeline getTimelineGrab() {
+        return timelineGrab;
+    }
+
+    public void setTimelineGrab(Timeline timelineGrab) {
+        this.timelineGrab = timelineGrab;
     }
 }

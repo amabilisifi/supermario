@@ -12,6 +12,7 @@ import project.gameStuff.GameData;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
+import project.levels.level1;
 import project.levels.temp;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
@@ -55,7 +56,7 @@ public class homeController implements Initializable {
         GameData.getInstance().setRoot(root);
         GameData.getInstance().setScene(scene);
 
-        Level temp = new temp();
+        Level temp = new level1();
         Section t = temp.getSections().get(0);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);

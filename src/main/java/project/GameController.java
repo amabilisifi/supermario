@@ -135,7 +135,10 @@ public class GameController implements Runnable {
                     root.getChildren().add(laser);
                 }
                 case P -> {
-                    GameData.getInstance().getBossEnemy().jumpAttack();
+                    GameData.getInstance().getBossEnemy().grabAttack();
+                }
+                case O -> {
+                    GameData.getInstance().getBossEnemy().releaseCharacter();
                 }
             }
         });
@@ -162,7 +165,7 @@ public class GameController implements Runnable {
             @Override
             public void handle(long l) {
 //                System.out.println(endPoint.getX() - character.getX());
-                if (endPoint.getX() - character.getX() <= 333) {
+                if (endPoint.getX() - character.getX() <= 72) {
                     scrollLimit = true;
                     startScrolling = false;
                     character.setAbleToMove(true);
@@ -238,5 +241,21 @@ public class GameController implements Runnable {
 
     public void setEndPoint(ImageView endPoint) {
         this.endPoint = endPoint;
+    }
+
+    public boolean isStartScrolling() {
+        return startScrolling;
+    }
+
+    public void setStartScrolling(boolean startScrolling) {
+        this.startScrolling = startScrolling;
+    }
+
+    public boolean isScrollLimit() {
+        return scrollLimit;
+    }
+
+    public void setScrollLimit(boolean scrollLimit) {
+        this.scrollLimit = scrollLimit;
     }
 }

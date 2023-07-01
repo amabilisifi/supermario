@@ -3,20 +3,19 @@ package project.gameStuff;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import project.GameController;
 import project.GameObjectsInfo;
 import project.UsersData;
+import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Enemy;
+import project.managers.CollisionManager;
 import project.managers.SoundPlayer;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 
 public class SectionDesigner{
@@ -38,6 +37,10 @@ public class SectionDesigner{
 
     public void paint(Section section) {
         GameData.getInstance().setCurrentSection(section);
+        CollisionManager.getInstance().setCollisionWithEnd(false);
+        Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
+        character.setX(10);
+        GameData.getInstance().getGameController().setScrollLimit(false);
         for (Block block : section.getBlockList()) {
             root.getChildren().add(block);
         }
@@ -56,7 +59,7 @@ public class SectionDesigner{
         root.getChildren().add(section.getEndPoint());
     }
 
-    public void clearSection() {
+    public void clearSection(Section section) {
         for (Block block : section.getBlockList()) {
             root.getChildren().remove(block);
         }
@@ -70,7 +73,6 @@ public class SectionDesigner{
             root.getChildren().remove(coin);
         }
         root.getChildren().remove(section.getEndPoint());
-        System.out.println("done");
     }
 
     public static SectionDesigner getInstance() {

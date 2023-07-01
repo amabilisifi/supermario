@@ -12,10 +12,10 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import project.GameObjectsInfo;
+import project.MovingEntity;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 import project.managers.CollisionManager;
-import project.MovingEntity;
 
 import java.io.IOException;
 
@@ -46,7 +46,7 @@ public abstract class Character extends MovingEntity {
     private boolean ableToMove = true;
     private boolean jumping = false;
     private boolean moving = false;
-    private boolean isUpPressed ;
+    private boolean isUpPressed;
 
     private boolean isSwordCooledDown = true;
 
@@ -56,6 +56,7 @@ public abstract class Character extends MovingEntity {
     private Circle electricShield;
 
     private boolean isNearBossEnemy = false;
+    private boolean isGrabbed = false;
 
     public Character() {
         setMode(CharacterModes.Mega);
@@ -66,14 +67,15 @@ public abstract class Character extends MovingEntity {
     public void move() {
         double dt = 20 / 1000.0;
         // moving
-        if (this.isAbleToMove())
+        if (this.isAbleToMove() && !isGrabbed)
             this.setX(this.getX() + this.getVx() * dt);
         // collision blocks
         CollisionManager.getInstance().collisionCharacter();
-        fall();
-        if(electricShield != null){
+        if (!isGrabbed)
+            fall();
+        if (electricShield != null) {
             electricShield.setOpacity(0.5);
-            electricShield.setCenterX(this.getX() + this.getFitWidth()/2.0);
+            electricShield.setCenterX(this.getX() + this.getFitWidth() / 2.0);
             electricShield.setCenterY(this.getY() + this.getFitHeight() / 2.0);
         }
     }
@@ -88,31 +90,32 @@ public abstract class Character extends MovingEntity {
     }
 
     public void damaged() {
-        if(mode == CharacterModes.Mini){
+        if (mode == CharacterModes.Mini) {
             hearts--;
-            if(hearts <= 0){
+            if (hearts <= 0) {
                 System.out.println("lose");
                 // gameOver mechanism
             }
         }
-        if(mode == CharacterModes.Mega){
+        if (mode == CharacterModes.Mega) {
             setMode(CharacterModes.Mini);
         }
-        if(mode == CharacterModes.Fiery){
+        if (mode == CharacterModes.Fiery) {
             setMode(CharacterModes.Mega);
         }
     }
-    public void upgradeMode(){
-        if(mode == CharacterModes.Mini){
+
+    public void upgradeMode() {
+        if (mode == CharacterModes.Mini) {
             setMode(CharacterModes.Mega);
         }
-        if(mode == CharacterModes.Mega){
+        if (mode == CharacterModes.Mega) {
             setMode(CharacterModes.Fiery);
         }
     }
 
     public void setFrame() {
-        if (getVx() != 0) {
+        if (getVx() != 0 && !isGrabbed) {
             switch (indexOfWalkingFrames) {
                 case 1 -> {
                     setImage(image1);
@@ -138,7 +141,6 @@ public abstract class Character extends MovingEntity {
             }
         }
     }
-
 
 
     /**
@@ -348,6 +350,14 @@ public abstract class Character extends MovingEntity {
 
     public void setNearBossEnemy(boolean nearBossEnemy) {
         isNearBossEnemy = nearBossEnemy;
+    }
+
+    public boolean isGrabbed() {
+        return isGrabbed;
+    }
+
+    public void setGrabbed(boolean grabbed) {
+        isGrabbed = grabbed;
     }
 }
 

@@ -20,9 +20,7 @@ public class BossController {
         Timeline timelineMove = new Timeline(new KeyFrame(Duration.millis(10), e -> walk()));
         timelineMove.setCycleCount(Animation.INDEFINITE);
         timelineMove.playFromStart();
-
     }
-
     public void walk() {
         if (bossEnemy.isAbleToMove()) {
             double blockSize = GameObjectsInfo.getInstance().getBlockWidth();

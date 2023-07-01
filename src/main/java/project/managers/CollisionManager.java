@@ -222,7 +222,7 @@ public class CollisionManager {
     public void collisionWithEnemyChar() {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
-            if (character.intersects(enemy.getBoundsInParent())) {
+            if (character.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
                 if (character.isAntiKnock()) {
                     e = enemy;
                     root.getChildren().remove(enemy);
@@ -275,7 +275,10 @@ public class CollisionManager {
     }
 
     public void collisionWithEndPointChar() {
+        section = GameData.getInstance().getCurrentSection();
+        System.out.println(section.getEndPoint().getY() +"  "+section.getSectionNum());
         if (character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd) {
+            System.out.println("here");
             collisionWithEnd = true;
             LevelManager.getInstance().goToNextSection();
         }
@@ -389,6 +392,10 @@ public class CollisionManager {
         if (!flag) {
             entity.setOnBlock(false);
         }
+    }
+
+    public void setCollisionWithEnd(boolean collisionWithEnd) {
+        this.collisionWithEnd = collisionWithEnd;
     }
 
     public void hasBlockUnder(MovingEntity entity) {
