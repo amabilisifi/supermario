@@ -66,7 +66,6 @@ public abstract class Character extends MovingEntity {
     @Override
     public void move() {
         double dt = 20 / 1000.0;
-            System.out.println(getVx());
         // moving
         if (this.isAbleToMove() && !isGrabbed)
             this.setX(this.getX() + this.getVx() * dt);

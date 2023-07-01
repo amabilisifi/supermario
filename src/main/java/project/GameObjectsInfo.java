@@ -69,6 +69,8 @@ public class GameObjectsInfo {
     private double kingKoopaWidth;
     private double nukeButtonWidth;
     private double nukeButtonHeight;
+    private double bombWidth;
+    private double bombHeight;
 
     private GameObjectsInfo() {
         try {
@@ -102,6 +104,8 @@ public class GameObjectsInfo {
             setKingKoopaWidth(manager.getInt("kingKoopaWidth"));
             setNukeButtonWidth(manager.getInt("nukeButtonWidth"));
             setNukeButtonHeight(manager.getInt("nukeButtonHeight"));
+            setBombWidth(manager.getInt("bombWidth"));
+            setBombHeight(manager.getInt("bombHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -554,5 +558,21 @@ public class GameObjectsInfo {
 
     public void setNukeButtonHeight(double nukeButtonHeight) {
         this.nukeButtonHeight = nukeButtonHeight;
+    }
+
+    public double getBombWidth() {
+        return bombWidth;
+    }
+
+    public void setBombWidth(double bombWidth) {
+        this.bombWidth = bombWidth;
+    }
+
+    public double getBombHeight() {
+        return bombHeight;
+    }
+
+    public void setBombHeight(double bombHeight) {
+        this.bombHeight = bombHeight;
     }
 }
