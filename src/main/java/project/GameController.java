@@ -31,7 +31,8 @@ public class GameController implements Runnable {
     private boolean scrollLimit = false;
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-        character.move();
+        if (!character.isGrabbed())
+            character.move();
         if (startScrolling && character.isMoving() && !scrollLimit && !character.isNearBossEnemy()) {
             SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0, GameData.getInstance().getCurrentSection());
         }

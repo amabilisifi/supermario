@@ -276,7 +276,6 @@ public class CollisionManager {
 
     public void collisionWithEndPointChar() {
         section = GameData.getInstance().getCurrentSection();
-        System.out.println(section.getEndPoint().getY() +"  "+section.getSectionNum());
         if (character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd) {
             System.out.println("here");
             collisionWithEnd = true;

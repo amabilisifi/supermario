@@ -14,6 +14,7 @@ import project.gameStuff.SectionDesigner;
 public class KingKoopa extends BossEnemy {
     private boolean triggered;
     public Timeline timelineThrow;
+    public boolean stopThrowing = false;
 
     public KingKoopa(double startX, double startY) {
         this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
@@ -26,9 +27,9 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
-        Timeline t = new Timeline(new KeyFrame(Duration.seconds(10), e -> throwFireBall()));
-        t.setCycleCount(Animation.INDEFINITE);
-        t.playFromStart();
+//        Timeline t = new Timeline(new KeyFrame(Duration.seconds(10), e -> throwFireBall()));
+//        t.setCycleCount(Animation.INDEFINITE);
+//        t.playFromStart();
 
     }
 
@@ -74,47 +75,61 @@ public class KingKoopa extends BossEnemy {
         character.setGrabbed(true);
         if (getDirection() == Direction.Left) {
             character.setX(getX() - character.getFitWidth() / 2.0);
-            character.setY(getY() + getFitHeight() / 2.0);
+            character.setY(getY() + getFitHeight() / 3.0);
+            character.setDirection(Direction.Right);
         }
         if (getDirection() == Direction.Right) {
-            character.setX(getX() + getFitWidth());
-            character.setY(getY() + getFitHeight() / 2.0);
+            character.setX(getX() + getFitWidth() - character.getFitWidth() / 2.0);
+            character.setY(getY() + getFitHeight() / 3.0);
+            character.setDirection(Direction.Left);
         }
-        setTimelineGrab(new Timeline(new KeyFrame(Duration.seconds(5), e -> releaseCharacter())));
+        setTimelineGrab(new Timeline(new KeyFrame(Duration.seconds(5), e -> {
+            if (!stopThrowing) releaseCharacter();
+        })));
         getTimelineGrab().playFromStart();
     }
 
     @Override
     public void releaseCharacter() {
-        throwCharacterAway();
+        throwCharacterAway(getDirection());
     }
 
-    public void throwCharacterAway() {
+    public void throwCharacterAway(Direction direction) {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        Direction direction = getDirection();
         if (direction == Direction.Left) {
-            System.out.println("le");
-            character.setVx(50);
+            character.setVx(100);
             character.setX(getX() + getFitWidth() / 2.0);
-            checkThrowingTimeLine();
+            character.setX(getX() + getFitWidth() - character.getFitWidth() / 2.0);
+            setDirection(Direction.Right);
+            stopThrowing = false;
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
-                System.out.println(character.getVx() + " le");
-                character.setVx(character.getVx() + 1 * dt);
+                System.out.println("ooooooooooooooooooooooooooo");
+                checkThrowingTimeLine();
+                character.setVx(character.getVx() - 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
+                if (character.getVx() <= 0) {
+                    stopThrowing = true;
+                }
             }));
             timelineThrow.setCycleCount(Animation.INDEFINITE);
             timelineThrow.playFromStart();
         }
         if (direction == Direction.Right) {
-            System.out.println("ri");
-            character.setVx(-50);
-            checkThrowingTimeLine();
+            character.setVx(-100);
+            character.setX(getX() + getFitWidth() / 2.0);
+            character.setX(getX() - character.getFitWidth() / 2.0);
+            setDirection(Direction.Left);
+            stopThrowing = false;
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
-                System.out.println(character.getVx() + " ri");
-                character.setVx(character.getVx() - 1 * dt);
+                System.out.println("ooooooooooooooooooooooooooo");
+                checkThrowingTimeLine();
+                character.setVx(character.getVx() + 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
+                if (character.getVx() >= 0) {
+                    stopThrowing = true;
+                }
             }));
             timelineThrow.setCycleCount(Animation.INDEFINITE);
             timelineThrow.playFromStart();
@@ -123,9 +138,9 @@ public class KingKoopa extends BossEnemy {
 
     public void checkThrowingTimeLine() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if(Math.sqrt(character.getX() - getX()) >= 2.5 * GameObjectsInfo.getInstance().getBlockWidth()){
-//        if (character.getVy() == 0) {
+        if (stopThrowing) {
             timelineThrow.stop();
+            character.setGrabbed(false);
         }
     }
 

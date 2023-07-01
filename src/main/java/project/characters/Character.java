@@ -66,6 +66,7 @@ public abstract class Character extends MovingEntity {
     @Override
     public void move() {
         double dt = 20 / 1000.0;
+            System.out.println(getVx());
         // moving
         if (this.isAbleToMove() && !isGrabbed)
             this.setX(this.getX() + this.getVx() * dt);
@@ -73,6 +74,7 @@ public abstract class Character extends MovingEntity {
         CollisionManager.getInstance().collisionCharacter();
         if (!isGrabbed)
             fall();
+        // electric shield move
         if (electricShield != null) {
             electricShield.setOpacity(0.5);
             electricShield.setCenterX(this.getX() + this.getFitWidth() / 2.0);

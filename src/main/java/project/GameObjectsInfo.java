@@ -67,6 +67,8 @@ public class GameObjectsInfo {
     private double pussyCatHeight;
 
     private double kingKoopaWidth;
+    private double nukeButtonWidth;
+    private double nukeButtonHeight;
 
     private GameObjectsInfo() {
         try {
@@ -98,6 +100,8 @@ public class GameObjectsInfo {
             setPussyCatWidth(manager.getInt("catWidth"));
             setPussyCatHeight(manager.getInt("catHeight"));
             setKingKoopaWidth(manager.getInt("kingKoopaWidth"));
+            setNukeButtonWidth(manager.getInt("nukeButtonWidth"));
+            setNukeButtonHeight(manager.getInt("nukeButtonHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -534,5 +538,21 @@ public class GameObjectsInfo {
 
     public void setKingKoopaWidth(double kingKoopaWidth) {
         this.kingKoopaWidth = kingKoopaWidth;
+    }
+
+    public double getNukeButtonWidth() {
+        return nukeButtonWidth;
+    }
+
+    public void setNukeButtonWidth(double nukeButtonWidth) {
+        this.nukeButtonWidth = nukeButtonWidth;
+    }
+
+    public double getNukeButtonHeight() {
+        return nukeButtonHeight;
+    }
+
+    public void setNukeButtonHeight(double nukeButtonHeight) {
+        this.nukeButtonHeight = nukeButtonHeight;
     }
 }

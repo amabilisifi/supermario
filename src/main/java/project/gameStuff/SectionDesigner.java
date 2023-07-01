@@ -7,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import project.GameController;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;

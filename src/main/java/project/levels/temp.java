@@ -5,6 +5,7 @@ import project.gameObjects.*;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.bossFight.FireBall;
 import project.gameObjects.bossFight.KingKoopa;
+import project.gameObjects.bossFight.NukeButton;
 import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
 import project.gameStuff.Level;
@@ -53,6 +54,9 @@ public class temp extends Level {
             BossEnemy kingKoopa = new KingKoopa(450,130);
             section1.addEnemy(kingKoopa);
             SectionDesigner.getInstance().addToRoot(new FireBall(kingKoopa));
+
+            NukeButton button = new NukeButton(kingKoopa);
+            SectionDesigner.getInstance().addToRoot(button);
 
             section1.setGravity(1.3);
         }
