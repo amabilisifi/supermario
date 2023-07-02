@@ -1,6 +1,5 @@
 package project.managers;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
@@ -8,7 +7,6 @@ import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
-import project.GameController;
 import project.MovingEntity;
 import project.User;
 import project.UsersData;
@@ -34,15 +32,9 @@ public class CollisionManager {
     private List<Coin> coinList = section.getCoinList();
     private List<Item> itemList = section.getItemList();
     private final Group root = GameData.getInstance().getRoot();
-    private final GameController gameController = GameData.getInstance().getGameController();
     private final boolean upPressed = character.isUpPressed();
     private List<Enemy> enemyList = section.getEnemyList();
     private boolean collisionWithEnd = false;
-    private double characterOnGroundTime;
-    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-        characterOnGroundTime += 0.1;
-        checkOnGroundTimer();
-    }));
 
     public void UpdateCollisionManagerList(Section section) {
         blockList = section.getBlockList();
@@ -480,9 +472,7 @@ public class CollisionManager {
                 // character dizziness
                 character.setDizzy(true);
                 System.out.println("dizzy");
-                Timeline dizziness = new Timeline(new KeyFrame(Duration.seconds(5), e -> {
-                    character.setDizzy(false);
-                }));
+                Timeline dizziness = new Timeline(new KeyFrame(Duration.seconds(5), e -> character.setDizzy(false)));
                 dizziness.playFromStart();
             }
             if (!bossEnemy.isJumping()) {
@@ -492,24 +482,5 @@ public class CollisionManager {
                 }
             }
         }
-    }
-
-    public BlockType getUnderBlockType(MovingEntity entity) {
-        return getBlockOf(entity.getX() + entity.getFitWidth() / 2.0, entity.getY() + entity.getFitHeight()).getBlockType();
-    }
-
-    public void characterOnGroundTimer() {
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.playFromStart();
-    }
-    public void checkOnGroundTimer(){
-        if(!character.isOnBlock() || getUnderBlockType(character)!=BlockType.Ground){
-            timeline.stop();
-            characterOnGroundTime = 0;
-        }
-    }
-
-    public double getCharacterOnGroundTime() {
-        return characterOnGroundTime;
     }
 }

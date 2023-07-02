@@ -30,10 +30,6 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
-//        Timeline t = new Timeline(new KeyFrame(Duration.seconds(10), e -> throwFireBall()));
-//        t.setCycleCount(Animation.INDEFINITE);
-//        t.playFromStart();
-
     }
 
     public void checkTrigger() {
@@ -69,13 +65,13 @@ public class KingKoopa extends BossEnemy {
 
     @Override
     public void jumpAttack() {
-        if(!isDamaged())
-        jump(true);
+        if (!isDamaged())
+            jump(true);
     }
 
     @Override
     public void grabAttack() {
-        if(!isDamaged()) {
+        if (!isDamaged()) {
             Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
             character.setGrabbed(true);
             if (getDirection() == Direction.Left) {

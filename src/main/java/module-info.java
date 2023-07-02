@@ -26,4 +26,6 @@ module project {
     opens project.gameStuff to javafx.fxml, javafx.graphics;
     exports project.collisionAriyan;
     opens project.collisionAriyan to javafx.fxml, javafx.graphics;
+    exports project.gameObjects.bossFight;
+    exports project.gameObjects.enemies;
 }

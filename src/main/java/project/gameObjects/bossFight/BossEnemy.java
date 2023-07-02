@@ -26,16 +26,14 @@ public abstract class BossEnemy extends Enemy {
     private boolean isDamaged;
 
     public BossEnemy() {
-        Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> {
-            checkDirection();
-        }));
+        Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> checkDirection()));
         timelineCheckDirection.setCycleCount(Animation.INDEFINITE);
         timelineCheckDirection.playFromStart();
     }
 
     public void checkDirection() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (character.getX() <= this.getX() && isJumping) {
+        if (character.getX() <= this.getX() && !isJumping) {
             setDirection(Direction.Left);
             setScaleX(1);
         }
@@ -107,7 +105,7 @@ public abstract class BossEnemy extends Enemy {
         isDamaged = true;
         Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2),e->isDamaged = false));
         damagedTimLine.playFromStart();
-        setHP(getHP() - 2);
+        setHP(getHP() - n);
     }
 
     public int getHP() {
