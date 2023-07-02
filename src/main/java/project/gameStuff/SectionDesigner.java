@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.UsersData;
@@ -17,13 +18,14 @@ import project.managers.CollisionManager;
 import project.managers.SoundPlayer;
 
 
-public class SectionDesigner{
+public class SectionDesigner {
     private static SectionDesigner instance;
     private Group root;
     private Section section;
     private boolean isBossScene;
     private SoundPlayer soundPlayer;
     private SoundPlayer bossSoundPlayer;
+    private Stage stage;
 
     public SectionDesigner(Group root, Section section) {
         this.root = root;
@@ -115,6 +117,9 @@ public class SectionDesigner{
     public void changeSceneToBossScene() {
         System.out.println("HI BOss");
         soundPlayer.stop();
+//        Stage stage = GameData.getInstance().getStage();
+//        stage.setHeight(600);
+//        stage.setWidth(900);
 
         bossSoundPlayer = new SoundPlayer("src/main/resources/media/EldenRingMainTheme.mp3");
         SoundPlayer.setMainSoundPlayer(bossSoundPlayer);
@@ -134,6 +139,7 @@ public class SectionDesigner{
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             hpBar.setProgress(GameData.getInstance().getBossEnemy().getHP() / 20.0);
+            System.out.println(GameData.getInstance().getBossEnemy().getHP());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
@@ -151,12 +157,12 @@ public class SectionDesigner{
 
     public void addBlockJail() {
         addBlockColumn(0, 11);
-        addBlockColumn(800 - GameObjectsInfo.getInstance().getBlockWidth() - 8, 11);
+        addBlockColumn(GameData.getInstance().getWidth() - GameObjectsInfo.getInstance().getBlockWidth() - 8, 11);
     }
 
     public void addBlockColumn(double x, double num) {
         for (int i = 0; i < num; i++) {
-            Block block = new Block(BlockType.Ground, x, 400 - i * GameObjectsInfo.getInstance().getBlockHeight());
+            Block block = new Block(BlockType.Ground, x, GameData.getInstance().getHeight() - i * GameObjectsInfo.getInstance().getBlockHeight());
             section.getBlockList().add(block);
             root.getChildren().add(block);
         }
@@ -171,5 +177,21 @@ public class SectionDesigner{
         if (bossScene) {
             changeSceneToBossScene();
         }
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public Group getRoot() {
+        return root;
+    }
+
+    public void setRoot(Group root) {
+        this.root = root;
     }
 }

@@ -14,6 +14,7 @@ import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.Laser;
 import project.gameObjects.Sword;
+import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
 import project.gameStuff.SectionDesigner;
@@ -175,6 +176,15 @@ public class GameController implements Runnable {
                     // if (character.isOnBlock()) {
                     Laser laser = new Laser();
                     root.getChildren().add(laser);
+                    if(SectionDesigner.getInstance().isBossScene()){
+                        BossEnemy bossEnemy = GameData.getInstance().getBossEnemy();
+                        double distance = Math.abs(character.getX() - bossEnemy.getX());
+                        double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
+                        double pD = distance/(blockSize);
+                        int random = (int)(8 * Math.random());
+                        if(pD>=random)
+                        bossEnemy.jump(false);
+                    }
                 }
                 case P -> {
                     GameData.getInstance().getBossEnemy().grabAttack();

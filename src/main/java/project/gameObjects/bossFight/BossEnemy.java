@@ -12,7 +12,7 @@ import project.gameObjects.enemies.Enemy;
 import project.managers.CollisionManager;
 
 public abstract class BossEnemy extends Enemy {
-    private int HP;
+    private int HP = 20;
     private boolean isAbleToMove = true;
 
     private boolean isThrowingFireBall = false;
@@ -23,6 +23,7 @@ public abstract class BossEnemy extends Enemy {
     private boolean isJumpAttackCooledDown = true;
 
     private Timeline  timelineGrab ;
+    private boolean isDamaged;
 
     public BossEnemy() {
         Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> {
@@ -52,42 +53,44 @@ public abstract class BossEnemy extends Enemy {
     public abstract void releaseCharacter();
 
     public void jump(boolean attack) {
-        setJumping(true);
-        if (!attack)
-            setVy(-40);
-        if (attack && isJumpAttackCooledDown) {
-            setVy(-60);
-            setJumpAttackCooledDown(false);
-        }
-        setY(getY() - 4);
-        double dt = 25 / 1000.0;
-        timelineJump = new Timeline(new KeyFrame(Duration.millis(10), e -> {
-            checkTimeLineOfJump();
-            setVy(getVy() + 10 * dt);
-            this.setY(getY() + getVy() * dt);
-            setAbleToMove(false);
-            if (isOnBlock()) {
-                setAbleToMove(true);
+        if(!isDamaged) {
+            setJumping(true);
+            if (!attack)
+                setVy(-40);
+            if (attack && isJumpAttackCooledDown) {
+                setVy(-60);
+                setJumpAttackCooledDown(false);
             }
-            if (getVy() >= 0 && attack) {
-                setScaleY(-1);
-            }
-            if (attack) {
-                setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossJumping 2.PNG"))));
-            }
-            if (isOnBlock()) {
-                if (attack) {
-                    Timeline wait = new Timeline(new KeyFrame(Duration.millis(150), t -> {
-                        setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
-                        setScaleY(1);
-                        checkDirection();
-                    }));
-                    wait.playFromStart();
+            setY(getY() - 4);
+            double dt = 30 / 1000.0;
+            timelineJump = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+                checkTimeLineOfJump();
+                setVy(getVy() + 10 * dt);
+                this.setY(getY() + getVy() * dt);
+                setAbleToMove(false);
+                if (isOnBlock()) {
+                    setAbleToMove(true);
                 }
-            }
-        }));
-        timelineJump.setCycleCount(Animation.INDEFINITE);
-        timelineJump.playFromStart();
+                if (getVy() >= 0 && attack) {
+                    setScaleY(-1);
+                }
+                if (attack) {
+                    setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossJumping 2.PNG"))));
+                }
+                if (isOnBlock()) {
+                    if (attack) {
+                        Timeline wait = new Timeline(new KeyFrame(Duration.millis(150), t -> {
+                            setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
+                            setScaleY(1);
+                            checkDirection();
+                        }));
+                        wait.playFromStart();
+                    }
+                }
+            }));
+            timelineJump.setCycleCount(Animation.INDEFINITE);
+            timelineJump.playFromStart();
+        }
     }
 
     public void checkTimeLineOfJump() {
@@ -98,6 +101,13 @@ public abstract class BossEnemy extends Enemy {
             Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> setJumpAttackCooledDown(true)));
             chill.playFromStart();
         }
+    }
+
+    public void damaged(int n){
+        isDamaged = true;
+        Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2),e->isDamaged = false));
+        damagedTimLine.playFromStart();
+        setHP(getHP() - 2);
     }
 
     public int getHP() {
@@ -162,5 +172,13 @@ public abstract class BossEnemy extends Enemy {
 
     public void setTimelineGrab(Timeline timelineGrab) {
         this.timelineGrab = timelineGrab;
+    }
+
+    public boolean isDamaged() {
+        return isDamaged;
+    }
+
+    public void setDamaged(boolean damaged) {
+        isDamaged = damaged;
     }
 }

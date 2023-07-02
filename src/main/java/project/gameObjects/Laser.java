@@ -17,6 +17,7 @@ public class Laser extends MovingEntity {
     private double startX;
     private Timeline timelineMove;
     private Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
+    private boolean objectIsDeleted = false;
 
 
     public Laser() {
@@ -75,5 +76,13 @@ public class Laser extends MovingEntity {
 
     public void setStartX(double startX) {
         this.startX = startX;
+    }
+
+    public boolean isObjectIsDeleted() {
+        return objectIsDeleted;
+    }
+
+    public void setObjectIsDeleted(boolean objectIsDeleted) {
+        this.objectIsDeleted = objectIsDeleted;
     }
 }

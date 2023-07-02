@@ -22,7 +22,7 @@ public class KingKoopa extends BossEnemy {
     public KingKoopa(double startX, double startY) {
         this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
         this.setFitWidth(GameObjectsInfo.getInstance().getKingKoopaWidth());
-        this.setFitHeight(4.5 * GameObjectsInfo.getInstance().getBlockHeight());
+        this.setFitHeight(4.8 * GameObjectsInfo.getInstance().getBlockHeight());
         this.setX(startX);
         this.setY(startY);
         setHP(20);
@@ -47,7 +47,7 @@ public class KingKoopa extends BossEnemy {
 
     @Override
     public void throwFireBall() {
-        if (isFireBallCooledDown() && !isJumping()) {
+        if (isFireBallCooledDown() && !isJumping() && !isDamaged()) {
             setThrowingFireBall(true);
             setFireBallCooledDown(false);
             SectionDesigner.getInstance().addToRoot(new FireBall(this));
@@ -69,39 +69,42 @@ public class KingKoopa extends BossEnemy {
 
     @Override
     public void jumpAttack() {
+        if(!isDamaged())
         jump(true);
     }
 
     @Override
     public void grabAttack() {
-        Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        character.setGrabbed(true);
-        if (getDirection() == Direction.Left) {
-            character.setX(getX() - character.getFitWidth() / 2.0);
-            character.setY(getY() + getFitHeight() / 3.0);
-            character.setDirection(Direction.Right);
-        }
-        if (getDirection() == Direction.Right) {
-            character.setX(getX() + getFitWidth() - character.getFitWidth() / 2.0);
-            character.setY(getY() + getFitHeight() / 3.0);
-            character.setDirection(Direction.Left);
-        }
-        setTimelineGrab(new Timeline(new KeyFrame(Duration.seconds(5), e -> {
-            if (!stopThrowing) {
-                releaseCharacter();
-                character.damaged();
+        if(!isDamaged()) {
+            Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
+            character.setGrabbed(true);
+            if (getDirection() == Direction.Left) {
+                character.setX(getX() - character.getFitWidth() / 2.0);
+                character.setY(getY() + getFitHeight() / 3.0);
+                character.setDirection(Direction.Right);
             }
-        })));
-        getTimelineGrab().playFromStart();
-        checkLeftRight = new Timeline(new KeyFrame(Duration.millis(200), e -> {
-            if (GameData.getInstance().getGameController().check10LeftRight() && !leftAndRight) {
-                releaseCharacter();
-                leftAndRight = true;
-                GameData.getInstance().getGameController().resetLeftRight();
+            if (getDirection() == Direction.Right) {
+                character.setX(getX() + getFitWidth() - character.getFitWidth() / 2.0);
+                character.setY(getY() + getFitHeight() / 3.0);
+                character.setDirection(Direction.Left);
             }
-        }));
-        checkLeftRight.setCycleCount(Animation.INDEFINITE);
-        checkLeftRight.playFromStart();
+            setTimelineGrab(new Timeline(new KeyFrame(Duration.seconds(5), e -> {
+                if (!stopThrowing) {
+                    releaseCharacter();
+                    character.damaged();
+                }
+            })));
+            getTimelineGrab().playFromStart();
+            checkLeftRight = new Timeline(new KeyFrame(Duration.millis(200), e -> {
+                if (GameData.getInstance().getGameController().check10LeftRight() && !leftAndRight) {
+                    releaseCharacter();
+                    leftAndRight = true;
+                    GameData.getInstance().getGameController().resetLeftRight();
+                }
+            }));
+            checkLeftRight.setCycleCount(Animation.INDEFINITE);
+            checkLeftRight.playFromStart();
+        }
     }
 
     @Override

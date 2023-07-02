@@ -141,7 +141,7 @@ public class CollisionManager {
                 double dy = character.getY() - pipe.getCurrentY();
 
                 if (dy < character.getFitWidth() / 2.0 && character.getX() + character.getFitWidth() > pipe.getX()) {
-                    if(pipe.isSecretPipe()){
+                    if (pipe.isSecretPipe()) {
                         LevelManager.getInstance().goToSecretSection(pipe);
                     }
                     character.setOnBlock(true);
@@ -298,6 +298,15 @@ public class CollisionManager {
                 character.setAntiKnock(false);
                 root.getChildren().remove(character.getElectricShield());
                 character.setElectricShield(null);
+                root.getChildren().remove(weapon);
+                break;
+            }
+            if(weapon.intersects(enemy.getBoundsInParent()) && enemy instanceof BossEnemy && !((BossEnemy) enemy).isDamaged() && !weapon.isObjectDeleted()){
+                ((BossEnemy) enemy).damaged(2);
+                ((BossEnemy) enemy).setDamaged(true);
+                System.out.println("mast sh");
+                root.getChildren().remove(weapon);
+                weapon.setObjectDeleted(true);
                 break;
             }
         }
@@ -459,8 +468,8 @@ public class CollisionManager {
     }
 
     public void collisionBossEnemyWithCharacter(BossEnemy bossEnemy) {
-        if (character.intersects(bossEnemy.getBoundsInParent()) && character.getY()+character.getFitHeight()/2.0 <= bossEnemy.getY() + bossEnemy.getFitHeight()) {
-            if (bossEnemy.isJumping()) {
+        if (character.intersects(bossEnemy.getBoundsInParent())) {
+            if (bossEnemy.isJumping() && character.getY() + character.getFitHeight() / 2.0 <= bossEnemy.getY() + bossEnemy.getFitHeight()) {
                 // character dizziness
                 character.setDizzy(true);
                 System.out.println("dizzy");
@@ -468,6 +477,12 @@ public class CollisionManager {
                     character.setDizzy(false);
                 }));
                 dizziness.playFromStart();
+            }
+            if (!bossEnemy.isJumping()) {
+                if (character.getY() + character.getFitHeight() <= bossEnemy.getY() + 1 / 5.0 * bossEnemy.getFitHeight() && !bossEnemy.isDamaged()){
+                    // strike
+                    bossEnemy.damaged(1);
+                }
             }
         }
     }

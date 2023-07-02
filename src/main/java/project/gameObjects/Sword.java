@@ -8,6 +8,7 @@ import project.MovingEntity;
 public class Sword extends MovingEntity {
     private double startX;
     private boolean isTurning = false;
+    private boolean isObjectDeleted = false;
 
 
     public Sword(double characterX, double characterY, double characterHeight,Direction direction) {
@@ -41,5 +42,13 @@ public class Sword extends MovingEntity {
 
     public void setTurning(boolean turning) {
         this.isTurning = turning;
+    }
+
+    public boolean isObjectDeleted() {
+        return isObjectDeleted;
+    }
+
+    public void setObjectDeleted(boolean objectDeleted) {
+        isObjectDeleted = objectDeleted;
     }
 }

@@ -2,6 +2,7 @@ package project.gameStuff;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import project.GameObjectsInfo;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Enemy;
@@ -57,7 +58,7 @@ public class Section {
         for (int i = 1; i <= row; i++) {
             for (int j = 0; j < column; j++) {
                 double x = startX + j * GameObjectsInfo.getInstance().getBlockWidth();
-                double y = 400 - i * GameObjectsInfo.getInstance().getBlockHeight();
+                double y = GameData.getInstance().getHeight() - i * GameObjectsInfo.getInstance().getBlockHeight();
                 Block b = new Block(type, x, y);
                 blockList.add(b);
             }
@@ -83,9 +84,8 @@ public class Section {
     public void setBackground(String string){
         Image image = new Image(String.valueOf(getClass().getResource(string)));
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(400);
-        imageView.setFitWidth(800);
-//        GameData.getInstance().getRoot().getChildren().add(imageView);
+        imageView.setFitHeight(GameData.getInstance().getHeight());
+        imageView.setFitWidth(GameData.getInstance().getWidth());
         SectionDesigner.getInstance().addToRoot(imageView);
     }
 

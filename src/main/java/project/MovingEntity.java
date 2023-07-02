@@ -10,6 +10,7 @@ public abstract class MovingEntity extends ImageView {
     private double aX;
     private boolean onBlock;
     private Direction direction;
+    private boolean isObjectDeleted = false;
 
     public void fall() {
         double dt = 200 / 1000.0;
@@ -63,5 +64,13 @@ public abstract class MovingEntity extends ImageView {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public boolean isObjectDeleted() {
+        return isObjectDeleted;
+    }
+
+    public void setObjectDeleted(boolean objectDeleted) {
+        isObjectDeleted = objectDeleted;
     }
 }

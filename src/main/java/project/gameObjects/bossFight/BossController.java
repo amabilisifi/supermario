@@ -22,7 +22,7 @@ public class BossController {
         timelineMove.playFromStart();
     }
     public void walk() {
-        if (bossEnemy.isAbleToMove()) {
+        if (bossEnemy.isAbleToMove() && !bossEnemy.isDamaged()) {
             double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
             double dt = 10 / 1000.0;
             distance = Math.abs(character.getX() - bossEnemy.getX());

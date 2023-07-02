@@ -2,6 +2,7 @@ package project.gameStuff;
 
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import project.GameController;
 import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
@@ -16,6 +17,8 @@ public class GameData {
     private BossEnemy bossEnemy;
 
     private int score;
+
+    private Stage stage;
     public GameData() {
     }
     public static GameData getInstance() {
@@ -90,5 +93,21 @@ public class GameData {
 
     public void setBossEnemy(BossEnemy bossEnemy) {
         this.bossEnemy = bossEnemy;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public double getHeight() {
+        return stage.getHeight();
+    }
+
+    public double getWidth() {
+        return stage.getWidth();
     }
 }

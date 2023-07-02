@@ -10,7 +10,6 @@ import java.util.HashMap;
 
 public class SceneManager {
     private static SceneManager instance;
-    private Parent currentRoot ;
     private HashMap<PageType, String> fxmlPaths = new HashMap<>();
 
     public SceneManager() {
@@ -30,7 +29,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Parent root = loader.load();
             Scene scene = new Scene(root, 800, 400);
-            currentRoot = root;
+
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

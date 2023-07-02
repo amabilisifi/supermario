@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import project.gameStuff.GameData;
+import project.gameStuff.SectionDesigner;
 import project.managers.JsonManager;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
@@ -23,7 +25,8 @@ public class StartPage extends Application {
                 throw new RuntimeException(ex);
             }
         });
-
+//        SectionDesigner.getInstance().setStage(stage);
+        GameData.getInstance().setStage(stage);
         SceneManager.getInstance().goToScene(stage, PageType.StartPage);
 
         try {
