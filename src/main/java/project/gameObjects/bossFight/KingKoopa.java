@@ -30,6 +30,9 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
+        if(triggered){
+            timeline.stop();
+        }
     }
 
     public void checkTrigger() {
