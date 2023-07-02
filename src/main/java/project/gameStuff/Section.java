@@ -58,7 +58,7 @@ public class Section {
         for (int i = 1; i <= row; i++) {
             for (int j = 0; j < column; j++) {
                 double x = startX + j * GameObjectsInfo.getInstance().getBlockWidth();
-                double y = GameData.getInstance().getHeight() - i * GameObjectsInfo.getInstance().getBlockHeight();
+                double y = 400 - i * GameObjectsInfo.getInstance().getBlockHeight();
                 Block b = new Block(type, x, y);
                 blockList.add(b);
             }
