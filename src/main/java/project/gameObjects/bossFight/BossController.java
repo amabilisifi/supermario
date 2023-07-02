@@ -7,7 +7,9 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;
+import project.gameObjects.BlockType;
 import project.gameObjects.enemies.Direction;
+import project.managers.CollisionManager;
 
 public class BossController {
     // if 6 < distance < 10 fireBall and coolDown for 1.5 sec
@@ -21,6 +23,7 @@ public class BossController {
         timelineMove.setCycleCount(Animation.INDEFINITE);
         timelineMove.playFromStart();
     }
+
     public void walk() {
         if (bossEnemy.isAbleToMove() && !bossEnemy.isDamaged()) {
             double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
@@ -36,10 +39,23 @@ public class BossController {
                 }
             }
             Direction direction = bossEnemy.getDirection();
-            if ( (direction == Direction.Left && distance <= 3 * blockSize + character.getFitWidth()) ||
-                    (direction == Direction.Right  && distance <= 3.5 * blockSize + bossEnemy.getFitWidth())) {
+            if ((direction == Direction.Left && distance <= 3 * blockSize + character.getFitWidth()) ||
+                    (direction == Direction.Right && distance <= 3.5 * blockSize + bossEnemy.getFitWidth())) {
                 bossEnemy.setVx(0);
             }
         }
+        if (CollisionManager.getInstance().getUnderBlockType(character) == BlockType.Ground) {
+//            System.out.println("aya");
+            System.out.println(CollisionManager.getInstance().getCharacterOnGroundTime());
+        }
+    }
+
+    public boolean isInThisDistance(int num) {
+        double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
+        Direction direction = bossEnemy.getDirection();
+        if ((direction == Direction.Left && distance <= num * blockSize + character.getFitWidth()) ||(direction == Direction.Right && distance <= (num + 0.5) * blockSize + bossEnemy.getFitWidth())) {
+            return true;
+        }
+        return false;
     }
 }

@@ -1,5 +1,6 @@
 package project.managers;
 
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.geometry.Bounds;
@@ -37,6 +38,11 @@ public class CollisionManager {
     private final boolean upPressed = character.isUpPressed();
     private List<Enemy> enemyList = section.getEnemyList();
     private boolean collisionWithEnd = false;
+    private double characterOnGroundTime;
+    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
+        characterOnGroundTime += 0.1;
+        checkOnGroundTimer();
+    }));
 
     public void UpdateCollisionManagerList(Section section) {
         blockList = section.getBlockList();
@@ -53,6 +59,7 @@ public class CollisionManager {
         collisionWithPipeChar();
         collisionWithEnemyChar();
         collisionWithEndPointChar();
+//        characterOnGroundTimer();
     }
 
     public void collisionWithBlocksChar() {
@@ -301,7 +308,7 @@ public class CollisionManager {
                 root.getChildren().remove(weapon);
                 break;
             }
-            if(weapon.intersects(enemy.getBoundsInParent()) && enemy instanceof BossEnemy && !((BossEnemy) enemy).isDamaged() && !weapon.isObjectDeleted()){
+            if (weapon.intersects(enemy.getBoundsInParent()) && enemy instanceof BossEnemy && !((BossEnemy) enemy).isDamaged() && !weapon.isObjectDeleted()) {
                 ((BossEnemy) enemy).damaged(2);
                 ((BossEnemy) enemy).setDamaged(true);
                 System.out.println("mast sh");
@@ -479,11 +486,30 @@ public class CollisionManager {
                 dizziness.playFromStart();
             }
             if (!bossEnemy.isJumping()) {
-                if (character.getY() + character.getFitHeight() <= bossEnemy.getY() + 1 / 5.0 * bossEnemy.getFitHeight() && !bossEnemy.isDamaged()){
+                if (character.getY() + character.getFitHeight() <= bossEnemy.getY() + 1 / 5.0 * bossEnemy.getFitHeight() && !bossEnemy.isDamaged()) {
                     // strike
                     bossEnemy.damaged(1);
                 }
             }
         }
+    }
+
+    public BlockType getUnderBlockType(MovingEntity entity) {
+        return getBlockOf(entity.getX() + entity.getFitWidth() / 2.0, entity.getY() + entity.getFitHeight()).getBlockType();
+    }
+
+    public void characterOnGroundTimer() {
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.playFromStart();
+    }
+    public void checkOnGroundTimer(){
+        if(!character.isOnBlock() || getUnderBlockType(character)!=BlockType.Ground){
+            timeline.stop();
+            characterOnGroundTime = 0;
+        }
+    }
+
+    public double getCharacterOnGroundTime() {
+        return characterOnGroundTime;
     }
 }
