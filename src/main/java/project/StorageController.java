@@ -24,7 +24,7 @@ public class StorageController {
         savedFileNum++;
             file.createNewFile();
         JsonManager manager = new JsonManager(path);
-        Section gameData = new Section(section.getSectionNum(), section.getTime(),section.getBlockList(),section.getPipeList(),section.getCoinList(),section.getItemList(),section.getEnemyList(),section.getCheckPointList(),section.getEndPoint());
+        Section gameData = new Section( section.getTime(),section.getBlockList(),section.getPipeList(),section.getCoinList(),section.getItemList(),section.getEnemyList(),section.getCheckPointList(),section.getEndPoint());
         manager.writeObject(gameData);} catch (IOException e) {
         throw new RuntimeException(e);
     }

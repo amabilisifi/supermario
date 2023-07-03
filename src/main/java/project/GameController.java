@@ -13,6 +13,7 @@ import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.EndPoint;
 import project.gameObjects.Laser;
+import project.gameObjects.Pipe;
 import project.gameObjects.Sword;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Direction;
@@ -199,7 +200,8 @@ public class GameController implements Runnable {
                     }
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
-                        manager.writeObject(character);
+                        System.out.println(GameData.getInstance().getCurrentSection());
+                        manager.writeObject(GameData.getInstance().getCurrentSection().getPipeList().get(0));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -207,8 +209,8 @@ public class GameController implements Runnable {
                 case M ->{
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
-                        Character character1 = manager.readObject(Character.class);
-                        System.out.println(character1.getX());
+                        Pipe character1 = manager.readObject(Pipe.class);
+                        System.out.println(character1.getType());
                         root.getChildren().add(character1);
                     } catch (IOException e) {
                         throw new RuntimeException(e);

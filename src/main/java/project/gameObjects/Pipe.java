@@ -20,6 +20,7 @@ import java.io.IOException;
 @JsonSerialize(using = PipeSerializer.class)
 @JsonDeserialize(using = PipeDeserializer.class)
 public class Pipe extends ImageView {
+    private PipeType type;
     private double startX;
     private double startY;
     private double currentX = startX;
@@ -28,11 +29,12 @@ public class Pipe extends ImageView {
     private boolean isSecretPipe;
     private Section section;
 
-    public Pipe(PipeType type, double X, double Y,boolean isSecretPipe) {
+    public Pipe(PipeType type, double X, double Y, boolean isSecretPipe) {
         this.isSecretPipe = isSecretPipe;
+        this.type = type;
 
         this.setFitWidth(GameObjectsInfo.getInstance().getPipeWidth());
-        switch (type){
+        switch (type) {
             case Short -> {
                 Image img = new Image(String.valueOf(getClass().getResource("/images/pipe/short.png")));
                 this.setFitHeight(GameObjectsInfo.getInstance().getShortPipeHeight());
@@ -111,6 +113,14 @@ public class Pipe extends ImageView {
     public void setSection(Section section) {
         this.section = section;
     }
+
+    public PipeType getType() {
+        return type;
+    }
+
+    public void setType(PipeType type) {
+        this.type = type;
+    }
 }
 
 class PipeSerializer extends JsonSerializer<Pipe> {
@@ -118,10 +128,12 @@ class PipeSerializer extends JsonSerializer<Pipe> {
     @Override
     public void serialize(Pipe pipe, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField("xStart", pipe.getStartX());
-        jsonGenerator.writeNumberField("yStart", pipe.getStartY());
-        jsonGenerator.writeNumberField("xCurrent", pipe.getCurrentX());
-        jsonGenerator.writeNumberField("yCurrent", pipe.getCurrentY());
+
+        jsonGenerator.writeNumberField("startX", pipe.getX());
+        jsonGenerator.writeNumberField("startY", pipe.getY());
+        jsonGenerator.writeBooleanField("isSecretPipe", pipe.isSecretPipe());
+        jsonGenerator.writeStringField("type", pipe.getType().toString());
+
         jsonGenerator.writeEndObject();
     }
 }
@@ -139,27 +151,28 @@ class PipeDeserializer extends StdDeserializer<Pipe> {
     public Pipe deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
-        Pipe p = new Pipe();
-        JsonNode startX = node.get("xStart");
-        JsonNode startY = node.get("yStart");
-        JsonNode currentX = node.get("xCurrent");
-        JsonNode currentY = node.get("yCurrent");
-        JsonNode type = node.get("typeOfPipeNum");
-        if (startX != null && startY != null) {
-            p.setStartX(startX.asDouble());
-            p.setStartY(startY.asDouble());
+        JsonNode startX = node.get("startX");
+        JsonNode startY = node.get("startY");
+        JsonNode isSecretPipe = node.get("isSecretPipe");
+        JsonNode pipeType = node.get("type");
+        JsonNode secret = node.get("isSecretPipe");
+        PipeType type = null;
+        if (pipeType != null) {
+            if (pipeType.asText().equals("Long")) {
+                type = PipeType.Long;
+            }
+            if (pipeType.asText().equals("Medium")) {
+                type = PipeType.Medium;
+            }
+            if (pipeType.asText().equals("Short")) {
+                type = PipeType.Short;
+            }
         }
-        if (currentX != null && currentY != null) {
-            p.setCurrentX(currentX.asDouble());
-            p.setCurrentY(currentY.asDouble());
+
+        if (startX != null && startY != null && isSecretPipe != null && type != null && secret != null) {
+            return new Pipe(type, startX.asDouble(), startY.asDouble(), secret.asBoolean());
         }
 
-        Image shortPipe = new Image(String.valueOf(getClass().getResource("shortPipeNormal.png")));
-        Image mediumPipe = new Image(String.valueOf(getClass().getResource("meduimPipeNormal.png")));
-        Image longPipe = new Image(String.valueOf(getClass().getResource("longPipeNormal.png")));
-
-//        LoadData.getInstance().getPipeList().add(p);
-
-        return p;
+        return null;
     }
 }

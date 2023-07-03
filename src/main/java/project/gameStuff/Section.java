@@ -1,14 +1,29 @@
 package project.gameStuff;
 
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
+import project.characters.*;
+import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Enemy;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@JsonSerialize(using = SectionSerializer.class)
+@JsonDeserialize(using = SectionDeserializer.class)
 public class Section {
     private List<Block> blockList = new ArrayList<>();
     private List<Pipe> pipeList = new ArrayList<>();
@@ -26,16 +41,17 @@ public class Section {
     public Section() {
     }
 
-    public Section(int sectionNum, int time, List<Block> blockList, List<Pipe> pipeList, List<Coin> coinList, List<Item> itemList, List<Enemy> enemyList, List<CheckPoint> checkPointList, EndPoint endPoint) {
-        this.sectionNum = sectionNum;
+    public Section( int time, List<Block> blockList, List<Pipe> pipeList, List<Coin> coinList, List<Item> itemList, List<Enemy> enemyList, List<CheckPoint> checkPointList, EndPoint endPoint) {
         this.time = time;
+
         this.blockList = blockList;
         this.pipeList = pipeList;
         this.itemList = itemList;
         this.enemyList = enemyList;
-        this.endPoint = endPoint;
         this.coinList = coinList;
         this.checkPointList = checkPointList;
+
+        this.endPoint = endPoint;
     }
 
     public List<Block> getBlockList() {
@@ -149,3 +165,47 @@ public class Section {
         this.checkPointList = checkPointList;
     }
 }
+class SectionSerializer extends JsonSerializer<Section> {
+
+    @Override
+    public void serialize(Section section, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeStartObject();
+
+        jsonGenerator.writeArrayFieldStart("blockList");
+        jsonGenerator.writeArrayFieldStart("pipeList");
+        jsonGenerator.writeArrayFieldStart("itemList");
+        jsonGenerator.writeArrayFieldStart("coinList");
+        jsonGenerator.writeArrayFieldStart("enemyList");
+        jsonGenerator.writeArrayFieldStart("checkpointList");
+        jsonGenerator.writeNumberField("time",section.getTime());
+
+        jsonGenerator.writeEndObject();
+    }
+}
+
+class SectionDeserializer extends StdDeserializer<Section> {
+    public SectionDeserializer(Class<?> vc) {
+        super(vc);
+    }
+
+    public SectionDeserializer() {
+        super(Character.class);
+    }
+
+    @Override
+    public Section deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+
+        JsonNode blockList = node.get("blockList");
+        JsonNode pipeList = node.get("pipeList");
+        JsonNode itemList = node.get("itemList");
+        JsonNode coinList = node.get("coinList");
+        JsonNode enemyList = node.get("enemyList");
+        JsonNode checkPointList = node.get("checkPointList");
+        JsonNode time = node.get("time");
+
+        return new Section();
+    }
+
+}
+
