@@ -27,13 +27,14 @@ public class GameController implements Runnable {
     private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-    private boolean upPressed = character.isUpPressed();
+    private final boolean upPressed = character.isUpPressed();
     private boolean startScrolling = false;
     private boolean scrollLimit = false;
 
     private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
-        if (!character.isGrabbed())
+        if (!character.isGrabbed()) {
             character.move();
+        }
         if (startScrolling && character.isMoving() && !scrollLimit && !character.isNearBossEnemy()) {
             SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0, GameData.getInstance().getCurrentSection());
         }

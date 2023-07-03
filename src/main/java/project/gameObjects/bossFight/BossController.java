@@ -7,12 +7,9 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;
-import project.gameObjects.BlockType;
 import project.gameObjects.enemies.Direction;
-import project.managers.CollisionManager;
 
 public class BossController {
-    // if 6 < distance < 10 fireBall and coolDown for 1.5 sec
     private final BossEnemy bossEnemy;
     private final Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
     private double distance;
@@ -25,6 +22,7 @@ public class BossController {
     }
 
     public void controlBossMechanism(){
+        System.out.println(character.getVx()+" "+character.getaX());
         walk();
         if(isInThisDistance(6,10) ){
             bossEnemy.throwFireBall();

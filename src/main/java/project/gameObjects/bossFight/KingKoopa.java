@@ -30,7 +30,7 @@ public class KingKoopa extends BossEnemy {
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
 
-        if(triggered){
+        if (triggered) {
             timeline.stop();
         }
     }
@@ -74,9 +74,10 @@ public class KingKoopa extends BossEnemy {
 
     @Override
     public void grabAttack() {
-        if (!isDamaged()) {
+        if (!isDamaged() && isGrabAttackCooledDown()) {
             Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
             character.setGrabbed(true);
+            setGrabAttackCooledDown(false);
             if (getDirection() == Direction.Left) {
                 character.setX(getX() - character.getFitWidth() / 2.0);
                 character.setY(getY() + getFitHeight() / 3.0);
@@ -114,41 +115,52 @@ public class KingKoopa extends BossEnemy {
 
     public void throwCharacterAway(Direction direction) {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (direction == Direction.Left) {
-            character.setVx(100);
+        if (direction == Direction.Left && !stopThrowing) {
+            character.setVx(20);
             character.setX(getX() + getFitWidth() / 2.0);
             character.setX(getX() + getFitWidth() - character.getFitWidth() / 2.0);
             setDirection(Direction.Right);
             stopThrowing = false;
+            character.setGrabbed(false);
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
                 checkThrowingTimeLine();
                 character.setVx(character.getVx() - 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
-                if (character.getVx() <= 0) {
+                character.setImage(character.getProfilePhoto());
+                if (character.getVx() <= 1) {
                     stopThrowing = true;
                 }
             }));
             timelineThrow.setCycleCount(Animation.INDEFINITE);
             timelineThrow.playFromStart();
         }
-        if (direction == Direction.Right) {
-            character.setVx(-100);
+        if (direction == Direction.Right && !stopThrowing) {
+            character.setVx(-20);
             character.setX(getX() + getFitWidth() / 2.0);
             character.setX(getX() - character.getFitWidth() / 2.0);
             setDirection(Direction.Left);
             stopThrowing = false;
+            character.setGrabbed(false);
             double dt = 20 / 1000.0;
             timelineThrow = new Timeline(new KeyFrame(Duration.millis(20), event -> {
                 checkThrowingTimeLine();
                 character.setVx(character.getVx() + 50 * dt);
                 character.setX(character.getX() + dt * character.getVx());
-                if (character.getVx() >= 0) {
+                character.setImage(character.getProfilePhoto());
+                if (character.getVx() >= -1) {
                     stopThrowing = true;
                 }
             }));
             timelineThrow.setCycleCount(Animation.INDEFINITE);
             timelineThrow.playFromStart();
+        }
+        if (!character.isGrabbed()) {
+            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+                setGrabAttackCooledDown(true);
+                stopThrowing = false;
+            }));
+            chill.playFromStart();
         }
     }
 
@@ -166,4 +178,5 @@ public class KingKoopa extends BossEnemy {
             setVx(0);
         }
     }
+
 }

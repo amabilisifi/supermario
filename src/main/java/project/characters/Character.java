@@ -67,12 +67,12 @@ public abstract class Character extends MovingEntity {
     @Override
     public void move() {
         double dt = 20 / 1000.0;
+        setVx(getVx()+getaX()*dt);
         // moving
-        if (this.isAbleToMove() && !isGrabbed)
+        if (this.isAbleToMove() )
             this.setX(this.getX() + this.getVx() * dt);
         // collision blocks
         CollisionManager.getInstance().collisionCharacter();
-        if (!isGrabbed)
             fall();
         // electric shield move
         if (electricShield != null) {

@@ -23,6 +23,7 @@ public abstract class BossEnemy extends Enemy {
     private boolean isJumpAttackCooledDown = true;
 
     private Timeline  timelineGrab ;
+    private boolean isGrabAttackCooledDown = true;
     private boolean isDamaged;
 
     public BossEnemy() {
@@ -178,5 +179,13 @@ public abstract class BossEnemy extends Enemy {
 
     public void setDamaged(boolean damaged) {
         isDamaged = damaged;
+    }
+
+    public boolean isGrabAttackCooledDown() {
+        return isGrabAttackCooledDown;
+    }
+
+    public void setGrabAttackCooledDown(boolean grabAttackCooledDown) {
+        isGrabAttackCooledDown = grabAttackCooledDown;
     }
 }

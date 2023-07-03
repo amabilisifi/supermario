@@ -139,7 +139,6 @@ public class SectionDesigner {
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), e -> {
             hpBar.setProgress(GameData.getInstance().getBossEnemy().getHP() / 20.0);
-            System.out.println(GameData.getInstance().getBossEnemy().getHP());
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
