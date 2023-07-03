@@ -75,4 +75,12 @@ public abstract class Enemy extends MovingEntity {
     public void setTimelineMove(Timeline timelineMove) {
         this.timelineMove = timelineMove;
     }
+
+    public double getStartX() {
+        return startX;
+    }
+
+    public void setStartX(double startX) {
+        this.startX = startX;
+    }
 }

@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.Block;
+import project.gameObjects.EndPoint;
 import project.gameObjects.Laser;
 import project.gameObjects.Sword;
 import project.gameObjects.bossFight.BossEnemy;
@@ -42,7 +43,7 @@ public class GameController implements Runnable {
     }));
     private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
     private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
-    private ImageView endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
+    private EndPoint endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
 
     private Sword sword = null;
 
@@ -313,7 +314,7 @@ public class GameController implements Runnable {
 
     // getter setter
 
-    public void setEndPoint(ImageView endPoint) {
+    public void setEndPoint(EndPoint endPoint) {
         this.endPoint = endPoint;
     }
 

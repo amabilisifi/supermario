@@ -4,10 +4,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import project.GameController;
 import project.gameObjects.Pipe;
-import project.gameStuff.GameData;
-import project.gameStuff.Level;
-import project.gameStuff.Section;
-import project.gameStuff.SectionDesigner;
+import project.gameStuff.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,6 +66,8 @@ public class LevelManager implements Initializable {
             System.out.println("next level");
             goToNextLevel();
         }
+        assert next != null;
+        HUI.getInstance().setWorld(currentLevel.getLevelNum(),next.getSectionNum()+1);
         GameData.getInstance().setCurrentSection(next);
         SectionDesigner.getInstance().paint(next);
     }

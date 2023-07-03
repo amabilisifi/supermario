@@ -15,6 +15,7 @@ import project.GameObjectsInfo;
 import project.MovingEntity;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
+import project.gameStuff.HUI;
 import project.managers.CollisionManager;
 
 import java.io.IOException;
@@ -60,6 +61,7 @@ public abstract class Character extends MovingEntity {
     private boolean isDizzy = false;
 
     private boolean onGround4seconds = false;
+    private boolean isDamaged = false;
 
     public Character() {
         setMode(CharacterModes.Mega);
@@ -96,6 +98,9 @@ public abstract class Character extends MovingEntity {
     public void damaged() {
         if (mode == CharacterModes.Mini) {
             hearts--;
+            isDamaged = true;
+            CollisionManager.getInstance().reset();
+            HUI.getInstance().setHearts(hearts);
             if (hearts <= 0) {
                 System.out.println("lose");
                 // gameOver mechanism
@@ -379,6 +384,14 @@ public abstract class Character extends MovingEntity {
 
     public void setOnGround4seconds(boolean onGround4seconds) {
         this.onGround4seconds = onGround4seconds;
+    }
+
+    public boolean isDamaged() {
+        return isDamaged;
+    }
+
+    public void setDamaged(boolean damaged) {
+        isDamaged = damaged;
     }
 }
 

@@ -238,7 +238,8 @@ public class CollisionManager {
                     character.setElectricShield(null);
                     break;
                 } else {
-                    if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0) {
+                    if (character.getY() + character.getFitHeight() <= enemy.getY() + enemy.getFitHeight() / 2.0 && !character.isDamaged()) {
+                        character.setDamaged(true);
                         if (enemy instanceof Mushroom) {
                             e = enemy;
                             root.getChildren().remove(e);
@@ -287,7 +288,7 @@ public class CollisionManager {
             collisionWithEnd = true;
             if (section.getEndPoint() instanceof Flag)
                 LevelManager.getInstance().goToNextSection();
-            if(section.getEndPoint() instanceof PussyCat)
+            if (section.getEndPoint() instanceof PussyCat)
                 LevelManager.getInstance().turningBackFromSecretLevel();
         }
     }
@@ -515,5 +516,28 @@ public class CollisionManager {
         }
         if (!character.isOnBlock())
             onGroundTime = 0;
+    }
+
+    public void reset() {
+        character.setX(character.getStartX());
+        character.setY(character.getStartY());
+        character.setDamaged(false);
+        for (int i = 0; i < blockList.size(); i++) {
+            Block block = blockList.get(i);
+            block.setX(block.getStartX());
+        }
+        for (int i = 0; i < pipeList.size(); i++) {
+            Pipe pipe = pipeList.get(i);
+            pipe.setX(pipe.getStartX());
+        }
+        for (int i = 0; i < enemyList.size(); i++) {
+            Enemy enemy = enemyList.get(i);
+            enemy.setX(enemy.getStartX());
+        }
+        for (int i = 0; i < itemList.size(); i++) {
+            Item item = itemList.get(i);
+            item.setX(item.getStartX());
+        }
+            section.getEndPoint().setX(section.getEndPoint().getStartX());
     }
 }

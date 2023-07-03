@@ -22,7 +22,7 @@ public class Section {
     private int time;
     private int length;
 
-    private ImageView endPoint;
+    private EndPoint endPoint;
     public Section() {
     }
 
@@ -94,11 +94,11 @@ public class Section {
         SectionDesigner.getInstance().addToRoot(imageView);
     }
 
-    public ImageView getEndPoint() {
+    public EndPoint getEndPoint() {
         return endPoint;
     }
 
-    public void setEndPoint(ImageView endPoint) {
+    public void setEndPoint(EndPoint endPoint) {
         this.endPoint = endPoint;
     }
 

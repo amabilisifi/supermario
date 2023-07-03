@@ -15,6 +15,7 @@ import project.MovingEntity;
 
 public class Item extends MovingEntity {
     private Block block;
+    private double startX;
     private ItemType itemType;
     private boolean obtained;
 
@@ -41,6 +42,7 @@ public class Item extends MovingEntity {
                 Image img = new Image(String.valueOf(getClass().getResource("/images/items/coin.PNG")));
                 this.setImage(img);
                 this.setX(block.getX() + GameObjectsInfo.getInstance().getBlockWidth() / 2.0 - GameObjectsInfo.getInstance().getCoinWidth() / 2.0);
+                startX = this.getX();
                 this.setY(block.getY() - GameObjectsInfo.getInstance().getCoinHeight());
                 this.setFitWidth(GameObjectsInfo.getInstance().getCoinWidth());
                 this.setFitHeight(GameObjectsInfo.getInstance().getCoinHeight() - 5);
@@ -190,5 +192,13 @@ public class Item extends MovingEntity {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public double getStartX() {
+        return startX;
+    }
+
+    public void setStartX(double startX) {
+        this.startX = startX;
     }
 }
