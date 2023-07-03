@@ -58,6 +58,7 @@ public class SectionDesigner {
             root.getChildren().add(coin);
         }
         root.getChildren().add(section.getEndPoint());
+        HUI.getInstance().paintHUI(root);
     }
 
     public void clearSection(Section section) {
@@ -118,9 +119,6 @@ public class SectionDesigner {
         System.out.println("HI BOss");
         soundPlayer.stop();
         GameData.getInstance().setBossScene(true);
-//        Stage stage = GameData.getInstance().getStage();
-//        stage.setHeight(600);
-//        stage.setWidth(900);
 
         bossSoundPlayer = new SoundPlayer("src/main/resources/media/EldenRingMainTheme.mp3");
         SoundPlayer.setMainSoundPlayer(bossSoundPlayer);
