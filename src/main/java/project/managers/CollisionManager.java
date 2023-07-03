@@ -35,6 +35,8 @@ public class CollisionManager {
     private final boolean upPressed = character.isUpPressed();
     private List<Enemy> enemyList = section.getEnemyList();
     private boolean collisionWithEnd = false;
+    private double onGroundTime = 0;
+    private boolean countedOnCheckUnderBlock = false;
 
     public void UpdateCollisionManagerList(Section section) {
         blockList = section.getBlockList();
@@ -52,6 +54,8 @@ public class CollisionManager {
         collisionWithEnemyChar();
         collisionWithEndPointChar();
 //        characterOnGroundTimer();
+        if (GameData.getInstance().isBossScene())
+            checkUnderBlock();
     }
 
     public void collisionWithBlocksChar() {
@@ -250,6 +254,7 @@ public class CollisionManager {
                                 else enemy.setDirection(Direction.Left);
                                 enemy.setaX(-1);
                                 enemy.setVx(13);
+                                ((Turtle) enemy).setCrazyRN(true);
                             }
                             if (((Turtle) enemy).isBeenCrazy()) {
                                 e = enemy;
@@ -399,7 +404,9 @@ public class CollisionManager {
                 }
             }
         }
-        if (entity instanceof Enemy)
+        if (entity instanceof Enemy && !(entity instanceof Turtle))
+            hasBlockUnder(entity);
+        if (entity instanceof Turtle && !((Turtle) entity).isCrazyRN())
             hasBlockUnder(entity);
         if (!flag) {
             entity.setOnBlock(false);
@@ -462,6 +469,7 @@ public class CollisionManager {
         }
     }
 
+
     public void collisionBossEnemy(BossEnemy bossEnemy) {
         collisionBossEnemyWithCharacter(bossEnemy);
     }
@@ -482,5 +490,28 @@ public class CollisionManager {
                 }
             }
         }
+    }
+
+    public void checkUnderBlock() {
+        for (Block b : blockList) {
+            if (character.intersects(b.getBoundsInParent()) && character.getY() + character.getFitHeight() <= b.getY()) {
+                if (b.getBlockType() == BlockType.Ground && !countedOnCheckUnderBlock) {
+                    countedOnCheckUnderBlock = true;
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+                        if (countedOnCheckUnderBlock) {
+                            onGroundTime += 0.01;
+                            countedOnCheckUnderBlock = false;
+                        }
+                    }));
+                    timeline.playFromStart();
+                    System.out.println(onGroundTime);
+                    if (onGroundTime >= 4) {
+                        character.setOnGround4seconds(true);
+                    }
+                }
+            }
+        }
+        if (!character.isOnBlock())
+            onGroundTime = 0;
     }
 }

@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
+import project.gameObjects.Block;
 import project.gameObjects.Laser;
 import project.gameObjects.Sword;
 import project.gameObjects.bossFight.BossEnemy;
@@ -298,11 +299,9 @@ public class GameController implements Runnable {
                 CollisionManager.getInstance().collisionWeapon(sword);
         }
     }
-
     public boolean check10LeftRight(){
         if(leftPressed>5 && rightPressed>5){
             System.out.println("freeee");
-//            character.setGrabbed(false);
             return true;
         }
         return false;
@@ -314,28 +313,8 @@ public class GameController implements Runnable {
 
     // getter setter
 
-    public boolean isUpPressed() {
-        return upPressed;
-    }
-
-    public ImageView getEndPoint() {
-        return endPoint;
-    }
-
     public void setEndPoint(ImageView endPoint) {
         this.endPoint = endPoint;
-    }
-
-    public boolean isStartScrolling() {
-        return startScrolling;
-    }
-
-    public void setStartScrolling(boolean startScrolling) {
-        this.startScrolling = startScrolling;
-    }
-
-    public boolean isScrollLimit() {
-        return scrollLimit;
     }
 
     public void setScrollLimit(boolean scrollLimit) {

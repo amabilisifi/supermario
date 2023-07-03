@@ -13,6 +13,7 @@ import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
 import project.levels.level1;
+import project.levels.level2;
 import project.levels.temp;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
@@ -50,13 +51,15 @@ public class homeController implements Initializable {
 
     public void dingDong(MouseEvent event) throws IOException {
         Group root = new Group();
+        SectionDesigner.getInstance().setRoot(root);
         Scene scene = new Scene(root, 800, 400);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         GameData.getInstance().setRoot(root);
         GameData.getInstance().setScene(scene);
 
-        Level temp = new temp();
+
+        Level temp = new level1();
         Section t = temp.getSections().get(0);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);

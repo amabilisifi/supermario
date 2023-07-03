@@ -117,6 +117,7 @@ public class SectionDesigner {
     public void changeSceneToBossScene() {
         System.out.println("HI BOss");
         soundPlayer.stop();
+        GameData.getInstance().setBossScene(true);
 //        Stage stage = GameData.getInstance().getStage();
 //        stage.setHeight(600);
 //        stage.setWidth(900);

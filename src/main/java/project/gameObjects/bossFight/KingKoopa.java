@@ -37,7 +37,7 @@ public class KingKoopa extends BossEnemy {
 
     public void checkTrigger() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (Math.abs(character.getX() - this.getX()) <= 550 && !SectionDesigner.getInstance().isBossScene()) {
+        if (Math.abs(character.getX() - this.getX()) <= 700 && !SectionDesigner.getInstance().isBossScene()) {
             triggered = true;
             BossController controller = new BossController(this);
             SectionDesigner.getInstance().setBossScene(true);
@@ -47,7 +47,7 @@ public class KingKoopa extends BossEnemy {
     @Override
     public void throwFireBall() {
         if (isFireBallCooledDown() && !isJumping() && !isDamaged()) {
-            setThrowingFireBall(true);
+            setThrowingFireBall();
             setFireBallCooledDown(false);
             SectionDesigner.getInstance().addToRoot(new FireBall(this));
 
@@ -59,16 +59,16 @@ public class KingKoopa extends BossEnemy {
 
             Timeline change = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                 setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
-                setThrowingFireBall(false);
+                setThrowingFireBall();
             }));
             change.playFromStart();
         }
-        setThrowingFireBall(false);
+        setThrowingFireBall();
     }
 
     @Override
     public void jumpAttack() {
-        if (!isDamaged())
+        if (!isDamaged() && isJumpAttackCooledDown())
             jump(true);
     }
 
@@ -156,7 +156,7 @@ public class KingKoopa extends BossEnemy {
             timelineThrow.playFromStart();
         }
         if (!character.isGrabbed()) {
-            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(4.5), e -> {
                 setGrabAttackCooledDown(true);
                 stopThrowing = false;
             }));

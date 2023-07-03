@@ -67,7 +67,6 @@ public class Section {
     public void addBlock(Block block){
         blockList.add(block);
     }
-
     public void addCoin(Coin coin){
         coinList.add(coin);
     }

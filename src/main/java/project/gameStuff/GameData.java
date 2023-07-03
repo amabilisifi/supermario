@@ -19,6 +19,7 @@ public class GameData {
     private int score;
 
     private Stage stage;
+    private boolean isBossScene;
     public GameData() {
     }
     public static GameData getInstance() {
@@ -109,5 +110,13 @@ public class GameData {
 
     public double getWidth() {
         return stage.getWidth();
+    }
+
+    public boolean isBossScene() {
+        return isBossScene;
+    }
+
+    public void setBossScene(boolean bossScene) {
+        isBossScene = bossScene;
     }
 }

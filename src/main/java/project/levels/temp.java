@@ -51,7 +51,7 @@ public class temp extends Level {
             section1.setEndPoint(new Flag(4000,200));
             section1.setBackground("/images/bg/bg1.jpeg");
 
-            BossEnemy kingKoopa = new KingKoopa(450,130);
+            BossEnemy kingKoopa = new KingKoopa(620,130);
             section1.addEnemy(kingKoopa);
             SectionDesigner.getInstance().addToRoot(new FireBall(kingKoopa));
 

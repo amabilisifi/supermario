@@ -11,6 +11,7 @@ public class Turtle extends Enemy {
     private boolean isAbleToBeThrown = true;
     private boolean beenCrazy = false;
     private boolean isAbleToMove = true;
+    private boolean isCrazyRN = false;
 
     public Turtle(double startX, double startY) {
         super(startX, startY);
@@ -35,12 +36,15 @@ public class Turtle extends Enemy {
         if (getVx() <= 0 && !this.isBeenCrazy()) {
             this.setBeenCrazy(true);
             isAbleToMove = false;
-            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> setAbleToMove(true)));
+            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> {
+                setAbleToMove(true);
+                isCrazyRN = false;
+            }));
             chill.setCycleCount(1);
             chill.playFromStart();
 
         }
-        if(isBeenCrazy()) {
+        if (isBeenCrazy()) {
             if (getVx() < -4) setVx(-4);
             if (getVx() > 4) setVx(4);
         }
@@ -65,5 +69,13 @@ public class Turtle extends Enemy {
 
     public void setAbleToMove(boolean ableToMove) {
         isAbleToMove = ableToMove;
+    }
+
+    public boolean isCrazyRN() {
+        return isCrazyRN;
+    }
+
+    public void setCrazyRN(boolean crazyRN) {
+        isCrazyRN = crazyRN;
     }
 }

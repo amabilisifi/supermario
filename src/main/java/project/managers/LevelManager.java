@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class LevelManager implements Initializable {
     private static LevelManager instance;
-    private List<Level> allLevels = new ArrayList<>();
+    private  List<Level> allLevels = new ArrayList<>();
     private Level currentLevel;
     private int currentLevelNum;
     private Section currentSection = GameData.getInstance().getCurrentSection();
@@ -33,10 +33,6 @@ public class LevelManager implements Initializable {
         allLevels.add(level);
     }
 
-    public List<Level> getAllLevels() {
-        return allLevels;
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.currentLevel = GameData.getInstance().getCurrentLevel();
@@ -48,13 +44,15 @@ public class LevelManager implements Initializable {
         if (currentLevelNum + 1 < allLevels.size())
             next = allLevels.get(++currentLevelNum);
         if (currentLevelNum + 1 >= allLevels.size()) {
-            next = allLevels.get(0);
-            currentLevelNum = 0;
+//            next = allLevels.get(0);
+//            currentLevelNum = 0;
+            System.exit(0);
         }
         GameData.getInstance().setCurrentLevel(next);
     }
 
     public void goToNextSection() {
+        System.out.println(allLevels.size());
         System.out.println("next section");
         currentSection = GameData.getInstance().getCurrentSection();
         currentLevel = GameData.getInstance().getCurrentLevel();
@@ -67,9 +65,10 @@ public class LevelManager implements Initializable {
             next = currentLevel.getSections().get(currentSection.getSectionNum());
             System.out.println(next.getSectionNum()+"   .");
         } else {
+            // next level
             System.out.println("next level");
+            goToNextLevel();
         }
-        // next level
         GameData.getInstance().setCurrentSection(next);
         SectionDesigner.getInstance().paint(next);
     }

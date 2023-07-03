@@ -15,7 +15,6 @@ public abstract class BossEnemy extends Enemy {
     private int HP = 20;
     private boolean isAbleToMove = true;
 
-    private boolean isThrowingFireBall = false;
     private boolean isFireBallCooledDown = true;
 
     private Timeline timelineJump;
@@ -82,6 +81,9 @@ public abstract class BossEnemy extends Enemy {
                             setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
                             setScaleY(1);
                             checkDirection();
+
+                            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(4), event ->setJumpAttackCooledDown(true)));
+                            chill.playFromStart();
                         }));
                         wait.playFromStart();
                     }
@@ -133,12 +135,7 @@ public abstract class BossEnemy extends Enemy {
         isAbleToMove = ableToMove;
     }
 
-    public boolean isThrowingFireBall() {
-        return isThrowingFireBall;
-    }
-
-    public void setThrowingFireBall(boolean throwingFireBall) {
-        isThrowingFireBall = throwingFireBall;
+    public void setThrowingFireBall() {
     }
 
     public boolean isJumping() {
@@ -155,14 +152,6 @@ public abstract class BossEnemy extends Enemy {
 
     public void setJumpAttackCooledDown(boolean jumpAttackCooledDown) {
         isJumpAttackCooledDown = jumpAttackCooledDown;
-    }
-
-    public Timeline getTimelineJump() {
-        return timelineJump;
-    }
-
-    public void setTimelineJump(Timeline timelineJump) {
-        this.timelineJump = timelineJump;
     }
 
     public Timeline getTimelineGrab() {

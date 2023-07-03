@@ -13,24 +13,42 @@ public class BossController {
     private final BossEnemy bossEnemy;
     private final Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
     private double distance;
-    private Timeline timelineControl  = new Timeline(new KeyFrame(Duration.millis(10),e->controlBossMechanism()));
+    private boolean jumpAttack = false;
+    private final Timeline timeLineRoam = new Timeline(new KeyFrame(Duration.millis(20),e->roam()));
+    private double startXRoam;
 
     public BossController(BossEnemy bossEnemy) {
         this.bossEnemy = bossEnemy;
+        Timeline timelineControl = new Timeline(new KeyFrame(Duration.millis(10), e -> controlBossMechanism()));
         timelineControl.setCycleCount(Animation.INDEFINITE);
         timelineControl.playFromStart();
     }
 
-    public void controlBossMechanism(){
-        System.out.println(character.getVx()+" "+character.getaX());
+    public void controlBossMechanism() {
         walk();
-        if(isInThisDistance(6,10) ){
+        boolean flag = false;
+        if (isInThisDistance(6, 10)) {
             bossEnemy.throwFireBall();
+            flag = true;
+            timeLineRoam.stop();
         }
-        if(isInThisDistance(1)){
+        if (isInThisDistance(1) && !character.isDizzy()) {
             bossEnemy.grabAttack();
+            flag = true;
+            timeLineRoam.stop();
+        }
+        if (character.isOnGround4seconds() && !jumpAttack) {
+            bossEnemy.jumpAttack();
+            jumpAttack = true;
+            flag = true;
+            timeLineRoam.stop();
+        }
+        if (!flag) {
+            roam();
+            startXRoam = bossEnemy.getX();
         }
     }
+
     public void walk() {
         if (bossEnemy.isAbleToMove() && !bossEnemy.isDamaged()) {
             double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
@@ -53,13 +71,41 @@ public class BossController {
         }
     }
 
+    public void roam() {
+        double random = (int) (3 * Math.random());
+        double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
+        Direction direction = Direction.Right;
+        if (random == 0) {
+            direction = Direction.Left;
+        }
+        double dt = 20/1000.0;
+        bossEnemy.setVx(4);
+        switch (direction) {
+            case Right -> {
+                bossEnemy.setX(bossEnemy.getX() + Math.abs(bossEnemy.getVx() * dt));
+                if(Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize){
+                    direction = Direction.Left;
+                }
+            }
+            case Left -> {
+                bossEnemy.setX(bossEnemy.getX() - Math.abs(bossEnemy.getVx() * dt));
+                if(Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize){
+                    direction = Direction.Right;
+                }
+            }
+        }
+//         bossEnemy.setDirection(direction);
+    }
+
     public boolean isInThisDistance(int num) {
         double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
         bossEnemy.checkDirection();
         Direction direction = bossEnemy.getDirection();
         return (direction == Direction.Left && distance <= num * blockSize + character.getFitWidth()) || (direction == Direction.Right && distance <= (num + 0.5) * blockSize + bossEnemy.getFitWidth());
     }
-    public boolean isInThisDistance(int num1,int num2) {
+
+
+    public boolean isInThisDistance(int num1, int num2) {
         double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
         bossEnemy.checkDirection();
         Direction direction = bossEnemy.getDirection();

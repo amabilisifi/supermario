@@ -59,6 +59,8 @@ public abstract class Character extends MovingEntity {
     private boolean isGrabbed = false;
     private boolean isDizzy = false;
 
+    private boolean onGround4seconds = false;
+
     public Character() {
         setMode(CharacterModes.Mega);
         setDirection(Direction.Right);
@@ -369,6 +371,14 @@ public abstract class Character extends MovingEntity {
 
     public void setDizzy(boolean dizzy) {
         isDizzy = dizzy;
+    }
+
+    public boolean isOnGround4seconds() {
+        return onGround4seconds;
+    }
+
+    public void setOnGround4seconds(boolean onGround4seconds) {
+        this.onGround4seconds = onGround4seconds;
     }
 }
 
