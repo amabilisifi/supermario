@@ -51,9 +51,12 @@ public class temp extends Level {
             section1.setEndPoint(new Flag(4000,200));
             section1.setBackground("/images/bg/bg1.jpeg");
 
-            BossEnemy kingKoopa = new KingKoopa(620,130);
-            section1.addEnemy(kingKoopa);
-            SectionDesigner.getInstance().addToRoot(new FireBall(kingKoopa));
+            Pipe p = new Pipe(PipeType.Long,300,192,true);
+            section1.addPipe(p);
+            Section secretSection = new Section();
+            secretSection.addBlockTable(BlockType.Simple,20,3,0);
+            secretSection.setEndPoint(new PussyCat(200, 220));
+            p.setSection(secretSection);
 
             section1.setGravity(1.3);
         }

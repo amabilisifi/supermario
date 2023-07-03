@@ -77,11 +77,13 @@ public class LevelManager implements Initializable {
         Section targetSection = pipe.getSection();
         currentSection = GameData.getInstance().getCurrentSection();
         SectionDesigner.getInstance().clearSection(currentSection);
+        pipe.setSecretPipe(false);
 
         GameData.getInstance().setCurrentSection(targetSection);
         SectionDesigner.getInstance().paint(targetSection);
     }
     public void turningBackFromSecretLevel(){
+        currentLevel = GameData.getInstance().getCurrentLevel();
         Section targetSection = currentLevel.getSections().get(currentSectionNum);
 
         currentSection = GameData.getInstance().getCurrentSection();

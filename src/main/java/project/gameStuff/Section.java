@@ -67,6 +67,12 @@ public class Section {
     public void addBlock(Block block){
         blockList.add(block);
     }
+    public void addBlockColumn(double x, double num) {
+        for (int i = 0; i < num; i++) {
+            Block block = new Block(BlockType.Ground, x, GameData.getInstance().getHeight() - i * GameObjectsInfo.getInstance().getBlockHeight());
+            blockList.add(block);
+        }
+    }
     public void addCoin(Coin coin){
         coinList.add(coin);
     }

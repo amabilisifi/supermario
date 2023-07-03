@@ -59,7 +59,7 @@ public class homeController implements Initializable {
         GameData.getInstance().setScene(scene);
 
 
-        Level temp = new level1();
+        Level temp = new temp();
         Section t = temp.getSections().get(0);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);

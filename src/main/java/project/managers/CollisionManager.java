@@ -284,9 +284,11 @@ public class CollisionManager {
     public void collisionWithEndPointChar() {
         section = GameData.getInstance().getCurrentSection();
         if (character.intersects(section.getEndPoint().getBoundsInParent()) && !collisionWithEnd) {
-            System.out.println("here");
             collisionWithEnd = true;
-            LevelManager.getInstance().goToNextSection();
+            if (section.getEndPoint() instanceof Flag)
+                LevelManager.getInstance().goToNextSection();
+            if(section.getEndPoint() instanceof PussyCat)
+                LevelManager.getInstance().turningBackFromSecretLevel();
         }
     }
 

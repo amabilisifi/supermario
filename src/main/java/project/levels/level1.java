@@ -159,17 +159,9 @@ public class level1 extends Level {
             section3.setEndPoint(new Flag(200, 220));
 
         }
-        Section section4 = new Section();
-        {
-            section4.setBackground("/images/bg/bg1.jpeg");
-            section4.setSectionNum(3);
 
-            section4.addBlockTable(BlockType.Ground,7,3,0);
-            section4.setEndPoint(new Flag(3126, 286));
-        }
         addSection(section1);
         addSection(section2);
         addSection(section3);
-        addSection(section4);
     }
 }
