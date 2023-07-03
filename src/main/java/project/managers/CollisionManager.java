@@ -53,6 +53,7 @@ public class CollisionManager {
         collisionWithPipeChar();
         collisionWithEnemyChar();
         collisionWithEndPointChar();
+        collisionWithCheckPointsChar();
 //        characterOnGroundTimer();
         if (GameData.getInstance().isBossScene())
             checkUnderBlock();
@@ -87,7 +88,7 @@ public class CollisionManager {
                         Item item = new Item(block);
                         GameData.getInstance().getCurrentSection().addItem(item);
                         root.getChildren().add(item);
-                        block.setItemLeft(block.getItemLeft()-1);
+                        block.setItemLeft(block.getItemLeft() - 1);
                     }
                     if ((block.getBlockType() == BlockType.ContainCoin || block.getBlockType() == BlockType.ContainManyCoins) && block.getItemLeft() > 0 && block.isAbleToGiveAnotherItem()) {
                         block.setAbleToGiveAnotherItem(false);
@@ -295,6 +296,15 @@ public class CollisionManager {
                 LevelManager.getInstance().goToNextSection();
             if (section.getEndPoint() instanceof PussyCat)
                 LevelManager.getInstance().turningBackFromSecretLevel();
+        }
+    }
+    public void collisionWithCheckPointsChar(){
+        for(CheckPoint checkPoint: section.getCheckPointList()){
+            if(character.intersects(checkPoint.getBoundsInParent())){
+                System.out.println("adbcjkabdcjb");
+                UsersData.getInstance().getCurrentUser().getStorageController().save(GameData.getInstance().getCurrentSection());
+                System.out.println("lkdcnjlsn ");
+            }
         }
     }
 
@@ -543,6 +553,6 @@ public class CollisionManager {
             Item item = itemList.get(i);
             item.setX(item.getStartX());
         }
-            section.getEndPoint().setX(section.getEndPoint().getStartX());
+        section.getEndPoint().setX(section.getEndPoint().getStartX());
     }
 }

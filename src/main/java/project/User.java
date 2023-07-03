@@ -3,6 +3,7 @@ package project;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import project.characters.Alexandro;
 import project.characters.Character;
+import project.gameObjects.CheckPoint;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +22,11 @@ public class User {
     private Character freeChar = new Alexandro();
     @JsonIgnore
     Character selectedCharacter = freeChar;
+    @JsonIgnore
+    StorageController storageController;
+
+    @JsonIgnore
+    private List<CheckPoint> savedCheckPoints = new ArrayList<>();
 
     public User() {
     }
@@ -28,6 +34,7 @@ public class User {
     public User(String name, String password) throws IOException {
         this.name = name;
         this.password = password;
+
         String folderName = "./src/main/resources/GameData/" + name;
         File folder = new File(folderName);
         folder.mkdir();
@@ -38,6 +45,8 @@ public class User {
         File inventory = new File(folderName + "/Inventory/purchasedCharacters.json");
         inventory.createNewFile();
         UsersData.getInstance().getUsers().add(this);
+        storageController = new StorageController(this);
+
         this.purchasedCharacters.add(freeChar);
     }
 
@@ -135,5 +144,13 @@ public class User {
 
     public void setHighScore(int highScore) {
         this.highScore = highScore;
+    }
+
+    public StorageController getStorageController() {
+        return storageController;
+    }
+
+    public void setStorageController(StorageController storageController) {
+        this.storageController = storageController;
     }
 }

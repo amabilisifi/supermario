@@ -71,13 +71,13 @@ public abstract class Character extends MovingEntity {
     @Override
     public void move() {
         double dt = 20 / 1000.0;
-        setVx(getVx()+getaX()*dt);
+        setVx(getVx() + getaX() * dt);
         // moving
-        if (this.isAbleToMove() )
+        if (this.isAbleToMove())
             this.setX(this.getX() + this.getVx() * dt);
         // collision blocks
         CollisionManager.getInstance().collisionCharacter();
-            fall();
+        fall();
         // electric shield move
         if (electricShield != null) {
             electricShield.setOpacity(0.5);
@@ -151,8 +151,9 @@ public abstract class Character extends MovingEntity {
         }
     }
 
-    public void dizzied(){
+    public void dizzied() {
     }
+
     /**
      * getter setter
      **/
@@ -393,6 +394,7 @@ public abstract class Character extends MovingEntity {
     public void setDamaged(boolean damaged) {
         isDamaged = damaged;
     }
+
 }
 
 class CharacterSerializer extends JsonSerializer<Character> {
@@ -400,15 +402,11 @@ class CharacterSerializer extends JsonSerializer<Character> {
     @Override
     public void serialize(Character character, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-//        jsonGenerator.writeNumberField("xStart", character.getStartX());
-//        jsonGenerator.writeNumberField("yStart", character.getStartY());
-//        jsonGenerator.writeNumberField("xCurrent", character.getCurrentX());
-//        jsonGenerator.writeNumberField("yCurrent", character.getCurrentY());
-//        jsonGenerator.writeNumberField("deltaY", character.getDeltaY());
-//        jsonGenerator.writeNumberField("deltaX", character.getDeltaX());
-//        jsonGenerator.writeNumberField("hearts", character.getHearts());
-//        jsonGenerator.writeBooleanField("ableToMove", character.isAbleToMove());
-        jsonGenerator.writeStringField("character", character.getCharacterType());
+        jsonGenerator.writeStringField("characterType", character.getCharacterType());
+        jsonGenerator.writeNumberField("startX", character.getX());
+        jsonGenerator.writeNumberField("startY", character.getY());
+        jsonGenerator.writeNumberField("hearts", character.getHearts());
+        jsonGenerator.writeStringField("mode", character.getMode().toString());
 
         jsonGenerator.writeEndObject();
     }
@@ -426,47 +424,55 @@ class CharacterDeserializer extends StdDeserializer<Character> {
     @Override
     public Character deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        JsonNode character = node.get("character");
+        JsonNode character = node.get("characterType");
         Character r = null;
-        if (character.asText().equals("Alexandro")) {
-            r = new Alexandro();
-        }
-        if (character.asText().equals("Lorenzo")) {
-            r = new Lorenzo();
+        {
+            if (character.asText().equals("Alexandro")) {
+                r = new Alexandro();
+            }
+            if (character.asText().equals("Lorenzo")) {
+                r = new Lorenzo();
+            }
+            if (character.asText().equals("Antonio")) {
+                r = new Antonio();
+            }
+            if (character.asText().equals("Diego")) {
+                r = new Diego();
+            }
+
+            if (character.asText().equals("Mateo")) {
+                r = new Mateo();
+            }
+            if (character.asText().equals("Pablo")) {
+                r = new Pablo();
+            }
+            if (character.asText().equals("Pedro")) {
+                r = new Pedro();
+            }
         }
 
-//        JsonNode startX = node.get("xStart");
-//        JsonNode startY = node.get("yStart");
-//        JsonNode currentX = node.get("xCurrent");
-//        JsonNode currentY = node.get("yCurrent");
-//
-//        JsonNode deltaY = node.get("deltaY"
-//        );
-//        JsonNode deltaX = node.get("deltaX");
-//        JsonNode hearts = node.get("hearts");
-//        JsonNode ableToMove = node.get("ableToMove");
-//        if (startX != null && startY != null) {
-//            r.setStartX(startX.asDouble());
-//            r.setStartY(startY.asDouble());
-//        }
-//        if (currentX != null && currentY != null) {
-//            r.setCurrentX(currentX.asDouble());
-//            r.setCurrentY(currentY.asDouble());
-//        }
-//        if (deltaX != null) {
-//            r.setDeltaX((int) deltaX.asDouble());
-//        }
-//        if (deltaY != null) {
-//            r.setDeltaY((int) deltaY.asDouble());
-//        }
-//        if (hearts != null) {
-//            r.setHearts(hearts.asInt());
-//        }
-//        if (ableToMove != null) {
-//            r.setAbleToMove(ableToMove.asBoolean());
-//        }
-//        r.setX(0);
-//        r.setY(100);
+        JsonNode startX = node.get("startX");
+        JsonNode startY = node.get("startY");
+        ;
+
+        JsonNode hearts = node.get("hearts");
+        JsonNode mode = node.get("mode");
+
+        if (startX != null && startY != null) {
+            r.setStartX(startX.asDouble());
+            r.setX(startX.asDouble());
+            r.setStartY(startY.asDouble());
+            r.setY(startY.asDouble());
+        }
+        if (hearts != null) {
+            r.setHearts(hearts.asInt());
+        }
+        if (mode != null)
+            switch (mode.asText()){
+                case("Mega") -> r.setMode(CharacterModes.Mega);
+                case("Fiery") -> r.setMode(CharacterModes.Fiery);
+                case ("Mini") -> r.setMode(CharacterModes.Mini);
+            }
 
         return r;
     }

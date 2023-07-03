@@ -2,7 +2,6 @@ package project.gameStuff;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import project.GameObjectsInfo;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Enemy;
@@ -11,19 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Section {
-    private final List<Block> blockList = new ArrayList<>();
-    private final List<Pipe> pipeList = new ArrayList<>();
-    private final List<Item> itemList = new ArrayList<>();
-    private final List<Coin> coinList = new ArrayList<>();
+    private List<Block> blockList = new ArrayList<>();
+    private List<Pipe> pipeList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
+    private List<Coin> coinList = new ArrayList<>();
     private double gravity = 1.3;
-    private final List<Enemy> enemyList = new ArrayList<>();
+    private List<Enemy> enemyList = new ArrayList<>();
     private int sectionNum;
 
     private int time = 400;
-    private int length;
 
     private EndPoint endPoint;
+    private List<CheckPoint> checkPointList = new ArrayList<>();
+
     public Section() {
+    }
+
+    public Section(int sectionNum, int time, List<Block> blockList, List<Pipe> pipeList, List<Coin> coinList, List<Item> itemList, List<Enemy> enemyList, List<CheckPoint> checkPointList, EndPoint endPoint) {
+        this.sectionNum = sectionNum;
+        this.time = time;
+        this.blockList = blockList;
+        this.pipeList = pipeList;
+        this.itemList = itemList;
+        this.enemyList = enemyList;
+        this.endPoint = endPoint;
+        this.coinList = coinList;
+        this.checkPointList = checkPointList;
     }
 
     public List<Block> getBlockList() {
@@ -46,7 +58,7 @@ public class Section {
         return gravity;
     }
 
-    public void setGravity(double gravity){
+    public void setGravity(double gravity) {
         this.gravity = gravity;
     }
 
@@ -64,29 +76,35 @@ public class Section {
             }
         }
     }
-    public void addBlock(Block block){
+
+    public void addBlock(Block block) {
         blockList.add(block);
     }
+
     public void addBlockColumn(double x, double num) {
         for (int i = 0; i < num; i++) {
             Block block = new Block(BlockType.Ground, x, GameData.getInstance().getHeight() - i * GameObjectsInfo.getInstance().getBlockHeight());
             blockList.add(block);
         }
     }
-    public void addCoin(Coin coin){
+
+    public void addCoin(Coin coin) {
         coinList.add(coin);
     }
-    public void addPipe(Pipe pipe){
+
+    public void addPipe(Pipe pipe) {
         pipeList.add(pipe);
     }
-    public void addItem(Item item){
+
+    public void addItem(Item item) {
         itemList.add(item);
     }
-    public void addEnemy(Enemy enemy){
+
+    public void addEnemy(Enemy enemy) {
         enemyList.add(enemy);
     }
 
-    public void setBackground(String string){
+    public void setBackground(String string) {
         Image image = new Image(String.valueOf(getClass().getResource(string)));
         ImageView imageView = new ImageView(image);
         imageView.setFitHeight(GameData.getInstance().getHeight());
@@ -94,6 +112,11 @@ public class Section {
         SectionDesigner.getInstance().addToRoot(imageView);
     }
 
+    public void addCheckPoint(CheckPoint checkPoint) {
+        checkPointList.add(checkPoint);
+    }
+
+    // getter setter
     public EndPoint getEndPoint() {
         return endPoint;
     }
@@ -118,12 +141,11 @@ public class Section {
         this.time = time;
     }
 
-    public int getLength() {
-        return length;
+    public List<CheckPoint> getCheckPointList() {
+        return checkPointList;
     }
 
-    public void setLength(int length) {
-        this.length = length;
+    public void setCheckPointList(List<CheckPoint> checkPointList) {
+        this.checkPointList = checkPointList;
     }
-
 }

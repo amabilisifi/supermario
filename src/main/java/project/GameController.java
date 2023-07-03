@@ -20,8 +20,11 @@ import project.gameStuff.GameData;
 import project.gameStuff.HUI;
 import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
+import project.managers.JsonManager;
 
+import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 
 public class GameController implements Runnable {
     private final Group root;
@@ -185,6 +188,30 @@ public class GameController implements Runnable {
                         int random = (int) (8 * Math.random());
                         if (pD >= random)
                             bossEnemy.jump(false);
+                    }
+                }
+                case K ->{
+                    File file  = new File("src/main/resources/test.Json");
+                    try {
+                        file.createNewFile();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    JsonManager manager = new JsonManager("src/main/resources/test.Json");
+                    try {
+                        manager.writeObject(character);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case M ->{
+                    JsonManager manager = new JsonManager("src/main/resources/test.Json");
+                    try {
+                        Character character1 = manager.readObject(Character.class);
+                        System.out.println(character1.getX());
+                        root.getChildren().add(character1);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
                     }
                 }
             }

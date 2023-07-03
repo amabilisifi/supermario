@@ -1,27 +1,40 @@
 package project.gameStuff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.GameController;
+import project.UsersData;
+import project.characters.Character;
 import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
 
 public class GameData {
+    @JsonIgnore
     private static GameData instance;
+    @JsonIgnore
     private Scene scene;
+    @JsonIgnore
     private Group root;
+    @JsonIgnore
     private Level currentLevel;
     private Section currentSection;
+    @JsonIgnore
     private GameController gameController;
+    @JsonIgnore
     private BossEnemy bossEnemy;
 
     private int score;
 
+    @JsonIgnore
     private Stage stage;
+    @JsonIgnore
     private boolean isBossScene;
+    private int levelNum;
     public GameData() {
     }
+
     public static GameData getInstance() {
         if (instance == null) {
             instance = new GameData();
@@ -119,5 +132,13 @@ public class GameData {
 
     public void setBossScene(boolean bossScene) {
         isBossScene = bossScene;
+    }
+
+    public int getLevelNum() {
+        return levelNum;
+    }
+
+    public void setLevelNum(int levelNum) {
+        this.levelNum = levelNum;
     }
 }

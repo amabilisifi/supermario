@@ -72,6 +72,9 @@ public class GameObjectsInfo {
     private double bombWidth;
     private double bombHeight;
 
+    private double checkPointWidth;
+    private double checkPointHeight;
+
     private GameObjectsInfo() {
         try {
             ConfigManager manager = new ConfigManager("src/main/java/project/gameObjects/objectsInfo.properties");
@@ -106,6 +109,8 @@ public class GameObjectsInfo {
             setNukeButtonHeight(manager.getInt("nukeButtonHeight"));
             setBombWidth(manager.getInt("bombWidth"));
             setBombHeight(manager.getInt("bombHeight"));
+            setCheckPointWidth(manager.getInt("checkPointWidth"));
+            setCheckPointHeight(manager.getInt("checkPointHeight"));
 
             ConfigManager configManager = new ConfigManager("src/main/java/project/Characters/characterInfo.properties");
             setAlexandroPrice(configManager.getInt("alexandroPrice"));
@@ -574,5 +579,25 @@ public class GameObjectsInfo {
 
     public void setBombHeight(double bombHeight) {
         this.bombHeight = bombHeight;
+    }
+
+    public double getCharacterHeight() {
+        return characterHeight;
+    }
+
+    public double getCheckPointWidth() {
+        return checkPointWidth;
+    }
+
+    public void setCheckPointWidth(double checkPointWidth) {
+        this.checkPointWidth = checkPointWidth;
+    }
+
+    public double getCheckPointHeight() {
+        return checkPointHeight;
+    }
+
+    public void setCheckPointHeight(double checkPointHeight) {
+        this.checkPointHeight = checkPointHeight;
     }
 }

@@ -63,6 +63,9 @@ public class SectionDesigner {
         for (Coin coin : section.getCoinList()) {
             root.getChildren().add(coin);
         }
+        for (CheckPoint checkPoint: section.getCheckPointList()){
+            root.getChildren().add(checkPoint);
+        }
         root.getChildren().add(section.getEndPoint());
         HUI.getInstance().paintHUI(root);
     }
