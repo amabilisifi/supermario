@@ -19,7 +19,7 @@ public class Section {
     private final List<Enemy> enemyList = new ArrayList<>();
     private int sectionNum;
 
-    private int time;
+    private int time = 400;
     private int length;
 
     private EndPoint endPoint;
@@ -125,4 +125,5 @@ public class Section {
     public void setLength(int length) {
         this.length = length;
     }
+
 }

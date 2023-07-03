@@ -31,6 +31,7 @@ public class GameData {
 
     public void increaseScore(int score){
         this.score += score;
+        System.out.println(this.score);
     }
 
     public void decreaseScore(int score){

@@ -3,6 +3,8 @@ package project.managers;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import project.GameController;
+import project.User;
+import project.UsersData;
 import project.gameObjects.Pipe;
 import project.gameStuff.*;
 
@@ -49,10 +51,10 @@ public class LevelManager implements Initializable {
     }
 
     public void goToNextSection() {
-        System.out.println(allLevels.size());
-        System.out.println("next section");
         currentSection = GameData.getInstance().getCurrentSection();
         currentLevel = GameData.getInstance().getCurrentLevel();
+        calculateScore(currentSection);
+        HUI.getInstance().setScore(GameData.getInstance().getScore());
         SectionDesigner.getInstance().clearSection(currentSection);
         Section next = null;
         System.out.println(currentSection.getSectionNum());
@@ -70,6 +72,13 @@ public class LevelManager implements Initializable {
         HUI.getInstance().setWorld(currentLevel.getLevelNum(),next.getSectionNum()+1);
         GameData.getInstance().setCurrentSection(next);
         SectionDesigner.getInstance().paint(next);
+    }
+    public void calculateScore(Section section){
+        int timeLeft = section.getTime();
+        int hearts = UsersData.getInstance().getCurrentUser().getSelectedCharacter().getHearts();
+
+        int score = timeLeft+20*hearts;
+        GameData.getInstance().increaseScore(score);
     }
 
     public void goToSecretSection(Pipe pipe){

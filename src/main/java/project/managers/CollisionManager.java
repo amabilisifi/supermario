@@ -129,6 +129,7 @@ public class CollisionManager {
             if (character.intersects(coin.getBoundsInParent())) {
                 collisionCoin = coin;
                 currentUser.setCoin(currentUser.getCoin() + 1);
+                GameData.getInstance().increaseScore(10);
                 System.out.println(currentUser.getCoin());
             }
         }
@@ -192,6 +193,10 @@ public class CollisionManager {
                 if (item.getBlock().getBlockType() == BlockType.ContainManyCoins && item.getBlock().getItemLeft() <= 0) {
                     item.getBlock().setBlockType(BlockType.Empty);
                     item.getBlock().setImage(new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG"))));
+                }
+                if (item.getItemType() == ItemType.Coin) {
+                    // +10 score
+                    GameData.getInstance().increaseScore(10);
                 }
                 if (item.getItemType() == ItemType.MagicalFlower) {
                     // +20 score

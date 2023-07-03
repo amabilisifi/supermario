@@ -37,6 +37,12 @@ public class SectionDesigner {
     }
 
     public void paint(Section section) {
+        Timeline timeSection = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            section.setTime(section.getTime() - 1);
+            HUI.getInstance().setTime(section.getTime());
+        }));
+        timeSection.setCycleCount(Animation.INDEFINITE);
+        timeSection.playFromStart();
         GameData.getInstance().setCurrentSection(section);
         CollisionManager.getInstance().setCollisionWithEnd(false);
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
