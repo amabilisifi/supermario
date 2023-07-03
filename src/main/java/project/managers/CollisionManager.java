@@ -65,7 +65,6 @@ public class CollisionManager {
             Bounds blockBounds = block.getBoundsInParent();
             if (blockBounds.intersects(marioBounds)) {
                 double dy = character.getY() - block.getCurrentY();
-//                double dx = character.getCurrentX() - block.getCurrentX();
 
                 if (dy <= 0 && !character.isJumping()) {
                     character.setY(block.getCurrentY() - character.getFitHeight());
@@ -81,13 +80,14 @@ public class CollisionManager {
                     if (block.getBlockType() == BlockType.Simple && character.getMode() != CharacterModes.Mini) {
                         root.getChildren().remove(block);
                         blockList.remove(block);
+                        GameData.getInstance().increaseScore(1);
                     }
                     if (block.getBlockType() == BlockType.Bonus && block.getItemLeft() >= 0 && block.isAbleToGiveAnotherItem()) {
                         block.setAbleToGiveAnotherItem(false);
                         Item item = new Item(block);
                         GameData.getInstance().getCurrentSection().addItem(item);
                         root.getChildren().add(item);
-                        //block.setItemLeft(block.getItemLeft()-1);
+                        block.setItemLeft(block.getItemLeft()-1);
                     }
                     if ((block.getBlockType() == BlockType.ContainCoin || block.getBlockType() == BlockType.ContainManyCoins) && block.getItemLeft() > 0 && block.isAbleToGiveAnotherItem()) {
                         block.setAbleToGiveAnotherItem(false);

@@ -8,17 +8,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
-import project.gameObjects.Block;
 import project.gameObjects.EndPoint;
 import project.gameObjects.Laser;
 import project.gameObjects.Sword;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Direction;
 import project.gameStuff.GameData;
+import project.gameStuff.HUI;
 import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
 
@@ -29,7 +28,6 @@ public class GameController implements Runnable {
     private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
-    private final boolean upPressed = character.isUpPressed();
     private boolean startScrolling = false;
     private boolean scrollLimit = false;
 
@@ -47,8 +45,8 @@ public class GameController implements Runnable {
 
     private Sword sword = null;
 
-    private int leftPressed;
-    private int rightPressed;
+    private int leftPressedNum;
+    private int rightPressedNum;
 
     public GameController(Scene scene, Group rt) {
         this.root = rt;
@@ -89,14 +87,14 @@ public class GameController implements Runnable {
                         character.setVx(Math.abs(character.getSpeedo()) * -1);
                         character.setScaleY(1);
                         character.setAbleToMove(true);
-                        leftPressed++;
-                    }else {
+                        leftPressedNum++;
+                    } else {
                         character.setScaleX(1);
                         character.setDirection(Direction.Right);
                         character.setVx(Math.abs(character.getSpeedo()));
                         character.setScaleY(1);
                         character.setMoving(true);
-                        rightPressed++;
+                        rightPressedNum++;
                     }
                 }
                 case A -> {
@@ -107,14 +105,14 @@ public class GameController implements Runnable {
                         character.setVx(Math.abs(character.getSpeedo()));
                         character.setScaleY(1);
                         character.setMoving(true);
-                        rightPressed++;
-                    }else {
+                        rightPressedNum++;
+                    } else {
                         character.setScaleX(-1);
                         character.setDirection(Direction.Left);
                         character.setVx(Math.abs(character.getSpeedo()) * -1);
                         character.setScaleY(1);
                         character.setAbleToMove(true);
-                        leftPressed++;
+                        leftPressedNum++;
                     }
                 }
                 case S -> {
@@ -126,7 +124,7 @@ public class GameController implements Runnable {
                             character.setVy(character.getJumpVelocity());
                             character.setAbleToJumpAgain(false);
                         }
-                    }else {
+                    } else {
                         character.setImage(character.getImageSit());
                         character.setScaleY(0.8);
                     }
@@ -136,7 +134,7 @@ public class GameController implements Runnable {
                         // S stuff
                         character.setImage(character.getImageSit());
                         character.setScaleY(0.8);
-                    }else {
+                    } else {
                         if (character.isAbleToJumpAgain()) {
                             character.setUpPressed(true);
                             character.setJumping(true);
@@ -179,24 +177,15 @@ public class GameController implements Runnable {
                     // if (character.isOnBlock()) {
                     Laser laser = new Laser();
                     root.getChildren().add(laser);
-                    if(SectionDesigner.getInstance().isBossScene()){
+                    if (SectionDesigner.getInstance().isBossScene()) {
                         BossEnemy bossEnemy = GameData.getInstance().getBossEnemy();
                         double distance = Math.abs(character.getX() - bossEnemy.getX());
                         double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
-                        double pD = distance/(blockSize);
-                        int random = (int)(8 * Math.random());
-                        if(pD>=random)
-                        bossEnemy.jump(false);
+                        double pD = distance / (blockSize);
+                        int random = (int) (8 * Math.random());
+                        if (pD >= random)
+                            bossEnemy.jump(false);
                     }
-                }
-                case P -> {
-                    GameData.getInstance().getBossEnemy().grabAttack();
-                }
-                case O -> {
-                    GameData.getInstance().getBossEnemy().releaseCharacter();
-                }
-                case K -> {
-                    GameData.getInstance().getBossEnemy().jumpAttack();
                 }
             }
         });
@@ -208,23 +197,23 @@ public class GameController implements Runnable {
                     character.setImage(character.getImg());
                 }
                 case S -> {
-                    if(character.isDizzy()){
+                    if (character.isDizzy()) {
                         // W stuff
                         character.setUpPressed(false);
                         character.setJumping(false);
-                    }else {
+                    } else {
                         character.setFrame();
                         character.setScaleY(1);
                         character.setImage(character.getImg());
                     }
                 }
                 case W -> {
-                    if(character.isDizzy()){
+                    if (character.isDizzy()) {
                         // S stuff
                         character.setFrame();
                         character.setScaleY(1);
                         character.setImage(character.getImg());
-                    }else {
+                    } else {
                         character.setUpPressed(false);
                         character.setJumping(false);
                     }
@@ -247,6 +236,12 @@ public class GameController implements Runnable {
             // check jump limit
             if (character.getVy() <= 0) {
                 character.setAbleToJumpAgain(true);
+            }
+            if(newVal.doubleValue()>=380){
+                character.setHearts(character.getHearts()-1);
+                HUI.getInstance().setHearts(character.getHearts());
+                GameData.getInstance().decreaseScore(30);
+                CollisionManager.getInstance().reset();
             }
             /* height limit
             if (newVal.doubleValue() < 0) {
@@ -300,16 +295,18 @@ public class GameController implements Runnable {
                 CollisionManager.getInstance().collisionWeapon(sword);
         }
     }
-    public boolean check10LeftRight(){
-        if(leftPressed>5 && rightPressed>5){
+
+    public boolean check10LeftRight() {
+        if (leftPressedNum > 5 && rightPressedNum > 5) {
             System.out.println("freeee");
             return true;
         }
         return false;
     }
-    public void resetLeftRight(){
-        leftPressed = 0;
-        rightPressed = 0;
+
+    public void resetLeftRight() {
+        leftPressedNum = 0;
+        rightPressedNum = 0;
     }
 
     // getter setter
