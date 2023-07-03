@@ -165,8 +165,10 @@ public class level2 extends Level {
             section4.setSectionNum(3);
 
             section4.addBlockTable(BlockType.Ground,10,3,0);
+
             section4.setEndPoint(new Flag(3126, 286));
         }
+
         addSection(section1);
         addSection(section2);
         addSection(section3);
