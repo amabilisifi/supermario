@@ -71,8 +71,8 @@ public class CollisionManager {
 
                 if (dy <= 0 && !character.isJumping()) {
                     character.setY(block.getCurrentY() - character.getFitHeight());
-                    if(character.isSitting())
-                        character.setY(block.getCurrentY() - 0.75*character.getFitHeight());
+                    if (character.isSitting())
+                        character.setY(block.getCurrentY() - 0.75 * character.getFitHeight());
                     character.setOnBlock(true);
                     flag = true;
                     if (!upPressed)
@@ -343,8 +343,14 @@ public class CollisionManager {
             if (e instanceof Mushroom) GameData.getInstance().increaseScore(1);
 
         }
-        // gameObjects
-        collisionWeaponsWithGameObjects(weapon);
+        //character
+        if (character.intersects(weapon.getBoundsInParent())) {
+            SectionDesigner.getInstance().removeFromRoot(weapon);
+            weapon = null;
+        }
+        // gameObjects]
+        if (weapon != null)
+            collisionWeaponsWithGameObjects(weapon);
     }
 
     public void collisionWeaponsWithGameObjects(MovingEntity entity) {
@@ -561,9 +567,9 @@ public class CollisionManager {
         section.getEndPoint().setX(section.getEndPoint().getStartX());
     }
 
-    public void collisionBombWithBlock(Bomb bomb){
-        for(Block block:blockList){
-            if(bomb.intersects(block.getBoundsInParent())){
+    public void collisionBombWithBlock(Bomb bomb) {
+        for (Block block : blockList) {
+            if (bomb.intersects(block.getBoundsInParent())) {
                 bomb.explode();
             }
         }

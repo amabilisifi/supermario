@@ -161,10 +161,21 @@ public class level1 extends Level {
             section3.setEndPoint(new Flag(200, 220));
 
         }
+        Section section4 = new Section();
+        {
+            section4.setBackground("/images/bg/bg1.jpeg");
+            section4.setSectionNum(3);
+
+            section4.addBlockTable(BlockType.Ground,4,2,0);
+            section4.addBlockTable(BlockType.Ground,10,3,400);
+
+            section4.setEndPoint(new Flag(400, 286));
+        }
 
         addSection(section1);
         addSection(section2);
         addSection(section3);
+        addSection(section4);
 
         LevelManager.getInstance().addLevel(this);
     }

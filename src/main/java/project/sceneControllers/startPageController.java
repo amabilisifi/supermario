@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import project.gameStuff.GameData;
 import project.managers.JsonManager;
 import project.User;
 import project.UsersData;

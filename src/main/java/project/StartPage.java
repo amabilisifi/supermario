@@ -22,7 +22,11 @@ public class StartPage extends Application {
     public void start(Stage stage) throws Exception {
         stage.setOnCloseRequest(e -> {
             try {
+                if(GameData.getInstance().getScore()>=UsersData.getInstance().getCurrentUser().getHighScore()){
+                    UsersData.getInstance().getCurrentUser().setHighScore(GameData.getInstance().getScore());
+                }
                 manager.writeArray(UsersData.getInstance().getUsers());
+                System.exit(0);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
