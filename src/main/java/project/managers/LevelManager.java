@@ -67,6 +67,8 @@ public class LevelManager implements Initializable {
         GameData.getInstance().setCurrentSection(t);
         SectionDesigner.getInstance().paint(t);
 
+        GameData.getInstance().setLevelNum(2);
+
         SectionDesigner.getInstance().addToRoot(UsersData.getInstance().getCurrentUser().getSelectedCharacter());
     }
 
@@ -93,6 +95,7 @@ public class LevelManager implements Initializable {
             HUI.getInstance().setWorld(currentLevel.getLevelNum(), next.getSectionNum() + 1);
             GameData.getInstance().setCurrentSection(next);
             SectionDesigner.getInstance().paint(next);
+            HUI.getInstance().setTime(next.getTime());
         }
     }
     public void calculateScore(Section section){

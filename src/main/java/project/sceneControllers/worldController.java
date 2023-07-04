@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class worldController implements Initializable {
-    SoundPlayer soundPlayer;
     public void goHome(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneManager.getInstance().goToScene(stage, PageType.HomePage);
@@ -67,6 +66,7 @@ public class worldController implements Initializable {
         goToLevel2part(4,event);
     }
     public void goToLevel1part(int num , ActionEvent event){
+        GameData.getInstance().getCurrentSoundPlayer().stop();
         Group root = new Group();
         SectionDesigner.getInstance().setRoot(root);
         Scene scene = new Scene(root, 800, 400);
@@ -80,8 +80,6 @@ public class worldController implements Initializable {
         Section t = temp.getSections().get(num);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);
-        soundPlayer.mute();
-        soundPlayer.stop();
 
 
         SectionDesigner.getInstance().paint(t);
@@ -90,6 +88,7 @@ public class worldController implements Initializable {
         stage.show();
     }
     public void goToLevel2part(int num , ActionEvent event){
+        GameData.getInstance().getCurrentSoundPlayer().stop();
         Group root = new Group();
         SectionDesigner.getInstance().setRoot(root);
         Scene scene = new Scene(root, 800, 400);
@@ -103,8 +102,6 @@ public class worldController implements Initializable {
         Section t = temp.getSections().get(num);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);
-        soundPlayer.mute();
-        soundPlayer.stop();
 
 
         SectionDesigner.getInstance().paint(t);
@@ -114,9 +111,6 @@ public class worldController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        soundPlayer = new SoundPlayer("src/main/resources/media/the batman-ben afflec.mp33");
-        SoundPlayer.setMainSoundPlayer(soundPlayer);
-        soundPlayer.play();
-        soundPlayer.playOnRepeat();
+
     }
 }

@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import project.GameController;
 import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
+import project.managers.SoundPlayer;
 
 public class GameData {
     @JsonIgnore
@@ -30,6 +31,8 @@ public class GameData {
     @JsonIgnore
     private boolean isBossScene;
     private int levelNum;
+    @JsonIgnore
+    private SoundPlayer currentSoundPlayer;
     public GameData() {
     }
 
@@ -138,5 +141,13 @@ public class GameData {
 
     public void setLevelNum(int levelNum) {
         this.levelNum = levelNum;
+    }
+
+    public SoundPlayer getCurrentSoundPlayer() {
+        return currentSoundPlayer;
+    }
+
+    public void setCurrentSoundPlayer(SoundPlayer currentSoundPlayer) {
+        this.currentSoundPlayer = currentSoundPlayer;
     }
 }

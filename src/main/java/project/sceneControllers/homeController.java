@@ -97,5 +97,6 @@ public class homeController implements Initializable {
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();
+        GameData.getInstance().setCurrentSoundPlayer(soundPlayer);
     }
 }

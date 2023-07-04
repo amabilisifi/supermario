@@ -40,6 +40,7 @@ public class SectionDesigner {
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();
+        GameData.getInstance().setCurrentSoundPlayer(soundPlayer);
     }
 
     public void paint(Section targetSection) {
@@ -216,6 +217,7 @@ public class SectionDesigner {
         SoundPlayer.setMainSoundPlayer(bossSoundPlayer);
         bossSoundPlayer.play();
         bossSoundPlayer.playOnRepeat();
+        GameData.getInstance().setCurrentSoundPlayer(bossSoundPlayer);
 
         section = GameData.getInstance().getCurrentSection();
         addBlockJail();
