@@ -112,6 +112,7 @@ public abstract class Character extends MovingEntity {
             if (mode == CharacterModes.Mini) {
                 hearts--;
                 isDamaged = true;
+                if(!GameData.getInstance().isBossScene())
                 CollisionManager.getInstance().reset();
                 HUI.getInstance().setHearts(hearts);
                 if (hearts <= 0) {

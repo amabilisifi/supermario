@@ -1,9 +1,10 @@
 package project.levels;
 
 import project.gameObjects.*;
+import project.gameObjects.bossFight.KingKoopa;
 import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
-import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.managers.LevelManager;
@@ -66,63 +67,88 @@ public class level2 extends Level {
         }
         Section section3 = new Section();
         {
-            section1.setBackground("/images/bg/bg2.jpeg");
+            section3.setBackground("/images/bg/bg2.jpeg");
             section3.setSectionNum(2);
-            section3.addBlockTable(BlockType.Ground, 5, 5, 0);
-            section3.addBlockTable(BlockType.Ground, 5, 4, 180);
-            section3.addCoin(new Coin(220, 228));
-            section3.addCoin(new Coin(300, 228));
-            section3.addBlockTable(BlockType.Ground, 5, 3, 360);
-            section3.addBlockTable(BlockType.Ground, 5, 2, 540);
-            section3.addCoin(new Coin(580, 300));
-            section3.addCoin(new Coin(660, 300));
-            section3.addBlockTable(BlockType.Ground, 5, 3, 720);
-            section3.addBlockTable(BlockType.Ground, 15, 3, 1100);
-            section3.addEnemy(new Turtle(1200, 212));
-            section3.addBlock(new Block(BlockType.Simple, 1280, 150));
-            section3.addBlock(new Block(BlockType.Empty, 1316, 150));
-            section3.addBlock(new Block(BlockType.Simple, 1352, 150));
-            section3.addBlock(new Block(BlockType.Bonus, 1388, 150));
-            section3.addBlock(new Block(BlockType.Simple, 1424, 150));
-            section3.addBlockTable(BlockType.Ground, 15, 3, 1800);
-            section3.addPipe(new Pipe(PipeType.Medium, 1900, 212, false)); // SECRET PIPE HERE
-            section3.addPipe(new Pipe(PipeType.Medium, 2200, 212, false));
-            section3.addEnemy(new Mushroom(2050, 240));
-            section3.addBlockTable(BlockType.Ground, 5, 3, 2500);
-            Pipe pipe = new Pipe(PipeType.Medium, 2560, 212, false);
+
+            section3.addBlockTable(BlockType.Ground, 8, 3, 0);
+            section3.addBlockTable(BlockType.Ground, 6, 2, 360);
+            section3.addEnemy(new Spiny(580, 276));
+            section3.addBlockTable(BlockType.Ground, 27, 2, 670);
+            section3.addBlock(new Block(BlockType.ContainCoin, 400, 200));
+            section3.addBlock(new Block(BlockType.Empty, 436, 200));
+            section3.addBlock(new Block(BlockType.ContainCoin, 472, 200));
+            section3.addBlock(new Block(BlockType.Simple, 938, 200));
+            section3.addBlock(new Block(BlockType.Bonus, 974, 200));
+            section3.addBlock(new Block(BlockType.Simple, 1010, 200));
+            section3.addBlock(new Block(BlockType.Bonus, 1046, 200));
+            section3.addBlock(new Block(BlockType.Simple, 1082, 200));
+            Pipe pipe = new Pipe(PipeType.Medium, 1181, 249, false);
             section3.addPipe(pipe);
             section3.addEnemy(new ToxicPlant(pipe));
-
-            section3.addBlockTable(BlockType.Ground, 5, 3, 2750);
-            Pipe pipe1 = new Pipe(PipeType.Medium, 2810, 212, false);
+            section3.addEnemy(new Mushroom(1500, 164));
+            section3.addCoin(new Coin(1400, 295));
+            section3.addBlockTable(BlockType.Ground, 22, 3, 1642);
+            section3.addCoin(new Coin(1750, 255));
+            section3.addCoin(new Coin(1800, 255));
+            section3.addBlock(new Block(BlockType.Simple, 2000, 150));
+            section3.addBlock(new Block(BlockType.Empty, 2036, 150));
+            section3.addBlock(new Block(BlockType.ContainCoin, 2072, 150));
+            section3.addBlock(new Block(BlockType.Simple, 2108, 150));
+            section3.addBlock(new Block(BlockType.Simple, 2144, 150));
+            section3.addBlock(new Block(BlockType.Simple, 2180, 150));
+            section3.addBlock(new Block(BlockType.Bonus, 2216, 150));
+            section3.addBlock(new Block(BlockType.Simple, 2252, 150));
+            section3.addEnemy(new Mushroom(2100, 115));
+            section3.addCoin(new Coin(2400, 260));
+            section3.addBlockTable(BlockType.Ground, 30, 2, 2434);
+            section3.addPipe(new Pipe(PipeType.Long, 2500, 228, false));
+            Pipe pipe1 = (new Pipe(PipeType.Long, 2700, 228, false));
             section3.addPipe(pipe1);
             section3.addEnemy(new ToxicPlant(pipe1));
-            section3.addBlockTable(BlockType.Ground, 15, 2, 3000);
+            section3.addPipe(new Pipe(PipeType.Long, 2900, 228, false));
+            section3.addPipe(new Pipe(PipeType.Long, 3200, 228, false));
 
 
-//            section3.json.setEndPoint(new Flag(3126, 286));
-            section3.setEndPoint(new Flag(200, 204));
+            section3.setEndPoint(new Flag(3126, 286));
+//            section3.setEndPoint(new Flag(300, 230));
 
         }
         Section section4 = new Section();
         {
-            section1.setBackground("/images/bg/bg2.jpeg");
+            section4.setBackground("/images/bg/bg2.jpeg");
             section4.setSectionNum(3);
 
             section4.addBlockTable(BlockType.Ground, 10, 3, 0);
-            section4.addBlockTable(BlockType.Ground, 10, 3, 400);
+            section4.addBlockTable(BlockType.Ground, 10, 4, 450);
+            section4.addBlockTable(BlockType.Ground, 10, 3, 900);
+            Pipe sr = new Pipe(PipeType.Medium,1100,215,true);
+            section4.addPipe(sr);
+            sr.setSection(new Section());
 
-            section4.setEndPoint(new Flag(400, 286));
+            section4.addBlockTable(BlockType.Ground, 10, 2, 1350);
+            section4.addBlockTable(BlockType.Ground, 10, 3, 1800);
+
+            section4.setEndPoint(new Flag(2000, 155));
         }
         Section section5 = new Section();
         {
-            section1.setBackground("/images/bg/bg2.jpeg");
+            section5.setBackground("/images/bg/bg2.jpeg");
             section5.setSectionNum(4);
 
             section5.addBlockTable(BlockType.Ground, 10, 3, 0);
-            section5.addBlockTable(BlockType.Ground, 10, 3, 400);
+            section5.addBlockTable(BlockType.Ground, 30, 3, 420);
+            section5.addEnemy(new KingKoopa(1100,120));
+            section5.setTime(1000);
 
-            section5.setEndPoint(new Flag(400, 286));
+            section5.addBlock(new Block(BlockType.Bonus, 500, 145));
+            section5.addBlock(new Block(BlockType.ContainCoin, 536, 145));
+            section5.addBlock(new Block(BlockType.Bonus, 572, 145));
+            section5.addBlock(new Block(BlockType.Simple, 608, 145));
+            section5.addBlock(new Block(BlockType.Bonus, 644, 145));
+            section5.addBlock(new Block(BlockType.ContainManyCoins, 680, 145));
+
+
+            section5.setEndPoint(new Flag(2000, 286));
         }
 
         addSection(section1);

@@ -37,7 +37,8 @@ public class KingKoopa extends BossEnemy {
 
     public void checkTrigger() {
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        if (Math.abs(character.getX() - this.getX()) <= 700 && !SectionDesigner.getInstance().isBossScene()) {
+        if (Math.abs(character.getX() - this.getX()) <= 400 && !SectionDesigner.getInstance().isBossScene()) {
+            GameData.getInstance().setBossEnemy(this);
             triggered = true;
             BossController controller = new BossController(this);
             SectionDesigner.getInstance().setBossScene(true);
