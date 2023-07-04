@@ -29,6 +29,9 @@ public class NukeButton extends ImageView {
         setX(bossEnemy.getX() + (bossEnemy.getFitWidth() - getFitWidth()) / 2.0);
         setY(bossEnemy.getY() + 2 / 3.0 * bossEnemy.getFitHeight());
 
+        SectionDesigner.getInstance().addToRoot(this);
+
+
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.playFromStart();
     }

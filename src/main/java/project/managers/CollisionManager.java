@@ -14,6 +14,7 @@ import project.UsersData;
 import project.characters.Character;
 import project.characters.CharacterModes;
 import project.gameObjects.*;
+import project.gameObjects.bossFight.Bomb;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.bossFight.FireBall;
 import project.gameObjects.enemies.*;
@@ -557,5 +558,13 @@ public class CollisionManager {
             item.setX(item.getStartX());
         }
         section.getEndPoint().setX(section.getEndPoint().getStartX());
+    }
+
+    public void collisionBombWithBlock(Bomb bomb){
+        for(Block block:blockList){
+            if(bomb.intersects(block.getBoundsInParent())){
+                bomb.explode();
+            }
+        }
     }
 }

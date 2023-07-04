@@ -25,6 +25,9 @@ public abstract class BossEnemy extends Enemy {
     private boolean isGrabAttackCooledDown = true;
     private boolean isDamaged;
 
+    private boolean isBombing;
+    private boolean isNukeAttackCooledDown = true;
+
     public BossEnemy() {
         Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> checkDirection()));
         timelineCheckDirection.setCycleCount(Animation.INDEFINITE);
@@ -106,7 +109,7 @@ public abstract class BossEnemy extends Enemy {
 
     public void damaged(int n){
         isDamaged = true;
-        Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2),e->isDamaged = false));
+        Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2),e-> isDamaged = false));
         damagedTimLine.playFromStart();
         setHP(getHP() - n);
     }
@@ -176,5 +179,21 @@ public abstract class BossEnemy extends Enemy {
 
     public void setGrabAttackCooledDown(boolean grabAttackCooledDown) {
         isGrabAttackCooledDown = grabAttackCooledDown;
+    }
+
+    public boolean isBombing() {
+        return isBombing;
+    }
+
+    public void setBombing(boolean bombing) {
+        isBombing = bombing;
+    }
+
+    public boolean isNukeAttackCooledDown() {
+        return isNukeAttackCooledDown;
+    }
+
+    public void setNukeAttackCooledDown(boolean nukeAttackCooledDown) {
+        isNukeAttackCooledDown = nukeAttackCooledDown;
     }
 }
