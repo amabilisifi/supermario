@@ -294,26 +294,6 @@ public class GameController implements Runnable {
         });
     }
 
-    public void AskCheckpoint() throws IOException {
-        timeline.pause();
-        timelinePrime.pause();
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/soundMenu.fxml"));
-        Parent root = loader.load();
-        Scene sc = new Scene(root, 396, 292);
-        stage.setScene(sc);
-        stage.setResizable(false);
-        stage.setOnCloseRequest(e -> {
-            timeline.play();
-            timelinePrime.play();
-        });
-        stage.show();
-    }
-    public void payed(){
-        // decrese coin
-        StorageController.getInstance().save(GameData.getInstance().getCurrentLevel(), GameData.getInstance().getCurrentSection());
-    }
-
     public void swordMove() {
         // speed is 2 block per second so its 0.02 block per 10 millis
         double blockWidth = GameObjectsInfo.getInstance().getBlockWidth();

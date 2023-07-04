@@ -309,6 +309,8 @@ public class CollisionManager {
     public void collisionWithCheckPointsChar() {
         for (CheckPoint checkPoint : section.getCheckPointList()) {
             if (character.intersects(checkPoint.getBoundsInParent()) && !checkPoint.isColided()) {
+                double pr = checkPoint.getX()/3000.0;
+                GameData.getInstance().setMoneyAmount((int)pr);
                 checkPoint.setColided(true);
                 GameData.getInstance().getTimeline().pause();
                 GameData.getInstance().getTimelinePrime().pause();

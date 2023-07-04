@@ -38,6 +38,10 @@ public class GameData {
     private Timeline timeline;
     @JsonIgnore
     private Timeline timelinePrime;
+    @JsonIgnore
+    private int savedCheckPoint = 0;
+    @JsonIgnore
+    private int moneyAmount = 0;
     public GameData() {
     }
 
@@ -170,5 +174,21 @@ public class GameData {
 
     public void setTimeline(Timeline timeline) {
         this.timeline = timeline;
+    }
+
+    public int getSavedCheckPoint() {
+        return savedCheckPoint;
+    }
+
+    public void setSavedCheckPoint(int savedCheckPoint) {
+        this.savedCheckPoint = savedCheckPoint;
+    }
+
+    public int getMoneyAmount() {
+        return moneyAmount;
+    }
+
+    public void setMoneyAmount(int moneyAmount) {
+        this.moneyAmount = moneyAmount;
     }
 }
