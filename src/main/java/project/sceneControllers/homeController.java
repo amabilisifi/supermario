@@ -15,6 +15,7 @@ import project.gameStuff.SectionDesigner;
 import project.levels.level1;
 import project.levels.level2;
 import project.levels.temp;
+import project.managers.JsonManager;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
 import project.managers.SoundPlayer;
@@ -27,9 +28,17 @@ public class homeController implements Initializable {
     private SoundPlayer soundPlayer;
 
     public void goToHardnessScene(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneManager.getInstance().goToScene(stage, PageType.HardnessPage);
-        soundPlayer.stop();
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        SceneManager.getInstance().goToScene(stage, PageType.HardnessPage);
+//        soundPlayer.stop();
+        JsonManager manager = new JsonManager("src/main/resources/test.Json");
+        try {
+            Section section = manager.readObject(Section.class);
+            SectionDesigner sectionDesigner = new SectionDesigner(new Group(),section);
+            sectionDesigner.paint(section);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void goToProfileScene(MouseEvent event) {

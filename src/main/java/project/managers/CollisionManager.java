@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import project.MovingEntity;
+import project.StorageController;
 import project.User;
 import project.UsersData;
 import project.characters.Character;
@@ -301,9 +302,7 @@ public class CollisionManager {
     public void collisionWithCheckPointsChar(){
         for(CheckPoint checkPoint: section.getCheckPointList()){
             if(character.intersects(checkPoint.getBoundsInParent())){
-                System.out.println("adbcjkabdcjb");
-                UsersData.getInstance().getCurrentUser().getStorageController().save(GameData.getInstance().getCurrentSection());
-                System.out.println("lkdcnjlsn ");
+                StorageController.getInstance().save(GameData.getInstance().getCurrentLevel() ,GameData.getInstance().getCurrentSection());
             }
         }
     }
@@ -537,20 +536,16 @@ public class CollisionManager {
         character.setX(character.getStartX());
         character.setY(character.getStartY());
         character.setDamaged(false);
-        for (int i = 0; i < blockList.size(); i++) {
-            Block block = blockList.get(i);
+        for (Block block : blockList) {
             block.setX(block.getStartX());
         }
-        for (int i = 0; i < pipeList.size(); i++) {
-            Pipe pipe = pipeList.get(i);
+        for (Pipe pipe : pipeList) {
             pipe.setX(pipe.getStartX());
         }
-        for (int i = 0; i < enemyList.size(); i++) {
-            Enemy enemy = enemyList.get(i);
+        for (Enemy enemy : enemyList) {
             enemy.setX(enemy.getStartX());
         }
-        for (int i = 0; i < itemList.size(); i++) {
-            Item item = itemList.get(i);
+        for (Item item : itemList) {
             item.setX(item.getStartX());
         }
         section.getEndPoint().setX(section.getEndPoint().getStartX());

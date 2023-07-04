@@ -18,6 +18,7 @@ import project.gameObjects.enemies.Enemy;
 import project.gameObjects.enemies.ToxicPlant;
 import project.gameStuff.GameData;
 import project.gameStuff.HUI;
+import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
 import project.managers.JsonManager;
@@ -190,28 +191,7 @@ public class GameController implements Runnable {
                     }
                 }
                 case K ->{
-                    File file  = new File("src/main/resources/test.Json");
-                    try {
-                        file.createNewFile();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    JsonManager manager = new JsonManager("src/main/resources/test.Json");
-                    try {
-                        manager.writeObject(GameData.getInstance().getCurrentSection().getEnemyList().get(1));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case M ->{
-                    JsonManager manager = new JsonManager("src/main/resources/test.Json");
-                    try {
-                        Enemy character1 = manager.readObject(Enemy.class);
-                        System.out.println(character1.getStartX());
-                        root.getChildren().add(character1);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    System.out.println(UsersData.getInstance().getCurrentUser().getFilePath());
                 }
             }
         });

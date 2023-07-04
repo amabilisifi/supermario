@@ -1,6 +1,6 @@
 package project;
 
-import project.gameStuff.GameData;
+import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.managers.JsonManager;
 
@@ -8,25 +8,31 @@ import java.io.File;
 import java.io.IOException;
 
 public class StorageController {
-    private User user;
-    private String folderPath;// "src/main/resources/GameData/"+username+"/LoadData"
-    private int savedFileNum = 1;
+    private static StorageController instance;
 
-    public StorageController(User user) {
-        this.user = user;
-        folderPath = "./src/main/resources/GameData/" + user.getName() + "/LoadData";
+
+    public StorageController() {
     }
 
-    public void save(Section section) {
+    public void save(Level level, Section section) {
         try {
-        String path = folderPath + "/load" + savedFileNum + ".json";
-        File file = new File(path);
-        savedFileNum++;
+            String folderPath = UsersData.getInstance().getCurrentUser().getFilePath();
+            System.out.println(folderPath);
+            String path = folderPath + "/load" + level.getLevelNum() + "-" + section.getSectionNum() + ".json";
+            File file = new File(path);
             file.createNewFile();
-        JsonManager manager = new JsonManager(path);
-        Section gameData = new Section( section.getTime(),section.getBlockList(),section.getPipeList(),section.getCoinList(),section.getItemList(),section.getEnemyList(),section.getCheckPointList(),section.getEndPoint());
-        manager.writeObject(gameData);} catch (IOException e) {
-        throw new RuntimeException(e);
+            JsonManager manager = new JsonManager(path);
+//            Section gameData = new Section(section.getTime(), section.getBlockList(), section.getPipeList(), section.getCoinList(), section.getItemList(), section.getEnemyList(), section.getCheckPointList(), section.getEndPoint());
+//            manager.writeObject(gameData);
+            manager.writeObject(section);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    public static StorageController getInstance() {
+        if (instance == null)
+            instance = new StorageController();
+        return instance;
     }
 }

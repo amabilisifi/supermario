@@ -27,6 +27,8 @@ public class User {
 
     @JsonIgnore
     private List<CheckPoint> savedCheckPoints = new ArrayList<>();
+    @JsonIgnore
+    private String filePath;
 
     public User() {
     }
@@ -45,7 +47,6 @@ public class User {
         File inventory = new File(folderName + "/Inventory/purchasedCharacters.json");
         inventory.createNewFile();
         UsersData.getInstance().getUsers().add(this);
-        storageController = new StorageController(this);
 
         this.purchasedCharacters.add(freeChar);
     }
@@ -146,11 +147,12 @@ public class User {
         this.highScore = highScore;
     }
 
-    public StorageController getStorageController() {
-        return storageController;
+    public String getFilePath() {
+        filePath = "./src/main/resources/GameData/" + getName() + "/LoadData";
+        return filePath;
     }
 
-    public void setStorageController(StorageController storageController) {
-        this.storageController = storageController;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }

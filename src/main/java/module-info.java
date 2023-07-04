@@ -23,7 +23,7 @@ module project {
     exports project.managers.Page;
     opens project.managers.Page to javafx.fxml, javafx.graphics;
     exports project.gameStuff;
-    opens project.gameStuff to javafx.fxml, javafx.graphics;
+    opens project.gameStuff to javafx.fxml, javafx.graphics, com.fasterxml.jackson.databind;
     exports project.collisionAriyan;
     opens project.collisionAriyan to javafx.fxml, javafx.graphics;
     exports project.gameObjects.bossFight;
