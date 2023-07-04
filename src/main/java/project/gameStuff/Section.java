@@ -23,6 +23,8 @@ public class Section {
 
     private EndPoint endPoint;
     private List<CheckPoint> checkPointList = new ArrayList<>();
+    private boolean UserHaveCheckPointSaved = false;
+    private String savedCheckPointPath ;
 
     public Section() {
     }
@@ -149,5 +151,21 @@ public class Section {
 
     public void setCheckPointList(List<CheckPoint> checkPointList) {
         this.checkPointList = checkPointList;
+    }
+
+    public boolean isUserHaveCheckPointSaved() {
+        return UserHaveCheckPointSaved;
+    }
+
+    public void setUserHaveCheckPointSaved(boolean userHaveCheckPointSaved) {
+        UserHaveCheckPointSaved = userHaveCheckPointSaved;
+    }
+
+    public String getSavedCheckPointPath() {
+        return savedCheckPointPath;
+    }
+
+    public void setSavedCheckPointPath(String savedCheckPointPath) {
+        this.savedCheckPointPath = savedCheckPointPath;
     }
 }

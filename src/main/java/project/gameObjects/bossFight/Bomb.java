@@ -16,7 +16,7 @@ public class Bomb extends ImageView {
     public Bomb(BossEnemy bossEnemy) {
         setFitWidth(GameObjectsInfo.getInstance().getBombWidth());
         setFitHeight(GameObjectsInfo.getInstance().getBombHeight());
-        setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/Bomb.jpeg"))));
+        setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bomb.PNG"))));
         setX(bossEnemy.getX() + (bossEnemy.getFitWidth() - getFitWidth()) / 2.0);
         setY(0);
 

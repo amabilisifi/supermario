@@ -54,7 +54,7 @@ public class KingKoopa extends BossEnemy {
             Timeline chill = new Timeline(new KeyFrame(Duration.seconds(2), e -> setFireBallCooledDown(true)));
             chill.playFromStart();
 
-            setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossThrowing.jpeg"))));
+            setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/bossThrowing.PNG"))));
             if (getDirection() == Direction.Left) setScaleX(-1);
 
             Timeline change = new Timeline(new KeyFrame(Duration.seconds(1), e -> {

@@ -10,7 +10,7 @@ public class CheckPoint extends EndPoint{
         setStartX(startX);
         setX(startX);
         setY(startY);
-        setImage(new Image(String.valueOf(getClass().getResource("/images/checkPoint.jpg"))));
+        setImage(new Image(String.valueOf(getClass().getResource("/images/checkPoint.PNG"))));
         setFitWidth(GameObjectsInfo.getInstance().getCheckPointWidth());
         setFitHeight(GameObjectsInfo.getInstance().getCheckPointHeight());
     }

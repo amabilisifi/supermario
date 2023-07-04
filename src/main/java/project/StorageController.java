@@ -17,13 +17,12 @@ public class StorageController {
     public void save(Level level, Section section) {
         try {
             String folderPath = UsersData.getInstance().getCurrentUser().getFilePath();
-            System.out.println(folderPath);
+            section.setUserHaveCheckPointSaved(true);
             String path = folderPath + "/load" + level.getLevelNum() + "-" + section.getSectionNum() + ".json";
+            section.setSavedCheckPointPath(path);
             File file = new File(path);
             file.createNewFile();
             JsonManager manager = new JsonManager(path);
-//            Section gameData = new Section(section.getTime(), section.getBlockList(), section.getPipeList(), section.getCoinList(), section.getItemList(), section.getEnemyList(), section.getCheckPointList(), section.getEndPoint());
-//            manager.writeObject(gameData);
             manager.writeObject(section);
         } catch (IOException e) {
             throw new RuntimeException(e);
