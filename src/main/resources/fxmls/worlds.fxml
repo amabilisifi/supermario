@@ -31,12 +31,12 @@
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="349.0" layoutY="241.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="1 - 4" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="349.0" layoutY="241.0" mnemonicParsing="false" opacity="0.51" onAction="#level1part4" prefHeight="39.0" prefWidth="84.0" text="1 - 4" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="349.0" layoutY="307.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="1 - 5" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="349.0" layoutY="307.0" mnemonicParsing="false" opacity="0.51" onAction="#level1part5" prefHeight="39.0" prefWidth="84.0" text="1 - 5" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
@@ -56,12 +56,12 @@
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="242.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="2 - 4" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="242.0" mnemonicParsing="false" opacity="0.51" onAction="#level2part4" prefHeight="39.0" prefWidth="84.0" text="2 - 4" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="308.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="2 - 5" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="308.0" mnemonicParsing="false" opacity="0.51" onAction="#level2part5" prefHeight="39.0" prefWidth="84.0" text="2 - 5" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>

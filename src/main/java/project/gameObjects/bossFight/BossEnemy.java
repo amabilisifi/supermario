@@ -129,8 +129,11 @@ public abstract class BossEnemy extends Enemy {
         this.HP = HP;
         if (HP <= 10) {
             superMode = true;
-            System.out.println("super");
             this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss2.PNG"))));
+        }
+        if(HP<=0){
+            System.out.println("yay");
+            System.exit(0);
         }
     }
 

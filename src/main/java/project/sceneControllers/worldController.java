@@ -31,12 +31,20 @@ public class worldController implements Initializable {
         goToLevel1part(0,event);
     }
     public void level1part2(ActionEvent event) throws IOException {
-        SectionDesigner.getInstance().sketch(1,2);
-//        goToLevel1part(1,event);
+//        SectionDesigner.getInstance().sketch(1,2);
+        goToLevel1part(1,event);
     }
     public void level1part3(ActionEvent event) throws IOException {
 //        SectionDesigner.getInstance().sketch(1,3);
         goToLevel1part(2,event);
+    }
+    public void level1part4(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,2);
+        goToLevel1part(3,event);
+    }
+    public void level1part5(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,3);
+        goToLevel1part(4,event);
     }
     public void level2part1(ActionEvent event) throws IOException {
 //        SectionDesigner.getInstance().sketch(1,1);
@@ -49,6 +57,14 @@ public class worldController implements Initializable {
     public void level2part3(ActionEvent event) throws IOException {
 //        SectionDesigner.getInstance().sketch(1,3);
         goToLevel2part(2,event);
+    }
+    public void level2part4(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,2);
+        goToLevel2part(3,event);
+    }
+    public void level2part5(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,3);
+        goToLevel2part(4,event);
     }
     public void goToLevel1part(int num , ActionEvent event){
         Group root = new Group();

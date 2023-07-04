@@ -2,6 +2,7 @@ package project.levels;
 
 import project.gameObjects.*;
 import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
@@ -49,6 +50,7 @@ public class level1 extends Level {
             section1.addBlock(new Block(BlockType.Bonus, 1256, 80));
 
             section1.addEnemy(new Mushroom(2000, 254));
+            section1.addCheckPoint(new CheckPoint(2000,266));
             section1.addPipe(new Pipe(PipeType.Medium, 1700, 213, false));
             section1.addBlock(new Block(BlockType.Simple, 1900, 145));
             section1.addBlock(new Block(BlockType.Simple, 1936, 145));
@@ -69,11 +71,8 @@ public class level1 extends Level {
             section1.addBlock(new Block(BlockType.Empty, 3072, 150));
             section1.addBlock(new Block(BlockType.ContainCoin, 3108, 150));
             section1.addBlock(new Block(BlockType.Empty, 3144, 150));
-            section1.addCheckPoint(new CheckPoint(300,230));
 
             section1.setEndPoint(new Flag(3126,105));
-//            section1.json.setEndPoint(new Flag(300, 230));
-
         }
         Section section2 = new Section();
         {
@@ -166,16 +165,60 @@ public class level1 extends Level {
             section4.setBackground("/images/bg/bg1.jpeg");
             section4.setSectionNum(3);
 
-            section4.addBlockTable(BlockType.Ground,4,2,0);
-            section4.addBlockTable(BlockType.Ground,10,3,400);
+            section4.addBlockTable(BlockType.Ground,11,2,0);
+            section3.addCoin(new Coin(120, 300));
+            section3.addCoin(new Coin(220, 300));
+            section3.addCoin(new Coin(320, 300));
+            section4.addBlockTable(BlockType.Ground,11,3,500);
+            section4.addBlockTable(BlockType.Ground,11,4,1000);
 
-            section4.setEndPoint(new Flag(400, 286));
+            section4.addBlock(new Block(BlockType.Simple, 1180, 160));
+            section4.addBlock(new Block(BlockType.Bonus, 1216, 160));
+            section4.addBlock(new Block(BlockType.Simple, 1252, 160));
+            section4.addBlock(new Block(BlockType.Bonus, 1288, 160));
+            section4.addBlock(new Block(BlockType.Simple, 1324, 160));
+            section4.addEnemy(new Spiny(1200,103));
+
+            section4.addPipe(new Pipe(PipeType.Short,1700,198,false));
+            section4.addPipe(new Pipe(PipeType.Short,1850,198,false));
+            section4.addPipe(new Pipe(PipeType.Short,2000,198,false));
+
+            section4.addBlockTable(BlockType.Ground,25,4,1500);
+            section4.addBlockTable(BlockType.Ground,11,3,2500);
+
+            section4.setEndPoint(new Flag(2600, 150));
+        }
+        Section section5 = new Section();
+        {
+            section5.setBackground("/images/bg/bg1.jpeg");
+            section5.setSectionNum(3);
+
+            section5.addBlockTable(BlockType.Ground,5,3,0);
+            section5.addBlockTable(BlockType.Ground,5,4,250);
+            section5.addEnemy(new Mushroom(300,220));
+            section5.addBlockTable(BlockType.Ground,5,3,500);
+            section5.addBlockTable(BlockType.Ground,5,2,750);
+            section5.addEnemy(new Mushroom(800,290));
+            section5.addBlockTable(BlockType.Ground,5,3,1000);
+            section5.addBlockTable(BlockType.Ground,5,4,1250);
+            section5.addBlockTable(BlockType.Ground,5,4,1500);
+            section5.addEnemy(new Mushroom(1600,220));
+            section5.addBlockTable(BlockType.Ground,5,3,1750);
+            section5.addBlockTable(BlockType.Ground,5,2,2000);
+            section5.addEnemy(new Mushroom(2100,290));
+            section5.addBlockTable(BlockType.Ground,5,3,2250);
+            section5.addBlockTable(BlockType.Ground,5,3,2500);
+            section5.addBlockTable(BlockType.Ground,5,4,3000);
+
+//            section5.setEndPoint(new Flag(2600, 240));
+            section5.setEndPoint(new Flag(200, 240));
         }
 
         addSection(section1);
         addSection(section2);
         addSection(section3);
         addSection(section4);
+        addSection(section5);
 
         LevelManager.getInstance().addLevel(this);
     }

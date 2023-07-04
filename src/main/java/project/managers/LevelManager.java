@@ -7,6 +7,8 @@ import project.User;
 import project.UsersData;
 import project.gameObjects.Pipe;
 import project.gameStuff.*;
+import project.levels.level2;
+import project.levels.temp;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,21 +41,33 @@ public class LevelManager implements Initializable {
     }
 
     public void goToNextLevel() {
-        Level next = null;
-        System.out.println(allLevels.size());
-        if (currentLevelNum + 1 <= allLevels.size())
-            next = allLevels.get(++currentLevelNum);
-        if (currentLevelNum + 1 > allLevels.size()) {
-//            next = allLevels.get(0);
-//            currentLevelNum = 0;
-            System.exit(0);
-        }
-        GameData.getInstance().setCurrentLevel(next);
-        if(next!=null) {
-            HUI.getInstance().setWorld(next.getLevelNum(), 0 + 1);
-            GameData.getInstance().setCurrentSection(next.getSections().get(0));
-            SectionDesigner.getInstance().paint(next.getSections().get(0));
-        }
+//        Level next = null;
+//        if (currentLevelNum + 1 <= allLevels.size()) {
+//            currentLevelNum+=1;
+//            next = allLevels.get(currentLevelNum);
+//        }
+//        if (currentLevelNum + 1 > allLevels.size()) {
+//            System.exit(0);
+//        }
+//        GameData.getInstance().setCurrentLevel(next);
+//        if(next!=null) {
+//            HUI.getInstance().setWorld(next.getLevelNum(), 0 + 1);
+//            GameData.getInstance().setCurrentSection(next.getSections().get(0));
+//            SectionDesigner.getInstance().paint(next.getSections().get(0));
+//        }
+        currentSection = GameData.getInstance().getCurrentSection();
+        currentLevel = GameData.getInstance().getCurrentLevel();
+        calculateScore(currentSection);
+        HUI.getInstance().setScore(GameData.getInstance().getScore());
+        SectionDesigner.getInstance().clearSection(currentSection);
+
+        Level level = new level2();
+        Section t = level.getSections().get(0);
+        GameData.getInstance().setCurrentLevel(level);
+        GameData.getInstance().setCurrentSection(t);
+        SectionDesigner.getInstance().paint(t);
+
+        SectionDesigner.getInstance().addToRoot(UsersData.getInstance().getCurrentUser().getSelectedCharacter());
     }
 
     public void goToNextSection() {
@@ -72,6 +86,7 @@ public class LevelManager implements Initializable {
         } else {
             // next level
             System.out.println("next level");
+            SectionDesigner.getInstance().removeFromRoot(UsersData.getInstance().getCurrentUser().getSelectedCharacter());
             goToNextLevel();
         }
         if(next!=null) {

@@ -193,6 +193,11 @@ public class SectionDesigner {
             x -= dx;
             enemy.setX(x);
         }
+        for (CheckPoint checkPoint : section.getCheckPointList()) {
+            double x = checkPoint.getX();
+            x -= dx;
+            checkPoint.setX(x);
+        }
         double x = section.getEndPoint().getX();
         x -= dx;
         section.getEndPoint().setX(x);

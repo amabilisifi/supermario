@@ -7,7 +7,7 @@ import project.gameObjects.enemies.ToxicPlant;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
-import project.managers.LevelManager;
+import project.managers. LevelManager;
 
 public class level2 extends Level {
     public level2() {
@@ -16,29 +16,30 @@ public class level2 extends Level {
         {
             section1.setBackground("/images/bg/bg2.jpeg");
             section1.setSectionNum(0);
-            section1.addCoin(new Coin(200, 260));
-            section1.addCoin(new Coin(130, 260));
-            section1.addBlockTable(BlockType.Ground, 10, 3, 0);
-            section1.addBlockTable(BlockType.Ground, 8, 4, 360);
-            section1.addBlockTable(BlockType.Ground, 12, 2, 540);
-            section1.addBlockTable(BlockType.Ground, 10, 4, 1111);
-            section1.addCoin(new Coin(1230, 230));
-            section1.addCoin(new Coin(1260, 230));
-            section1.addBlockTable(BlockType.Ground, 32, 3, 1471);
-            section1.addBlockTable(BlockType.Ground, 30, 2, 2623);
-
-            section1.addBlock(new Block(BlockType.ContainManyCoins, 146, 150));
-            section1.addBlock(new Block(BlockType.Bonus, 182, 150));
-            section1.addBlock(new Block(BlockType.ContainCoin, 218, 150));
-
-            Pipe pipe = new Pipe(PipeType.Short, 480, 196, false);
-            section1.addPipe(pipe);
-            section1.addEnemy(new ToxicPlant(pipe));
-
-            section1.addBlock(new Block(BlockType.Empty, 600, 100));
-            section1.addBlock(new Block(BlockType.ContainCoin, 636, 100));
-            section1.addCoin(new Coin(650, 70));
-            section1.addBlock(new Block(BlockType.Empty, 672, 100));
+            section1.addBlockTable(BlockType.Ground, 20, 4, 0);
+//            section1.addCoin(new Coin(200, 260));
+//            section1.addCoin(new Coin(130, 260));
+//            section1.addBlockTable(BlockType.Ground, 10, 3, 0);
+//            section1.addBlockTable(BlockType.Ground, 8, 4, 360);
+//            section1.addBlockTable(BlockType.Ground, 12, 2, 540);
+//            section1.addBlockTable(BlockType.Ground, 10, 4, 1111);
+//            section1.addCoin(new Coin(1230, 230));
+//            section1.addCoin(new Coin(1260, 230));
+//            section1.addBlockTable(BlockType.Ground, 32, 3, 1471);
+//            section1.addBlockTable(BlockType.Ground, 30, 2, 2623);
+//
+//            section1.addBlock(new Block(BlockType.ContainManyCoins, 146, 150));
+//            section1.addBlock(new Block(BlockType.Bonus, 182, 150));
+//            section1.addBlock(new Block(BlockType.ContainCoin, 218, 150));
+//
+//            Pipe pipe = new Pipe(PipeType.Short, 480, 196, false);
+//            section1.addPipe(pipe);
+//            section1.addEnemy(new ToxicPlant(pipe));
+//
+//            section1.addBlock(new Block(BlockType.Empty, 600, 100));
+//            section1.addBlock(new Block(BlockType.ContainCoin, 636, 100));
+//            section1.addCoin(new Coin(650, 70));
+//            section1.addBlock(new Block(BlockType.Empty, 672, 100));
 
             section1.addEnemy(new Spiny(800, 290));
             section1.addCoin(new Coin(850, 300));

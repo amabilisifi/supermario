@@ -392,12 +392,6 @@ public class CollisionManager {
         }
     }
 
-    public void collisionEnemiesWithObjectsInGame() {
-        for (Enemy enemy : enemyList) {
-            collisionWithObjectsInGame(enemy);
-        }
-    }
-
     public void collisionWithObjectsInGame(MovingEntity entity) {
         boolean flag = false;
         for (Pipe pipe : pipeList) {
@@ -506,6 +500,15 @@ public class CollisionManager {
 
     public void collisionBossEnemy(BossEnemy bossEnemy) {
         collisionBossEnemyWithCharacter(bossEnemy);
+        Block b = null;
+        for (Block block : blockList) {
+            if (bossEnemy.intersects(block.getBoundsInParent()) && block.getBlockType() != BlockType.Ground) {
+                SectionDesigner.getInstance().removeFromRoot(block);
+                b = block;
+            }
+        }
+        if (b != null)
+            blockList.remove(b);
     }
 
     public void collisionBossEnemyWithCharacter(BossEnemy bossEnemy) {
@@ -541,12 +544,11 @@ public class CollisionManager {
                     if (onGroundTime >= 4) {
                         character.setOnGround4seconds(true);
                     }
-                }
-                else if(b.getBlockType() != BlockType.Ground)  {
-                    System.out.println(b.getBlockTimer());
+                } else if (b.getBlockType() != BlockType.Ground) {
+                    GameData.getInstance().getBossEnemy().setVx(3.6);
                     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                         if (passed) {
-                            b.setBlockTimer(b.getBlockTimer()+0.01);
+                            b.setBlockTimer(b.getBlockTimer() + 0.01);
                         }
                         passed = true;
                     }));

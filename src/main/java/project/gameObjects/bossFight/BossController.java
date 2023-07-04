@@ -14,12 +14,14 @@ public class BossController {
     private final Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
     private double distance;
     private boolean jumpAttack = false;
-    private final Timeline timeLineRoam = new Timeline(new KeyFrame(Duration.millis(20),e->roam()));
+    private final Timeline timeLineRoam = new Timeline(new KeyFrame(Duration.millis(20), e -> roam()));
     private double startXRoam;
 
     public BossController(BossEnemy bossEnemy) {
         this.bossEnemy = bossEnemy;
-        Timeline timelineControl = new Timeline(new KeyFrame(Duration.millis(10), e -> controlBossMechanism()));
+        Timeline timelineControl = new Timeline(new KeyFrame(Duration.millis(10), e -> {
+            if (!bossEnemy.isDamaged()) controlBossMechanism();
+        }));
         timelineControl.setCycleCount(Animation.INDEFINITE);
         timelineControl.playFromStart();
     }
@@ -32,7 +34,7 @@ public class BossController {
             flag = true;
             timeLineRoam.stop();
         }
-        if (isInThisDistance(1) && !character.isDizzy()) {
+        if (isInThisDistance(1) && !character.isDizzy() && character.getY()>=bossEnemy.getY()+36) {
             bossEnemy.grabAttack();
             flag = true;
             timeLineRoam.stop();
@@ -47,8 +49,8 @@ public class BossController {
             //roam();
             startXRoam = bossEnemy.getX();
         }
-        if(bossEnemy.isSuper()){
-            if(bossEnemy.isNukeAttackCooledDown()) {
+        if (bossEnemy.isSuper()) {
+            if (bossEnemy.isNukeAttackCooledDown()) {
                 new NukeButton(bossEnemy);
                 bossEnemy.setNukeAttackCooledDown(false);
                 bossEnemy.setBombing(true);
@@ -86,18 +88,18 @@ public class BossController {
         if (random == 0) {
             direction = Direction.Left;
         }
-        double dt = 20/1000.0;
+        double dt = 20 / 1000.0;
         bossEnemy.setVx(4);
         switch (direction) {
             case Right -> {
                 bossEnemy.setX(bossEnemy.getX() + Math.abs(bossEnemy.getVx() * dt));
-                if(Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize){
+                if (Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize) {
                     direction = Direction.Left;
                 }
             }
             case Left -> {
                 bossEnemy.setX(bossEnemy.getX() - Math.abs(bossEnemy.getVx() * dt));
-                if(Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize){
+                if (Math.abs(bossEnemy.getX() - startXRoam) >= 1.5 * blockSize) {
                     direction = Direction.Right;
                 }
             }
