@@ -40,7 +40,7 @@ public class level1 extends Level {
             section1.addCoin(new Coin(650, 70));
             section1.addBlock(new Block(BlockType.Empty, 672, 100));
 
-            section1.addEnemy(new Mushroom(800, 290));
+            section1.addEnemy(new Mushroom(800, 255));
             section1.addCoin(new Coin(850, 300));
 
             section1.addBlock(new Block(BlockType.Simple, 1220, 145));
@@ -49,7 +49,7 @@ public class level1 extends Level {
             section1.addBlock(new Block(BlockType.Simple, 1292, 145));
             section1.addBlock(new Block(BlockType.Bonus, 1256, 80));
 
-            section1.addEnemy(new Mushroom(2000, 254));
+            section1.addEnemy(new Mushroom(2000, 220));
             section1.addCheckPoint(new CheckPoint(2000,266));
             section1.addPipe(new Pipe(PipeType.Medium, 1700, 213, false));
             section1.addBlock(new Block(BlockType.Simple, 1900, 145));

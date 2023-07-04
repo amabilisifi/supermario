@@ -1,6 +1,7 @@
 package project.gameStuff;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -33,6 +34,10 @@ public class GameData {
     private int levelNum;
     @JsonIgnore
     private SoundPlayer currentSoundPlayer;
+    @JsonIgnore
+    private Timeline timeline;
+    @JsonIgnore
+    private Timeline timelinePrime;
     public GameData() {
     }
 
@@ -149,5 +154,21 @@ public class GameData {
 
     public void setCurrentSoundPlayer(SoundPlayer currentSoundPlayer) {
         this.currentSoundPlayer = currentSoundPlayer;
+    }
+
+    public Timeline getTimelinePrime() {
+        return timelinePrime;
+    }
+
+    public void setTimelinePrime(Timeline timelinePrime) {
+        this.timelinePrime = timelinePrime;
+    }
+
+    public Timeline getTimeline() {
+        return timeline;
+    }
+
+    public void setTimeline(Timeline timeline) {
+        this.timeline = timeline;
     }
 }

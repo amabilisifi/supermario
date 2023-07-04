@@ -2,15 +2,16 @@ package project.managers;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import project.MovingEntity;
-import project.StorageController;
-import project.User;
-import project.UsersData;
+import project.*;
 import project.characters.Character;
 import project.characters.CharacterModes;
 import project.gameObjects.*;
@@ -22,6 +23,7 @@ import project.gameStuff.GameData;
 import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
 
+import java.io.IOException;
 import java.util.List;
 
 public class CollisionManager {
@@ -306,8 +308,26 @@ public class CollisionManager {
 
     public void collisionWithCheckPointsChar() {
         for (CheckPoint checkPoint : section.getCheckPointList()) {
-            if (character.intersects(checkPoint.getBoundsInParent())) {
-                StorageController.getInstance().save(GameData.getInstance().getCurrentLevel(), GameData.getInstance().getCurrentSection());
+            if (character.intersects(checkPoint.getBoundsInParent()) && !checkPoint.isColided()) {
+                checkPoint.setColided(true);
+                GameData.getInstance().getTimeline().pause();
+                GameData.getInstance().getTimelinePrime().pause();
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/checkpointAsk.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                Scene sc = new Scene(root, 396, 292);
+                stage.setScene(sc);
+                stage.setResizable(false);
+                stage.setOnCloseRequest(e -> {
+                    GameData.getInstance().getTimeline().play();
+                    GameData.getInstance().getTimelinePrime().play();
+                });
+                stage.show();
             }
         }
     }
