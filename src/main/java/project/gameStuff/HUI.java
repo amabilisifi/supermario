@@ -16,7 +16,7 @@ public class HUI {
     private Text CoinsText = new Text("COINS");
     private Text coins = new Text(String.valueOf(UsersData.getInstance().getCurrentUser().getCoin()));
     private Text WorldText = new Text("WORLD");
-    private Text world = new Text(GameData.getInstance().getCurrentLevel().getLevelNum() + " - " + GameData.getInstance().getCurrentSection().getSectionNum() + 1);
+    private Text world = new Text(GameData.getInstance().getLevelNum() + " - " + GameData.getInstance().getCurrentSection().getSectionNum() + 1);
     private Text TimeText = new Text("TIME");
     private Text time = new Text("000");
     private Text LivesText = new Text("LIVES");

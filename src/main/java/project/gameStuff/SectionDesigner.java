@@ -16,6 +16,7 @@ import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Enemy;
 import project.managers.CollisionManager;
 import project.managers.JsonManager;
+import project.managers.Page.SceneManager;
 import project.managers.SoundPlayer;
 
 import java.io.IOException;
@@ -41,10 +42,10 @@ public class SectionDesigner {
 
     public void paint(Section targetSection) {
         System.out.println(targetSection.isUserHaveCheckPointSaved());
-        if(targetSection.isUserHaveCheckPointSaved()){
+        if (targetSection.isUserHaveCheckPointSaved()) {
             try {
                 System.out.println(targetSection.getSavedCheckPointPath());
-            JsonManager manager = new JsonManager(targetSection.getSavedCheckPointPath());
+                JsonManager manager = new JsonManager(targetSection.getSavedCheckPointPath());
                 targetSection = manager.readObject(Section.class);
                 System.out.println("df");
             } catch (IOException e) {
@@ -78,11 +79,64 @@ public class SectionDesigner {
         for (Coin coin : targetSection.getCoinList()) {
             root.getChildren().add(coin);
         }
-        for (CheckPoint checkPoint: targetSection.getCheckPointList()){
+        for (CheckPoint checkPoint : targetSection.getCheckPointList()) {
             root.getChildren().add(checkPoint);
         }
         root.getChildren().add(targetSection.getEndPoint());
         HUI.getInstance().paintHUI(root);
+    }
+
+    public void sketch(int levelNum, int sectionNum) {
+        try {
+            String path = "src/main/resources/fxmls/levels/level" + levelNum + "/section" + sectionNum + ".json";
+            System.out.println(1);
+            JsonManager manager = new JsonManager(path);
+            System.out.println(2);
+            Section targetSection = manager.readObject(Section.class);
+            System.out.println(3);
+            System.out.println(targetSection.getEnemyList().size());
+
+            GameData.getInstance().setCurrentSection(targetSection);
+            GameData.getInstance().setLevelNum(1);
+
+            Timeline timeSection = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                targetSection.setTime(targetSection.getTime() - 1);
+                HUI.getInstance().setTime(targetSection.getTime());
+            }));
+            timeSection.setCycleCount(Animation.INDEFINITE);
+            timeSection.playFromStart();
+
+            for (Block block : targetSection.getBlockList()) {
+                root.getChildren().add(block);
+            }
+            for (Enemy enemy : targetSection.getEnemyList()) {
+                if (enemy != null)
+                    root.getChildren().add(enemy);
+                if (enemy instanceof BossEnemy) {
+                    GameData.getInstance().setBossEnemy((BossEnemy) enemy);
+                }
+            }
+            for (Pipe pipe : targetSection.getPipeList()) {
+                root.getChildren().add(pipe);
+            }
+            for (Coin coin : targetSection.getCoinList()) {
+                root.getChildren().add(coin);
+            }
+            for (CheckPoint checkPoint : targetSection.getCheckPointList()) {
+                root.getChildren().add(checkPoint);
+            }
+            root.getChildren().add(targetSection.getEndPoint());
+            HUI.getInstance().paintHUI(root);
+
+            CollisionManager.getInstance().setCollisionWithEnd(false);
+            Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
+            character.setX(10);
+            GameData.getInstance().getGameController().setScrollLimit(false);
+
+            SceneManager.getInstance().goToScene(new Stage(),root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void clearSection(Section section) {

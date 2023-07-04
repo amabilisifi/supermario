@@ -15,7 +15,7 @@ public abstract class MovingEntity extends ImageView {
     public void fall() {
         double dt = 200 / 1000.0;
         if (!onBlock)
-            Vy += GameData.getInstance().getCurrentSection().getGravity() * dt;
+            Vy += 1.3 * dt;
         setY(getY() + Vy * dt);
     }
 

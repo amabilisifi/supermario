@@ -27,7 +27,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameController implements Runnable {
-    private final Group root;
+    private Group root = new Group();
     private final Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
@@ -191,7 +191,7 @@ public class GameController implements Runnable {
                     }
                 }
                 case K ->{
-                    JsonManager manager = new JsonManager("src/main/resources/fxmls/levels/level1/section1.json");
+                    JsonManager manager = new JsonManager("src/main/resources/fxmls/levels/level1/section3.json");
                     try {
                         manager.writeObject(GameData.getInstance().getCurrentSection());
                     } catch (IOException e) {

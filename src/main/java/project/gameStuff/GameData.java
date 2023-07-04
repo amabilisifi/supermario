@@ -12,11 +12,11 @@ import project.managers.CollisionManager;
 
 public class GameData {
     @JsonIgnore
-    private static GameData instance;
+    private static GameData instance = new GameData();
     @JsonIgnore
     private Scene scene;
     @JsonIgnore
-    private Group root;
+    private Group root = new Group();
     @JsonIgnore
     private Level currentLevel;
     private Section currentSection;

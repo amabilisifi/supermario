@@ -235,7 +235,7 @@ public class CollisionManager {
     public void collisionWithEnemyChar() {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
-            if (character.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
+            if (enemy!=null && character.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
                 if (character.isAntiKnock()) {
                     e = enemy;
                     root.getChildren().remove(enemy);
@@ -381,6 +381,11 @@ public class CollisionManager {
         }
     }
 
+    public void collisionEnemiesWithObjectsInGame(){
+        for (Enemy enemy:enemyList){
+            collisionWithObjectsInGame(enemy);
+        }
+    }
     public void collisionWithObjectsInGame(MovingEntity entity) {
         boolean flag = false;
         for (Pipe pipe : pipeList) {

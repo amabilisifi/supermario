@@ -155,7 +155,7 @@ public class level2 extends Level {
             section3.addBlockTable(BlockType.Ground, 15, 2, 3000);
 
 
-//            section3.setEndPoint(new Flag(3126, 286));
+//            section3.json.setEndPoint(new Flag(3126, 286));
             section3.setEndPoint(new Flag(200, 220));
 
         }

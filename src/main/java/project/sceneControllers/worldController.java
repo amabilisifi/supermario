@@ -5,7 +5,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import project.gameStuff.GameData;
 import project.gameStuff.Level;
@@ -33,7 +32,8 @@ public class worldController implements Initializable {
         goToLevel1part(1, event);
     }
     public void level1part3(ActionEvent event) throws IOException {
-        goToLevel1part(2, event);
+//        goToLevel1part(2, event);
+        SectionDesigner.getInstance().sketch(1,3);
     }
     public void goToLevel1part(int num , ActionEvent event){
         Group root = new Group();
