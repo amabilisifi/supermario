@@ -191,7 +191,12 @@ public class GameController implements Runnable {
                     }
                 }
                 case K ->{
-                    System.out.println(UsersData.getInstance().getCurrentUser().getFilePath());
+                    JsonManager manager = new JsonManager("src/main/resources/fxmls/levels/level1/section1.json");
+                    try {
+                        manager.writeObject(GameData.getInstance().getCurrentSection());
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             }
         });

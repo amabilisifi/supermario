@@ -21,6 +21,7 @@ public class SceneManager {
         fxmlPaths.put(PageType.ProfilePage,"/fxmls/profile.fxml");
         fxmlPaths.put(PageType.ShopPage,"/fxmls/Shop.fxml");
         fxmlPaths.put(PageType.HistoryPage,"history.fxml");
+        fxmlPaths.put(PageType.WorldPage,"/fxmls/worlds.fxml");
     }
 
     public void goToScene(Stage stage, PageType type) {

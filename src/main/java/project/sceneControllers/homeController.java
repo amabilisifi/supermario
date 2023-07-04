@@ -86,6 +86,10 @@ public class homeController implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneManager.getInstance().goToScene(stage, PageType.HistoryPage);
     }
+    public void goToWorldList(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneManager.getInstance().goToScene(stage, PageType.WorldPage);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

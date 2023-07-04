@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" prefHeight="400.0" prefWidth="800.0"
-            xmlns="http://javafx.com/javafx/19" fx:controller="project.sceneControllers.homeController">
+
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.sceneControllers.homeController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0"/>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="400.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
         <ImageView fitHeight="400.0" fitWidth="317.0" layoutX="250.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/bg/homeWall1.jpeg"/>
+                <Image url="@../images/bg/homeWall1.jpeg" />
             </image>
         </ImageView>
-        <Button blendMode="RED" layoutX="138.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToHardnessScene"
-                opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="New Game">
+        <Button blendMode="RED" layoutX="91.0" layoutY="201.0" mnemonicParsing="false" onAction="#goToHardnessScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="New Game">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button blendMode="RED" layoutX="341.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToHistoryScene"
-                opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Continue Game" textAlignment="CENTER">
+        <Button blendMode="RED" layoutX="89.0" layoutY="104.0" mnemonicParsing="false" onAction="#goToHistoryScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Continue Game" textAlignment="CENTER">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button blendMode="RED" layoutX="549.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToShop"
-                opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Shop">
+        <Button blendMode="RED" layoutX="607.0" layoutY="201.0" mnemonicParsing="false" onAction="#goToShop" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Shop">
             <font>
-                <Font name="System Bold" size="14.0"/>
+                <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button blendMode="RED" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToStart"
-                opacity="0.56" text="logout"/>
-        <ImageView fitHeight="44.0" fitWidth="52.0" layoutX="97.0" layoutY="7.0" onMouseClicked="#goToProfileScene"
-                   pickOnBounds="true" preserveRatio="true">
+        <Button blendMode="RED" layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToStart" opacity="0.56" text="logout" />
+        <ImageView fitHeight="44.0" fitWidth="52.0" layoutX="97.0" layoutY="7.0" onMouseClicked="#goToProfileScene" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/profileIcon.PNG"/>
+                <Image url="@../images/profileIcon.PNG" />
             </image>
         </ImageView>
-        <Circle fill="#1f93ff00" layoutX="120.0" layoutY="29.0" onMouseClicked="#goToProfileScene" radius="22.0"
-                stroke="#2d71cf" strokeType="INSIDE"/>
-        <Button layoutX="541.0" layoutY="72.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="136.0"
-                text="Ding-Dong" onMouseClicked="#dingDong"/>
+        <Circle fill="#1f93ff00" layoutX="120.0" layoutY="29.0" onMouseClicked="#goToProfileScene" radius="22.0" stroke="#2d71cf" strokeType="INSIDE" />
+        <Button layoutX="80.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#dingDong" prefHeight="54.0" prefWidth="136.0" text="Ding-Dong" />
+      <Button blendMode="RED" layoutX="609.0" layoutY="104.0" mnemonicParsing="false" onAction="#goToWorldList" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Worlds">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

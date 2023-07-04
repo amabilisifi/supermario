@@ -9,4 +9,5 @@ public enum PageType {
     ProfilePage,
     ShopPage,
     HistoryPage,
+    WorldPage,
 }

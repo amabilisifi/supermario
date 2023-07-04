@@ -69,7 +69,7 @@ public class level2 extends Level {
             section1.addBlock(new Block(BlockType.ContainCoin, 3108, 150));
             section1.addBlock(new Block(BlockType.Empty, 3144, 150));
 
-//            section1.setEndPoint(new Flag(3126,105));
+//            section1.json.setEndPoint(new Flag(3126,105));
             section1.setEndPoint(new Flag(300, 230));
 
         }

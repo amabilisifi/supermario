@@ -67,19 +67,4 @@ public class startPageController implements Initializable {
         soundPlayer.play();
         soundPlayer.playOnRepeat();
     }
-
-    public void goArta(ActionEvent event) throws IOException {
-        User u = User.userOf("arta");
-        UsersData.getInstance().setCurrentUser(u);
-        soundPlayer.stop();
-
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        SceneManager.getInstance().goToScene(stage, PageType.HomePage);
-
-        String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
-        JsonManager manager = new JsonManager(path);
-        u.setPurchasedCharacters(manager.readArray(JsonManager.characterTypeReference));
-        u.getPurchasedCharacters().add(u.getFreeChar());
-
-    }
 }
