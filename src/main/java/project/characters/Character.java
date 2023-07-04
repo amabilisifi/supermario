@@ -9,10 +9,14 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.w3c.dom.Text;
 import project.GameObjectsInfo;
 import project.MovingEntity;
 import project.gameObjects.Direction;
@@ -66,6 +70,9 @@ public abstract class Character extends MovingEntity {
 
     private boolean onGround4seconds = false;
     private boolean isDamaged = false;
+    private boolean awayFromLastDamage = true;
+
+    private boolean isSitting = false;
 
     public Character() {
         setMode(CharacterModes.Mega);
@@ -100,21 +107,27 @@ public abstract class Character extends MovingEntity {
     }
 
     public void damaged() {
-        if (mode == CharacterModes.Mini) {
-            hearts--;
-            isDamaged = true;
-            CollisionManager.getInstance().reset();
-            HUI.getInstance().setHearts(hearts);
-            if (hearts <= 0) {
-                SceneManager.getInstance().goToScene(GameData.getInstance().getStage(), PageType.GameOver);
+        if(awayFromLastDamage) {
+            awayFromLastDamage = false;
+            if (mode == CharacterModes.Mini) {
+                hearts--;
+                isDamaged = true;
+                CollisionManager.getInstance().reset();
+                HUI.getInstance().setHearts(hearts);
+                if (hearts <= 0) {
+                    SceneManager.getInstance().goToScene(GameData.getInstance().getStage(), PageType.GameOver);
+                }
             }
+            if (mode == CharacterModes.Mega) {
+                setMode(CharacterModes.Mini);
+            }
+            if (mode == CharacterModes.Fiery) {
+                setMode(CharacterModes.Mega);
+            }
+            Timeline res = new Timeline(new KeyFrame(Duration.seconds(1.5),e->awayFromLastDamage = true));
+            res.playFromStart();
         }
-        if (mode == CharacterModes.Mega) {
-            setMode(CharacterModes.Mini);
-        }
-        if (mode == CharacterModes.Fiery) {
-            setMode(CharacterModes.Mega);
-        }
+
     }
 
     public void upgradeMode() {
@@ -127,7 +140,7 @@ public abstract class Character extends MovingEntity {
     }
 
     public void setFrame() {
-        if (getVx() != 0 && !isGrabbed) {
+        if (getVx() != 0 && !isGrabbed && !isSitting()) {
             switch (indexOfWalkingFrames) {
                 case 1 -> {
                     setImage(image1);
@@ -152,9 +165,6 @@ public abstract class Character extends MovingEntity {
                 }
             }
         }
-    }
-
-    public void dizzied() {
     }
 
     /**
@@ -398,6 +408,13 @@ public abstract class Character extends MovingEntity {
         isDamaged = damaged;
     }
 
+    public boolean isSitting() {
+        return isSitting;
+    }
+
+    public void setSitting(boolean sitting) {
+        isSitting = sitting;
+    }
 }
 
 class CharacterSerializer extends JsonSerializer<Character> {

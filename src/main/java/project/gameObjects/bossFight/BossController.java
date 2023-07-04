@@ -28,9 +28,26 @@ public class BossController {
         walk();
         boolean flag = false;
         if (isInThisDistance(6, 10)) {
-//            bossEnemy.throwFireBall();
-//            flag = true;
-//            timeLineRoam.stop();
+            bossEnemy.throwFireBall();
+            flag = true;
+            timeLineRoam.stop();
+        }
+        if (isInThisDistance(1) && !character.isDizzy()) {
+            bossEnemy.grabAttack();
+            flag = true;
+            timeLineRoam.stop();
+        }
+        if (character.isOnGround4seconds() && !jumpAttack) {
+            bossEnemy.jumpAttack();
+            jumpAttack = true;
+            flag = true;
+            timeLineRoam.stop();
+        }
+        if (!flag) {
+            //roam();
+            startXRoam = bossEnemy.getX();
+        }
+        if(bossEnemy.isSuper()){
             if(bossEnemy.isNukeAttackCooledDown()) {
                 new NukeButton(bossEnemy);
                 bossEnemy.setNukeAttackCooledDown(false);
@@ -38,21 +55,6 @@ public class BossController {
                 bossEnemy.setNukeAttackCooledDown(false);
             }
         }
-//        if (isInThisDistance(1) && !character.isDizzy()) {
-//            bossEnemy.grabAttack();
-//            flag = true;
-//            timeLineRoam.stop();
-//        }
-//        if (character.isOnGround4seconds() && !jumpAttack) {
-//            bossEnemy.jumpAttack();
-//            jumpAttack = true;
-//            flag = true;
-//            timeLineRoam.stop();
-//        }
-//        if (!flag) {
-//            //roam();
-//            startXRoam = bossEnemy.getX();
-//        }
     }
 
     public void walk() {

@@ -59,6 +59,8 @@ public class KingKoopa extends BossEnemy {
 
             Timeline change = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                 setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
+                if (isSuper())
+                    this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss2.PNG"))));
                 setThrowingFireBall();
             }));
             change.playFromStart();

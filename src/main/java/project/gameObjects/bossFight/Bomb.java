@@ -33,13 +33,17 @@ public class Bomb extends ImageView {
     }
     public void explode(){
         SectionDesigner.getInstance().removeFromRoot(this);
+        timeline.stop();
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
         double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
         if(Math.abs(character.getX() + character.getFitWidth()/2.0 - this.getX() - this.getFitWidth()/2.0) < 1.5 * blockSize){
             character.damaged();
         }
-        if(Math.abs(bossEnemy.getX() + bossEnemy.getFitWidth()/2.0 - this.getX() - this.getFitWidth()/2.0) < 3 * blockSize && !bossEnemy.isDamaged()){
+        if(Math.abs(bossEnemy.getX() + bossEnemy.getFitWidth()/2.0 - this.getX() - this.getFitWidth()/2.0) < 3 * blockSize && !bossEnemy.isHitByBomb()){
+            bossEnemy.setHitByBomb(true);
             bossEnemy.damaged(1);
+            Timeline res = new Timeline(new KeyFrame(Duration.millis(4),e->bossEnemy.setHitByBomb(false)));
+            res.playFromStart();
         }
     }
 }

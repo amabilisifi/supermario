@@ -11,6 +11,7 @@ import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
 import project.levels.level1;
+import project.levels.level2;
 import project.managers.Page.PageType;
 import project.managers.Page.SceneManager;
 import project.managers.SoundPlayer;
@@ -37,6 +38,18 @@ public class worldController implements Initializable {
 //        SectionDesigner.getInstance().sketch(1,3);
         goToLevel1part(2,event);
     }
+    public void level2part1(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,1);
+        goToLevel2part(0,event);
+    }
+    public void level2part2(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,2);
+        goToLevel2part(1,event);
+    }
+    public void level2part3(ActionEvent event) throws IOException {
+//        SectionDesigner.getInstance().sketch(1,3);
+        goToLevel2part(2,event);
+    }
     public void goToLevel1part(int num , ActionEvent event){
         Group root = new Group();
         SectionDesigner.getInstance().setRoot(root);
@@ -48,6 +61,29 @@ public class worldController implements Initializable {
 
 
         Level temp = new level1();
+        Section t = temp.getSections().get(num);
+        GameData.getInstance().setCurrentLevel(temp);
+        GameData.getInstance().setCurrentSection(t);
+        soundPlayer.mute();
+        soundPlayer.stop();
+
+
+        SectionDesigner.getInstance().paint(t);
+
+        stage.setResizable(false);
+        stage.show();
+    }
+    public void goToLevel2part(int num , ActionEvent event){
+        Group root = new Group();
+        SectionDesigner.getInstance().setRoot(root);
+        Scene scene = new Scene(root, 800, 400);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        GameData.getInstance().setRoot(root);
+        GameData.getInstance().setScene(scene);
+
+
+        Level temp = new level2();
         Section t = temp.getSections().get(num);
         GameData.getInstance().setCurrentLevel(temp);
         GameData.getInstance().setCurrentSection(t);

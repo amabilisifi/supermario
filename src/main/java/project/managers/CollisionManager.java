@@ -71,6 +71,8 @@ public class CollisionManager {
 
                 if (dy <= 0 && !character.isJumping()) {
                     character.setY(block.getCurrentY() - character.getFitHeight());
+                    if(character.isSitting())
+                        character.setY(block.getCurrentY() - 0.75*character.getFitHeight());
                     character.setOnBlock(true);
                     flag = true;
                     if (!upPressed)
@@ -529,7 +531,6 @@ public class CollisionManager {
                         }
                     }));
                     timeline.playFromStart();
-                    System.out.println(onGroundTime);
                     if (onGroundTime >= 4) {
                         character.setOnGround4seconds(true);
                     }

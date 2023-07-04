@@ -6,6 +6,7 @@ import project.gameObjects.enemies.ToxicPlant;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
+import project.managers.LevelManager;
 
 public class level1 extends Level {
     public level1() {
@@ -164,5 +165,7 @@ public class level1 extends Level {
         addSection(section1);
         addSection(section2);
         addSection(section3);
+
+        LevelManager.getInstance().addLevel(this);
     }
 }

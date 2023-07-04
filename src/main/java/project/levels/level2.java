@@ -2,17 +2,19 @@ package project.levels;
 
 import project.gameObjects.*;
 import project.gameObjects.enemies.Mushroom;
+import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
 import project.gameObjects.enemies.Turtle;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
+import project.managers.LevelManager;
 
 public class level2 extends Level {
     public level2() {
-        setLevelNum(1);
+        setLevelNum(2);
         Section section1 = new Section();
         {
-            section1.setBackground("/images/bg/bg1.jpeg");
+            section1.setBackground("/images/bg/bg2.jpeg");
             section1.setSectionNum(0);
             section1.addCoin(new Coin(200, 260));
             section1.addCoin(new Coin(130, 260));
@@ -38,7 +40,7 @@ public class level2 extends Level {
             section1.addCoin(new Coin(650, 70));
             section1.addBlock(new Block(BlockType.Empty, 672, 100));
 
-            section1.addEnemy(new Mushroom(800, 290));
+            section1.addEnemy(new Spiny(800, 290));
             section1.addCoin(new Coin(850, 300));
 
             section1.addBlock(new Block(BlockType.Simple, 1220, 145));
@@ -47,7 +49,7 @@ public class level2 extends Level {
             section1.addBlock(new Block(BlockType.Simple, 1292, 145));
             section1.addBlock(new Block(BlockType.Bonus, 1256, 80));
 
-            section1.addEnemy(new Mushroom(2000, 254));
+            section1.addEnemy(new Turtle(2000, 254));
             section1.addPipe(new Pipe(PipeType.Medium, 1700, 213, false));
             section1.addBlock(new Block(BlockType.Simple, 1900, 145));
             section1.addBlock(new Block(BlockType.Simple, 1936, 145));
@@ -75,7 +77,7 @@ public class level2 extends Level {
         }
         Section section2 = new Section();
         {
-            section2.setBackground("/images/bg/bg1.jpeg");
+            section1.setBackground("/images/bg/bg2.jpeg");
             section2.setSectionNum(1);
 
             section2.addBlockTable(BlockType.Ground, 8, 3, 0);
@@ -121,7 +123,7 @@ public class level2 extends Level {
         }
         Section section3 = new Section();
         {
-            section3.setBackground("/images/bg/bg1.jpeg");
+            section1.setBackground("/images/bg/bg2.jpeg");
             section3.setSectionNum(2);
             section3.addBlockTable(BlockType.Ground, 5, 5, 0);
             section3.addBlockTable(BlockType.Ground, 5, 4, 180);
@@ -161,17 +163,30 @@ public class level2 extends Level {
         }
         Section section4 = new Section();
         {
-            section4.setBackground("/images/bg/bg1.jpeg");
+            section1.setBackground("/images/bg/bg2.jpeg");
             section4.setSectionNum(3);
 
             section4.addBlockTable(BlockType.Ground,10,3,0);
+            section4.addBlockTable(BlockType.Ground,10,3,400);
 
-            section4.setEndPoint(new Flag(3126, 286));
+            section4.setEndPoint(new Flag(400, 286));
+        }
+        Section section5 = new Section();{
+            section1.setBackground("/images/bg/bg2.jpeg");
+            section5.setSectionNum(4);
+
+            section5.addBlockTable(BlockType.Ground,10,3,0);
+            section5.addBlockTable(BlockType.Ground,10,3,400);
+
+            section5.setEndPoint(new Flag(400, 286));
         }
 
         addSection(section1);
         addSection(section2);
         addSection(section3);
         addSection(section4);
+        addSection(section5);
+
+        LevelManager.getInstance().addLevel(this);
     }
 }

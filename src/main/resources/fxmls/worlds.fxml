@@ -41,17 +41,17 @@
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="39.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="2 - 1" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="39.0" mnemonicParsing="false" opacity="0.51" onAction="#level2part1" prefHeight="39.0" prefWidth="84.0" text="2 - 1" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="107.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="2 - 2" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="107.0" mnemonicParsing="false" opacity="0.51" onAction="#level2part2" prefHeight="39.0" prefWidth="84.0" text="2 - 2" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="174.0" mnemonicParsing="false" opacity="0.51" prefHeight="39.0" prefWidth="84.0" text="2 - 3" textAlignment="CENTER">
+      <Button alignment="CENTER" blendMode="RED" layoutX="529.0" layoutY="174.0" mnemonicParsing="false" opacity="0.51" onAction="#level2part3" prefHeight="39.0" prefWidth="84.0" text="2 - 3" textAlignment="CENTER">
          <font>
             <Font name="Cambay Devanagari Regular" size="23.0" />
          </font>

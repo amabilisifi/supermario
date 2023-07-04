@@ -11,19 +11,18 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import project.characters.Character;
-import project.gameObjects.*;
-import project.gameObjects.bossFight.BossEnemy;
+import project.characters.CharacterModes;
 import project.gameObjects.Direction;
-import project.gameObjects.enemies.Enemy;
-import project.gameObjects.enemies.ToxicPlant;
+import project.gameObjects.EndPoint;
+import project.gameObjects.Laser;
+import project.gameObjects.Sword;
+import project.gameObjects.bossFight.BossEnemy;
 import project.gameStuff.GameData;
 import project.gameStuff.HUI;
-import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
 import project.managers.CollisionManager;
 import project.managers.JsonManager;
 
-import java.io.File;
 import java.io.IOException;
 
 public class GameController implements Runnable {
@@ -93,8 +92,8 @@ public class GameController implements Runnable {
             if (character.getVy() <= 0) {
                 character.setAbleToJumpAgain(true);
             }
-            if(newVal.doubleValue()>=380){
-                character.setHearts(character.getHearts()-1);
+            if (newVal.doubleValue() >= 380) {
+                character.setHearts(character.getHearts() - 1);
                 HUI.getInstance().setHearts(character.getHearts());
                 GameData.getInstance().decreaseScore(30);
                 CollisionManager.getInstance().reset();
@@ -120,7 +119,7 @@ public class GameController implements Runnable {
         });
     }
 
-    public void keyListener(){
+    public void keyListener() {
         scene.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
                 case F -> {
@@ -178,6 +177,7 @@ public class GameController implements Runnable {
                     } else {
                         character.setImage(character.getImageSit());
                         character.setScaleY(0.8);
+                        character.setSitting(true);
                     }
                 }
                 case W -> {
@@ -185,6 +185,7 @@ public class GameController implements Runnable {
                         // S stuff
                         character.setImage(character.getImageSit());
                         character.setScaleY(0.8);
+                        character.setSitting(true);
                     } else {
                         if (character.isAbleToJumpAgain()) {
                             character.setUpPressed(true);
@@ -225,26 +226,33 @@ public class GameController implements Runnable {
                     }
                 }
                 case SPACE -> {
-                    // if (character.isOnBlock()) {
-                    Laser laser = new Laser();
-                    root.getChildren().add(laser);
-                    if (SectionDesigner.getInstance().isBossScene()) {
-                        BossEnemy bossEnemy = GameData.getInstance().getBossEnemy();
-                        double distance = Math.abs(character.getX() - bossEnemy.getX());
-                        double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
-                        double pD = distance / (blockSize);
-                        int random = (int) (8 * Math.random());
-                        if (pD >= random)
-                            bossEnemy.jump(false);
+                    if (character.isOnBlock() && character.getMode()== CharacterModes.Fiery) {
+                        Laser laser = new Laser();
+                        root.getChildren().add(laser);
+                        if (SectionDesigner.getInstance().isBossScene()) {
+                            BossEnemy bossEnemy = GameData.getInstance().getBossEnemy();
+                            double distance = Math.abs(character.getX() - bossEnemy.getX());
+                            double blockSize = GameObjectsInfo.getInstance().getBlockWidth();
+                            double pD = distance / (blockSize);
+                            int random = (int) (8 * Math.random());
+                            if (pD >= random)
+                                bossEnemy.jump(false);
+                        }
                     }
                 }
-                case K ->{
+                case K -> {
                     JsonManager manager = new JsonManager("src/main/resources/fxmls/levels/level1/section3.json");
                     try {
                         manager.writeObject(GameData.getInstance().getCurrentSection());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                }
+                case Z ->{
+                    GameData.getInstance().getBossEnemy().setHP(8);
+                }
+                case X->{
+                    System.out.println(GameData.getInstance().getLevelNum()+ " - "+GameData.getInstance().getCurrentSection().getSectionNum());
                 }
             }
         });
@@ -264,6 +272,7 @@ public class GameController implements Runnable {
                         character.setFrame();
                         character.setScaleY(1);
                         character.setImage(character.getImg());
+                        character.setSitting(false);
                     }
                 }
                 case W -> {
@@ -272,6 +281,7 @@ public class GameController implements Runnable {
                         character.setFrame();
                         character.setScaleY(1);
                         character.setImage(character.getImg());
+                        character.setSitting(false);
                     } else {
                         character.setUpPressed(false);
                         character.setJumping(false);

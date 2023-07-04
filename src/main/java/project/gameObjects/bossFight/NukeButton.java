@@ -38,6 +38,7 @@ public class NukeButton extends ImageView {
     public void checkTimeLine(){
         if(stopTimeLine) {
             timeline.stop();
+            SectionDesigner.getInstance().removeFromRoot(this);
             Bomb bomb =new Bomb(bossEnemy);
             SectionDesigner.getInstance().addToRoot(bomb);
         }

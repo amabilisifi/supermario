@@ -21,12 +21,15 @@ public abstract class BossEnemy extends Enemy {
     private boolean isJumping = false;
     private boolean isJumpAttackCooledDown = true;
 
-    private Timeline  timelineGrab ;
+    private Timeline timelineGrab;
     private boolean isGrabAttackCooledDown = true;
     private boolean isDamaged;
 
     private boolean isBombing;
     private boolean isNukeAttackCooledDown = true;
+
+    private boolean isHitByBomb = false;
+    private boolean superMode;
 
     public BossEnemy() {
         Timeline timelineCheckDirection = new Timeline(new KeyFrame(Duration.millis(100), e -> checkDirection()));
@@ -50,11 +53,13 @@ public abstract class BossEnemy extends Enemy {
     public abstract void throwFireBall();
 
     public abstract void jumpAttack();
+
     public abstract void grabAttack();
+
     public abstract void releaseCharacter();
 
     public void jump(boolean attack) {
-        if(!isDamaged) {
+        if (!isDamaged) {
             setJumping(true);
             if (!attack)
                 setVy(-40);
@@ -84,8 +89,10 @@ public abstract class BossEnemy extends Enemy {
                             setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss.PNG"))));
                             setScaleY(1);
                             checkDirection();
-
-                            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(4), event ->setJumpAttackCooledDown(true)));
+                            if (isSuper()) {
+                                setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss2.PNG"))));
+                            }
+                            Timeline chill = new Timeline(new KeyFrame(Duration.seconds(4), event -> setJumpAttackCooledDown(true)));
                             chill.playFromStart();
                         }));
                         wait.playFromStart();
@@ -107,9 +114,9 @@ public abstract class BossEnemy extends Enemy {
         }
     }
 
-    public void damaged(int n){
+    public void damaged(int n) {
         isDamaged = true;
-        Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2),e-> isDamaged = false));
+        Timeline damagedTimLine = new Timeline(new KeyFrame(Duration.seconds(1.2), e -> isDamaged = false));
         damagedTimLine.playFromStart();
         setHP(getHP() - n);
     }
@@ -120,6 +127,11 @@ public abstract class BossEnemy extends Enemy {
 
     public void setHP(int HP) {
         this.HP = HP;
+        if (HP <= 10) {
+            superMode = true;
+            System.out.println("super");
+            this.setImage(new Image(String.valueOf(getClass().getResource("/images/bossFight/boss2.PNG"))));
+        }
     }
 
     public boolean isFireBallCooledDown() {
@@ -195,5 +207,21 @@ public abstract class BossEnemy extends Enemy {
 
     public void setNukeAttackCooledDown(boolean nukeAttackCooledDown) {
         isNukeAttackCooledDown = nukeAttackCooledDown;
+    }
+
+    public boolean isHitByBomb() {
+        return isHitByBomb;
+    }
+
+    public void setHitByBomb(boolean hitByBomb) {
+        isHitByBomb = hitByBomb;
+    }
+
+    public boolean isSuper() {
+        return superMode;
+    }
+
+    public void setSuperMode(boolean superMode) {
+        this.superMode = superMode;
     }
 }

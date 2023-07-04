@@ -40,14 +40,20 @@ public class LevelManager implements Initializable {
 
     public void goToNextLevel() {
         Level next = null;
-        if (currentLevelNum + 1 < allLevels.size())
+        System.out.println(allLevels.size());
+        if (currentLevelNum + 1 <= allLevels.size())
             next = allLevels.get(++currentLevelNum);
-        if (currentLevelNum + 1 >= allLevels.size()) {
+        if (currentLevelNum + 1 > allLevels.size()) {
 //            next = allLevels.get(0);
 //            currentLevelNum = 0;
             System.exit(0);
         }
         GameData.getInstance().setCurrentLevel(next);
+        if(next!=null) {
+            HUI.getInstance().setWorld(next.getLevelNum(), 0 + 1);
+            GameData.getInstance().setCurrentSection(next.getSections().get(0));
+            SectionDesigner.getInstance().paint(next.getSections().get(0));
+        }
     }
 
     public void goToNextSection() {
@@ -68,10 +74,11 @@ public class LevelManager implements Initializable {
             System.out.println("next level");
             goToNextLevel();
         }
-        assert next != null;
-        HUI.getInstance().setWorld(currentLevel.getLevelNum(),next.getSectionNum()+1);
-        GameData.getInstance().setCurrentSection(next);
-        SectionDesigner.getInstance().paint(next);
+        if(next!=null) {
+            HUI.getInstance().setWorld(currentLevel.getLevelNum(), next.getSectionNum() + 1);
+            GameData.getInstance().setCurrentSection(next);
+            SectionDesigner.getInstance().paint(next);
+        }
     }
     public void calculateScore(Section section){
         int timeLeft = section.getTime();
