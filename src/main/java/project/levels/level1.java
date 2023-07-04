@@ -117,8 +117,8 @@ public class level1 extends Level {
             section2.addPipe(new Pipe(PipeType.Long, 3200, 228, false));
 
 
-//            section2.setEndPoint(new Flag(3126, 286));
-            section2.setEndPoint(new Flag(300, 230));
+            section2.setEndPoint(new Flag(3126, 286));
+//            section2.setEndPoint(new Flag(300, 230));
         }
         Section section3 = new Section();
         {
@@ -141,7 +141,22 @@ public class level1 extends Level {
             section3.addBlock(new Block(BlockType.Bonus, 1388, 150));
             section3.addBlock(new Block(BlockType.Simple, 1424, 150));
             section3.addBlockTable(BlockType.Ground, 15, 3, 1800);
-            section3.addPipe(new Pipe(PipeType.Medium, 1900, 212, false)); // SECRET PIPE HERE
+            //gang
+            Pipe srPipe = new Pipe(PipeType.Medium, 1900, 212, true);
+            section3.addPipe(srPipe);
+            Section secretSection = new Section();
+            secretSection.setBackground("/images/bg/bg2.jpeg");
+            secretSection.setEndPoint(new PussyCat(1000,255));
+            secretSection.addBlockColumn(0,14);
+            secretSection.addBlockTable(BlockType.Ground,5,5,36);
+            secretSection.addBlockTable(BlockType.Ground,4,4,216);
+            secretSection.addBlockTable(BlockType.Ground,25,3,360);
+            secretSection.addPipe(new Pipe(PipeType.Medium,470,215,false));
+            secretSection.addEnemy(new Turtle(600,250));
+            secretSection.addPipe(new Pipe(PipeType.Long,800,192,false));
+            srPipe.setSection(secretSection);
+
+
             section3.addPipe(new Pipe(PipeType.Medium, 2200, 212, false));
             section3.addEnemy(new Mushroom(2050, 240));
             section3.addBlockTable(BlockType.Ground, 5, 3, 2500);
@@ -156,8 +171,8 @@ public class level1 extends Level {
             section3.addBlockTable(BlockType.Ground, 15, 2, 3000);
 
 
-//            section3.json.setEndPoint(new Flag(3126, 286));
-            section3.setEndPoint(new Flag(200, 220));
+            section3.setEndPoint(new Flag(3126, 286));
+//            section3.setEndPoint(new Flag(200, 220));
 
         }
         Section section4 = new Section();

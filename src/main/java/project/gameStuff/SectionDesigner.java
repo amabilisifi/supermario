@@ -157,6 +157,9 @@ public class SectionDesigner {
         for (Coin coin : section.getCoinList()) {
             root.getChildren().remove(coin);
         }
+        for (Item item : section.getItemList()) {
+            root.getChildren().remove(item);
+        }
         root.getChildren().remove(section.getEndPoint());
     }
 

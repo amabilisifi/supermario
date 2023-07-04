@@ -121,9 +121,16 @@ public class level2 extends Level {
             section4.addBlockTable(BlockType.Ground, 10, 3, 0);
             section4.addBlockTable(BlockType.Ground, 10, 4, 450);
             section4.addBlockTable(BlockType.Ground, 10, 3, 900);
+            // gang
             Pipe sr = new Pipe(PipeType.Medium,1100,215,true);
             section4.addPipe(sr);
-            sr.setSection(new Section());
+            Section secretSection = new Section();
+            secretSection.setEndPoint(new PussyCat(1000,247));
+            secretSection.addBlockTable(BlockType.Ground,10,3,0);
+            secretSection.addBlockTable(BlockType.Ground,5,4,360);
+            secretSection.addEnemy(new Mushroom(520,140));
+            secretSection.addBlockTable(BlockType.Ground,15,3,700);
+            sr.setSection(secretSection);
 
             section4.addBlockTable(BlockType.Ground, 10, 2, 1350);
             section4.addBlockTable(BlockType.Ground, 10, 3, 1800);
