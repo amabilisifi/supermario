@@ -198,7 +198,7 @@ public class GameController implements Runnable {
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
                         System.out.println(GameData.getInstance().getCurrentSection());
-                        manager.writeObject(sword);
+                        manager.writeObject(GameData.getInstance().getCurrentSection().getEndPoint());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -206,7 +206,8 @@ public class GameController implements Runnable {
                 case M ->{
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
-                        Sword character1 = manager.readObject(Sword.class);
+                        EndPoint character1 = manager.readObject(EndPoint.class);
+                        System.out.println(character1.getStartX());
                         root.getChildren().add(character1);
                     } catch (IOException e) {
                         throw new RuntimeException(e);

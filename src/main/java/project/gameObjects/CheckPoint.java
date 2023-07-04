@@ -5,6 +5,8 @@ import project.GameObjectsInfo;
 
 public class CheckPoint extends EndPoint{
     public CheckPoint(double startX, double startY) {
+        super(startX,startY);
+        setType("CheckPoint");
         setStartX(startX);
         setX(startX);
         setY(startY);

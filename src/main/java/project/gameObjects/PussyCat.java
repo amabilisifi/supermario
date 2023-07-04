@@ -8,7 +8,8 @@ import project.gameObjects.enemies.Enemy;
 public class PussyCat extends EndPoint {
     private double startX;
     public PussyCat(double startX,double startY) {
-        this.startX = startX;
+        super(startX,startY);
+        setType("PussyCat");
         setX(startX);
         setY(startY);
         setImage(new Image(String.valueOf(getClass().getResource("/images/cat.PNG"))));

@@ -112,7 +112,7 @@ class SwordDeserializer extends StdDeserializer<Sword> {
     }
 
     public SwordDeserializer() {
-        super(Block.class);
+        super(Sword.class);
     }
 
     @Override

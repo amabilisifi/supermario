@@ -7,7 +7,8 @@ import project.GameObjectsInfo;
 public class Flag extends EndPoint {
     private double startX;
     public Flag(double startX,double startY) {
-        this.startX = startX;
+        super(startX,startY);
+        setType("Flag");
         setX(startX);
         setY(startY);
         setImage(new Image(String.valueOf(getClass().getResource("/images/flag.PNG"))));

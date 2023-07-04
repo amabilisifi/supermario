@@ -1,5 +1,15 @@
 package project.gameObjects;
 
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -13,14 +23,20 @@ import project.gameStuff.GameData;
 import project.managers.CollisionManager;
 import project.MovingEntity;
 
+import java.io.IOException;
+
+
+@JsonSerialize(using = ItemSerializer.class)
+@JsonDeserialize(using = ItemDeserializer.class)
 public class Item extends MovingEntity {
     private Block block;
     private double startX;
+    private double startY;
     private ItemType itemType;
     private boolean obtained;
 
-    private double speed;
-    private double Vy;
+    private double speed =0;
+    private double Vy =0;
     private boolean onBlock;
     private Direction direction;
     private Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20), e -> move()));
@@ -95,6 +111,18 @@ public class Item extends MovingEntity {
             this.setFitWidth(GameObjectsInfo.getInstance().getCoinWidth());
             this.setFitHeight(GameObjectsInfo.getInstance().getCoinHeight());
         }
+    }
+
+    public Item(double startX, double startY, ItemType itemType, double speed, double vy, Direction direction) {
+        this.startX = startX;
+        this.startY = startY;
+        this.itemType = itemType;
+        this.speed = speed;
+        Vy = vy;
+        this.direction = direction;
+    }
+
+    public Item() {
     }
 
     @Override
@@ -187,6 +215,8 @@ public class Item extends MovingEntity {
     }
 
     public Direction getDirection() {
+        if(direction == null)
+            return Direction.Still;
         return direction;
     }
 
@@ -202,3 +232,63 @@ public class Item extends MovingEntity {
         this.startX = startX;
     }
 }
+class ItemSerializer extends JsonSerializer<Item> {
+
+    @Override
+    public void serialize(Item item, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeStartObject();
+
+        jsonGenerator.writeNumberField("startX", item.getX());
+        jsonGenerator.writeNumberField("startY", item.getY());
+        jsonGenerator.writeStringField("itemType",item.getItemType().toString());
+        jsonGenerator.writeNumberField("speed",item.getSpeed());
+        jsonGenerator.writeNumberField("Vy",item.getVy());
+        jsonGenerator.writeStringField("direction",item.getDirection().toString());
+
+        jsonGenerator.writeEndObject();
+    }
+}
+
+class ItemDeserializer extends StdDeserializer<Item> {
+    public ItemDeserializer(Class<?> vc) {
+        super(vc);
+    }
+
+    public ItemDeserializer() {
+        super(Item.class);
+    }
+
+    @Override
+    public Item deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+
+        JsonNode startX = node.get("startX");
+        JsonNode startY = node.get("startY");
+        JsonNode speed = node.get("speed");
+        JsonNode Vy = node.get("Vy");
+
+        JsonNode direction = node.get("direction");
+        Direction d = null;
+        if(direction!=null) {
+            if (direction.asText().equals("Left")) d = Direction.Left;
+            if (direction.asText().equals("Right")) d = Direction.Right;
+            if (direction.asText().equals("Still")) d = Direction.Still;
+        }
+
+        JsonNode type = node.get("type");
+        ItemType itemType = ItemType.Coin;
+        if(type!=null) {
+            if (type.asText().equals("MagicalStar")) itemType = ItemType.MagicalStar;
+            if (type.asText().equals("MagicalMushroom")) itemType =  ItemType.MagicalMushroom;
+            if (type.asText().equals("Coin")) itemType = ItemType.Coin;
+            if (type.asText().equals("MagicalFlower")) itemType =  ItemType.MagicalFlower;
+        }
+
+
+        if (startX != null && startY != null && itemType != null && d != null && speed!=null && Vy!=null)
+            return new Item(startX.asDouble(),startY.asDouble(),itemType,speed.asDouble(),Vy.asDouble(),d);
+
+        return null;
+    }
+}
+
