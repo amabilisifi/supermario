@@ -28,7 +28,7 @@ public class startPageController implements Initializable {
     Pane pane;
 
     JsonManager manager = new JsonManager("src/main/resources/usera.json");
-    private SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Magentium - Among Us Theme.mp3");
+    private SoundPlayer soundPlayer = new SoundPlayer("src/main/resources/media/Hans Zimmer-Batman Rises.mp3");
 
 
     public void goToLoginPage(ActionEvent event) {

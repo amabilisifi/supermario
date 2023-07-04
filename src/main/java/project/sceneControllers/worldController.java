@@ -114,7 +114,7 @@ public class worldController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        soundPlayer = new SoundPlayer("src/main/resources/media/mario.mp3");
+        soundPlayer = new SoundPlayer("src/main/resources/media/the batman-ben afflec.mp33");
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();

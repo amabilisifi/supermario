@@ -35,7 +35,8 @@ public class SectionDesigner {
     public SectionDesigner(Group root, Section section) {
         this.root = root;
         this.section = section;
-        soundPlayer = new SoundPlayer("src/main/resources/media/Barbie Girl.mp3");
+//        soundPlayer = new SoundPlayer("src/main/resources/media/Barbie Girl.mp3");
+        soundPlayer = new SoundPlayer("src/main/resources/media/Superman Theme.mp3");
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();
@@ -211,7 +212,7 @@ public class SectionDesigner {
         soundPlayer.stop();
         GameData.getInstance().setBossScene(true);
 
-        bossSoundPlayer = new SoundPlayer("src/main/resources/media/EldenRingMainTheme.mp3");
+        bossSoundPlayer = new SoundPlayer("src/main/resources/media/Hans Zimmer – Batman The Dark Knight Theme.mp3");
         SoundPlayer.setMainSoundPlayer(bossSoundPlayer);
         bossSoundPlayer.play();
         bossSoundPlayer.playOnRepeat();
