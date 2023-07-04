@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 import project.UsersData;
 import project.characters.Character;
-import project.gameObjects.enemies.Direction;
+import project.gameObjects.Direction;
 import project.gameObjects.enemies.Enemy;
 import project.managers.CollisionManager;
 

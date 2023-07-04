@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;
+import project.gameObjects.Direction;
 import project.managers.CollisionManager;
 
 public class Spiny extends Enemy {
@@ -12,6 +13,7 @@ public class Spiny extends Enemy {
 
     public Spiny(double startX, double startY) {
         super(startX, startY);
+        setType("Spiny");
         this.setFitWidth(GameObjectsInfo.getInstance().getSpinyWidth());
         this.setImage(new Image(String.valueOf(getClass().getResource("/images/enemies/Spiny.png"))));
     }

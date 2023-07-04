@@ -28,4 +28,5 @@ module project {
     opens project.collisionAriyan to javafx.fxml, javafx.graphics;
     exports project.gameObjects.bossFight;
     exports project.gameObjects.enemies;
+    opens project.gameObjects.enemies to com.fasterxml.jackson.databind;
 }

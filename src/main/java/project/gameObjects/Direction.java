@@ -1,4 +1,4 @@
-package project.gameObjects.enemies;
+package project.gameObjects;
 
 public enum Direction {
     Right,

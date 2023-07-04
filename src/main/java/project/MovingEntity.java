@@ -1,7 +1,7 @@
 package project;
 
 import javafx.scene.image.ImageView;
-import project.gameObjects.enemies.Direction;
+import project.gameObjects.Direction;
 import project.gameStuff.GameData;
 
 public abstract class MovingEntity extends ImageView {

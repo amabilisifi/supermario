@@ -13,7 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
 import project.GameObjectsInfo;
 import project.MovingEntity;
-import project.gameObjects.enemies.Direction;
+import project.gameObjects.Direction;
 import project.gameStuff.GameData;
 import project.gameStuff.HUI;
 import project.managers.CollisionManager;

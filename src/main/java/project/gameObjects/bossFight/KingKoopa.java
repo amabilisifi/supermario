@@ -8,7 +8,7 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.UsersData;
 import project.characters.Character;
-import project.gameObjects.enemies.Direction;
+import project.gameObjects.Direction;
 import project.gameStuff.GameData;
 import project.gameStuff.SectionDesigner;
 

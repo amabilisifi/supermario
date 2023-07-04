@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javafx.scene.image.Image;
 import project.GameObjectsInfo;
-import project.gameObjects.enemies.Direction;
 import project.MovingEntity;
 
 import java.io.IOException;

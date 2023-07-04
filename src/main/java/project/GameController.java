@@ -13,7 +13,9 @@ import javafx.util.Duration;
 import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.bossFight.BossEnemy;
-import project.gameObjects.enemies.Direction;
+import project.gameObjects.Direction;
+import project.gameObjects.enemies.Enemy;
+import project.gameObjects.enemies.ToxicPlant;
 import project.gameStuff.GameData;
 import project.gameStuff.HUI;
 import project.gameStuff.SectionDesigner;
@@ -22,7 +24,6 @@ import project.managers.JsonManager;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Field;
 
 public class GameController implements Runnable {
     private final Group root;
@@ -197,8 +198,7 @@ public class GameController implements Runnable {
                     }
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
-                        System.out.println(GameData.getInstance().getCurrentSection());
-                        manager.writeObject(GameData.getInstance().getCurrentSection().getEndPoint());
+                        manager.writeObject(GameData.getInstance().getCurrentSection().getEnemyList().get(1));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -206,7 +206,7 @@ public class GameController implements Runnable {
                 case M ->{
                     JsonManager manager = new JsonManager("src/main/resources/test.Json");
                     try {
-                        EndPoint character1 = manager.readObject(EndPoint.class);
+                        Enemy character1 = manager.readObject(Enemy.class);
                         System.out.println(character1.getStartX());
                         root.getChildren().add(character1);
                     } catch (IOException e) {
