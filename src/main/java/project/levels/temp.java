@@ -54,6 +54,8 @@ public class temp extends Level {
             section1.setEndPoint(new Flag(4000,200));
             section1.setBackground("/images/bg/bg1.jpeg");
 
+            section1.addBlock(new Block(BlockType.Simple,100,200));
+
 
             section1.setGravity(1.3);
         }

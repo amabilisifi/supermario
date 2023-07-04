@@ -39,6 +39,7 @@ public class CollisionManager {
     private boolean collisionWithEnd = false;
     private double onGroundTime = 0;
     private boolean countedOnCheckUnderBlock = false;
+    private boolean passed = true;
 
     public void UpdateCollisionManagerList(Section section) {
         blockList = section.getBlockList();
@@ -539,6 +540,22 @@ public class CollisionManager {
                     timeline.playFromStart();
                     if (onGroundTime >= 4) {
                         character.setOnGround4seconds(true);
+                    }
+                }
+                else if(b.getBlockType() != BlockType.Ground)  {
+                    System.out.println(b.getBlockTimer());
+                    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+                        if (passed) {
+                            b.setBlockTimer(b.getBlockTimer()+0.01);
+                        }
+                        passed = true;
+                    }));
+                    timeline.playFromStart();
+                    passed = false;
+
+                    if (b.getBlockTimer() >= 15) {
+                        blockList.remove(b);
+                        SectionDesigner.getInstance().removeFromRoot(b);
                     }
                 }
             }

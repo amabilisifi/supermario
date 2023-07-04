@@ -29,6 +29,8 @@ public class Block extends ImageView {
     private int itemLeft;
     private boolean ableToGiveAnotherItem;
 
+    private double blockTimer = 0;
+
 
     public Block(BlockType blockType, double xStart, double yStart) {
         this.blockType = blockType;
@@ -188,6 +190,14 @@ public class Block extends ImageView {
 
     public void setAbleToGiveAnotherItem(boolean ableToGiveAnotherItem) {
         this.ableToGiveAnotherItem = ableToGiveAnotherItem;
+    }
+
+    public double getBlockTimer() {
+        return blockTimer;
+    }
+
+    public void setBlockTimer(double blockTimer) {
+        this.blockTimer = blockTimer;
     }
 }
 

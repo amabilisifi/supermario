@@ -5,8 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import project.GameController;
-import project.UsersData;
-import project.characters.Character;
 import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
 
