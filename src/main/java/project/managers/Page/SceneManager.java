@@ -26,6 +26,7 @@ public class SceneManager {
         fxmlPaths.put(PageType.ShopPage, "/fxmls/Shop.fxml");
         fxmlPaths.put(PageType.HistoryPage, "history.fxml");
         fxmlPaths.put(PageType.WorldPage, "/fxmls/worlds.fxml");
+        fxmlPaths.put(PageType.GameOver,"/fxmls/gameover.fxml");
     }
 
     public static SceneManager getInstance() {

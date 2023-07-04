@@ -10,4 +10,5 @@ public enum PageType {
     ShopPage,
     HistoryPage,
     WorldPage,
+    GameOver,
 }

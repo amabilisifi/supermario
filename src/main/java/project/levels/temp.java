@@ -46,17 +46,14 @@ public class temp extends Level {
 //            section1.json.addPipe(pipe1);
 //            ToxicPlant toxicPlant = new ToxicPlant(pipe1);
 //            section1.json.addEnemy(toxicPlant);
+
             section1.addBlockTable(BlockType.Ground,50,3,0);
 //            section1.json.addBlockTable(BlockType.Ground,15,4,360);
+
+            section1.addEnemy(new KingKoopa(600,120));
             section1.setEndPoint(new Flag(4000,200));
             section1.setBackground("/images/bg/bg1.jpeg");
 
-            Pipe p = new Pipe(PipeType.Long,300,192,true);
-            section1.addPipe(p);
-            Section secretSection = new Section();
-            secretSection.addBlockTable(BlockType.Simple,20,3,0);
-            secretSection.setEndPoint(new PussyCat(200, 220));
-            p.setSection(secretSection);
 
             section1.setGravity(1.3);
         }

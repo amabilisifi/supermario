@@ -14,7 +14,7 @@ public class GameData {
     @JsonIgnore
     private static GameData instance = new GameData();
     @JsonIgnore
-    private Scene scene;
+    private Scene scene ;
     @JsonIgnore
     private Group root = new Group();
     @JsonIgnore

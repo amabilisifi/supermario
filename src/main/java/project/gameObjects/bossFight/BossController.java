@@ -44,7 +44,7 @@ public class BossController {
             timeLineRoam.stop();
         }
         if (!flag) {
-            roam();
+            //roam();
             startXRoam = bossEnemy.getX();
         }
     }
@@ -64,8 +64,8 @@ public class BossController {
                 }
             }
             Direction direction = bossEnemy.getDirection();
-            if ((direction == Direction.Left && distance <= 3 * blockSize + character.getFitWidth()) ||
-                    (direction == Direction.Right && distance <= 3.5 * blockSize + bossEnemy.getFitWidth())) {
+            if ((direction == Direction.Left && distance <= 4 * blockSize + character.getFitWidth()) ||
+                    (direction == Direction.Right && distance <= 4.5 * blockSize + bossEnemy.getFitWidth())) {
                 bossEnemy.setVx(0);
             }
         }

@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -89,15 +90,12 @@ public class SectionDesigner {
     public void sketch(int levelNum, int sectionNum) {
         try {
             String path = "src/main/resources/fxmls/levels/level" + levelNum + "/section" + sectionNum + ".json";
-            System.out.println(1);
             JsonManager manager = new JsonManager(path);
-            System.out.println(2);
             Section targetSection = manager.readObject(Section.class);
-            System.out.println(3);
-            System.out.println(targetSection.getEnemyList().size());
 
             GameData.getInstance().setCurrentSection(targetSection);
             GameData.getInstance().setLevelNum(1);
+            System.out.println(GameData.getInstance().getScene());
 
             Timeline timeSection = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
                 targetSection.setTime(targetSection.getTime() - 1);
@@ -133,7 +131,14 @@ public class SectionDesigner {
             character.setX(10);
             GameData.getInstance().getGameController().setScrollLimit(false);
 
-            SceneManager.getInstance().goToScene(new Stage(),root);
+
+            Scene scene = new Scene(root, 800, 400);
+            GameData.getInstance().setScene(scene);
+
+            stage = GameData.getInstance().getStage();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

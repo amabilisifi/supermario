@@ -9,14 +9,18 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import project.GameObjectsInfo;
 import project.MovingEntity;
 import project.gameObjects.Direction;
 import project.gameStuff.GameData;
 import project.gameStuff.HUI;
 import project.managers.CollisionManager;
+import project.managers.Page.PageType;
+import project.managers.Page.SceneManager;
 
 import java.io.IOException;
 
@@ -102,8 +106,7 @@ public abstract class Character extends MovingEntity {
             CollisionManager.getInstance().reset();
             HUI.getInstance().setHearts(hearts);
             if (hearts <= 0) {
-                System.out.println("lose");
-                // gameOver mechanism
+                SceneManager.getInstance().goToScene(GameData.getInstance().getStage(), PageType.GameOver);
             }
         }
         if (mode == CharacterModes.Mega) {

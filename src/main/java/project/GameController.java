@@ -27,8 +27,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class GameController implements Runnable {
-    private Group root = new Group();
-    private final Scene scene;
+    private Group root;
+    private Scene scene;
     private final User currentUser = UsersData.getInstance().getCurrentUser();
     private final Character character = currentUser.getSelectedCharacter();
     private boolean startScrolling = false;
@@ -73,6 +73,54 @@ public class GameController implements Runnable {
         timelinePrime.setCycleCount(Animation.INDEFINITE);
         timelinePrime.playFromStart();
 
+        System.out.println(scene);
+        keyListener();
+
+        AnimationTimer animationTimer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+//                System.out.println(endPoint.getX() - character.getX());
+                if (endPoint.getX() - character.getX() <= 72) {
+                    scrollLimit = true;
+                    startScrolling = false;
+                    character.setAbleToMove(true);
+                }
+            }
+        };
+        animationTimer.start();
+        character.yProperty().addListener((observableValue, oldVal, newVal) -> {
+            // check jump limit
+            if (character.getVy() <= 0) {
+                character.setAbleToJumpAgain(true);
+            }
+            if(newVal.doubleValue()>=380){
+                character.setHearts(character.getHearts()-1);
+                HUI.getInstance().setHearts(character.getHearts());
+                GameData.getInstance().decreaseScore(30);
+                CollisionManager.getInstance().reset();
+            }
+            /* height limit
+            if (newVal.doubleValue() < 0) {
+                character.setVy(2);
+            }*/
+        });
+        character.xProperty().addListener((observableValue, oldVal, newVal) -> {
+            // width limit
+            if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > scene.getWidth()) {
+                character.setVx(0);
+            }
+            //scrolling
+            if (newVal.doubleValue() >= 450 && !scrollLimit && !character.isNearBossEnemy()) {
+                startScrolling = true;
+                character.setAbleToMove(false);
+            } else {
+                startScrolling = false;
+                character.setAbleToMove(true);
+            }
+        });
+    }
+
+    public void keyListener(){
         scene.setOnKeyPressed(KeyEvent -> {
             switch (KeyEvent.getCode()) {
                 case F -> {
@@ -229,48 +277,6 @@ public class GameController implements Runnable {
                         character.setJumping(false);
                     }
                 }
-            }
-        });
-        AnimationTimer animationTimer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-//                System.out.println(endPoint.getX() - character.getX());
-                if (endPoint.getX() - character.getX() <= 72) {
-                    scrollLimit = true;
-                    startScrolling = false;
-                    character.setAbleToMove(true);
-                }
-            }
-        };
-        animationTimer.start();
-        character.yProperty().addListener((observableValue, oldVal, newVal) -> {
-            // check jump limit
-            if (character.getVy() <= 0) {
-                character.setAbleToJumpAgain(true);
-            }
-            if(newVal.doubleValue()>=380){
-                character.setHearts(character.getHearts()-1);
-                HUI.getInstance().setHearts(character.getHearts());
-                GameData.getInstance().decreaseScore(30);
-                CollisionManager.getInstance().reset();
-            }
-            /* height limit
-            if (newVal.doubleValue() < 0) {
-                character.setVy(2);
-            }*/
-        });
-        character.xProperty().addListener((observableValue, oldVal, newVal) -> {
-            // width limit
-            if (newVal.doubleValue() <= 0 || newVal.doubleValue() + character.getFitWidth() > scene.getWidth()) {
-                character.setVx(0);
-            }
-            //scrolling
-            if (newVal.doubleValue() >= 450 && !scrollLimit && !character.isNearBossEnemy()) {
-                startScrolling = true;
-                character.setAbleToMove(false);
-            } else {
-                startScrolling = false;
-                character.setAbleToMove(true);
             }
         });
     }

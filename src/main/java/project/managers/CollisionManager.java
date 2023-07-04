@@ -235,7 +235,7 @@ public class CollisionManager {
     public void collisionWithEnemyChar() {
         Enemy e = null;
         for (Enemy enemy : enemyList) {
-            if (enemy!=null && character.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
+            if (enemy != null && character.intersects(enemy.getBoundsInParent()) && !(enemy instanceof BossEnemy)) {
                 if (character.isAntiKnock()) {
                     e = enemy;
                     root.getChildren().remove(enemy);
@@ -299,10 +299,11 @@ public class CollisionManager {
                 LevelManager.getInstance().turningBackFromSecretLevel();
         }
     }
-    public void collisionWithCheckPointsChar(){
-        for(CheckPoint checkPoint: section.getCheckPointList()){
-            if(character.intersects(checkPoint.getBoundsInParent())){
-                StorageController.getInstance().save(GameData.getInstance().getCurrentLevel() ,GameData.getInstance().getCurrentSection());
+
+    public void collisionWithCheckPointsChar() {
+        for (CheckPoint checkPoint : section.getCheckPointList()) {
+            if (character.intersects(checkPoint.getBoundsInParent())) {
+                StorageController.getInstance().save(GameData.getInstance().getCurrentLevel(), GameData.getInstance().getCurrentSection());
             }
         }
     }
@@ -381,11 +382,12 @@ public class CollisionManager {
         }
     }
 
-    public void collisionEnemiesWithObjectsInGame(){
-        for (Enemy enemy:enemyList){
+    public void collisionEnemiesWithObjectsInGame() {
+        for (Enemy enemy : enemyList) {
             collisionWithObjectsInGame(enemy);
         }
     }
+
     public void collisionWithObjectsInGame(MovingEntity entity) {
         boolean flag = false;
         for (Pipe pipe : pipeList) {
@@ -548,7 +550,8 @@ public class CollisionManager {
             pipe.setX(pipe.getStartX());
         }
         for (Enemy enemy : enemyList) {
-            enemy.setX(enemy.getStartX());
+            if (!(enemy instanceof BossEnemy))
+                enemy.setX(enemy.getStartX());
         }
         for (Item item : itemList) {
             item.setX(item.getStartX());
