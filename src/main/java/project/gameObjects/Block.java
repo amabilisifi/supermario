@@ -73,7 +73,50 @@ public class Block extends ImageView {
         this.setFitHeight(GameObjectsInfo.getInstance().getBlockHeight());
     }
 
-    public Block(BlockType blockType) {
+    public Block(BlockType blockType, double startX, double startY, int itemLeft, boolean ableToGiveAnotherItem) {
+        this.blockType = blockType;
+        this.startX = startX;
+        setX(startX);
+        this.startY = startY;
+        setY(startY);
+        this.itemLeft = itemLeft;
+        this.ableToGiveAnotherItem = ableToGiveAnotherItem;
+
+        switch (blockType) {
+            case Ground -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/ground.PNG")));
+            }
+            case Empty -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/empty.PNG")));
+            }
+            case Simple -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = 0;
+            }
+            case ContainCoin -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = 1;
+                ableToGiveAnotherItem = true;
+            }
+            case ContainManyCoins -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/simple.PNG")));
+                itemLeft = (int) (2 + 3 * Math.random());
+                ableToGiveAnotherItem = true;
+            }
+            case Bonus -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/bonus.PNG")));
+                itemLeft = 1;
+                ableToGiveAnotherItem = true;
+            }
+            case Slime -> {
+                img = new Image(String.valueOf(getClass().getResource("/images/Blocks/slime.jpg")));
+            }
+        }
+        this.setImage(img);
+        this.currentX = startX;
+        this.currentY = startY;
+        this.setFitWidth(GameObjectsInfo.getInstance().getBlockWidth());
+        this.setFitHeight(GameObjectsInfo.getInstance().getBlockHeight());
     }
 
     public Block() {
@@ -153,10 +196,13 @@ class BlockSerializer extends JsonSerializer<Block> {
     @Override
     public void serialize(Block block, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeNumberField("xStart", block.getStartX());
-        jsonGenerator.writeNumberField("yStart", block.getStartY());
-        jsonGenerator.writeNumberField("xCurrent", block.getCurrentX());
-        jsonGenerator.writeNumberField("yCurrent", block.getCurrentY());
+
+        jsonGenerator.writeNumberField("startX", block.getX());
+        jsonGenerator.writeNumberField("startY", block.getY());
+        jsonGenerator.writeBooleanField("ableToGiveAnotherItem", block.isAbleToGiveAnotherItem());
+        jsonGenerator.writeNumberField("itemLeft", block.getItemLeft());
+        jsonGenerator.writeStringField("blockType", block.getBlockType().toString());
+
         jsonGenerator.writeEndObject();
     }
 }
@@ -174,27 +220,41 @@ class BlockDeserializer extends StdDeserializer<Block> {
     public Block deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 
-        Block b = new Block();
-        JsonNode startX = node.get("xStart");
-        JsonNode startY = node.get("yStart");
-        JsonNode currentX = node.get("xCurrent");
-        JsonNode currentY = node.get("yCurrent");
-        JsonNode width = node.get("width");
-        JsonNode height = node.get("height");
-        if (startX != null && startY != null) {
-            b.setStartX(startX.asDouble());
-            b.setStartY(startY.asDouble());
+        JsonNode startX = node.get("startX");
+        JsonNode startY = node.get("startY");
+        JsonNode able = node.get("ableToGiveAnotherItem");
+        JsonNode itemLeft = node.get("itemLeft");
+        JsonNode blockType = node.get("blockType");
+
+        BlockType type = null;
+        if (blockType != null) {
+            if (blockType.asText().equals("Bonus")) {
+                type = BlockType.Bonus;
+            }
+            if (blockType.asText().equals("Ground")) {
+                type = BlockType.Ground;
+            }
+            if (blockType.asText().equals("ContainCoin")) {
+                type = BlockType.ContainCoin;
+            }
+            if (blockType.asText().equals("Simple")) {
+                type = BlockType.Simple;
+            }
+
+            if (blockType.asText().equals("ContainManyCoins")) {
+                type = BlockType.ContainManyCoins;
+            }
+            if (blockType.asText().equals("Empty")) {
+                type = BlockType.Empty;
+            }
+            if (blockType.asText().equals("Slime")) {
+                type = BlockType.Slime;
+            }
         }
-        if (currentX != null && currentY != null) {
-            b.setCurrentX(currentX.asDouble());
-            b.setCurrentY(currentY.asDouble());
-        }
 
-        Image block = new Image(String.valueOf(getClass().getResource("images/block.PNG")));
-        b.setImage(block);
+        if (startX != null && startY != null && able != null && itemLeft != null && type != null)
+            return new Block(type,startX.asDouble(),startY.asDouble(),itemLeft.asInt(),able.asBoolean());
 
-        //LoadData.getInstance().getBlockList().add(b);
-
-        return b;
+            return null;
     }
 }

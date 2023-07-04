@@ -129,9 +129,9 @@ public class CollisionManager {
         for (Coin coin : coinList) {
             if (character.intersects(coin.getBoundsInParent())) {
                 collisionCoin = coin;
+                collisionCoin.setToken(true);
                 currentUser.setCoin(currentUser.getCoin() + 1);
                 GameData.getInstance().increaseScore(10);
-                System.out.println(currentUser.getCoin());
             }
         }
         coinList.remove(collisionCoin);
