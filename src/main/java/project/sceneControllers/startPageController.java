@@ -38,7 +38,6 @@ public class startPageController implements Initializable {
         Text text = new Text(50, 270, "");
         text.setFont(new Font(20));
         pane.getChildren().add(text);
-        soundPlayer.stop();
 
         stage.setResizable(false);
         stage.show();
@@ -51,7 +50,6 @@ public class startPageController implements Initializable {
         Text text = new Text(50, 270, "");
         text.setFont(new Font(20));
         pane.getChildren().add(text);
-        soundPlayer.stop();
 
         stage.setResizable(false);
         stage.show();
@@ -64,6 +62,7 @@ public class startPageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        GameData.getInstance().setBgmPlayer(soundPlayer);
         SoundPlayer.setMainSoundPlayer(soundPlayer);
         soundPlayer.play();
         soundPlayer.playOnRepeat();

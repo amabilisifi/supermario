@@ -1,1 +1,2216 @@
-{"blockList":[{"startX":-1585.8959999997812,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1549.8959999997899,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1513.895999999799,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1477.8959999998065,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1441.895999999814,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1405.8959999998215,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1369.895999999829,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1333.8959999998365,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1297.8959999998508,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1261.8959999998658,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1585.8959999997812,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1549.8959999997899,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1513.895999999799,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1477.8959999998065,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1441.895999999814,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1405.8959999998215,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1369.895999999829,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1333.8959999998365,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1297.8959999998508,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1261.8959999998658,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1585.8959999997812,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1549.8959999997899,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1513.895999999799,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1477.8959999998065,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1441.895999999814,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1405.8959999998215,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1369.895999999829,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1333.8959999998365,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1297.8959999998508,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1261.8959999998658,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1225.8959999998808,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1189.8959999998958,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1153.895999999911,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1117.8959999999258,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1081.895999999941,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1225.8959999998808,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1189.8959999998958,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1153.895999999911,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1117.8959999999258,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1081.895999999941,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1225.8959999998808,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1189.8959999998958,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1153.895999999911,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1117.8959999999258,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1081.895999999941,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1225.8959999998808,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1189.8959999998958,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1153.895999999911,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1117.8959999999258,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1081.895999999941,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-937.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-901.8959999999444,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-865.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-829.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-793.8959999999444,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-757.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-721.8959999999443,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-685.8959999999444,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-649.8959999999444,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1045.8959999999445,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1009.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-973.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-937.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-901.8959999999444,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-865.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-829.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-793.8959999999444,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-757.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-721.8959999999443,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-685.8959999999444,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-649.8959999999444,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-474.8959999999288,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-438.8959999999137,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-402.8959999998988,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-366.89599999988366,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-330.8959999998686,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-294.8959999998536,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-258.8959999998386,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-222.8959999998304,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-186.89599999982286,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-150.89599999981542,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-474.8959999999288,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-438.8959999999137,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-402.8959999998988,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-366.89599999988366,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-330.8959999998686,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-294.8959999998536,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-258.8959999998386,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-222.8959999998304,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-186.89599999982286,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-150.89599999981542,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-474.8959999999288,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-438.8959999999137,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-402.8959999998988,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-366.89599999988366,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-330.8959999998686,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-294.8959999998536,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-258.8959999998386,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-222.8959999998304,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-186.89599999982286,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-150.89599999981542,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-474.8959999999288,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-438.8959999999137,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-402.8959999998988,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-366.89599999988366,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-330.8959999998686,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-294.8959999998536,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-258.8959999998386,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-222.8959999998304,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-186.89599999982286,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-150.89599999981542,"startY":256.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-114.89599999980783,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-78.8959999998003,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-42.89599999979172,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-6.8959999997829335,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":29.10400000022564,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":65.10400000023492,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":101.1040000002424,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":137.10400000024995,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":173.10400000025749,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":209.10400000026496,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":245.10400000027252,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":281.1040000002853,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":317.1040000003003,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":353.10400000031535,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":389.1040000003304,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":425.1040000003455,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":461.1040000003605,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":497.10400000037555,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":533.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":569.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":605.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":641.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":677.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":713.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":749.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":785.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":821.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":857.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":893.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":929.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":965.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1001.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-114.89599999980783,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-78.8959999998003,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-42.89599999979172,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-6.8959999997829335,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":29.10400000022564,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":65.10400000023492,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":101.1040000002424,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":137.10400000024995,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":173.10400000025749,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":209.10400000026496,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":245.10400000027252,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":281.1040000002853,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":317.1040000003003,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":353.10400000031535,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":389.1040000003304,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":425.1040000003455,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":461.1040000003605,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":497.10400000037555,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":533.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":569.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":605.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":641.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":677.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":713.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":749.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":785.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":821.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":857.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":893.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":929.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":965.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1001.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-114.89599999980783,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-78.8959999998003,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-42.89599999979172,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-6.8959999997829335,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":29.10400000022564,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":65.10400000023492,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":101.1040000002424,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":137.10400000024995,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":173.10400000025749,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":209.10400000026496,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":245.10400000027252,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":281.1040000002853,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":317.1040000003003,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":353.10400000031535,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":389.1040000003304,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":425.1040000003455,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":461.1040000003605,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":497.10400000037555,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":533.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":569.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":605.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":641.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":677.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":713.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":749.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":785.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":821.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":857.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":893.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":929.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":965.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1001.1040000003818,"startY":292.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1037.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1073.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1109.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1145.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1181.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1217.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1253.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1289.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1325.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1361.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1397.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1433.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1469.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1505.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1541.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1577.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1613.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1649.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1685.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1721.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1757.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1793.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1829.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1865.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1901.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1937.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1973.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2009.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2045.1040000003818,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2081.104000000382,"startY":364.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1037.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1073.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1109.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1145.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1181.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1217.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1253.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1289.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1325.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1361.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1397.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1433.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1469.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1505.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1541.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1577.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1613.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1649.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1685.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1721.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1757.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1793.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1829.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1865.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1901.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1937.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":1973.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2009.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2045.1040000003818,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":2081.104000000382,"startY":328.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Ground"},{"startX":-1439.8959999998144,"startY":150.0,"ableToGiveAnotherItem":true,"itemLeft":4,"blockType":"ContainManyCoins"},{"startX":-1403.895999999822,"startY":150.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"Bonus"},{"startX":-1367.8959999998294,"startY":150.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"ContainCoin"},{"startX":-985.8959999999443,"startY":100.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"},{"startX":-949.8959999999444,"startY":100.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"ContainCoin"},{"startX":-913.8959999999443,"startY":100.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"},{"startX":-365.8959999998833,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":-329.8959999998682,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":-293.89599999985313,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":-329.8959999998682,"startY":80.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"Bonus"},{"startX":314.10400000029904,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":350.1040000003141,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":386.10400000032917,"startY":145.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"Bonus"},{"startX":422.10400000034423,"startY":145.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Simple"},{"startX":764.1040000003818,"startY":140.0,"ableToGiveAnotherItem":true,"itemLeft":4,"blockType":"ContainManyCoins"},{"startX":800.1040000003818,"startY":140.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"},{"startX":834.1040000003818,"startY":140.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"ContainCoin"},{"startX":1414.1040000003818,"startY":150.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"},{"startX":1450.1040000003818,"startY":150.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"ContainCoin"},{"startX":1486.1040000003818,"startY":150.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"},{"startX":1522.1040000003818,"startY":150.0,"ableToGiveAnotherItem":true,"itemLeft":1,"blockType":"ContainCoin"},{"startX":1558.1040000003818,"startY":150.0,"ableToGiveAnotherItem":false,"itemLeft":0,"blockType":"Empty"}],"pipeList":[{"startX":-1105.895999999931,"startY":196.0,"isSecretPipe":false,"type":"Short"},{"startX":114.10400000024515,"startY":213.0,"isSecretPipe":false,"type":"Medium"},{"startX":614.1040000003818,"startY":233.0,"isSecretPipe":false,"type":"Short"},{"startX":969.1040000003818,"startY":192.0,"isSecretPipe":false,"type":"Long"},{"startX":1214.1040000003818,"startY":269.0,"isSecretPipe":false,"type":"Short"}],"itemList":[],"coinList":[{"startX":-311.8959999998607,"startY":130.0,"token":false},{"startX":1236.1040000003818,"startY":248.0,"token":false}],"gravity":1.3,"enemyList":[{"pipeX":-1105.895999999931,"pipeY":196.0,"pipeType":"Short"},{"startX":314.90400000032264,"startY":286.76,"type":"Mushroom","Vx":4.0,"Vy":0.0},{"pipeX":1214.1040000003818,"pipeY":269.0,"pipeType":"Short"}],"sectionNum":0,"time":368,"endPoint":{"startX":1540.1040000003818,"startY":105.0,"type":"Flag"},"checkPointList":[{"startX":414.1040000003409,"startY":266.0,"type":"CheckPoint"}],"savedCheckPointPath":"./src/main/resources/GameData/qwe/LoadData/load1-0.json","userHaveCheckPointSaved":true}
+{
+  "blockList": [
+    {
+      "startX": -1495.183999999803,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1459.1839999998117,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1423.1839999998208,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1387.1839999998283,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1351.1839999998358,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1315.1839999998433,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1279.1839999998508,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1243.1839999998583,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1207.1839999998726,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1171.1839999998876,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1495.183999999803,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1459.1839999998117,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1423.1839999998208,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1387.1839999998283,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1351.1839999998358,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1315.1839999998433,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1279.1839999998508,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1243.1839999998583,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1207.1839999998726,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1171.1839999998876,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1495.183999999803,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1459.1839999998117,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1423.1839999998208,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1387.1839999998283,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1351.1839999998358,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1315.1839999998433,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1279.1839999998508,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1243.1839999998583,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1207.1839999998726,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1171.1839999998876,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1135.1839999999027,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1099.1839999999177,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1063.183999999933,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1027.1839999999477,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -991.1839999999628,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1135.1839999999027,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1099.1839999999177,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1063.183999999933,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1027.1839999999477,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -991.1839999999628,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1135.1839999999027,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1099.1839999999177,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1063.183999999933,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1027.1839999999477,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -991.1839999999628,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1135.1839999999027,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1099.1839999999177,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1063.183999999933,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1027.1839999999477,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -991.1839999999628,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -847.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -811.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -775.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -739.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -703.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -667.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -631.1839999999661,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -595.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -559.1839999999662,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -955.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -919.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -883.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -847.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -811.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -775.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -739.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -703.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -667.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -631.1839999999661,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -595.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -559.1839999999662,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -384.1839999999127,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -348.18399999989765,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -312.1839999998827,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -276.1839999998676,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -240.18399999985584,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -204.18399999984837,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -168.18399999984084,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -132.18399999983328,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -96.18399999982574,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -60.18399999981808,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -384.1839999999127,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -348.18399999989765,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -312.1839999998827,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -276.1839999998676,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -240.18399999985584,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -204.18399999984837,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -168.18399999984084,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -132.18399999983328,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -96.18399999982574,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -60.18399999981808,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -384.1839999999127,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -348.18399999989765,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -312.1839999998827,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -276.1839999998676,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -240.18399999985584,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -204.18399999984837,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -168.18399999984084,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -132.18399999983328,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -96.18399999982574,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -60.18399999981808,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -384.1839999999127,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -348.18399999989765,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -312.1839999998827,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -276.1839999998676,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -240.18399999985584,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -204.18399999984837,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -168.18399999984084,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -132.18399999983328,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -96.18399999982574,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -60.18399999981808,
+      "startY": 256.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -24.183999999808837,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 11.81600000019974,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 47.81600000020857,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 83.81600000021697,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 119.8160000002245,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 155.81600000023204,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 191.8160000002395,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 227.81600000024707,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 263.8160000002562,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 299.81600000027123,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 335.8160000002863,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 371.81600000030136,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 407.81600000031636,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 443.8160000003314,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 479.8160000003465,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 515.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 551.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 587.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 623.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 659.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 695.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 731.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 767.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 803.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 839.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 875.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 911.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 947.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 983.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1019.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1055.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1091.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -24.183999999808837,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 11.81600000019974,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 47.81600000020857,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 83.81600000021697,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 119.8160000002245,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 155.81600000023204,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 191.8160000002395,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 227.81600000024707,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 263.8160000002562,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 299.81600000027123,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 335.8160000002863,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 371.81600000030136,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 407.81600000031636,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 443.8160000003314,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 479.8160000003465,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 515.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 551.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 587.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 623.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 659.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 695.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 731.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 767.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 803.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 839.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 875.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 911.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 947.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 983.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1019.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1055.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1091.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -24.183999999808837,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 11.81600000019974,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 47.81600000020857,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 83.81600000021697,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 119.8160000002245,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 155.81600000023204,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 191.8160000002395,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 227.81600000024707,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 263.8160000002562,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 299.81600000027123,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 335.8160000002863,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 371.81600000030136,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 407.81600000031636,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 443.8160000003314,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 479.8160000003465,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 515.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 551.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 587.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 623.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 659.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 695.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 731.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 767.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 803.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 839.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 875.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 911.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 947.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 983.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1019.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1055.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1091.81600000036,
+      "startY": 292.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1127.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1163.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1199.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1235.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1271.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1307.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1343.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1379.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1415.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1451.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1487.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1523.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1559.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1595.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1631.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1667.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1703.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1739.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1775.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1811.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1847.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1883.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1919.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1955.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1991.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2027.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2063.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2099.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2135.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2171.81600000036,
+      "startY": 364.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1127.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1163.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1199.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1235.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1271.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1307.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1343.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1379.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1415.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1451.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1487.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1523.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1559.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1595.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1631.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1667.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1703.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1739.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1775.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1811.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1847.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1883.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1919.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1955.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 1991.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2027.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2063.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2099.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2135.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": 2171.81600000036,
+      "startY": 328.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Ground"
+    },
+    {
+      "startX": -1349.1839999998363,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 3,
+      "blockType": "ContainManyCoins"
+    },
+    {
+      "startX": -1313.1839999998438,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "Bonus"
+    },
+    {
+      "startX": -1277.1839999998513,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "ContainCoin"
+    },
+    {
+      "startX": -895.1839999999661,
+      "startY": 100.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    },
+    {
+      "startX": -859.1839999999662,
+      "startY": 100.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "ContainCoin"
+    },
+    {
+      "startX": -823.1839999999661,
+      "startY": 100.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    },
+    {
+      "startX": -275.18399999986724,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Simple"
+    },
+    {
+      "startX": -239.18399999985564,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Simple"
+    },
+    {
+      "startX": -203.1839999998481,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Simple"
+    },
+    {
+      "startX": -239.18399999985564,
+      "startY": 80.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "Bonus"
+    },
+    {
+      "startX": 440.8160000003302,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Simple"
+    },
+    {
+      "startX": 476.81600000034524,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "Bonus"
+    },
+    {
+      "startX": 512.81600000036,
+      "startY": 145.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Simple"
+    },
+    {
+      "startX": 854.81600000036,
+      "startY": 140.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 2,
+      "blockType": "ContainManyCoins"
+    },
+    {
+      "startX": 890.81600000036,
+      "startY": 140.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    },
+    {
+      "startX": 924.81600000036,
+      "startY": 140.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "ContainCoin"
+    },
+    {
+      "startX": 1504.81600000036,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    },
+    {
+      "startX": 1540.81600000036,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "ContainCoin"
+    },
+    {
+      "startX": 1576.81600000036,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    },
+    {
+      "startX": 1612.81600000036,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": true,
+      "itemLeft": 1,
+      "blockType": "ContainCoin"
+    },
+    {
+      "startX": 1648.81600000036,
+      "startY": 150.0,
+      "ableToGiveAnotherItem": false,
+      "itemLeft": 0,
+      "blockType": "Empty"
+    }
+  ],
+  "pipeList": [
+    {
+      "startX": -1015.1839999999528,
+      "startY": 196.0,
+      "isSecretPipe": false,
+      "type": "Short"
+    },
+    {
+      "startX": 204.81600000024227,
+      "startY": 213.0,
+      "isSecretPipe": false,
+      "type": "Medium"
+    },
+    {
+      "startX": 704.81600000036,
+      "startY": 233.0,
+      "isSecretPipe": false,
+      "type": "Short"
+    },
+    {
+      "startX": 1059.81600000036,
+      "startY": 192.0,
+      "isSecretPipe": false,
+      "type": "Long"
+    },
+    {
+      "startX": 1304.81600000036,
+      "startY": 269.0,
+      "isSecretPipe": false,
+      "type": "Short"
+    }
+  ],
+  "itemList": [],
+  "coinList": [
+    {
+      "startX": -845.1839999999662,
+      "startY": 70.0,
+      "token": false
+    },
+    {
+      "startX": -645.1839999999661,
+      "startY": 300.0,
+      "token": false
+    },
+    {
+      "startX": -221.18399999985192,
+      "startY": 130.0,
+      "token": false
+    },
+    {
+      "startX": 1326.81600000036,
+      "startY": 248.0,
+      "token": false
+    }
+  ],
+  "gravity": 1.3,
+  "enemyList": [
+    {
+      "pipeX": -1015.1839999999528,
+      "pipeY": 196.0,
+      "pipeType": "Short"
+    },
+    {
+      "startX": -598.3840000000251,
+      "startY": 293.5319999999999,
+      "type": "Mushroom",
+      "Vx": 4.0,
+      "Vy": 0.0
+    },
+    {
+      "pipeX": 1304.81600000036,
+      "pipeY": 269.0,
+      "pipeType": "Short"
+    }
+  ],
+  "sectionNum": 0,
+  "time": 385,
+  "endPoint": {
+    "startX": 1630.81600000036,
+    "startY": 105.0,
+    "type": "Flag"
+  },
+  "checkPointList": [
+    {
+      "startX": 504.81600000035695,
+      "startY": 266.0,
+      "type": "CheckPoint"
+    }
+  ],
+  "savedCheckPointPath": "./src/main/resources/GameData/qwe/LoadData/load1-0.json",
+  "userHaveCheckPointSaved": true
+}

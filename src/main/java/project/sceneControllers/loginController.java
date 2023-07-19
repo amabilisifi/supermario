@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import project.gameStuff.GameData;
 import project.managers.JsonManager;
 import project.User;
 import project.UsersData;
@@ -52,6 +53,7 @@ public class loginController {
                 UsersData.getInstance().setCurrentUser(u);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 SceneManager.getInstance().goToScene(stage, PageType.HomePage);
+                GameData.getInstance().getBgmPlayer().stop();
 
                 String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
                 JsonManager manager = new JsonManager(path);

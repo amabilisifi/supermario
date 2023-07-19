@@ -162,6 +162,9 @@ public class SectionDesigner {
         for (Item item : section.getItemList()) {
             root.getChildren().remove(item);
         }
+        for (CheckPoint checkPoint: section.getCheckPointList()){
+            root.getChildren().remove(checkPoint);
+        }
         root.getChildren().remove(section.getEndPoint());
     }
 

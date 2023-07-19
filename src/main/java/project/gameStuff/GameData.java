@@ -42,6 +42,8 @@ public class GameData {
     private int savedCheckPoint = 0;
     @JsonIgnore
     private int moneyAmount = 0;
+    @JsonIgnore
+    private SoundPlayer bgmPlayer;
     public GameData() {
     }
 
@@ -190,5 +192,13 @@ public class GameData {
 
     public void setMoneyAmount(int moneyAmount) {
         this.moneyAmount = moneyAmount;
+    }
+
+    public SoundPlayer getBgmPlayer() {
+        return bgmPlayer;
+    }
+
+    public void setBgmPlayer(SoundPlayer bgmPlayer) {
+        this.bgmPlayer = bgmPlayer;
     }
 }

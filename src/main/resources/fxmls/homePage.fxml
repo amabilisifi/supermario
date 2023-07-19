@@ -16,17 +16,17 @@
                 <Image url="@../images/bg/homeWall1.jpeg" />
             </image>
         </ImageView>
-        <Button blendMode="RED" layoutX="91.0" layoutY="201.0" mnemonicParsing="false" onAction="#goToHardnessScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="New Game">
+        <Button blendMode="RED" layoutX="91.0" layoutY="222.0" mnemonicParsing="false" onAction="#goToHardnessScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="New Game">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button blendMode="RED" layoutX="89.0" layoutY="104.0" mnemonicParsing="false" onAction="#goToHistoryScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Continue Game" textAlignment="CENTER">
+        <Button blendMode="RED" layoutX="89.0" layoutY="125.0" mnemonicParsing="false" onAction="#goToHistoryScene" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Continue Game" textAlignment="CENTER">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button blendMode="RED" layoutX="607.0" layoutY="201.0" mnemonicParsing="false" onAction="#goToShop" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Shop">
+        <Button blendMode="RED" layoutX="607.0" layoutY="222.0" mnemonicParsing="false" onAction="#goToShop" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Shop">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -38,8 +38,7 @@
             </image>
         </ImageView>
         <Circle fill="#1f93ff00" layoutX="120.0" layoutY="29.0" onMouseClicked="#goToProfileScene" radius="22.0" stroke="#2d71cf" strokeType="INSIDE" />
-        <Button layoutX="80.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#dingDong" prefHeight="54.0" prefWidth="136.0" text="Ding-Dong" />
-      <Button blendMode="RED" layoutX="609.0" layoutY="104.0" mnemonicParsing="false" onAction="#goToWorldList" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Worlds">
+      <Button blendMode="RED" layoutX="609.0" layoutY="125.0" mnemonicParsing="false" onAction="#goToWorldList" opacity="0.77" prefHeight="44.0" prefWidth="119.0" text="Worlds">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

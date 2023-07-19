@@ -270,7 +270,7 @@ public class CollisionManager {
                                 enemy.setVx(13);
                                 ((Turtle) enemy).setCrazyRN(true);
                             }
-                            if (((Turtle) enemy).isBeenCrazy()) {
+                            if (((Turtle) enemy).isBeenCrazy() && !((Turtle) enemy).isCrazyRN()) {
                                 e = enemy;
                                 root.getChildren().remove(e);
                                 // score + 2
@@ -322,7 +322,7 @@ public class CollisionManager {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                Scene sc = new Scene(root, 396, 292);
+                Scene sc = new Scene(root, 396, 200);
                 stage.setScene(sc);
                 stage.setResizable(false);
                 stage.setOnCloseRequest(e -> {

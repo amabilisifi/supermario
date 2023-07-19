@@ -80,8 +80,8 @@ public class level1 extends Level {
             section2.setSectionNum(1);
 
             section2.addBlockTable(BlockType.Ground, 8, 3, 0);
-            section2.addBlockTable(BlockType.Ground, 6, 2, 360);
-            section2.addEnemy(new Mushroom(600, 280));
+            section2.addBlockTable(BlockType.Ground, 6, 2, 350);
+            section2.addEnemy(new Mushroom(600, 270));
             section2.addBlockTable(BlockType.Ground, 27, 2, 670);
             section2.addPipe(new Pipe(PipeType.Medium, 800, 249, false));
             section2.addBlock(new Block(BlockType.ContainCoin, 400, 200));
@@ -95,7 +95,7 @@ public class level1 extends Level {
             Pipe pipe = new Pipe(PipeType.Medium, 1181, 249, false);
             section2.addPipe(pipe);
             section2.addEnemy(new ToxicPlant(pipe));
-            section2.addEnemy(new Mushroom(1500, 164));
+            section2.addEnemy(new Mushroom(1500, 162));
             section2.addCoin(new Coin(1400, 295));
             section2.addBlockTable(BlockType.Ground, 22, 3, 1642);
             section2.addCoin(new Coin(1750, 255));
@@ -181,9 +181,9 @@ public class level1 extends Level {
             section4.setSectionNum(3);
 
             section4.addBlockTable(BlockType.Ground,11,2,0);
-            section3.addCoin(new Coin(120, 300));
-            section3.addCoin(new Coin(220, 300));
-            section3.addCoin(new Coin(320, 300));
+            section4.addCoin(new Coin(120, 300));
+            section4.addCoin(new Coin(220, 300));
+            section4.addCoin(new Coin(320, 300));
             section4.addBlockTable(BlockType.Ground,11,3,500);
             section4.addBlockTable(BlockType.Ground,11,4,1000);
 
