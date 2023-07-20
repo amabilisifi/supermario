@@ -132,6 +132,10 @@ public class HUI {
 
     public void setTime(int time) {
         this.time.setText(time + "");
+        // time is over
+        if(time<=0){
+            System.exit(0);
+        }
     }
 
     public void setHearts(int hearts) {

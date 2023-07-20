@@ -10,6 +10,9 @@ import project.gameObjects.bossFight.BossEnemy;
 import project.managers.CollisionManager;
 import project.managers.SoundPlayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GameData {
     @JsonIgnore
     private static GameData instance = new GameData();
@@ -44,6 +47,8 @@ public class GameData {
     private int moneyAmount = 0;
     @JsonIgnore
     private SoundPlayer bgmPlayer;
+    @JsonIgnore
+    private List<Timeline> timelineList  = new ArrayList<>();
     public GameData() {
     }
 
@@ -56,11 +61,21 @@ public class GameData {
 
     public void increaseScore(int score){
         this.score += score;
-        System.out.println(this.score);
     }
+
 
     public void decreaseScore(int score){
         this.score -= score;
+    }
+    public void pauseEverything(){
+        for (Timeline timeline1:timelineList){
+            timeline1.pause();
+        }
+    }
+    public void playEverything(){
+        for (Timeline timeline1:timelineList){
+            timeline1.play();
+        }
     }
     public Level getCurrentLevel() {
         return currentLevel;

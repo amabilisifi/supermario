@@ -33,7 +33,7 @@ public class GameController implements Runnable {
     private boolean startScrolling = false;
     private boolean scrollLimit = false;
 
-    private final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+    private final Timeline movingCharacter = new Timeline(new KeyFrame(Duration.millis(1), e -> {
         if (!character.isGrabbed()) {
             character.move();
         }
@@ -41,7 +41,7 @@ public class GameController implements Runnable {
             SectionDesigner.getInstance().moveMap(character.getVx() * 17 / 1000.0, GameData.getInstance().getCurrentSection());
         }
     }));
-    private final Timeline timelinePrime = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
+    private final Timeline characterFrame = new Timeline(new KeyFrame(Duration.millis(200), e -> character.setFrame()));
     private final Timeline timelineSwordMove = new Timeline(new KeyFrame(Duration.millis(10), e -> swordMove()));
     private EndPoint endPoint = GameData.getInstance().getCurrentSection().getEndPoint();
 
@@ -58,22 +58,21 @@ public class GameController implements Runnable {
 
     @Override
     public void run() {
-        // it used to be in constructor before implementing runnable in last project
         double startX = 10;
         double startY = 100;
         character.setX(startX);
         character.setY(startY);
         root.getChildren().add(character);
 
-        GameData.getInstance().setTimeline(timeline);
-        GameData.getInstance().setTimelinePrime(timelinePrime);
+        GameData.getInstance().setTimeline(movingCharacter);
+        GameData.getInstance().setTimelinePrime(characterFrame);
 
 
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.playFromStart();
+        movingCharacter.setCycleCount(Animation.INDEFINITE);
+        movingCharacter.playFromStart();
 
-        timelinePrime.setCycleCount(Animation.INDEFINITE);
-        timelinePrime.playFromStart();
+        characterFrame.setCycleCount(Animation.INDEFINITE);
+        characterFrame.playFromStart();
 
         System.out.println(scene);
         keyListener();
@@ -200,8 +199,8 @@ public class GameController implements Runnable {
                 }
                 case ESCAPE -> {
                     try {
-                        timeline.pause();
-                        timelinePrime.pause();
+                        movingCharacter.pause();
+                        characterFrame.pause();
                         Stage stage = new Stage();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/soundMenu.fxml"));
                         Parent root = loader.load();
@@ -209,8 +208,8 @@ public class GameController implements Runnable {
                         stage.setScene(sc);
                         stage.setResizable(false);
                         stage.setOnCloseRequest(e -> {
-                            timeline.play();
-                            timelinePrime.play();
+                            movingCharacter.play();
+                            characterFrame.play();
                         });
                         stage.show();
                     } catch (IOException e) {

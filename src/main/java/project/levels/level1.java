@@ -172,7 +172,6 @@ public class level1 extends Level {
 
 
             section3.setEndPoint(new Flag(3126, 286));
-//            section3.setEndPoint(new Flag(200, 220));
 
         }
         Section section4 = new Section();
@@ -185,23 +184,23 @@ public class level1 extends Level {
             section4.addCoin(new Coin(220, 300));
             section4.addCoin(new Coin(320, 300));
             section4.addBlockTable(BlockType.Ground,11,3,500);
-            section4.addBlockTable(BlockType.Ground,11,4,1000);
+            section4.addBlockTable(BlockType.Ground,21,4,1000);
 
-            section4.addBlock(new Block(BlockType.Simple, 1180, 160));
-            section4.addBlock(new Block(BlockType.Bonus, 1216, 160));
-            section4.addBlock(new Block(BlockType.Simple, 1252, 160));
-            section4.addBlock(new Block(BlockType.Bonus, 1288, 160));
-            section4.addBlock(new Block(BlockType.Simple, 1324, 160));
-            section4.addEnemy(new Spiny(1200,103));
+            section4.addBlock(new Block(BlockType.Simple, 1180, 140));
+            section4.addBlock(new Block(BlockType.Bonus, 1216, 140));
+            section4.addBlock(new Block(BlockType.Simple, 1252, 140));
+            section4.addBlock(new Block(BlockType.Bonus, 1288, 140));
+            section4.addBlock(new Block(BlockType.Simple, 1324, 140));
+            section4.addEnemy(new Spiny(1200,83));
 
-            section4.addPipe(new Pipe(PipeType.Short,1700,198,false));
-            section4.addPipe(new Pipe(PipeType.Short,1850,198,false));
-            section4.addPipe(new Pipe(PipeType.Short,2000,198,false));
+            section4.addPipe(new Pipe(PipeType.Short,2060,198,false));
+            section4.addPipe(new Pipe(PipeType.Short,2210,198,false));
+            section4.addPipe(new Pipe(PipeType.Short,2360,198,false));
 
-            section4.addBlockTable(BlockType.Ground,25,4,1500);
-            section4.addBlockTable(BlockType.Ground,11,3,2500);
+            section4.addBlockTable(BlockType.Ground,25,4,1860);
+            section4.addBlockTable(BlockType.Ground,11,3,1860);
 
-            section4.setEndPoint(new Flag(2600, 150));
+            section4.setEndPoint(new Flag(2600, 250));
         }
         Section section5 = new Section();
         {

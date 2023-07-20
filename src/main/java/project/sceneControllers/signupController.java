@@ -59,6 +59,7 @@ public class signupController{
                 String path = "src/main/resources/GameData/" + u.getName() + "/Inventory/purchasedCharacters.json";
                 JsonManager manager = new JsonManager(path);
                 u.getPurchasedCharacters().add(u.getFreeChar());
+                manager.writeArray(u.getPurchasedCharacters());
             }
         }
     }

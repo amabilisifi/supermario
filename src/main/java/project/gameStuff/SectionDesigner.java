@@ -26,7 +26,7 @@ import java.io.IOException;
 public class SectionDesigner {
     private static SectionDesigner instance;
     private Group root;
-    private Section section;
+    private final Section section = GameData.getInstance().getCurrentSection();;
     private boolean isBossScene;
     private SoundPlayer soundPlayer;
     private SoundPlayer bossSoundPlayer;
@@ -34,7 +34,6 @@ public class SectionDesigner {
 
     public SectionDesigner(Group root, Section section) {
         this.root = root;
-        this.section = section;
 //        soundPlayer = new SoundPlayer("src/main/resources/media/Barbie Girl.mp3");
         soundPlayer = new SoundPlayer("src/main/resources/media/Superman Theme.mp3");
         SoundPlayer.setMainSoundPlayer(soundPlayer);
@@ -44,13 +43,11 @@ public class SectionDesigner {
     }
 
     public void paint(Section targetSection) {
-        System.out.println(targetSection.isUserHaveCheckPointSaved());
         if (targetSection.isUserHaveCheckPointSaved()) {
             try {
                 System.out.println(targetSection.getSavedCheckPointPath());
                 JsonManager manager = new JsonManager(targetSection.getSavedCheckPointPath());
                 targetSection = manager.readObject(Section.class);
-                System.out.println("df");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -222,7 +219,6 @@ public class SectionDesigner {
         bossSoundPlayer.playOnRepeat();
         GameData.getInstance().setCurrentSoundPlayer(bossSoundPlayer);
 
-        section = GameData.getInstance().getCurrentSection();
         addBlockJail();
         UsersData.getInstance().getCurrentUser().getSelectedCharacter().setNearBossEnemy(true);
         ProgressBar hpBar = new ProgressBar(1);
