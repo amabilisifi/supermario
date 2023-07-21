@@ -38,10 +38,6 @@ public class GameData {
     @JsonIgnore
     private SoundPlayer currentSoundPlayer;
     @JsonIgnore
-    private Timeline timeline;
-    @JsonIgnore
-    private Timeline timelinePrime;
-    @JsonIgnore
     private int savedCheckPoint = 0;
     @JsonIgnore
     private int moneyAmount = 0;
@@ -68,11 +64,13 @@ public class GameData {
         this.score -= score;
     }
     public void pauseEverything(){
+        System.out.println("pausing everything");
         for (Timeline timeline1:timelineList){
             timeline1.pause();
         }
     }
     public void playEverything(){
+        System.out.println("playing everythingc");
         for (Timeline timeline1:timelineList){
             timeline1.play();
         }
@@ -177,20 +175,8 @@ public class GameData {
         this.currentSoundPlayer = currentSoundPlayer;
     }
 
-    public Timeline getTimelinePrime() {
-        return timelinePrime;
-    }
-
-    public void setTimelinePrime(Timeline timelinePrime) {
-        this.timelinePrime = timelinePrime;
-    }
-
-    public Timeline getTimeline() {
-        return timeline;
-    }
-
-    public void setTimeline(Timeline timeline) {
-        this.timeline = timeline;
+    public void addTimeLine(Timeline timeline){
+        timelineList.add(timeline);
     }
 
     public int getSavedCheckPoint() {

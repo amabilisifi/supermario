@@ -1,4 +1,4 @@
-package project.gameObjects;
+package project.gameObjects.markers;
 
 import javafx.scene.image.Image;
 import project.GameObjectsInfo;

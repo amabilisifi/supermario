@@ -5,6 +5,8 @@ import project.gameObjects.bossFight.KingKoopa;
 import project.gameObjects.enemies.Mushroom;
 import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
+import project.gameObjects.markers.Flag;
+import project.gameObjects.markers.PussyCat;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.managers.LevelManager;

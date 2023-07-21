@@ -5,6 +5,9 @@ import project.gameObjects.enemies.Mushroom;
 import project.gameObjects.enemies.Spiny;
 import project.gameObjects.enemies.ToxicPlant;
 import project.gameObjects.enemies.Turtle;
+import project.gameObjects.markers.CheckPoint;
+import project.gameObjects.markers.Flag;
+import project.gameObjects.markers.PussyCat;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
 import project.managers.LevelManager;
@@ -40,14 +43,14 @@ public class level1 extends Level {
             section1.addCoin(new Coin(650, 70));
             section1.addBlock(new Block(BlockType.Empty, 672, 100));
 
-            section1.addEnemy(new Mushroom(800, 255));
+            section1.addEnemy(new Mushroom(800, 252));
             section1.addCoin(new Coin(850, 300));
 
             section1.addBlock(new Block(BlockType.Simple, 1220, 145));
             section1.addBlock(new Block(BlockType.Simple, 1256, 145));
-            section1.addCoin(new Coin(1274, 130));
+            section1.addCoin(new Coin(1254, 120));
             section1.addBlock(new Block(BlockType.Simple, 1292, 145));
-            section1.addBlock(new Block(BlockType.Bonus, 1256, 80));
+            section1.addBlock(new Block(BlockType.Bonus, 1256, 50));
 
             section1.addEnemy(new Mushroom(2000, 220));
             section1.addCheckPoint(new CheckPoint(2000,266));

@@ -1,9 +1,7 @@
-package project.gameObjects;
+package project.gameObjects.markers;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
-import project.gameObjects.enemies.Enemy;
 
 public class PussyCat extends EndPoint {
     public PussyCat(double startX,double startY) {

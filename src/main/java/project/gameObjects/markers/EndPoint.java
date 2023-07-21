@@ -1,4 +1,4 @@
-package project.gameObjects;
+package project.gameObjects.markers;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonGenerator;

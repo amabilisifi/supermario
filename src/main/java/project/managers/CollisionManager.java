@@ -19,6 +19,9 @@ import project.gameObjects.bossFight.Bomb;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.bossFight.FireBall;
 import project.gameObjects.enemies.*;
+import project.gameObjects.markers.CheckPoint;
+import project.gameObjects.markers.Flag;
+import project.gameObjects.markers.PussyCat;
 import project.gameStuff.GameData;
 import project.gameStuff.Section;
 import project.gameStuff.SectionDesigner;
@@ -310,10 +313,11 @@ public class CollisionManager {
         for (CheckPoint checkPoint : section.getCheckPointList()) {
             if (character.intersects(checkPoint.getBoundsInParent()) && !checkPoint.isColided()) {
                 double pr = checkPoint.getX()/3000.0;
+                character.setVx(0);
+                character.setMoving(false);
                 GameData.getInstance().setMoneyAmount((int)pr);
                 checkPoint.setColided(true);
-                GameData.getInstance().getTimeline().pause();
-                GameData.getInstance().getTimelinePrime().pause();
+                GameData.getInstance().pauseEverything();
                 Stage stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/checkpointAsk.fxml"));
                 Parent root = null;
@@ -326,8 +330,7 @@ public class CollisionManager {
                 stage.setScene(sc);
                 stage.setResizable(false);
                 stage.setOnCloseRequest(e -> {
-                    GameData.getInstance().getTimeline().play();
-                    GameData.getInstance().getTimelinePrime().play();
+                    GameData.getInstance().playEverything();
                 });
                 stage.show();
             }

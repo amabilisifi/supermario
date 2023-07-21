@@ -3,7 +3,7 @@ package project;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import project.characters.Alexandro;
 import project.characters.Character;
-import project.gameObjects.CheckPoint;
+import project.gameObjects.markers.CheckPoint;
 
 import java.io.File;
 import java.io.IOException;

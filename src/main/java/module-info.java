@@ -29,4 +29,6 @@ module project {
     exports project.gameObjects.bossFight;
     exports project.gameObjects.enemies;
     opens project.gameObjects.enemies to com.fasterxml.jackson.databind;
+    exports project.gameObjects.markers;
+    opens project.gameObjects.markers to com.fasterxml.jackson.databind;
 }

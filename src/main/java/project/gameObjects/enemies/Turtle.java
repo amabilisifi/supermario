@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.gameObjects.Direction;
+import project.gameStuff.GameData;
 import project.managers.CollisionManager;
 
 public class Turtle extends Enemy {
@@ -44,7 +45,7 @@ public class Turtle extends Enemy {
             }));
             chill.setCycleCount(1);
             chill.playFromStart();
-
+            GameData.getInstance().addTimeLine(chill);
         }
         if (isBeenCrazy()) {
             if (getVx() < -4) setVx(-4);

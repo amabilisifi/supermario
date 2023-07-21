@@ -1,19 +1,10 @@
 package project.levels;
 
-import javafx.fxml.Initializable;
 import project.gameObjects.*;
-import project.gameObjects.bossFight.BossEnemy;
-import project.gameObjects.bossFight.FireBall;
 import project.gameObjects.bossFight.KingKoopa;
-import project.gameObjects.bossFight.NukeButton;
-import project.gameObjects.enemies.Spiny;
-import project.gameObjects.enemies.ToxicPlant;
+import project.gameObjects.markers.Flag;
 import project.gameStuff.Level;
 import project.gameStuff.Section;
-import project.gameStuff.SectionDesigner;
-
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class temp extends Level {
     public temp() {

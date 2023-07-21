@@ -15,9 +15,9 @@ import project.characters.Character;
 import project.gameObjects.*;
 import project.gameObjects.bossFight.BossEnemy;
 import project.gameObjects.enemies.Enemy;
+import project.gameObjects.markers.CheckPoint;
 import project.managers.CollisionManager;
 import project.managers.JsonManager;
-import project.managers.Page.SceneManager;
 import project.managers.SoundPlayer;
 
 import java.io.IOException;
@@ -59,10 +59,11 @@ public class SectionDesigner {
         }));
         timeSection.setCycleCount(Animation.INDEFINITE);
         timeSection.playFromStart();
+        GameData.getInstance().addTimeLine(timeSection);
         GameData.getInstance().setCurrentSection(targetSection);
         CollisionManager.getInstance().setCollisionWithEnd(false);
         Character character = UsersData.getInstance().getCurrentUser().getSelectedCharacter();
-        character.setX(10);
+        character.setX(40);
         GameData.getInstance().getGameController().setScrollLimit(false);
         for (Block block : targetSection.getBlockList()) {
             root.getChildren().add(block);

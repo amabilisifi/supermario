@@ -1,7 +1,6 @@
-package project.gameObjects;
+package project.gameObjects.markers;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
 
 public class Flag extends EndPoint {

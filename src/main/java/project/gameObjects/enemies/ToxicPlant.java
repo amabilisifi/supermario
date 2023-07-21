@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.gameObjects.Pipe;
 import project.gameObjects.PipeType;
+import project.gameStuff.GameData;
 
 import java.io.IOException;
 
@@ -54,6 +55,7 @@ public class ToxicPlant extends Enemy {
             Timeline chill = new Timeline(new KeyFrame(Duration.seconds(2), e -> setAbleToGoUp(true)));
             chill.setCycleCount(1);
             chill.playFromStart();
+            GameData.getInstance().addTimeLine(chill);
         }
     }
 

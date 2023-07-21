@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import project.GameObjectsInfo;
 import project.MovingEntity;
 import project.gameObjects.Direction;
+import project.gameStuff.GameData;
 import project.managers.CollisionManager;
 
 import java.io.IOException;
@@ -49,6 +50,8 @@ public abstract class Enemy extends MovingEntity {
         timeLineFall = new Timeline(new KeyFrame(Duration.millis(30), e -> {
             fall();
         }));
+        GameData.getInstance().addTimeLine(timelineMove);
+        GameData.getInstance().addTimeLine(timeLineFall);
         timeLineFall.setCycleCount(Animation.INDEFINITE);
         timeLineFall.playFromStart();
     }
@@ -60,6 +63,7 @@ public abstract class Enemy extends MovingEntity {
         direction = Direction.Left;
         timelineMove.setCycleCount(Animation.INDEFINITE);
         timelineMove.playFromStart();
+        GameData.getInstance().addTimeLine(timelineMove);
     }
 
 

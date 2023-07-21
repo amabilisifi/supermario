@@ -5,6 +5,8 @@ import javafx.scene.image.ImageView;
 import project.GameObjectsInfo;
 import project.gameObjects.*;
 import project.gameObjects.enemies.Enemy;
+import project.gameObjects.markers.CheckPoint;
+import project.gameObjects.markers.EndPoint;
 
 
 import java.util.ArrayList;

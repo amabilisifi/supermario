@@ -93,10 +93,12 @@ public class Item extends MovingEntity {
                 timeline.setCycleCount(Animation.INDEFINITE);
                 Timeline tl = new Timeline(new KeyFrame(Duration.seconds(3), e -> timeline.playFromStart()));
                 tl.playFromStart();
+                GameData.getInstance().addTimeLine(tl);
                 speed = 2.5*UsersData.getInstance().getCurrentUser().getSelectedCharacter().getSpeedo();
                 direction = Direction.Right;
             }
         }
+        GameData.getInstance().addTimeLine(timeline);
     }
 
     public Item(ItemType itemType, Block block) {

@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import project.characters.Character;
 import project.characters.CharacterModes;
 import project.gameObjects.Direction;
-import project.gameObjects.EndPoint;
+import project.gameObjects.markers.EndPoint;
 import project.gameObjects.Laser;
 import project.gameObjects.Sword;
 import project.gameObjects.bossFight.BossEnemy;
@@ -64,8 +64,9 @@ public class GameController implements Runnable {
         character.setY(startY);
         root.getChildren().add(character);
 
-        GameData.getInstance().setTimeline(movingCharacter);
-        GameData.getInstance().setTimelinePrime(characterFrame);
+        GameData.getInstance().addTimeLine(movingCharacter);
+        GameData.getInstance().addTimeLine(characterFrame);
+        GameData.getInstance().addTimeLine(timelineSwordMove);
 
 
         movingCharacter.setCycleCount(Animation.INDEFINITE);
@@ -199,8 +200,7 @@ public class GameController implements Runnable {
                 }
                 case ESCAPE -> {
                     try {
-                        movingCharacter.pause();
-                        characterFrame.pause();
+                        GameData.getInstance().pauseEverything();
                         Stage stage = new Stage();
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmls/soundMenu.fxml"));
                         Parent root = loader.load();
@@ -208,8 +208,7 @@ public class GameController implements Runnable {
                         stage.setScene(sc);
                         stage.setResizable(false);
                         stage.setOnCloseRequest(e -> {
-                            movingCharacter.play();
-                            characterFrame.play();
+                            GameData.getInstance().playEverything();
                         });
                         stage.show();
                     } catch (IOException e) {
@@ -316,6 +315,7 @@ public class GameController implements Runnable {
                 timelineSwordMove.stop();
                 sword = null;
                 Timeline chill = new Timeline(new KeyFrame(Duration.seconds(3), e -> character.setSwordCooledDown(true)));
+                GameData.getInstance().addTimeLine(chill);
                 chill.setCycleCount(1);
                 chill.playFromStart();
             }
