@@ -2,8 +2,6 @@
 
 A Java-based implementation of the classic Super Mario Bros game. This project recreates the nostalgic platforming experience of the original Nintendo game with modern programming techniques.
 
-![Game Screenshot](https://via.placeholder.com/800x450)
-
 ## 🎮 Features
 
 - **Classic Mario Gameplay**: Authentic recreation of the original Super Mario Bros mechanics
