@@ -1,6 +1,6 @@
-# Super Mario Bros Java Implementation
+# Super Mario Java Implementation
 
-A Java-based implementation of the classic Super Mario Bros game. This project recreates the nostalgic platforming experience of the original Nintendo game with modern programming techniques.
+A Java-based implementation of the classic Super Mario Bros game with among us themed. This project recreates the nostalgic platforming experience of the original Nintendo game with modern programming techniques.
 
 ## 🎮 Features
 
